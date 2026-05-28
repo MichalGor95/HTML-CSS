@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML - 20 rozdziałów | Samouczek INF03</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .card{
+            background:#fff;
+            border-radius:16px;
+            padding:20px;
+            box-shadow:0 8px 20px rgba(0,0,0,.08);
+            display:flex;
+            flex-direction:column;
+            min-height:200px;
+        }
+
+        .card:hover{
+            transform:translateY(-5px);
+            box-shadow:0 12px 24px rgba(0,0,0,0.08);
+        }
+
+        .card h3{
+            margin-bottom:12px;
+        }
+
+        .card p.desc{
+            margin-top:auto;
+            padding-top:12px;
+            margin-bottom:4px;
+            line-height:1.5;
+            color:#555;
+        }
+
+        .chapter-preview{
+            margin-top:16px;
+            padding:16px;
+            background-color:#faf8f2;
+            border-left:4px solid #2f7a67;
+            border-radius:12px;
+            font-size:14px;
+            color:#3a5e55;
+        }
+
+        .chapter-preview h4{
+            margin-bottom:8px;
+            color:#2f7a67;
+            font-size:16px;
+        }
+
+        a.card{
+            text-decoration:none;
+            color:inherit;
+            cursor:pointer;
+        }
+
+        a.card .chapter-preview{
+            border-left-color:#1f5e4f;
+        }
+
+        a.card h3::after{
+            content:" →";
+            color:#2f7a67;
+            font-size:14px;
+        }
+
+        @media(max-width:900px){
+            .cards{
+                grid-template-columns:1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        HTML<span>&CSS</span>
+    </div>
+
+    <nav>
+        <a href="index.html">Start</a>
+        <a href="html.html" class="active">HTML</a>
+        <a href="css.html">CSS</a>
+    </nav>
+</header>
+
+<main class="content-page">
+
+    <div class="page-header">
+        <h1>HTML - 20 rozdziałów</h1>
+        <p>Każda karta zawiera tytuł i krótki opis. To pełna mapa nauki HTML od podstaw do dobrych praktyk.</p>
+    </div>
+
+    <div class="cards">
+
+        <a href="wprowadzenie.html" class="card">
+            <h3>1. Wprowadzenie do HTML</h3>
+            <p class="desc">Czym jest HTML, znaczniki, atrybuty i podstawy tworzenia stron internetowych.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Poznasz czym jest HTML i jak działa struktura dokumentu.</em></p>
+            </div>
+        </a>
+
+        <div class="card">
+            <h3>2. Podstawowa struktura dokumentu</h3>
+            <p class="desc">DOCTYPE, html, head, body, title, meta charset i viewport.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Budowa każdego pliku HTML od początku do końca.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>3. Nagłówki i akapity</h3>
+            <p class="desc">h1-h6, p, br i hr.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Jak poprawnie dzielić treść i budować czytelną strukturę.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>4. Formatowanie tekstu</h3>
+            <p class="desc">strong, b, em, i, u, mark, small, sup i sub.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Najważniejsze znaczniki tekstowe i ich zastosowanie.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>5. Linki</h3>
+            <p class="desc">a, href, target oraz kotwice w obrębie strony.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Tworzenie odnośników do stron i sekcji.</em></p>
+            </div>
+        </div>
+
+        <a href="obrazy.html" class="card">
+            <h3>6. Obrazy</h3>
+            <p class="desc">img, src, alt, width i height.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Dodawanie grafik i dbanie o dostępność.</em></p>
+            </div>
+        </a>
+
+        <div class="card">
+            <h3>7. Listy</h3>
+            <p class="desc">ul, ol, li i listy zagnieżdżone.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Tworzenie list punktowanych i numerowanych.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>8. Tabele</h3>
+            <p class="desc">table, tr, td, th, colspan i rowspan.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Budowa tabel i scalanie komórek.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>9. Kontenery i grupowanie</h3>
+            <p class="desc">div i span.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Grupowanie elementów i organizacja strony.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>10. Semantyczne znaczniki HTML5</h3>
+            <p class="desc">header, nav, main, section, article, aside i footer.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Tworzenie logicznej struktury strony.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>11. Formularze - podstawy</h3>
+            <p class="desc">form, action, method i label.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Pierwsze formularze i przesyłanie danych.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>12. Formularze - pola tekstowe</h3>
+            <p class="desc">input text, email, password, placeholder i required.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Najczęściej używane pola formularzy.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>13. Formularze - wybór opcji</h3>
+            <p class="desc">checkbox, radio, select, option i textarea.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Tworzenie pól wyboru i list rozwijanych.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>14. Przyciski i wysyłanie formularzy</h3>
+            <p class="desc">button, submit i reset.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Obsługa przycisków i przesyłania danych.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>15. Multimedia</h3>
+            <p class="desc">audio, video i controls.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Dodawanie filmów i dźwięku do strony.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>16. Osadzanie treści</h3>
+            <p class="desc">iframe, mapy i filmy z zewnętrznych stron.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Wstawianie treści spoza strony.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>17. Nawigacja i struktura strony</h3>
+            <p class="desc">Menu i linkowanie sekcji.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Budowanie kompletnego układu strony.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>18. HTML + CSS</h3>
+            <p class="desc">Podpinanie stylów przez link i style wewnętrzne.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Łączenie HTML z CSS.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>19. Atrybuty globalne</h3>
+            <p class="desc">class, id, style, title, hidden, lang i tabindex.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Atrybuty działające w wielu znacznikach.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>20. Dobre praktyki i walidacja</h3>
+            <p class="desc">Semantyka, dostępność i poprawny kod HTML.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Jak pisać czysty i poprawny HTML.</em></p>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<footer>
+    <p>© 2026 Samouczek INF03 - 20 rozdziałów HTML.</p>
+</footer>
+
+</body>
+</html>

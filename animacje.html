@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animacje CSS | Samouczek INF03</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        HTML<span>&CSS</span>
+    </div>
+
+    <nav>
+        <a href="index.html">Start</a>
+        <a href="html.html">HTML</a>
+        <a href="css.html" class="active">CSS</a>
+    </nav>
+</header>
+
+<main class="content-page">
+
+    <div class="page-header">
+        <h1>Rozdział CSS: Animacje CSS</h1>
+        <p>
+            Animacje w CSS pozwalają tworzyć ruch, efekty wizualne i płynne zmiany bez JavaScript.
+            To ważny dział przy nowoczesnych stronach i często pojawia się na INF03.
+        </p>
+    </div>
+
+    <section class="topic-section">
+        <h2>1. Czym są animacje?</h2>
+
+        <p>
+            Animacja CSS zmienia wygląd elementu w czasie.
+        </p>
+
+        <p>Można animować:</p>
+
+        <ul class="custom-list">
+            <li>pozycję</li>
+            <li>kolor</li>
+            <li>obrót</li>
+            <li>rozmiar</li>
+            <li>przezroczystość</li>
+            <li>cień</li>
+        </ul>
+
+        <p>
+            Dzięki temu przycisk może się poruszać, karta może się pojawiać,
+            a element może obracać się lub pulsować.
+        </p>
+    </section>
+
+    <section class="topic-section">
+        <h2>2. @keyframes - definicja animacji</h2>
+
+        <p>
+            Najpierw tworzymy przebieg animacji.
+        </p>
+
+        <div class="code-sample">
+<pre>
+@keyframes przesun{
+
+    from{
+        transform: translateX(0);
+    }
+
+    to{
+        transform: translateX(200px);
+    }
+
+}
+</pre>
+        </div>
+
+        <p>
+            Można też użyć procentów:
+        </p>
+
+        <div class="code-sample">
+<pre>
+@keyframes kolory{
+
+    0%{
+        background:red;
+    }
+
+    50%{
+        background:orange;
+    }
+
+    100%{
+        background:green;
+    }
+
+}
+</pre>
+        </div>
+    </section>
+
+    <section class="topic-section">
+        <h2>3. animation-name</h2>
+
+        <p>
+            Wskazuje nazwę animacji przypisanej do elementu.
+        </p>
+
+        <div class="code-sample">
+<pre>
+.box{
+
+    animation-name: przesun;
+
+}
+</pre>
+        </div>
+    </section>
+
+    <section class="topic-section">
+        <h2>4. animation-duration</h2>
+
+        <p>
+            Czas trwania animacji.
+        </p>
+
+        <div class="code-sample">
+<pre>
+.box{
+
+    animation-duration: 2s;
+
+}
+</pre>
+        </div>
+
+        <div class="table-wrapper">
+            <table class="value-table">
+                <tr>
+                    <th>Wartość</th>
+                    <th>Znaczenie</th>
+                </tr>
+
+                <tr>
+                    <td>1s</td>
+                    <td>jedna sekunda</td>
+                </tr>
+
+                <tr>
+                    <td>300ms</td>
+                    <td>0.3 sekundy</td>
+                </tr>
+
+                <tr>
+                    <td>5s</td>
+                    <td>pięć sekund</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <section class="topic-section">
+        <h2>5. animation-delay</h2>
+
+        <p>
+            Opóźnia rozpoczęcie.
+        </p>
+
+        <div class="code-sample">
+<pre>
+.box{
+
+    animation-delay: 2s;
+
+}
+</pre>
+        </div>
+
+        <p>
+            Element poczeka 2 sekundy i dopiero ruszy.
+        </p>
+    </section>
+
+    <section class="topic-section">
+        <h2>6. animation-iteration-count</h2>
+
+        <p>
+            Ile razy ma się wykonać.
+        </p>
+
+        <div class="code-sample">
+<pre>
+.box{
+
+    animation-iteration-count: 4;
+
+}
+</pre>
+        </div>
+
+        <p>Bez końca:</p>
+
+        <div class="code-sample">
+<pre>
+.box{
+
+    animation-iteration-count: infinite;
+
+}
+</pre>
+        </div>
+    </section>
+
+    <section class="topic-section">
+        <h2>7. animation-direction</h2>
+
+        <p>
+            Kierunek animacji.
+        </p>
+
+        <div class="table-wrapper">
+            <table class="value-table">
+                <tr>
+                    <th>Wartość</th>
+                    <th>Działanie</th>
+                </tr>
+
+                <tr>
+                    <td>normal</td>
+                    <td>standardowo</td>
+                </tr>
+
+                <tr>
+                    <td>reverse</td>
+                    <td>od końca</td>
+                </tr>
+
+                <tr>
+                    <td>alternate</td>
+                    <td>tam i z powrotem</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="code-sample">
+<pre>
+.box{
+
+    animation-direction: alternate;
+
+}
+</pre>
+        </div>
+    </section>
+
+    <section class="topic-section">
+        <h2>8. animation-timing-function</h2>
+
+        <p>
+            Tempo ruchu.
+        </p>
+
+        <div class="table-wrapper">
+            <table class="value-table">
+                <tr>
+                    <th>Wartość</th>
+                    <th>Efekt</th>
+                </tr>
+
+                <tr>
+                    <td>linear</td>
+                    <td>stała prędkość</td>
+                </tr>
+
+                <tr>
+                    <td>ease</td>
+                    <td>płynny start i koniec</td>
+                </tr>
+
+                <tr>
+                    <td>ease-in</td>
+                    <td>wolny start</td>
+                </tr>
+
+                <tr>
+                    <td>ease-out</td>
+                    <td>wolny koniec</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="code-sample">
+<pre>
+.box{
+
+    animation-timing-function: ease-in;
+
+}
+</pre>
+        </div>
+    </section>
+
+    <section class="topic-section">
+        <h2>9. animation-fill-mode</h2>
+
+        <p>
+            Co ma zostać po zakończeniu animacji.
+        </p>
+
+        <div class="table-wrapper">
+            <table class="value-table">
+                <tr>
+                    <th>Wartość</th>
+                    <th>Znaczenie</th>
+                </tr>
+
+                <tr>
+                    <td>none</td>
+                    <td>wraca do początku</td>
+                </tr>
+
+                <tr>
+                    <td>forwards</td>
+                    <td>zostaje na końcu</td>
+                </tr>
+
+                <tr>
+                    <td>backwards</td>
+                    <td>ustawia stan początkowy wcześniej</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <section class="topic-section">
+        <h2>10. Skrócona składnia animation</h2>
+
+        <p>
+            Zamiast wpisywać każdą właściwość osobno,
+            można użyć jednej właściwości <strong>animation</strong>.
+        </p>
+
+        <div class="code-sample">
+<pre>
+.box{
+
+    animation: ruch 2s linear 1s infinite alternate;
+
+}
+</pre>
+        </div>
+
+        <p>
+            Kolejność wartości:
+        </p>
+
+        <div class="table-wrapper">
+            <table class="value-table">
+
+                <tr>
+                    <th>Wartość</th>
+                    <th>Znaczenie</th>
+                </tr>
+
+                <tr>
+                    <td>ruch</td>
+                    <td>nazwa animacji</td>
+                </tr>
+
+                <tr>
+                    <td>2s</td>
+                    <td>czas trwania</td>
+                </tr>
+
+                <tr>
+                    <td>linear</td>
+                    <td>tempo animacji</td>
+                </tr>
+
+                <tr>
+                    <td>1s</td>
+                    <td>opóźnienie startu</td>
+                </tr>
+
+                <tr>
+                    <td>infinite</td>
+                    <td>powtarzanie bez końca</td>
+                </tr>
+
+                <tr>
+                    <td>alternate</td>
+                    <td>tam i z powrotem</td>
+                </tr>
+
+            </table>
+        </div>
+
+        <p>
+            Ten zapis działa tak samo jak:
+        </p>
+
+        <div class="code-sample">
+<pre>
+.box{
+
+    animation-name: ruch;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-delay: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+
+}
+</pre>
+        </div>
+
+        <p>
+            Skrócona składnia jest wygodniejsza,
+            gdy ustawiasz kilka parametrów naraz.
+        </p>
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 Samouczek INF03 - Animacje CSS.</p>
+</footer>
+
+</body>
+</html>

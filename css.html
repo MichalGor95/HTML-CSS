@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS - 17 rozdziałów | Samouczek INF03</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .card{
+            background:#fff;
+            border-radius:16px;
+            padding:20px;
+            box-shadow:0 8px 20px rgba(0,0,0,.08);
+            display:flex;
+            flex-direction:column;
+            min-height:200px;
+        }
+
+        .card:hover{
+            transform:translateY(-5px);
+            box-shadow:0 12px 24px rgba(0,0,0,0.08);
+        }
+
+        .card h3{
+            margin-bottom:12px;
+        }
+
+        .card p.desc{
+            margin-top:auto;
+            padding-top:12px;
+            margin-bottom:4px;
+            line-height:1.5;
+            color:#555;
+        }
+
+        .chapter-preview{
+            margin-top:16px;
+            padding:16px;
+            background-color:#faf8f2;
+            border-left:4px solid #2f7a67;
+            border-radius:12px;
+            font-size:14px;
+            color:#3a5e55;
+        }
+
+        .chapter-preview h4{
+            margin-bottom:8px;
+            color:#2f7a67;
+            font-size:16px;
+        }
+
+        a.card{
+            text-decoration:none;
+            color:inherit;
+            cursor:pointer;
+        }
+
+        a.card .chapter-preview{
+            border-left-color:#1f5e4f;
+        }
+
+        a.card h3::after{
+            content:" →";
+            color:#2f7a67;
+            font-size:14px;
+        }
+
+        @media(max-width:900px){
+            .cards{
+                grid-template-columns:1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        HTML<span>&CSS</span>
+    </div>
+
+    <nav>
+        <a href="index.html">Start</a>
+        <a href="html.html">HTML</a>
+        <a href="css.html" class="active">CSS</a>
+    </nav>
+</header>
+
+<main class="content-page">
+
+    <div class="page-header">
+        <h1>CSS - 17 rozdziałów</h1>
+        <p>Pełna mapa nauki CSS od podstaw stylowania po Flexbox, Grid i animacje.</p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>1. Wprowadzenie do CSS</h3>
+            <p class="desc">Czym jest CSS, składnia, komentarze i sposoby dodawania stylów.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Poznasz podstawy działania CSS i sposoby podpinania stylów.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>2. Selektory CSS</h3>
+            <p class="desc">Tagi, klasy, id, gwiazdka, grupowanie i zagnieżdżenia.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Nauczysz się wybierać elementy do stylowania.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>3. Kolory i tło</h3>
+            <p class="desc">color, background-color, obrazy tła i modele RGB / HEX / HSL.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Stylowanie kolorów i tła elementów.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>4. Tekst i czcionki</h3>
+            <p class="desc">font-family, size, weight, align i odstępy tekstu.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Pełna kontrola nad wyglądem tekstu.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>5. Box model</h3>
+            <p class="desc">width, height, padding, margin, border i box-sizing.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Jak CSS liczy rozmiary i odstępy.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>6. Jednostki w CSS</h3>
+            <p class="desc">px, %, em, rem, vw, vh i auto.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Dobieranie odpowiednich jednostek.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>7. Display i widoczność</h3>
+            <p class="desc">block, inline, inline-block, none i visibility.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Jak elementy zachowują się na stronie.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>8. Listy i tabele</h3>
+            <p class="desc">list-style-type, list-style-position i stylowanie tabel.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Formatowanie list i danych tabelarycznych.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>9. Pseudoklasy i pseudoelementy</h3>
+            <p class="desc">hover, focus, active, first-child, before i after.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Reakcje na akcje użytkownika i dodatkowe elementy.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>10. Formularze w CSS</h3>
+            <p class="desc">Stylowanie input, textarea, select, button i focus.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Nadawanie wyglądu formularzom.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>11. Obrazy i multimedia</h3>
+            <p class="desc">Rozmiary obrazów, object-fit, border-radius i responsywność.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Poprawne wyświetlanie grafik i mediów.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>12. Pozycjonowanie</h3>
+            <p class="desc">static, relative, absolute, fixed, sticky i z-index.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Precyzyjne ustawianie elementów.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>13. Flexbox</h3>
+            <p class="desc">display:flex, direction, justify-content, align-items i gap.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Budowanie nowoczesnych układów.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>14. CSS Grid</h3>
+            <p class="desc">grid-template, grid-area, repeat(), fr i gap.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Układy dwuwymiarowe w CSS.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>15. Responsywność</h3>
+            <p class="desc">Media queries, breakpointy, mobile-first i elastyczne układy.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Dostosowanie strony do różnych ekranów.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>16. Transformacje i przejścia</h3>
+            <p class="desc">transform, translate, scale, rotate i transition.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Płynne efekty wizualne i ruch.</em></p>
+            </div>
+        </div>
+
+        <a href="animacje.html" class="card">
+            <h3>17. Animacje CSS</h3>
+            <p class="desc">keyframes, duration, delay i powtarzanie animacji.</p>
+            <div class="chapter-preview">
+                <h4>Treść rozdziału</h4>
+                <p><em>Tworzenie własnych animacji krok po kroku.</em></p>
+            </div>
+        </a>
+
+    </div>
+</main>
+
+<footer>
+    <p>© 2026 Samouczek INF03 - 17 rozdziałów CSS.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wprowadzenie do HTML | Podstawy INF03</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .doctype-box {
+            background: #1e2a2a;
+            color: #d0f0e5;
+            border-radius: 16px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        .structure-visual {
+            background: #fefcf5;
+            border: 1px solid #ddd2b5;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 25px 0;
+            font-family: monospace;
+            line-height: 1.6;
+        }
+        .tag-demo {
+            background: #f4f1ea;
+            border-radius: 14px;
+            padding: 12px 16px;
+            margin: 12px 0;
+            font-family: monospace;
+            border-left: 4px solid #2f7a67;
+        }
+        .attr-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-badge {
+            background: #eef3f0;
+            border-radius: 40px;
+            padding: 6px 14px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            border: 1px solid #cbdcd3;
+        }
+        .good-bad {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .good, .bad {
+            flex: 1;
+            background: white;
+            border-radius: 18px;
+            padding: 16px 20px;
+            border: 1px solid #e2dfd7;
+        }
+        .good h4 { color: #2f7a67; margin-bottom: 12px; }
+        .bad h4 { color: #b1624b; margin-bottom: 12px; }
+        .attrs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px,1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-card {
+            background: #fcf9f2;
+            border-radius: 14px;
+            padding: 12px 16px;
+            border: 1px solid #e5dfd1;
+        }
+        .attr-card strong {
+            color: #1f5e4f;
+            font-family: monospace;
+            font-size: 1.05rem;
+        }
+        .coord-note {
+            background: #eef5f2;
+            border-left: 4px solid #2f7a67;
+            padding: 12px 18px;
+            margin: 15px 0;
+            font-size: 0.95rem;
+            border-radius: 12px;
+        }
+        .warning-tip {
+            background: #fff2df;
+            border-radius: 14px;
+            padding: 12px 18px;
+            margin: 20px 0;
+            border-left: 5px solid #e6a017;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        HTML<span>&CSS</span>
+    </div>
+    <nav>
+        <a href="index.html">Start</a>
+        <a href="html.html" class="active">HTML</a>
+        <a href="css.html">CSS</a>
+    </nav>
+</header>
+
+<main class="content-page">
+    <div class="page-header">
+        <h1>Rozdział 1: Wprowadzenie do HTML</h1>
+        <p>
+            Czym jest HTML, jak zbudowana jest strona,
+            czym są znaczniki i atrybuty oraz dlaczego <code>&lt;!DOCTYPE html&gt;</code> jest ważny.
+        </p>
+    </div>
+
+    <section class="topic-section">
+        <h2>1. Czym jest HTML?</h2>
+        <p><strong>HTML</strong> (HyperText Markup Language) to język znaczników używany do tworzenia struktury i treści stron internetowych. Definiuje co jest nagłówkiem, akapitem, obrazkiem czy linkiem.</p>
+        <ul class="custom-list">
+            <li><strong>HyperText</strong> - możliwość tworzenia odnośników prowadzących do innych dokumentów.</li>
+            <li><strong>Markup</strong> - znaczniki otaczające treść i nadające jej znaczenie semantyczne.</li>
+            <li>HTML nie jest językiem programowania - nie wykonuje obliczeń ani logiki, tylko <strong>opisuje układ dokumentu</strong>.</li>
+        </ul>
+        <div class="coord-note">
+            Wersje HTML: od HTML 2.0 (1995) przez HTML 4.01, XHTML, aż do <strong>HTML5</strong> (standard od 2014). Obecnie używamy HTML5 - wprowadza nowe znaczniki jak <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;nav&gt;</code>.
+        </div>
+        <div class="code-sample">
+<pre>
+&lt;h1&gt;Witaj na mojej stronie&lt;/h1&gt;
+&lt;p&gt;HTML to podstawa każdej witryny.&lt;/p&gt;
+</pre>
+        </div>
+    </section>
+
+    <section class="topic-section">
+        <h2>2. Struktura dokumentu HTML</h2>
+        <p>Każda poprawna strona HTML ma określoną hierarchię. Najważniejsze elementy to:</p>
+        <div class="structure-visual">
+            <pre style="margin:0; background:transparent; color:#2c4a3e;">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pl"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Tytuł strony&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Główny nagłówek&lt;/h1&gt;
+    &lt;p&gt;Treść widoczna dla użytkownika.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>&lt;html&gt;</strong> - główny kontener całego dokumentu. Atrybut <code>lang</code> określa język strony.</div>
+            <div class="attr-card"><strong>&lt;head&gt;</strong> - metadane: tytuł, kodowanie, linki do stylów - <strong>niewidoczna</strong> na stronie.</div>
+            <div class="attr-card"><strong>&lt;body&gt;</strong> - cała widoczna treść: teksty, obrazy, przyciski.</div>
+            <div class="attr-card"><strong>&lt;title&gt;</strong> - tytuł wyświetlany na karcie przeglądarki, ważny dla SEO.</div>
+        </div>
+        <div class="warning-tip">
+            Bez odpowiedniej struktury przeglądarka może wyświetlić treść, ale strona będzie niepoprawna semantycznie. Zawsze używaj <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code> i <code>&lt;body&gt;</code>.
+        </div>
+    </section>
+
+    <section class="topic-section">
+        <h2>3. Znaczniki (tagi)</h2>
+        <p>Znaczniki to słowa kluczowe w nawiasach ostrych <code>&lt; &gt;</code>. Większość występuje w parach: otwierający <code>&lt;tag&gt;</code> i zamykający <code>&lt;/tag&gt;</code>. W środku jest treść.</p>
+        <div class="tag-demo">
+            &lt;h1&gt;To jest nagłówek pierwszego stopnia&lt;/h1&gt;<br>
+            &lt;p&gt;To jest akapit tekstu.&lt;/p&gt;
+        </div>
+        <p>Są też znaczniki <strong>puste (self-closing)</strong>, które nie mają zamknięcia ani treści wewnętrznej:</p>
+        <ul class="custom-list">
+            <li><code>&lt;img src="foto.jpg" alt="Opis"&gt;</code> - obraz</li>
+            <li><code>&lt;br&gt;</code> - przełamanie linii</li>
+            <li><code>&lt;hr&gt;</code> - pozioma linia</li>
+            <li><code>&lt;input type="text"&gt;</code> - pole formularza</li>
+        </ul>
+        <div class="coord-note">
+            W HTML5 nie trzeba zamykać pustych znaczników ukośnikiem (<code>&lt;br&gt;</code> zamiast <code>&lt;br /&gt;</code>), ale składnia XML-owa też jest dozwolona.
+        </div>
+        <h3>Znaczniki blokowe i liniowe</h3>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <thead><tr><th>Typ</th><th>Przykłady</th><th>Charakterystyka</th></tr></thead>
+                <tbody>
+                    <tr><td>Blokowe</td><td><code>&lt;div&gt;, &lt;p&gt;, &lt;h1&gt;-&lt;h6&gt;, &lt;section&gt;, &lt;article&gt;</code></td><td>Zajmują całą szerokość, zaczynają nową linię.</td></tr>
+                    <tr><td>Liniowe (inline)</td><td><code>&lt;span&gt;, &lt;a&gt;, &lt;strong&gt;, &lt;em&gt;, &lt;img&gt;</code></td><td>Nie łamią linii, zajmują tyle miejsca ile potrzebują.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="topic-section">
+        <h2>4. Atrybuty</h2>
+        <p>Atrybuty umieszczamy w znaczniku otwierającym w postaci <strong>nazwa="wartość"</strong>. Nadają elementom dodatkowe właściwości.</p>
+        <div class="code-sample">
+<pre>
+&lt;a href="https://example.com" target="_blank"&gt;Kliknij mnie&lt;/a&gt;
+&lt;img src="logo.png" alt="Logo firmy" width="150"&gt;
+&lt;input type="text" id="imie" placeholder="Wpisz imię"&gt;
+</pre>
+        </div>
+        <div class="attr-list">
+            <span class="attr-badge"><code>href</code> - cel linku</span>
+            <span class="attr-badge"><code>src</code> - źródło obrazu</span>
+            <span class="attr-badge"><code>alt</code> - tekst alternatywny</span>
+            <span class="attr-badge"><code>width/height</code> - wymiary</span>
+            <span class="attr-badge"><code>id</code> - unikalny identyfikator</span>
+            <span class="attr-badge"><code>class</code> - grupowanie elementów</span>
+            <span class="attr-badge"><code>style</code> - styl inline</span>
+            <span class="attr-badge"><code>title</code> - podpowiedź</span>
+        </div>
+        <div class="good-bad">
+            <div class="good">
+                <h4>Poprawnie</h4>
+                <code>&lt;a href="strona.html"&gt;Więcej&lt;/a&gt;</code><br>
+                <code>&lt;img src="foto.jpg" alt="Opis"&gt;</code><br>
+                Atrybuty zawsze w cudzysłowie, nazwy małymi literami.
+            </div>
+            <div class="bad">
+                <h4>Błędnie</h4>
+                <code>&lt;a href=strona.html&gt;Więcej&lt;/a&gt;</code> - brak cudzysłowu<br>
+                <code>&lt;img SRC="foto.jpg"&gt;</code> - wielkie litery, niezalecane
+            </div>
+        </div>
+    </section>
+
+    <section class="topic-section">
+        <h2>5. &lt;!DOCTYPE html&gt;</h2>
+        <p>Deklaracja <strong>DOCTYPE</strong> informuje przeglądarkę, której wersji HTML użyć do renderowania strony. W HTML5 wygląda tak:</p>
+        <div class="doctype-box">
+            &lt;!DOCTYPE html&gt;
+        </div>
+        <ul class="custom-list">
+            <li>Musi być <strong>pierwszą linią</strong> dokumentu, przed <code>&lt;html&gt;</code>.</li>
+            <li>Nie jest znacznikiem HTML, tylko instrukcją dla przeglądarki.</li>
+            <li>Brak DOCTYPE może włączyć <strong>tryb quirks</strong> - nieprzewidywalne renderowanie.</li>
+            <li>W HTML5 jest case-insensitive, ale konwencja to pisanie wielkimi literami.</li>
+        </ul>
+        <div class="coord-note">
+            W HTML 4.01 deklaracja DOCTYPE była długa i zawierała odwołanie do DTD. HTML5 to uprościł do jednej linii.
+        </div>
+    </section>
+
+    <section class="topic-section">
+        <h2>6. Minimalna strona HTML</h2>
+        <div class="code-sample">
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pl"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Moja pierwsza strona&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Witaj w HTML!&lt;/h1&gt;
+    &lt;p&gt;To jest akapit tekstu.&lt;/p&gt;
+    &lt;a href="https://www.w3schools.com"&gt;Odwiedź poradnik&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+        </div>
+        <ul class="custom-list">
+            <li><code>&lt;!DOCTYPE html&gt;</code> - standard HTML5.</li>
+            <li><code>&lt;html lang="pl"&gt;</code> - główny kontener, język polski.</li>
+            <li><code>&lt;head&gt;</code> - metadane: kodowanie UTF-8, viewport, tytuł.</li>
+            <li><code>&lt;body&gt;</code> - widoczna treść: nagłówek, akapit i link.</li>
+        </ul>
+        <div class="warning-tip">
+            Atrybut <code>viewport</code> jest ważny dla stron mobilnych - bez niego strona może wyglądać jak na desktopie, pomniejszona.
+        </div>
+    </section>
+
+    <section class="topic-section">
+        <h2>7. Zagnieżdżanie elementów</h2>
+        <p>Znaczniki mogą być umieszczane wewnątrz innych. Ważne jest <strong>poprawne domknięcie</strong> - ostatni otwarty musi być pierwszy zamknięty.</p>
+        <div class="structure-visual">
+            <pre style="margin:0;">
+&lt;div&gt;
+    &lt;p&gt;To jest &lt;strong&gt;ważny&lt;/strong&gt; akapit.&lt;/p&gt;
+&lt;/div&gt;
+            </pre>
+        </div>
+        <p>Błąd zagnieżdżenia:</p>
+        <div class="bad" style="margin-bottom:15px;">
+            <code>&lt;p&gt;Tekst &lt;strong&gt;niewłaściwie&lt;/p&gt;&lt;/strong&gt;</code> - nieprawidłowa kolejność zamykania.
+        </div>
+        <div class="good">
+            <code>&lt;p&gt;Tekst &lt;strong&gt;poprawnie&lt;/strong&gt;&lt;/p&gt;</code> - prawidłowo.
+        </div>
+    </section>
+
+    <section class="topic-section">
+        <h2>8. Komentarze</h2>
+        <p>Komentarze są ignorowane przez przeglądarkę. Służą do opisywania kodu.</p>
+        <div class="code-sample">
+<pre>
+&lt;!-- To jest komentarz - niewidoczny na stronie --&gt;
+</pre>
+        </div>
+        <ul class="custom-list">
+            <li>Komentarze mogą być wieloliniowe.</li>
+            <li>Nie można ich zagnieżdżać.</li>
+            <li>Komentuj złożone fragmenty, ale bez przesady.</li>
+        </ul>
+    </section>
+
+    <section class="topic-section">
+        <h2>9. Co musisz zapamiętać</h2>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>HTML = struktura + treść</strong> - nie style, nie logika.</div>
+            <div class="attr-card"><strong>Otwierający i zamykający</strong> - poprawne zagnieżdżanie.</div>
+            <div class="attr-card"><strong>Atrybuty</strong> - <code>nazwa="wartość"</code>, zawsze w cudzysłowie.</div>
+            <div class="attr-card"><strong>&lt;!DOCTYPE html&gt;</strong> - zawsze na początku.</div>
+            <div class="attr-card"><strong>Lang</strong> - atrybut <code>lang</code> w <code>&lt;html&gt;</code> pomaga SEO i czytnikom ekranu.</div>
+        </div>
+        <div class="coord-note">
+            Na egzaminie INF03 wymagana jest znajomość poprawnej struktury dokumentu, znaczników i atrybutów. To rozdział bazowy, bez niego nie ma sensu iść dalej.
+        </div>
+        <div class="code-sample" style="margin-top:20px;">
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pl"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Tytuł&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 Samouczek INF03 - Rozdział 1: Wprowadzenie do HTML.</p>
+</footer>
+
+</body>
+</html>

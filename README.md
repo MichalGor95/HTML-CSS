@@ -59,7 +59,7 @@ Pobierz pliki i otworz `index.html` w przegladarce. Nie wymaga serwera ani zadny
 
 ## Autor
 
-**[nazwa uzytkownika]**
+**[Michał Goraj]**
 
 ---
 

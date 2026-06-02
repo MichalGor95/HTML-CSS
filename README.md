@@ -4,7 +4,7 @@ Praktyczny, interaktywny samouczek stworzony z myślą o uczniach techników inf
 
 ---
 
-## O Projekcie
+## 🚀 O Projekcie
 
 Projekt stanowi kompletne kompendium wiedzy z zakresu strukturyzacji dokumentów HTML5 oraz stylowania CSS3. Został przygotowany w oparciu o oficjalną podstawę programową oraz arkusze egzaminacyjne z poprzednich lat. 
 
@@ -12,15 +12,19 @@ Wszystkie podstrony i przykłady kodu zostały napisane w czystym kodzie (Vanill
 
 ---
 
-## Stos Technologiczny
+## 🛠️ Stos Technologiczny i Live Demo
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![INF.03](https://img.shields.io/badge/Egzamin-INF.03-2f7a67?style=for-the-badge)
 
+### 🔗 Wersja Demonstracyjna (Live Demo)
+Aplikacja została wdrożona i jest dostępna publicznie pod adresem:  
+👉 **[michalgor95.github.io/HTML-CSS](https://michalgor95.github.io/HTML-CSS/)**
+
 ---
 
-## Główne Cechy Samouczka
+## ✨ Główne Cechy Samouczka
 
 - **Zgodność z CKE:** Zakres materiału dokładnie odpowiada wymaganiom egzaminu praktycznego INF.03.
 - **Podział na sekcje:** Czytelny podział na 20 rozdziałów HTML i 17 rozdziałów CSS.
@@ -30,7 +34,7 @@ Wszystkie podstrony i przykłady kodu zostały napisane w czystym kodzie (Vanill
 
 ---
 
-## Struktura Projektu
+## 📂 Struktura Projektu
 
 Projekt został zorganizowany w przejrzystą strukturę katalogów w celu oddzielenia głównej nawigacji od podstron szczegółowych:
 
@@ -55,7 +59,7 @@ Projekt został zorganizowany w przejrzystą strukturę katalogów w celu oddzie
 
 ---
 
-## Omówione Zagadnienia
+## 📝 Omówione Zagadnienia
 
 ### HTML (20 Rozdziałów)
 1. Wprowadzenie do języka HTML
@@ -100,21 +104,21 @@ Projekt został zorganizowany w przejrzystą strukturę katalogów w celu oddzie
 
 ---
 
-## Jak Uruchomić Projekt Lokalnie
+## 💻 Jak Uruchomić Projekt Lokalnie
 
 1. Sklonuj to repozytorium na swój dysk:
    ```bash
-   git clone https://github.com/twoj-profil/nazwa-repozytorium.git
+   git clone https://github.com/michalgor95/HTML-CSS.git
    ```
 2. Przejdź do folderu z projektem:
    ```bash
-   cd nazwa-repozytorium
+   cd HTML-CSS
    ```
 3. Otwórz plik `index.html` bezpośrednio w dowolnej przeglądarce internetowej (np. Chrome, Firefox, Edge). Projekt nie wymaga instalacji żadnych dodatkowych zależności ani uruchamiania lokalnego serwera.
 
 ---
 
-## Autor
+## 🧑‍💻 Autor
 
 Projekt opracował: **Michał Goraj**  
 *Projekt został przygotowany w celach edukacyjnych, jako pomoc naukowa do egzaminu INF.03.*

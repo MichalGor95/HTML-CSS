@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pseudoklasy i pseudoelementy | Samouczek INF03</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        HTML<span>&CSS</span>
+</div>
+
+    <nav>
+        <a href="../index.html">Start</a>
+        <a href="../html.html">HTML</a>
+        <a href="../css.html" class="active">CSS</a>
+    </nav>
+</header>
+
+<main class="content-page">
+
+    <div class="page-header">
+        <h1>Rozdział CSS: Pseudoklasy i pseudoelementy</h1>
+        <p>
+            Pseudoklasy i pseudoelementy pozwalają stylizować elementy w określonych stanach
+            lub dodawać wirtualne fragmenty do strony bez zmiany HTML.
+            To bardzo przydatne narzędzie na egzaminie INF03 i w praktyce.
+</p>
+</div>
+
+    <!-- CZYM SĄ PSEUDOKLASY? -->
+    <section class="topic-section">
+        <h2>1. Czym są pseudoklasy?</h2>
+        <p>
+            Pseudoklasa definiuje <strong>stan</strong> elementu lub jego szczególną pozycję w drzewie DOM.
+            Zapisywane są z dwukropkiem: <code>:nazwa</code>.
+</p>
+        <ul class="custom-list">
+            <li><code>:hover</code> - gdy kursor znajduje się nad elementem</li>
+            <li><code>:focus</code> - gdy element ma fokus (np. pole formularza)</li>
+            <li><code>:active</code> - w momencie kliknięcia (aktywacji)</li>
+            <li><code>:first-child</code> - pierwsze dziecko rodzica</li>
+            <li><code>:last-child</code>, <code>:nth-child()</code>, <code>:not()</code> i wiele innych</li>
+        </ul>
+    </section>
+
+    <!-- :HOVER -->
+    <section class="topic-section">
+        <h2>2. :hover - po najechaniu myszką</h2>
+        <p>
+            Pseudoklasa <code>:hover</code> aktywuje się, gdy użytkownik najedzie kursorem na element.
+            Najczęściej używana do przycisków, linków, kart.
+</p>
+        <div class="code-sample"><pre>
+/* Zmiana koloru linku po najechaniu */
+a:hover {
+    color: #2f7a67;
+    text-decoration: underline;
+}
+
+/* Przycisk z efektem powiększenia */
+.button:hover {
+    background-color: #1e5a4a;
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
+
+/* Karta z cieniem po najechaniu */
+.card:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+</pre>
+</div>
+        <p>Zastosowanie: interaktywne przyciski, linki, galerie, karty produktów.</p>
+    </section>
+
+    <!-- :FOCUS -->
+    <section class="topic-section">
+        <h2>3. :focus - element z fokusem</h2>
+        <p>
+            Pseudoklasa <code>:focus</code> dotyczy elementów, które mogą otrzymać fokus (klawiatura lub kliknięcie) -
+            głównie pól formularza (<code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code>), przycisków i linków.
+</p>
+        <div class="code-sample"><pre>
+/* Podświetlenie pola input po kliknięciu/tabie */
+input:focus {
+    border-color: #2f7a67;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(47,122,103,0.2);
+}
+
+/* Link z fokusem (dla dostępności klawiaturowej) */
+a:focus {
+    outline: 2px solid #2f7a67;
+    outline-offset: 2px;
+}
+
+/* Przycisk z fokusem */
+button:focus {
+    background-color: #1e5a4a;
+}
+</pre>
+</div>
+        <p>
+             <strong>Ważne dla dostępności:</strong> nie usuwaj całkowicie <code>outline</code> bez dodania alternatywnego stylu.
+            Osoby poruszające się klawiaturą potrzebują wizualnego wskaźnika fokusu.
+</p>
+    </section>
+
+    <!-- :ACTIVE -->
+    <section class="topic-section">
+        <h2>4. :active - w momencie kliknięcia</h2>
+        <p>
+            Pseudoklasa <code>:active</code> działa w krótkim momencie między naciśnięciem a puszczeniem przycisku myszy.
+            Stosowana do efektu „wciśnięcia” przycisku.
+</p>
+        <div class="code-sample"><pre>
+/* Efekt wciśnięcia przycisku */
+button:active {
+    transform: translateY(2px);
+    box-shadow: none;
+}
+
+/* Link w trakcie klikania */
+a:active {
+    color: darkred;
+}
+</pre>
+</div>
+        <p>
+            Kolejność stylowania linków (ważna!):<br>
+            <code>:link</code> → <code>:visited</code> → <code>:hover</code> → <code>:focus</code> → <code>:active</code><br>
+            (pamiętaj o tym na egzaminie - w praktyce często wystarczy <code>:hover</code> i <code>:active</code>).
+</p>
+    </section>
+
+    <!-- :FIRST-CHILD -->
+    <section class="topic-section">
+        <h2>5. :first-child - pierwsze dziecko rodzica</h2>
+        <p>
+            Wybiera element, który jest <strong>pierwszym dzieckiem</strong> swojego rodzica.
+            Przydatne do nadawania specjalnych stylów pierwszemu akapitowi, pierwszemu elementowi listy.
+</p>
+        <div class="code-sample"><pre>
+/* Pierwszy akapit w kontenerze */
+article p:first-child {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Pierwszy element listy */
+li:first-child {
+    border-top: none;
+    margin-top: 0;
+}
+
+/* Specjalny styl dla pierwszego diva w sekcji */
+section div:first-child {
+    background-color: #f0f7f4;
+}
+</pre>
+</div>
+        <p>
+             Podobne pseudoklasy:
+</p>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <tr><th>Pseudoklasa</th><th>Znaczenie</th></tr>
+                <tr><td><code>:first-child</code></th><td>pierwsze dziecko rodzica</th></tr>
+                <tr><td><code>:last-child</code></th><td>ostatnie dziecko rodzica</th></tr>
+                <tr><td><code>:nth-child(n)</code></th><td>n-te dziecko (np. <code>:nth-child(2)</code>, <code>:nth-child(even)</code>)</th></tr>
+                <tr><td><code>:first-of-type</code></th><td>pierwszy element danego typu wśród rodzeństwa</th></tr>
+                <tr><td><code>:nth-of-type(n)</code></th><td>n-ty element danego typu</th></tr>
+            </table>
+</div>
+    </section>
+
+    <!-- CZYM SĄ PSEUDOELEMENTY? -->
+    <section class="topic-section">
+        <h2>6. Czym są pseudoelementy?</h2>
+        <p>
+            Pseudoelementy tworzą <strong>wirtualne elementy</strong>, które nie istnieją w HTML.
+            Służą do dodawania treści przed lub po elemencie, stylowania pierwszej litery, pierwszej linii itp.
+            Zapisywane z podwójnym dwukropkiem: <code>::nazwa</code> (w CSS3; starsze wersje używają <code>:</code>).
+</p>
+        <ul class="custom-list">
+            <li><code>::before</code> - dodaje treść przed zawartością elementu</li>
+            <li><code>::after</code> - dodaje treść po zawartości elementu</li>
+            <li><code>::first-letter</code> - pierwsza litera</li>
+            <li><code>::first-line</code> - pierwsza linia tekstu</li>
+            <li><code>::selection</code> - zaznaczony tekst</li>
+        </ul>
+    </section>
+
+    <!-- ::BEFORE -->
+    <section class="topic-section">
+        <h2>7. ::before - przed elementem</h2>
+        <p>
+            Pseudoelement <code>::before</code> wstawia treść <strong>przed</strong> zawartością wybranego elementu.
+            Wymaga właściwości <code>content</code>.
+</p>
+        <div class="code-sample"><pre>
+/* Dodanie ikony przed linkiem */
+.link-pdf::before {
+    content: " ";
+}
+
+/* Dodanie cudzysłowu przed cytatem */
+blockquote::before {
+    content: "„";
+    font-size: 2em;
+    color: #2f7a67;
+    margin-right: 5px;
+}
+
+/* Dodanie etykiety "Nowość!" przed produktem */
+.product.new::before {
+    content: " NOWOŚĆ ";
+    background-color: #ff6600;
+    color: white;
+    font-size: 0.7em;
+    padding: 2px 6px;
+    border-radius: 10px;
+    margin-right: 8px;
+}
+</pre>
+</div>
+    </section>
+
+    <!-- ::AFTER -->
+    <section class="topic-section">
+        <h2>8. ::after - po elemencie</h2>
+        <p>
+            Pseudoelement <code>::after</code> wstawia treść <strong>po</strong> zawartości elementu.
+            Również wymaga <code>content</code>.
+</p>
+        <div class="code-sample"><pre>
+/* Dodanie strzałki po linku (dla menu) */
+.menu-item a::after {
+    content: " →";
+    font-size: 0.8em;
+}
+
+/* Dodanie etykiety "zniżka" po cenie */
+.price::after {
+    content: " (-20%)";
+    color: red;
+    font-size: 0.8em;
+}
+
+/* Czyszczenie floatów (clearfix) */
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+</pre>
+</div>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <tr><th>Pseudoelement</th><th>Działanie</th><th>Przykład zastosowania</th></tr>
+                <tr><td><code>::before</code></th><td>treść przed elementem</th><td>ikony, dekoracje, cytaty</th></tr>
+                <tr><td><code>::after</code></th><td>treść po elemencie</th><td>czyszczenie float, dodatkowe etykiety, strzałki</th></tr>
+                <tr><td><code>::first-letter</code></th><td>pierwsza litera</th><td>kapitaliki w artykułach</th></tr>
+                <tr><td><code>::first-line</code></th><td>pierwsza linia</th><td>specjalne formatowanie wstępu</th></tr>
+                <tr><td><code>::selection</code></th>},\]
+
+styl zaznaczonego tekstu</th><td>zmiana koloru tła zaznaczenia</th></tr>
+            </table>
+</div>
+    </section>
+
+    <!-- PRZYKŁADY PRAKTYCZNE -->
+    <section class="topic-section">
+        <h2>9. Praktyczne przykłady łączenia pseudoklas i pseudoelementów</h2>
+
+        <h3 style="margin: 20px 0 10px; color:#2f7a67;"> Przycisk z efektem hover + after</h3>
+        <div class="code-sample"><pre>
+.btn {
+    background: #2f7a67;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s;
+}
+
+.btn:hover {
+    background: #1e5a4a;
+    padding-right: 30px;
+}
+
+.btn:hover::after {
+    content: " →";
+    position: absolute;
+    margin-left: 5px;
+}
+</pre>
+</div>
+
+        <h3 style="margin: 20px 0 10px; color:#2f7a67;"> Lista z niestandardowymi znacznikami</h3>
+        <div class="code-sample"><pre>
+.custom-list li {
+    list-style: none;
+    margin-bottom: 8px;
+}
+
+.custom-list li::before {
+    content: "";
+    color: #2f7a67;
+    margin-right: 8px;
+    font-weight: bold;
+}
+</pre>
+</div>
+
+        <h3 style="margin: 20px 0 10px; color:#2f7a67;"> Wyróżnienie pierwszego akapitu w artykule</h3>
+        <div class="code-sample"><pre>
+article p:first-child::first-letter {
+    font-size: 3em;
+    font-weight: bold;
+    color: #2f7a67;
+    float: left;
+    margin-right: 8px;
+    line-height: 0.8;
+}
+</pre>
+</div>
+    </section>
+
+    <!-- RÓŻNICA: PSEUDOKLASA vs PSEUDOELEMENT -->
+    <section class="topic-section">
+        <h2>10. Różnica między pseudoklasą a pseudoelementem</h2>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <tr><th>Cecha</th><th>Pseudoklasa</th><th>Pseudoelement</th></tr>
+                <tr><td>Zapis</th><td><code>:nazwa</code> (jeden dwukropek)</th><td><code>::nazwa</code> (dwa dwukropki)</th></tr>
+                <tr><td>Funkcja</th><td>opisuje <strong>stan</strong> lub pozycję istniejącego elementu</th><td>tworzy <strong>wirtualny element</strong> nieobecny w DOM</th></tr>
+                <tr><td>Wymaga content?</th><td>nie</th><td>tak dla <code>::before</code> i <code>::after</code></th></td>
+                <tr><td>Przykłady</th><td><code>:hover</code>, <code>:focus</code>, <code>:first-child</code></th><td><code>::before</code>, <code>::after</code>, <code>::first-letter</code></th></tr>
+            </table>
+</div>
+        <p>
+             Na egzaminie INF03 często pojawia się pytanie o rozróżnienie.
+            Pamiętaj: <strong>pseudoklasa = stan</strong> (np. najechany), <strong>pseudoelement = wirtualny fragment</strong> (np. przed tekstem).
+</p>
+    </section>
+
+    <!-- TYPOWE PYTANIA EGZAMINACYJNE -->
+    <section class="topic-section">
+        <h2>11. Ćwiczenia egzaminacyjne</h2>
+        <p><strong>Pytanie 1:</strong> Co zrobi poniższy kod?</p>
+        <div class="code-sample"><pre>
+li:first-child {
+    color: red;
+}
+</pre>
+</div>
+        <p>Odpowiedź: Pierwszy element listy w każdym <code>&lt;ul&gt;</code> lub <code>&lt;ol&gt;</code> będzie miał czerwony kolor.</p>
+
+        <p><strong>Pytanie 2:</strong> Jaka jest różnica między <code>:first-child</code> a <code>:first-of-type</code>?</p>
+        <p>Odpowiedź: <code>:first-child</code> wybiera pierwsze dziecko niezależnie od typu. <code>:first-of-type</code> wybiera pierwszy element danego typu wśród rodzeństwa.</p>
+
+        <p><strong>Pytanie 3:</strong> Co jest nieprawidłowego w tym kodzie?</p>
+        <div class="code-sample"><pre>
+div::before {
+    display: block;
+    width: 100px;
+}
+</pre>
+</div>
+        <p>Odpowiedź: Brak właściwości <code>content</code> - pseudoelementy <code>::before</code> i <code>::after</code> <strong>wymagają</strong> <code>content</code> (nawet jeśli puste: <code>content: "";</code>).</p>
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 Samouczek INF03 - Pseudoklasy i pseudoelementy.</p>
+</footer>
+
+</body>
+</html>

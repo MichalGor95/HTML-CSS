@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dobre praktyki i walidacja | Podstawy INF03</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Dodatkowe style - zachowują pełną spójność z oryginalnym style.css */
+        .doctype-box {
+            background: #1e2a2a;
+            color: #d0f0e5;
+            border-radius: 16px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        .structure-visual {
+            background: #fefcf5;
+            border: 1px solid #ddd2b5;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 25px 0;
+            font-family: monospace;
+            line-height: 1.6;
+        }
+        .tag-demo {
+            background: #f4f1ea;
+            border-radius: 14px;
+            padding: 12px 16px;
+            margin: 12px 0;
+            font-family: monospace;
+            border-left: 4px solid #2f7a67;
+        }
+        .attr-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-badge {
+            background: #eef3f0;
+            border-radius: 40px;
+            padding: 6px 14px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            border: 1px solid #cbdcd3;
+        }
+        .good-bad {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .good, .bad {
+            flex: 1;
+            background: white;
+            border-radius: 18px;
+            padding: 16px 20px;
+            border: 1px solid #e2dfd7;
+        }
+        .good h4 { color: #2f7a67; margin-bottom: 12px; }
+        .bad h4 { color: #b1624b; margin-bottom: 12px; }
+        .attrs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-card {
+            background: #fcf9f2;
+            border-radius: 14px;
+            padding: 12px 16px;
+            border: 1px solid #e5dfd1;
+        }
+        .attr-card strong {
+            color: #1f5e4f;
+            font-family: monospace;
+            font-size: 1.05rem;
+        }
+        .coord-note {
+            background: #eef5f2;
+            border-left: 4px solid #2f7a67;
+            padding: 12px 18px;
+            margin: 15px 0;
+            font-size: 0.95rem;
+            border-radius: 12px;
+        }
+        .warning-tip {
+            background: #fff2df;
+            border-radius: 14px;
+            padding: 12px 18px;
+            margin: 20px 0;
+            border-left: 5px solid #e6a017;
+        }
+        .custom-list {
+            padding-left: 28px;
+            margin: 20px 0;
+        }
+        .custom-list li {
+            margin: 8px 0;
+        }
+        .code-sample {
+            background-color: #1e2a2a;
+            color: #d9f0ea;
+            padding: 20px;
+            border-radius: 16px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+        }
+        .code-sample pre {
+            background: transparent;
+            color: #d0f0e5;
+            margin: 0;
+        }
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 25px 0;
+        }
+        .value-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fefef9;
+        }
+        .value-table th, .value-table td {
+            border: 1px solid #d6d0c4;
+            padding: 12px 16px;
+            text-align: left;
+            vertical-align: top;
+        }
+        .value-table th {
+            background-color: #eef3f0;
+            color: #1b4d41;
+            font-weight: 700;
+        }
+        .checklist {
+            list-style: none;
+            padding-left: 0;
+        }
+        .checklist li::before {
+            content: " ";
+            color: #2f7a67;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        HTML<span>&CSS</span>
+</div>
+    <nav>
+        <a href="../index.html">Start</a>
+        <a href="../html.html" class="active">HTML</a>
+        <a href="../css.html">CSS</a>
+    </nav>
+</header>
+
+<main class="content-page">
+    <div class="page-header">
+        <h1>Rozdział 20: Dobre praktyki i walidacja</h1>
+        <p>
+            Tworzenie dobrej strony to nie tylko znajomość składni, ale też przestrzeganie zasad,
+            które czynią kod czytelnym, dostępnym i łatwym w utrzymaniu. Poznaj kluczowe obszary:
+            semantykę, dostępność (alt, label), poprawne zagnieżdżanie, walidację kodu i czytelną strukturę.
+</p>
+</div>
+
+    <section class="topic-section">
+        <h2>1. Semantyka - używaj odpowiednich znaczników</h2>
+        <p>Semantyczne znaczniki HTML5 (np. <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code>) nie tylko opisują strukturę, ale też pomagają wyszukiwarkom i czytnikom ekranu.</p>
+        <div class="good-bad">
+            <div class="good">
+<h4>Poprawnie (semantycznie)</h4>
+                <code>&lt;header&gt;Nagłówek&lt;/header&gt;</code><br>
+                <code>&lt;nav&gt;&lt;ul&gt;&lt;li&gt;&lt;a&gt;...&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/nav&gt;</code><br>
+                <code>&lt;main&gt;&lt;article&gt;...&lt;/article&gt;&lt;/main&gt;</code><br>
+                <code>&lt;footer&gt;Stopka&lt;/footer&gt;</code>
+</div>
+            <div class="bad">
+<h4>Źle (niesemantycznie - "divitis")</h4>
+                <code>&lt;div class="header"&gt;Nagłówek&lt;/div&gt;</code><br>
+                <code>&lt;div class="nav"&gt;&lt;div&gt;&lt;div&gt;&lt;a&gt;...&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</code><br>
+                <code>&lt;div class="content"&gt;&lt;div&gt;...&lt;/div&gt;&lt;/div&gt;</code>
+</div>
+</div>
+        <div class="coord-note">
+            Semantyka wpływa na pozycjonowanie (SEO) - wyszukiwarki lepiej rozumieją stronę. Dla czytników ekranu to podstawa nawigacji.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>2. Dostępność (WCAG) - podstawy</h2>
+        <p>Tworzenie stron dostępnych dla osób z niepełnosprawnościami to nie tylko wymóg prawny (w wielu krajach), ale też dobry zwyczaj. Kluczowe elementy:</p>
+        
+        <h3>Atrybut alt w obrazach</h3>
+        <p>Każdy obraz powinien mieć atrybut <code>alt</code> z opisem treści. Czytniki ekranu odczytują go zamiast obrazu.</p>
+        <div class="code-sample"><pre>
+&lt;!-- Dobrze --&gt;
+&lt;img src="logo.png" alt="Logo firmy XYZ"&gt;
+
+&lt;!-- Źle - brak alt --&gt;
+&lt;img src="logo.png"&gt;
+
+&lt;!-- Obraz dekoracyjny - pusty alt --&gt;
+&lt;img src="tlo.jpg" alt=""&gt;
+</pre>
+</div>
+        <div class="warning-tip">
+            Pusty <code>alt=""</code> oznacza, że obraz jest dekoracyjny i czytnik go pominie. Nigdy nie pomijaj atrybutu <code>alt</code> - to błąd walidacji.
+</div>
+
+        <h3>Etykiety label w formularzach</h3>
+        <p>Każde pole formularza powinno mieć etykietę <code>&lt;label&gt;</code> powiązaną z <code>id</code> pola.</p>
+        <div class="code-sample"><pre>
+&lt;!-- Dobrze --&gt;
+&lt;label for="imie"&gt;Imię:&lt;/label&gt;
+&lt;input type="text" id="imie" name="imie"&gt;
+
+&lt;!-- Alternatywnie (opakowanie) --&gt;
+&lt;label&gt;E-mail: &lt;input type="email" name="email"&gt;&lt;/label&gt;
+
+&lt;!-- Źle - brak label --&gt;
+&lt;input type="text" placeholder="Imię"&gt;
+</pre>
+</div>
+        <div class="coord-note">
+            Etykiety zwiększają klikalność (kliknięcie na etykietę ustawia fokus) i są wymagane dla dostępności WCAG.
+</div>
+
+        <h3>Inne aspekty dostępności</h3>
+        <ul class="custom-list">
+            <li>Kontrast kolorów (tekst na tle) - minimum 4.5:1.</li>
+            <li>Możliwość obsługi klawiaturą (TAB, ENTER).</li>
+            <li>Odpowiednia struktura nagłówków (<code>h1</code> - <code>h6</code>) - tylko jeden <code>h1</code>.</li>
+            <li>Atrybuty <code>aria-*</code> dla zaawansowanych komponentów.</li>
+        </ul>
+    </section>
+
+    <section class="topic-section">
+        <h2>3. Poprawne zagnieżdżanie elementów</h2>
+        <p>HTML wymaga prawidłowego zagnieżdżania - elementy muszą być zamykane w odwrotnej kolejności niż otwierane. Nieprawidłowe zagnieżdżenie może powodować nieprzewidywalne renderowanie.</p>
+        <div class="good-bad">
+            <div class="good">
+<h4>Poprawne zagnieżdżenie</h4>
+                <code>&lt;p&gt;To jest &lt;strong&gt;ważne&lt;/strong&gt; zdanie.&lt;/p&gt;</code><br><br>
+                <code>&lt;ul&gt;<br>
+                &nbsp;&nbsp;&lt;li&gt;Poziom 1<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;&lt;li&gt;Poziom 2&lt;/li&gt;&lt;/ul&gt;<br>
+                &nbsp;&nbsp;&lt;/li&gt;<br>
+                &lt;/ul&gt;</code>
+</div>
+            <div class="bad">
+<h4>Niepoprawne zagnieżdżenie</h4>
+                <code>&lt;p&gt;To jest &lt;strong&gt;ważne&lt;/p&gt;&lt;/strong&gt;</code><br>
+                (najpierw zamyka p, potem strong - błąd)<br><br>
+                <code>&lt;ul&gt;<br>
+                &nbsp;&nbsp;&lt;li&gt;Poziom 1&lt;/li&gt;<br>
+                &nbsp;&nbsp;&lt;ul&gt;&lt;li&gt;Poziom 2&lt;/li&gt;&lt;/ul&gt;<br>
+                &lt;/ul&gt;</code><br>
+                (ul nie może być bezpośrednim dzieckiem ul - musi być w li)
+</div>
+</div>
+        <div class="coord-note">
+            Zasada: elementy blokowe mogą zawierać liniowe, ale nie odwrotnie (z wyjątkami). Np. <code>&lt;span&gt;&lt;div&gt;&lt;/div&gt;&lt;/span&gt;</code> jest niepoprawne.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>4. Walidacja kodu HTML</h2>
+        <p>Walidacja to sprawdzenie, czy kod HTML jest zgodny ze standardami W3C. Błędy walidacji mogą powodować problemy z renderowaniem, dostępnością i SEO.</p>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>Narzędzia walidacyjne:</strong> <a href="https://validator.w3.org/" target="_blank">validator.w3.org</a> (online), walidatory IDE (np. VS Code z rozszerzeniami).</div>
+            <div class="attr-card"><strong>Najczęstsze błędy:</strong> brak <code>alt</code>, brak <code>&lt;!DOCTYPE&gt;</code>, nieprawidłowe zagnieżdżenie, zduplikowane <code>id</code>, nieprawidłowa składnia znaczników.</div>
+</div>
+        <div class="code-sample"><pre>
+&lt;!-- Przykład kodu z błędami (do walidacji) --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Strona&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Nagłówek&lt;/h2&gt;      &lt;!-- błąd: zamykający &lt;/h2&gt; zamiast &lt;/h1&gt; --&gt;
+    &lt;img src="foto.jpg"&gt;      &lt;!-- błąd: brak alt --&gt;
+    &lt;p&gt;Tekst &lt;strong&gt;pogrubiony&lt;/p&gt;&lt;/strong&gt;  &lt;!-- błąd: zagnieżdżenie --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+        <div class="warning-tip">
+            Walidator nie sprawdza poprawności semantycznej ani dostępności w 100%, ale eliminuje podstawowe błędy składniowe. To pierwszy krok do profesjonalnego kodu.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>5. Czytelna struktura i formatowanie kodu</h2>
+        <p>Dobrze sformatowany kod jest łatwiejszy w utrzymaniu, debugowaniu i współpracy. Kluczowe zasady:</p>
+        <ul class="custom-list">
+            <li><strong>Wcięcia</strong> - każdy poziom zagnieżdżenia zwiększa wcięcie (2 lub 4 spacje).</li>
+            <li><strong>Małe litery</strong> - w HTML5 znaczniki i atrybuty zapisujemy małymi literami.</li>
+            <li><strong>Cudzysłów</strong> - wartości atrybutów otaczamy podwójnym cudzysłowem (zalecane).</li>
+            <li><strong>Komentarze</strong> - wyjaśniają złożone fragmenty (<code>&lt;!-- ... --&gt;</code>).</li>
+            <li><strong>Podział na sekcje</strong> - logiczne grupowanie kodu (header, main, footer).</li>
+        </ul>
+        <div class="code-sample"><pre>
+&lt;!-- Przykład czytelnego kodu --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pl"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Tytuł&lt;/title&gt;
+    &lt;link rel="stylesheet" href="../style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Nagłówek strony&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Start&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;main&gt;
+        &lt;section&gt;
+            &lt;h2&gt;Sekcja&lt;/h2&gt;
+            &lt;p&gt;Treść...&lt;/p&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+
+    &lt;footer&gt;
+        &lt;p&gt;&amp;copy; 2026&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>6. Lista kontrolna (checklist) - co sprawdzić przed publikacją</h2>
+        <div class="attrs-grid">
+            <div class="attr-card">
+                <ul class="checklist">
+                    <li>Czy strona ma <code>&lt;!DOCTYPE html&gt;</code>?</li>
+                    <li>Czy są ustawione <code>meta charset="UTF-8"</code> i <code>viewport</code>?</li>
+                    <li>Czy nagłówki są w prawidłowej hierarchii (tylko jeden h1)?</li>
+                    <li>Czy wszystkie obrazy mają <code>alt</code>?</li>
+                    <li>Czy formularze mają etykiety <code>&lt;label&gt;</code>?</li>
+                    <li>Czy zagnieżdżenie elementów jest poprawne?</li>
+                </ul>
+</div>
+            <div class="attr-card">
+                <ul class="checklist">
+                    <li>Czy użyto semantycznych znaczników?</li>
+                    <li>Czy kod jest czytelny (wcięcia, małe litery)?</li>
+                    <li>Czy strona działa na różnych przeglądarkach?</li>
+                    <li>Czy strona jest responsywna (viewport, media queries)?</li>
+                    <li>Czy walidacja W3C nie wykazuje błędów?</li>
+                    <li>Czy linki prowadzą do istniejących zasobów?</li>
+                </ul>
+</div>
+</div>
+        <div class="coord-note">
+            Regularne sprawdzanie tej listy pomoże uniknąć typowych problemów i podnieść jakość strony.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>7. Narzędzia pomocne przy walidacji i testowaniu</h2>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <thead><tr><th>Narzędzie</th><th>Zastosowanie</th></tr></thead>
+                <tbody>
+                    <tr><td><a href="https://validator.w3.org/" target="_blank">W3C Validator</a></td><td>Walidacja HTML/CSS</td></tr>
+                    <tr><td><a href="https://developers.google.com/web/tools/lighthouse" target="_blank">Lighthouse</a> (DevTools)</td><td>Audyt wydajności, SEO, dostępności</td></tr>
+                    <tr><td>Wave (wave.webaim.org)</td><td>Testowanie dostępności</td></tr>
+                    <tr><td>Prettier / Beautify</td><td>Automatyczne formatowanie kodu</td></tr>
+                    <tr><td>ESLint (dla JS)</td><td>Sprawdzanie poprawności JavaScript</td></tr>
+                </tbody>
+            </table>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>8. Przykład strony zgodnej z dobrymi praktykami</h2>
+        <div class="code-sample"><pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pl"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Przykładowa strona - dobre praktyki&lt;/title&gt;
+    &lt;meta name="description" content="Przykład strony zgodnej z zasadami semantyki i dostępności"&gt;
+    &lt;link rel="stylesheet" href="../style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Moja firma&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#home"&gt;Start&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#oferta"&gt;Oferta&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#kontakt"&gt;Kontakt&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;main&gt;
+        &lt;section id="home"&gt;
+            &lt;h2&gt;Witamy&lt;/h2&gt;
+            &lt;img src="logo.png" alt="Logo firmy"&gt;
+            &lt;p&gt;Treść powitalna...&lt;/p&gt;
+        &lt;/section&gt;
+
+        &lt;section id="oferta"&gt;
+            &lt;h2&gt;Nasza oferta&lt;/h2&gt;
+            &lt;article&gt;
+                &lt;h3&gt;Usługa 1&lt;/h3&gt;
+                &lt;p&gt;Opis usługi...&lt;/p&gt;
+            &lt;/article&gt;
+        &lt;/section&gt;
+
+        &lt;section id="kontakt"&gt;
+            &lt;h2&gt;Kontakt&lt;/h2&gt;
+            &lt;form action="wyslij.php" method="post"&gt;
+                &lt;label for="imie"&gt;Imię:&lt;/label&gt;
+                &lt;input type="text" id="imie" name="imie" required&gt;
+
+                &lt;label for="email"&gt;E-mail:&lt;/label&gt;
+                &lt;input type="email" id="email" name="email" required&gt;
+
+                &lt;button type="submit"&gt;Wyślij&lt;/button&gt;
+            &lt;/form&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+
+    &lt;footer&gt;
+        &lt;p&gt;&amp;copy; 2026 Moja firma. Wszelkie prawa zastrzeżone.&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>9. Co musisz zapamiętać na egzamin INF03 (podsumowanie całego kursu)</h2>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>Semantyka</strong> - używaj header, nav, main, section, article, aside, footer.</div>
+            <div class="attr-card"><strong>Dostępność</strong> - alt, label, kontrast, struktura nagłówków.</div>
+            <div class="attr-card"><strong>Zagnieżdżanie</strong> - kolejność otwierania/zamykania, elementy blokowe vs liniowe.</div>
+            <div class="attr-card"><strong>Walidacja</strong> - regularnie sprawdzaj kod przez validator.w3.org.</div>
+            <div class="attr-card"><strong>Struktura kodu</strong> - wcięcia, małe litery, komentarze, czytelne nazwy klas.</div>
+            <div class="attr-card"><strong>Testowanie</strong> - różne przeglądarki, urządzenia, narzędzia deweloperskie.</div>
+</div>
+        <div class="coord-note">
+            Egzamin INF03 weryfikuje nie tylko znajomość składni, ale też umiejętność tworzenia poprawnego, dostępnego i czytelnego kodu. Przestrzeganie powyższych zasad to gwarancja sukcesu.
+</div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 Samouczek INF03 - Rozdział 20: Dobre praktyki i walidacja (semantyka, dostępność, zagnieżdżanie, walidacja, czytelna struktura).</p>
+</footer>
+
+</body>
+</html>

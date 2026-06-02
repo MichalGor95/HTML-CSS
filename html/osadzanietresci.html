@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Osadzanie treści | Podstawy INF03</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Dodatkowe style - zachowują pełną spójność z oryginalnym style.css */
+        .doctype-box {
+            background: #1e2a2a;
+            color: #d0f0e5;
+            border-radius: 16px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        .structure-visual {
+            background: #fefcf5;
+            border: 1px solid #ddd2b5;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 25px 0;
+            font-family: monospace;
+            line-height: 1.6;
+        }
+        .tag-demo {
+            background: #f4f1ea;
+            border-radius: 14px;
+            padding: 12px 16px;
+            margin: 12px 0;
+            font-family: monospace;
+            border-left: 4px solid #2f7a67;
+        }
+        .attr-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-badge {
+            background: #eef3f0;
+            border-radius: 40px;
+            padding: 6px 14px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            border: 1px solid #cbdcd3;
+        }
+        .good-bad {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .good, .bad {
+            flex: 1;
+            background: white;
+            border-radius: 18px;
+            padding: 16px 20px;
+            border: 1px solid #e2dfd7;
+        }
+        .good h4 { color: #2f7a67; margin-bottom: 12px; }
+        .bad h4 { color: #b1624b; margin-bottom: 12px; }
+        .attrs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-card {
+            background: #fcf9f2;
+            border-radius: 14px;
+            padding: 12px 16px;
+            border: 1px solid #e5dfd1;
+        }
+        .attr-card strong {
+            color: #1f5e4f;
+            font-family: monospace;
+            font-size: 1.05rem;
+        }
+        .coord-note {
+            background: #eef5f2;
+            border-left: 4px solid #2f7a67;
+            padding: 12px 18px;
+            margin: 15px 0;
+            font-size: 0.95rem;
+            border-radius: 12px;
+        }
+        .warning-tip {
+            background: #fff2df;
+            border-radius: 14px;
+            padding: 12px 18px;
+            margin: 20px 0;
+            border-left: 5px solid #e6a017;
+        }
+        .custom-list {
+            padding-left: 28px;
+            margin: 20px 0;
+        }
+        .custom-list li {
+            margin: 8px 0;
+        }
+        .code-sample {
+            background-color: #1e2a2a;
+            color: #d9f0ea;
+            padding: 20px;
+            border-radius: 16px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+        }
+        .code-sample pre {
+            background: transparent;
+            color: #d0f0e5;
+            margin: 0;
+        }
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 25px 0;
+        }
+        .value-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fefef9;
+        }
+        .value-table th, .value-table td {
+            border: 1px solid #d6d0c4;
+            padding: 12px 16px;
+            text-align: left;
+            vertical-align: top;
+        }
+        .value-table th {
+            background-color: #eef3f0;
+            color: #1b4d41;
+            font-weight: 700;
+        }
+        .iframe-demo {
+            background: #fcf9f2;
+            border: 1px solid #e2dfd7;
+            border-radius: 16px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        iframe.demo-iframe {
+            max-width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        HTML<span>&CSS</span>
+</div>
+    <nav>
+        <a href="../index.html">Start</a>
+        <a href="../html.html" class="active">HTML</a>
+        <a href="../css.html">CSS</a>
+    </nav>
+</header>
+
+<main class="content-page">
+    <div class="page-header">
+        <h1>Rozdział 16: Osadzanie treści (iframe)</h1>
+        <p>
+            Element <code>&lt;iframe&gt;</code> (inline frame) pozwala osadzać zewnętrzne strony, mapy, filmy z YouTube,
+            dokumenty PDF i inne zasoby. Poznaj składnię, atrybuty, zasady bezpieczeństwa oraz dobre praktyki.
+</p>
+</div>
+
+    <section class="topic-section">
+        <h2>1. &lt;iframe&gt; - podstawowe użycie</h2>
+        <p><strong>&lt;iframe&gt;</strong> tworzy osadzoną ramkę, która wyświetla inną stronę internetową lub zasób. Podstawowe atrybuty to <code>src</code> (adres), <code>width</code> i <code>height</code> (rozmiary).</p>
+        <div class="code-sample"><pre>
+&lt;iframe src="https://example.com" width="600" height="400" title="Przykładowa strona"&gt;&lt;/iframe&gt;
+</pre>
+</div>
+        <div class="iframe-demo">
+            <iframe src="about:blank" width="100%" height="200" style="border:1px solid #ddd;" title="Pusta ramka"></iframe>
+            <p><small>Przykład pustego iframe (about:blank). W praktyce podajesz konkretny URL.</small></p>
+</div>
+        <div class="coord-note">
+            Atrybut <code>title</code> jest bardzo ważny dla dostępności - czytniki ekranu używają go do opisania ramki.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>2. Osadzanie mapy Google</h2>
+        <p>Mapy Google udostępniają łatwy w użyciu kod do osadzenia. Wystarczy wybrać lokalizację, kliknąć "Udostępnij" → "Osadź mapę" i skopiować kod <code>&lt;iframe&gt;</code>.</p>
+        <div class="code-sample"><pre>
+&lt;iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2561.2!2d19.937!3d50.061!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47165b0e4d6b6d3b%3A0x5e8e1c8c1b1b1b1b!2sRynek%20G%C5%82%C3%B3wny!5e0!3m2!1spl!2spl!4v1234567890" 
+    width="600" 
+    height="450" 
+    style="border:0;" 
+    allowfullscreen="" 
+    loading="lazy" 
+    title="Mapa Google - Rynek Główny w Krakowie"&gt;
+&lt;/iframe&gt;
+</pre>
+</div>
+        <div class="iframe-demo">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2561.2!2d19.937!3d50.061!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47165b0e4d6b6d3b%3A0x5e8e1c8c1b1b1b1b!2sRynek%20G%C5%82%C3%B3wny!5e0!3m2!1spl!2spl!4v1234567890" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" title="Mapa Google - Rynek Główny (przykład)"></iframe>
+            <p><small>Przykład osadzonej mapy (uproszczony adres - w rzeczywistości użyj kodu z Google Maps).</small></p>
+</div>
+        <ul class="custom-list">
+            <li>Google Maps automatycznie generuje atrybut <code>allowfullscreen</code> i <code>loading="lazy"</code>.</li>
+            <li>Zalecane jest dodanie <code>style="border:0;"</code>, aby usunąć domyślną ramkę.</li>
+            <li>Możesz dostosować rozmiary (width, height) do swoich potrzeb.</li>
+        </ul>
+    </section>
+
+    <section class="topic-section">
+        <h2>3. Osadzanie filmu z YouTube</h2>
+        <p>YouTube udostępnia łatwy kod do osadzania wideo. Kliknij "Udostępnij" → "Osadź" i skopiuj <code>&lt;iframe&gt;</code>. Pamiętaj o parametrach w URL (np. <code>?autoplay=0&controls=1</code>).</p>
+        <div class="code-sample"><pre>
+&lt;iframe 
+    width="560" 
+    height="315" 
+    src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+    title="YouTube video player" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin" 
+    allowfullscreen&gt;
+&lt;/iframe&gt;
+</pre>
+</div>
+        <div class="iframe-demo">
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player (przykład)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <p><small>Przykład osadzonego filmu z YouTube (w rzeczywistej stronie użyj własnego filmu).</small></p>
+</div>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>allowfullscreen</strong> - umożliwia przejście na pełny ekran.</div>
+            <div class="attr-card"><strong>allow</strong> - lista uprawnień (autoodtwarzanie, kamera, mikrofon).</div>
+            <div class="attr-card"><strong>referrerpolicy</strong> - kontrola przesyłania referera.</div>
+</div>
+        <div class="coord-note">
+            Możesz modyfikować parametry w URL: <code>?autoplay=1</code> (autoodtwarzanie), <code>?controls=0</code> (ukrycie kontrolek), <code>?loop=1</code> (zapętlenie). Pamiętaj, że autoplay często wymaga <code>muted</code> w nowych przeglądarkach.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>4. Inne zastosowania &lt;iframe&gt;</h2>
+        <ul class="custom-list">
+            <li><strong>Osadzanie dokumentów PDF</strong> - <code>&lt;iframe src="dokument.pdf"&gt;&lt;/iframe&gt;</code></li>
+            <li><strong>Formularze zewnętrzne</strong> - np. Google Forms, Typeform.</li>
+            <li><strong>Osadzanie treści social media</strong> - posty z Facebooka, Twittera (X), Instagrama.</li>
+            <li><strong>Prezentacje</strong> - Slideshare, Prezi, Canva.</li>
+        </ul>
+        <div class="code-sample"><pre>
+&lt;iframe src="prezentacja.pdf" width="100%" height="500" title="Dokument PDF"&gt;&lt;/iframe&gt;
+</pre>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>5. Atrybuty iframe - szczegółowe omówienie</h2>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <thead><tr><th>Atrybut</th><th>Opis</th><th>Przykład</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td><code>src</code></td>
+                        <td>Adres URL osadzanego dokumentu. Scoś
+
+* (wymagany) - może być http, https, about:blank.</td>
+                        <td><code>src="https://example.com"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>srcdoc</code> (HTML5)</td>
+                        <td>Osadza bezpośrednio kod HTML zamiast ładować z URL. Ma pierwszeństwo przed <code>src</code>.</td>
+                        <td><code>srcdoc="&lt;p&gt;Treść&lt;/p&gt;"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>width / height</code></td>
+                        <td>Rozmiary ramki (w pikselach lub %).</td>
+                        <td><code>width="100%" height="400"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>name</code></td>
+                        <td>Nazwa ramki - przydatna dla atrybutu <code>target</code> w linkach.</td>
+                        <td><code>name="menu"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>allowfullscreen</code></td>
+                        <td>Pozwala na przejście do trybu pełnoekranowego (wideo, mapy).</td>
+                        <td><code>allowfullscreen</code> (boolean)</td>
+                    </tr>
+                    <tr>
+                        <td><code>sandbox</code> (bezpieczeństwo)</td>
+                        <td>Ogranicza możliwości osadzanej treści (np. brak skryptów, brak przesyłania formularzy).</td>
+                        <td><code>sandbox="allow-same-origin allow-scripts"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>loading</code></td>
+                        <td>Leniwie ładuje ramkę ("lazy") - poprawia wydajność.</td>
+                        <td><code>loading="lazy"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>title</code></td>
+                        <td>Opis ramki dla czytników ekranu (dostępność).</td>
+                        <td><code>title="Mapa dojazdu"</code></td>
+                    </tr>
+                </tbody>
+            </table>
+</div>
+        <div class="warning-tip">
+            Atrybut <code>sandbox</code> zwiększa bezpieczeństwo, ale może zablokować działanie osadzanej strony (np. JavaScript, formularze). Używaj go świadomie.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>6. Bezpieczeństwo i atrybut sandbox</h2>
+        <p><code>sandbox</code> pozwala na odseparowanie osadzonej treści. Można stopniowo zezwalać na określone funkcje.</p>
+        <div class="code-sample"><pre>
+&lt;iframe src="https://nieznanastrona.pl" sandbox&gt;&lt;/iframe&gt;
+&lt;!-- całkowicie odizolowane - brak skryptów, formularzy, wyskakujących okien --&gt;
+
+&lt;iframe src="https://zaufana.strona.pl" sandbox="allow-same-origin allow-scripts allow-forms"&gt;&lt;/iframe&gt;
+&lt;!-- pozwala na skrypty, formularze, ale wciąż ogranicza inne funkcje --&gt;
+</pre>
+</div>
+        <div class="coord-note">
+            Wartości <code>sandbox</code> oddzielamy spacjami: <code>allow-same-origin allow-scripts allow-popups</code>. Użycie samego <code>sandbox</code> bez wartości ustawia maksymalne ograniczenia.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>7. Dostępność i dobre praktyki</h2>
+        <div class="good-bad">
+            <div class="good">
+<h4>Dobre praktyki</h4>
+                <ul>
+                    <li>Zawsze dodawaj atrybut <code>title</code> z opisem ramki.</li>
+                    <li>Ustaw odpowiednie rozmiary (<code>width</code> i <code>height</code>) lub użyj CSS dla responsywności.</li>
+                    <li>Dodaj <code>loading="lazy"</code> dla iframe poza pierwszym ekranem - przyspiesza ładowanie strony.</li>
+                    <li>Używaj <code>sandbox</code> dla nieznanych źródeł.</li>
+                    <li>Zapewnij tekst zastępczy między tagami <code>&lt;iframe&gt;</code> dla przeglądarek go nieobsługujących.</li>
+                </ul>
+</div>
+            <div class="bad">
+<h4>Błędy</h4>
+                <ul>
+                    <li>Brak atrybutu <code>title</code> - problem z dostępnością.</li>
+                    <li>Brak responsywności (iframe poza skalowaniem na telefonach).</li>
+                    <li>Osadzanie nieznanych stron bez <code>sandbox</code> - ryzyko XSS.</li>
+                    <li>Używanie <code>frameborder</code> (przestarzałe) zamiast CSS (<code>style="border:0;"</code>).</li>
+                </ul>
+</div>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>8. Responsywne iframe - CSS</h2>
+        <p>Aby iframe skalował się na urządzeniach mobilnych, często stosuje się technikę "intrinsic ratio".</p>
+        <div class="code-sample"><pre>
+&lt;style&gt;
+    .iframe-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%; /* proporcje 16:9 */
+        height: 0;
+    }
+    .iframe-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+&lt;/style&gt;
+
+&lt;div class="iframe-container"&gt;
+    &lt;iframe src="https://www.youtube.com/embed/..." title="Film"&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+</pre>
+</div>
+        <div class="coord-note">
+            Dla map Google i YouTube warto stosować responsywne kontenery, aby uniknąć przewijania poziomego na małych ekranach.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>9. Przykład strony z różnymi iframe</h2>
+        <div class="code-sample"><pre>
+&lt;h3&gt;Nasza lokalizacja&lt;/h3&gt;
+&lt;iframe src="https://www.google.com/maps/embed?pb=..." width="100%" height="350" style="border:0;" allowfullscreen loading="lazy" title="Mapa biura"&gt;&lt;/iframe&gt;
+
+&lt;h3&gt;Film promocyjny&lt;/h3&gt;
+&lt;iframe width="100%" height="400" src="https://www.youtube.com/embed/abc123" title="Promocja" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;h3&gt;Dokument PDF&lt;/h3&gt;
+&lt;iframe src="regulamin.pdf" width="100%" height="600" title="Regulamin"&gt;
+    Twoja przeglądarka nie obsługuje iframe. &lt;a href="regulamin.pdf"&gt;Pobierz PDF&lt;/a&gt;.
+&lt;/iframe&gt;
+</pre>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>10. Co musisz zapamiętać na egzamin INF03</h2>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>&lt;iframe&gt;</strong> - osadzanie zewnętrznych dokumentów.</div>
+            <div class="attr-card"><strong>src</strong> - adres osadzanej treści.</div>
+            <div class="attr-card"><strong>width / height</strong> - rozmiary ramki.</div>
+            <div class="attr-card"><strong>allowfullscreen</strong> - pełny ekran (dla wideo/map).</div>
+            <div class="attr-card"><strong>loading="lazy"</strong> - leniwe ładowanie.</div>
+            <div class="attr-card"><strong>sandbox</strong> - bezpieczeństwo (ograniczenia).</div>
+            <div class="attr-card"><strong>title</strong> - dostępność.</div>
+</div>
+        <div class="coord-note">
+            Egzaminatorzy mogą poprosić o osadzenie mapy Google lub filmu z YouTube na stronie. Pamiętaj o poprawnym skopiowaniu kodu z serwisu i ewentualnej modyfikacji rozmiarów.
+</div>
+        <div class="code-sample" style="margin-top:20px;"><pre>
+&lt;!-- Wzorcowy iframe YouTube --&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" 
+    title="Tytuł filmu" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+    encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;
+&lt;/iframe&gt;
+
+&lt;!-- Wzorcowa mapa Google --&gt;
+&lt;iframe src="https://www.google.com/maps/embed?pb=..." 
+    width="600" height="450" style="border:0;" allowfullscreen loading="lazy" 
+    title="Mapa dojazdu"&gt;
+&lt;/iframe&gt;
+</pre>
+</div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 Samouczek INF03 - Rozdział 16: Osadzanie treści (iframe, mapy, YouTube).</p>
+</footer>
+
+</body>
+</html>

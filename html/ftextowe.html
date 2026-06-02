@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularze - pola tekstowe | Podstawy INF03</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Dodatkowe style - zachowują pełną spójność z oryginalnym style.css */
+        .doctype-box {
+            background: #1e2a2a;
+            color: #d0f0e5;
+            border-radius: 16px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        .structure-visual {
+            background: #fefcf5;
+            border: 1px solid #ddd2b5;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 25px 0;
+            font-family: monospace;
+            line-height: 1.6;
+        }
+        .tag-demo {
+            background: #f4f1ea;
+            border-radius: 14px;
+            padding: 12px 16px;
+            margin: 12px 0;
+            font-family: monospace;
+            border-left: 4px solid #2f7a67;
+        }
+        .attr-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-badge {
+            background: #eef3f0;
+            border-radius: 40px;
+            padding: 6px 14px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            border: 1px solid #cbdcd3;
+        }
+        .good-bad {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .good, .bad {
+            flex: 1;
+            background: white;
+            border-radius: 18px;
+            padding: 16px 20px;
+            border: 1px solid #e2dfd7;
+        }
+        .good h4 { color: #2f7a67; margin-bottom: 12px; }
+        .bad h4 { color: #b1624b; margin-bottom: 12px; }
+        .attrs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-card {
+            background: #fcf9f2;
+            border-radius: 14px;
+            padding: 12px 16px;
+            border: 1px solid #e5dfd1;
+        }
+        .attr-card strong {
+            color: #1f5e4f;
+            font-family: monospace;
+            font-size: 1.05rem;
+        }
+        .coord-note {
+            background: #eef5f2;
+            border-left: 4px solid #2f7a67;
+            padding: 12px 18px;
+            margin: 15px 0;
+            font-size: 0.95rem;
+            border-radius: 12px;
+        }
+        .warning-tip {
+            background: #fff2df;
+            border-radius: 14px;
+            padding: 12px 18px;
+            margin: 20px 0;
+            border-left: 5px solid #e6a017;
+        }
+        .custom-list {
+            padding-left: 28px;
+            margin: 20px 0;
+        }
+        .custom-list li {
+            margin: 8px 0;
+        }
+        .code-sample {
+            background-color: #1e2a2a;
+            color: #d9f0ea;
+            padding: 20px;
+            border-radius: 16px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+        }
+        .code-sample pre {
+            background: transparent;
+            color: #d0f0e5;
+            margin: 0;
+        }
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 25px 0;
+        }
+        .value-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fefef9;
+        }
+        .value-table th, .value-table td {
+            border: 1px solid #d6d0c4;
+            padding: 12px 16px;
+            text-align: left;
+            vertical-align: top;
+        }
+        .value-table th {
+            background-color: #eef3f0;
+            color: #1b4d41;
+            font-weight: 700;
+        }
+        .demo-form {
+            background: #fcf9f2;
+            border: 1px solid #e2dfd7;
+            border-radius: 16px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .demo-form label {
+            display: inline-block;
+            width: 120px;
+            font-weight: 600;
+        }
+        .demo-form input, .demo-form button {
+            margin: 8px 0;
+            padding: 6px 12px;
+        }
+        .field-demo {
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        HTML<span>&CSS</span>
+</div>
+    <nav>
+        <a href="../index.html">Start</a>
+        <a href="../html.html" class="active">HTML</a>
+        <a href="../css.html">CSS</a>
+    </nav>
+</header>
+
+<main class="content-page">
+    <div class="page-header">
+        <h1>Rozdział 12: Pola tekstowe w formularzach</h1>
+        <p>
+            Szczegółowe omówienie pól <code>&lt;input&gt;</code> typu <strong>text</strong>, <strong>email</strong>, <strong>password</strong>
+            oraz atrybutów <strong>placeholder</strong> i <strong>required</strong>. Dodatkowo poznasz inne przydatne atrybuty: <code>pattern</code>, <code>minlength</code>, <code>maxlength</code>, <code>value</code> i walidację HTML5.
+</p>
+</div>
+
+    <section class="topic-section">
+        <h2>1. &lt;input type="text"&gt; - standardowe pole tekstowe</h2>
+        <p>Pole do wprowadzania dowolnego tekstu (jedna linia). Najczęściej używane dla imienia, miasta, tytułu, wyszukiwanej frazy.</p>
+        <div class="code-sample"><pre>
+&lt;label for="imie"&gt;Imię:&lt;/label&gt;
+&lt;input type="text" id="imie" name="imie" placeholder="Wpisz swoje imię"&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <label for="demo_text">Imię:</label>
+            <input type="text" id="demo_text" name="demo_text" placeholder="Wpisz swoje imię">
+</div>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>maxlength</strong> - maksymalna liczba znaków.<br><code>&lt;input type="text" maxlength="50"&gt;</code></div>
+            <div class="attr-card"><strong>minlength</strong> - minimalna liczba znaków (HTML5).<br><code>&lt;input type="text" minlength="3"&gt;</code></div>
+            <div class="attr-card"><strong>size</strong> - widoczna szerokość pola (w znakach) - raczej używaj CSS.</div>
+            <div class="attr-card"><strong>value</strong> - początkowa wartość pola.<br><code>&lt;input type="text" value="Jan Kowalski"&gt;</code></div>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>2. &lt;input type="email"&gt; - pole adresu e-mail</h2>
+        <p>Specjalne pole do adresów e-mail. Przeglądarka sprawdza poprawność składni (np. obecność @ i domeny). Na urządzeniach mobilnych klawiatura pokazuje @ i kropkę.</p>
+        <div class="code-sample"><pre>
+&lt;label for="email"&gt;E-mail:&lt;/label&gt;
+&lt;input type="email" id="email" name="email" required&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <label for="demo_email">E-mail:</label>
+            <input type="email" id="demo_email" name="demo_email" placeholder="jan@example.com">
+</div>
+        <ul class="custom-list">
+            <li><strong>Automatyczna walidacja</strong> - przy niepoprawnym adresie przeglądarka blokuje wysłanie formularza i pokazuje komunikat.</li>
+            <li>Można użyć atrybutu <code>multiple</code> - pozwala na wpisanie kilku adresów oddzielonych przecinkami.</li>
+        </ul>
+        <div class="coord-note">
+            Walidacja HTML5 jest po stronie klienta - dla bezpieczeństwa zawsze weryfikuj dane również po stronie serwera.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>3. &lt;input type="password"&gt; - pole hasła</h2>
+        <p>Znaki wpisywane przez użytkownika są maskowane (kropki lub gwiazdki). Nie ukrywa to danych przed serwerem - wysyłane są w czystej postaci (przy POST warto użyć HTTPS).</p>
+        <div class="code-sample"><pre>
+&lt;label for="haslo"&gt;Hasło:&lt;/label&gt;
+&lt;input type="password" id="haslo" name="haslo" required minlength="8"&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <label for="demo_pass">Hasło:</label>
+            <input type="password" id="demo_pass" name="demo_pass" placeholder="********">
+</div>
+        <div class="warning-tip">
+            Pole hasła nie szyfruje danych podczas transmisji. Zawsze używaj HTTPS, aby zabezpieczyć dane logowania.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>4. Atrybut placeholder - podpowiedź wewnątrz pola</h2>
+        <p><strong>placeholder</strong> - tekst przykładowy (podpowiedź) wyświetlany wewnątrz pola, znika po rozpoczęciu pisania. Nie zastępuje etykiety <code>&lt;label&gt;</code> - służy tylko jako dodatkowa wskazówka.</p>
+        <div class="code-sample"><pre>
+&lt;input type="text" placeholder="np. Jan Kowalski"&gt;
+&lt;input type="email" placeholder="jan@example.com"&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <input type="text" placeholder="np. Jan Kowalski" style="margin-right:10px;">
+            <input type="email" placeholder="jan@example.com">
+</div>
+        <div class="coord-note">
+            Nie używaj samego <code>placeholder</code> zamiast <code>&lt;label&gt;</code> - to utrudnia dostępność (po rozpoczęciu pisania podpowiedź znika).
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>5. Atrybut required - pole obowiązkowe</h2>
+        <p><strong>required</strong> - oznacza, że pole musi być wypełnione przed wysłaniem formularza. Przeglądarka nie pozwoli na submisję, pokazując komunikat błędu.</p>
+        <div class="code-sample"><pre>
+&lt;input type="text" name="imie" required&gt;
+&lt;input type="email" name="email" required&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <form action="#" onsubmit="alert('Walidacja zadziałała'); return false;">
+                <label>Imię (wymagane): <input type="text" name="req_text" required></label><br>
+                <label>Email (wymagany): <input type="email" name="req_email" required></label><br>
+                <button type="submit">Wyślij (test)</button>
+            </form>
+            <p><small>Próbując wysłać puste pole, przeglądarka zablokuje submisję.</small></p>
+</div>
+        <div class="warning-tip">
+            Atrybut <code>required</code> nie zabezpiecza przed pustymi łańcuchami znaków (spacjami) - do tego potrzebna jest walidacja po stronie serwera.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>6. Dodatkowe atrybuty walidujące (pattern, minlength, maxlength)</h2>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <thead><tr><th>Atrybut</th><th>Opis</th><th>Przykład</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td><code>pattern</code></td>
+                        <td>Wyrażenie regularne, któremu musi odpowiadać wartość pola. Rozszerzona walidacja.</td>
+                        <td><code>pattern="[A-Za-z]{3,}"</code> - co najmniej 3 litery</td>
+                    </tr>
+                    <tr>
+                        <td><code>minlength</code></td>
+                        <td>Minimalna liczba znaków.</td>
+                        <td><code>minlength="3"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>maxlength</code></td>
+                        <td>Maksymalna liczba znaków.</td>
+                        <td><code>maxlength="50"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>size</code> (prezentacyjny)</td>
+                        <td>Szerokość pola (w znakach), lepiej użyć CSS.</td>
+                        <td><code>size="30"</code></td>
+                    </tr>
+                </tbody>
+            </table>
+</div>
+        <div class="code-sample"><pre>
+&lt;!-- Kod pocztowy: 2 cyfry, myślnik, 3 cyfry --&gt;
+&lt;input type="text" name="kod" pattern="[0-9]{2}-[0-9]{3}" placeholder="00-000" required&gt;
+&lt;!-- Hasło: min. 8 znaków --&gt;
+&lt;input type="password" name="haslo" minlength="8" required&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <label>Kod pocztowy (pattern): <input type="text" pattern="[0-9]{2}-[0-9]{3}" placeholder="00-000"></label><br>
+            <label>Hasło (minlength=5): <input type="password" minlength="5" placeholder="minimum 5 znaków"></label>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>7. Atrybut value - domyślna wartość pola</h2>
+        <p>Atrybut <code>value</code> ustawia początkową zawartość pola. Można go dynamicznie zmieniać JavaScriptem lub użyć do wstępnego wypełnienia formularza.</p>
+        <div class="code-sample"><pre>
+&lt;input type="text" name="kraj" value="Polska"&gt;
+&lt;input type="text" name="miasto" value="Warszawa"&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <label>Kraj: <input type="text" name="kraj" value="Polska" readonly></label><br>
+            <label>Miasto: <input type="text" name="miasto" value="Warszawa"></label>
+            <p><small>Atrybut <code>readonly</code> - pole tylko do odczytu (nie można edytować).</small></p>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>8. Pola tylko do odczytu i wyłączone (readonly, disabled)</h2>
+        <ul class="custom-list">
+            <li><strong>readonly</strong> - wartość jest widoczna i wysyłana, ale użytkownik nie może jej zmienić.</li>
+            <li><strong>disabled</strong> - pole jest nieaktywne, nie można go edytować, a jego wartość <strong>nie jest wysyłana</strong> do serwera.</li>
+        </ul>
+        <div class="code-sample"><pre>
+&lt;input type="text" value="stała wartość" readonly&gt;
+&lt;input type="text" value="wyłączone" disabled&gt;
+</pre>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>9. Przykład formularza z różnymi polami tekstowymi</h2>
+        <div class="code-sample"><pre>
+&lt;form action="rejestracja.php" method="post"&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Dane osobowe&lt;/legend&gt;
+        &lt;label&gt;Imię: &lt;input type="text" name="imie" required placeholder="Jan" minlength="2"&gt;&lt;/label&gt;&lt;br&gt;
+        &lt;label&gt;Nazwisko: &lt;input type="text" name="nazwisko" required placeholder="Kowalski"&gt;&lt;/label&gt;&lt;br&gt;
+        &lt;label&gt;E-mail: &lt;input type="email" name="email" required placeholder="jan@example.com"&gt;&lt;/label&gt;&lt;br&gt;
+        &lt;label&gt;Hasło: &lt;input type="password" name="haslo" required minlength="8" placeholder="min. 8 znaków"&gt;&lt;/label&gt;&lt;br&gt;
+        &lt;label&gt;Kod pocztowy: &lt;input type="text" name="kod" pattern="[0-9]{2}-[0-9]{3}" placeholder="00-000"&gt;&lt;/label&gt;&lt;br&gt;
+        &lt;button type="submit"&gt;Zarejestruj&lt;/button&gt;
+    &lt;/fieldset&gt;
+&lt;/form&gt;
+</pre>
+</div>
+        <div class="demo-form">
+            <form action="#" onsubmit="alert('Przykład demonstracyjny - dane nie są wysyłane'); return false;">
+                <fieldset>
+                    <legend>Dane osobowe</legend>
+                    <div><label>Imię: <input type="text" name="imie" required placeholder="Jan" minlength="2"></label></div>
+                    <div><label>Nazwisko: <input type="text" name="nazwisko" required placeholder="Kowalski"></label></div>
+                    <div><label>E-mail: <input type="email" name="email" required placeholder="jan@example.com"></label></div>
+                    <div><label>Hasło: <input type="password" name="haslo" required minlength="8" placeholder="min. 8 znaków"></label></div>
+                    <div><label>Kod pocztowy: <input type="text" name="kod" pattern="[0-9]{2}-[0-9]{3}" placeholder="00-000"></label></div>
+                    <button type="submit">Zarejestruj (test)</button>
+                </fieldset>
+            </form>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>10. Walidacja HTML5 - komunikaty błędów</h2>
+        <p>Przeglądarki pokazują własne komunikaty walidacyjne. Można je dostosować za pomocą JavaScript lub atrybutu <code>title</code>, ale domyślnie są wystarczające.</p>
+        <div class="good-bad">
+            <div class="good">
+<h4>Dobre praktyki</h4>
+                <ul>
+                    <li>Używaj odpowiedniego typu (email, tel, url, number).</li>
+                    <li>Stosuj <code>required</code> dla kluczowych pól.</li>
+                    <li>Dodawaj <code>placeholder</code> jako przykładowy format.</li>
+                    <li>Stosuj <code>pattern</code> do niestandardowych formatów (PESEL, kod pocztowy).</li>
+                    <li>Zawsze waliduj dane po stronie serwera (weryfikacja końcowa).</li>
+                </ul>
+</div>
+            <div class="bad">
+<h4>Częste błędy</h4>
+                <ul>
+                    <li>Pomijanie <code>name</code> - dane nie zostaną wysłane.</li>
+                    <li>Używanie <code>placeholder</code> zamiast <code>&lt;label&gt;</code>.</li>
+                    <li>Zbyt restrykcyjne <code>pattern</code> (uniemożliwia poprawne dane).</li>
+                    <li>Poleganie wyłącznie na walidacji klienckiej.</li>
+                </ul>
+</div>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>11. Różnice między typami text, email, password</h2>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <thead><tr><th>Cecha</th><th>text</th><th>email</th><th>password</th></tr></thead>
+                <tbody>
+                    <tr><td>Maskowanie znaków</td><td>Nie</td><td>Nie</td><td>Tak</td></tr>
+                    <tr><td>Walidacja formatu</td><td>Brak</td><td>Sprawdza @ i domenę</td><td>Brak (oprócz minlength/maxlength)</td></tr>
+                    <tr><td>Specjalna klawiatura mobilna</td><td>Standardowa</td><td>Z @ i kropką</td><td>Standardowa</td></tr>
+                    <tr><td>Przechowywanie w historii</td><td>Tak (można wyłączyć)</td><td>Tak</td><td>Nigdy</td></tr>
+                </tbody>
+            </table>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>12. Co musisz zapamiętać na egzamin INF03</h2>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>type="text"</strong> - zwykłe pole tekstowe (imię, miasto).</div>
+            <div class="attr-card"><strong>type="email"</strong> - walidacja adresu e-mail, specjalna klawiatura.</div>
+            <div class="attr-card"><strong>type="password"</strong> - maskowanie znaków.</div>
+            <div class="attr-card"><strong>placeholder</strong> - przykładowy tekst (nie zastępuje label!).</div>
+            <div class="attr-card"><strong>required</strong> - pole obowiązkowe.</div>
+            <div class="attr-card"><strong>pattern</strong> - walidacja przez regex.</div>
+            <div class="attr-card"><strong>minlength / maxlength</strong> - ograniczenie długości.</div>
+</div>
+        <div class="coord-note">
+            Egzaminatorzy często dają zadanie: stwórz formularz rejestracji z polami tekstowymi, e-mailem, hasłem, walidacją i placeholderami. Pamiętaj o poprawnym użyciu <code>required</code> i odpowiednich typach <code>input</code>.
+</div>
+        <div class="code-sample" style="margin-top:20px;"><pre>
+&lt;!-- Wzorcowy fragment formularza (pola tekstowe) --&gt;
+&lt;label&gt;Login: &lt;input type="text" name="login" required minlength="4" maxlength="20"&gt;&lt;/label&gt;
+&lt;label&gt;E-mail: &lt;input type="email" name="email" required placeholder="przyklad@domena.pl"&gt;&lt;/label&gt;
+&lt;label&gt;Hasło: &lt;input type="password" name="haslo" required minlength="8"&gt;&lt;/label&gt;
+</pre>
+</div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 Samouczek INF03 - Rozdział 12: Pola tekstowe w formularzach (text, email, password, placeholder, required).</p>
+</footer>
+
+</body>
+</html>

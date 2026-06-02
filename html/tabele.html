@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabele w HTML | Podstawy INF03</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Dodatkowe style - zachowują pełną spójność z oryginalnym style.css */
+        .doctype-box {
+            background: #1e2a2a;
+            color: #d0f0e5;
+            border-radius: 16px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        .structure-visual {
+            background: #fefcf5;
+            border: 1px solid #ddd2b5;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 25px 0;
+            font-family: monospace;
+            line-height: 1.6;
+        }
+        .tag-demo {
+            background: #f4f1ea;
+            border-radius: 14px;
+            padding: 12px 16px;
+            margin: 12px 0;
+            font-family: monospace;
+            border-left: 4px solid #2f7a67;
+        }
+        .attr-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-badge {
+            background: #eef3f0;
+            border-radius: 40px;
+            padding: 6px 14px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            border: 1px solid #cbdcd3;
+        }
+        .good-bad {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .good, .bad {
+            flex: 1;
+            background: white;
+            border-radius: 18px;
+            padding: 16px 20px;
+            border: 1px solid #e2dfd7;
+        }
+        .good h4 { color: #2f7a67; margin-bottom: 12px; }
+        .bad h4 { color: #b1624b; margin-bottom: 12px; }
+        .attrs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-card {
+            background: #fcf9f2;
+            border-radius: 14px;
+            padding: 12px 16px;
+            border: 1px solid #e5dfd1;
+        }
+        .attr-card strong {
+            color: #1f5e4f;
+            font-family: monospace;
+            font-size: 1.05rem;
+        }
+        .coord-note {
+            background: #eef5f2;
+            border-left: 4px solid #2f7a67;
+            padding: 12px 18px;
+            margin: 15px 0;
+            font-size: 0.95rem;
+            border-radius: 12px;
+        }
+        .warning-tip {
+            background: #fff2df;
+            border-radius: 14px;
+            padding: 12px 18px;
+            margin: 20px 0;
+            border-left: 5px solid #e6a017;
+        }
+        .custom-list {
+            padding-left: 28px;
+            margin: 20px 0;
+        }
+        .custom-list li {
+            margin: 8px 0;
+        }
+        .code-sample {
+            background-color: #1e2a2a;
+            color: #d9f0ea;
+            padding: 20px;
+            border-radius: 16px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+        }
+        .code-sample pre {
+            background: transparent;
+            color: #d0f0e5;
+            margin: 0;
+        }
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 25px 0;
+        }
+        .value-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fefef9;
+        }
+        .value-table th, .value-table td {
+            border: 1px solid #d6d0c4;
+            padding: 12px 16px;
+            text-align: left;
+            vertical-align: top;
+        }
+        .value-table th {
+            background-color: #eef3f0;
+            color: #1b4d41;
+            font-weight: 700;
+        }
+        .demo-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .demo-table, .demo-table th, .demo-table td {
+            border: 1px solid #aaa;
+            padding: 8px 12px;
+        }
+        .demo-table th {
+            background-color: #eef3f0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        HTML<span>&CSS</span>
+</div>
+    <nav>
+        <a href="../index.html">Start</a>
+        <a href="../html.html" class="active">HTML</a>
+        <a href="../css.html">CSS</a>
+    </nav>
+</header>
+
+<main class="content-page">
+    <div class="page-header">
+        <h1>Rozdział 8: Tabele w HTML</h1>
+        <p>
+            Tabele służą do prezentacji danych tabelarycznych. Poznaj znaczniki <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;td&gt;</code>, <code>&lt;th&gt;</code>
+            oraz atrybuty <code>colspan</code> i <code>rowspan</code> do łączenia komórek.
+</p>
+</div>
+
+    <section class="topic-section">
+        <h2>1. Podstawowa tabela - &lt;table&gt;, &lt;tr&gt;, &lt;td&gt;</h2>
+        <p><strong>&lt;table&gt;</strong> - kontener tabeli. <strong>&lt;tr&gt;</strong> (table row) - wiersz. <strong>&lt;td&gt;</strong> (table data) - komórka z danymi.</p>
+        <div class="code-sample"><pre>
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Imię&lt;/td&gt;
+        &lt;td&gt;Wiek&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Anna&lt;/td&gt;
+        &lt;td&gt;25&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Jan&lt;/td&gt;
+        &lt;td&gt;30&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <table class="demo-table">
+                <tr><td>Imię</td><td>Wiek</td></tr>
+                <tr><td>Anna</td><td>25</td></tr>
+                <tr><td>Jan</td><td>30</td></tr>
+            </table>
+</div>
+        <div class="coord-note">
+            Domyślnie tabele nie mają widocznych ramek. Aby je dodać, używa się CSS (<code>border</code>). W przykładach poglądowych stosujemy uproszczone ramki.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>2. Komórki nagłówkowe &lt;th&gt;</h2>
+        <p><strong>&lt;th&gt;</strong> (table header) - komórka nagłówkowa. Domyślnie tekst jest pogrubiony i wyśrodkowany. Ważne dla dostępności i SEO.</p>
+        <div class="code-sample"><pre>
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Imię&lt;/th&gt;
+        &lt;th&gt;Wiek&lt;/th&gt;
+        &lt;th&gt;Miasto&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Anna&lt;/td&gt;
+        &lt;td&gt;25&lt;/td&gt;
+        &lt;td&gt;Warszawa&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Jan&lt;/td&gt;
+        &lt;td&gt;30&lt;/td&gt;
+        &lt;td&gt;Kraków&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <table class="demo-table">
+                <tr><th>Imię</th><th>Wiek</th><th>Miasto</th></tr>
+                <tr><td>Anna</td><td>25</td><td>Warszawa</td></tr>
+                <tr><td>Jan</td><td>30</td><td>Kraków</td></tr>
+            </table>
+</div>
+        <div class="warning-tip">
+            Zawsze używaj <code>&lt;th&gt;</code> dla nagłówków kolumn/wierszy, nie zwykłego <code>&lt;td&gt;</code> z własnym pogrubieniem. To poprawia dostępność (screen readery).
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>3. Atrybut scope dla &lt;th&gt;</h2>
+        <p>Atrybut <code>scope</code> określa, czy nagłówek dotyczy kolumny (<code>col</code>), wiersza (<code>row</code>), grupy kolumn (<code>colgroup</code>) lub wierszy (<code>rowgroup</code>). Przydatne w złożonych tabelach.</p>
+        <div class="code-sample"><pre>
+&lt;tr&gt;
+    &lt;th scope="col"&gt;Produkt&lt;/th&gt;
+    &lt;th scope="col"&gt;Cena&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;th scope="row"&gt;Mleko&lt;/th&gt;
+    &lt;td&gt;3,50 zł&lt;/td&gt;
+&lt;/tr&gt;
+</pre>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>4. Łączenie komórek - colspan</h2>
+        <p><strong>colspan</strong> - łączenie komórek w poziomie (na wielu kolumnach). Wartość określa liczbę kolumn, które komórka ma zajmować.</p>
+        <div class="code-sample"><pre>
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th colspan="2"&gt;Dane osobowe&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Imię&lt;/td&gt;
+        &lt;td&gt;Anna&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Nazwisko&lt;/td&gt;
+        &lt;td&gt;Kowalska&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <table class="demo-table">
+                <tr><th colspan="2">Dane osobowe</th></tr>
+                <tr><td>Imię</td><td>Anna</td></tr>
+                <tr><td>Nazwisko</td><td>Kowalska</td></tr>
+            </table>
+</div>
+        <div class="coord-note">
+            <code>colspan="2"</code> oznacza, że komórka rozciąga się na dwie kolumny. Reszta wiersza musi mieć odpowiednio mniej komórek.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>5. Łączenie komórek - rowspan</h2>
+        <p><strong>rowspan</strong> - łączenie komórek w pionie (na wielu wierszach). Komórka "schodzi" w dół, zajmując kilka wierszy.</p>
+        <div class="code-sample"><pre>
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th rowspan="2"&gt;Pracownik&lt;/th&gt;
+        &lt;td&gt;Jan Kowalski&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;30 lat&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Stanowisko&lt;/th&gt;
+        &lt;td&gt;Programista&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <table class="demo-table">
+                <tr><th rowspan="2">Pracownik</th><td>Jan Kowalski</td></tr>
+                <tr><td>30 lat</td></tr>
+                <tr><th>Stanowisko</th><td>Programista</td></tr>
+            </table>
+</div>
+        <div class="warning-tip">
+            Łącząc komórki (<code>colspan</code>/<code>rowspan</code>), pamiętaj, że pozostałe wiersze/kolumny muszą być odpowiednio zredukowane. Błędy w liczbie komórek powodują rozjeżdżanie się tabeli.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>6. Zaawansowana struktura tabeli: &lt;thead&gt;, &lt;tbody&gt;, &lt;tfoot&gt;</h2>
+        <p>Grupowanie wierszy tabeli ułatwia stylowanie i poprawia semantykę:</p>
+        <ul class="custom-list">
+            <li><strong>&lt;thead&gt;</strong> - nagłówek tabeli (zwykle pierwszy wiersz z <code>&lt;th&gt;</code>).</li>
+            <li><strong>&lt;tbody&gt;</strong> - główna treść tabeli (może być wiele).</li>
+            <li><strong>&lt;tfoot&gt;</strong> - stopka tabeli (np. podsumowania).</li>
+        </ul>
+        <div class="code-sample"><pre>
+&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;&lt;th&gt;Produkt&lt;/th&gt;&lt;th&gt;Cena&lt;/th&gt;&lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;&lt;td&gt;Chleb&lt;/td&gt;&lt;td&gt;3,50 zł&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;Mleko&lt;/td&gt;&lt;td&gt;2,80 zł&lt;/td&gt;&lt;/tr&gt;
+    &lt;/tbody&gt;
+    &lt;tfoot&gt;
+        &lt;tr&gt;&lt;td&gt;Razem&lt;/td&gt;&lt;td&gt;6,30 zł&lt;/td&gt;&lt;/tr&gt;
+    &lt;/tfoot&gt;
+&lt;/table&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <table class="demo-table">
+                <thead><tr><th>Produkt</th><th>Cena</th></tr></thead>
+                <tbody><tr><td>Chleb</td><td>3,50 zł</td></tr><tr><td>Mleko</td><td>2,80 zł</td></tr></tbody>
+                <tfoot><tr><td>Razem</td><td>6,30 zł</td></tr></tfoot>
+            </table>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>7. Praktyczny przykład - plan lekcji</h2>
+        <div class="code-sample"><pre>
+&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Godzina&lt;/th&gt;
+            &lt;th&gt;Poniedziałek&lt;/th&gt;
+            &lt;th&gt;Wtorek&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;th&gt;8:00 - 9:30&lt;/th&gt;
+            &lt;td&gt;Matematyka&lt;/td&gt;
+            &lt;td rowspan="2"&gt;Język polski&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;th&gt;9:45 - 11:15&lt;/th&gt;
+            &lt;td&gt;Informatyka&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <table class="demo-table">
+                <thead><tr><th>Godzina</th><th>Poniedziałek</th><th>Wtorek</th></tr></thead>
+                <tbody>
+                    <tr><th>8:00 - 9:30</th><td>Matematyka</td><td rowspan="2">Język polski</td></tr>
+                    <tr><th>9:45 - 11:15</th><td>Informatyka</td></tr>
+                </tbody>
+            </table>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>8. Tabela z nagłówkami po obu stronach</h2>
+        <div class="code-sample"><pre>
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;&lt;/th&gt;
+        &lt;th&gt;2023&lt;/th&gt;
+        &lt;th&gt;2024&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Przychód&lt;/th&gt;
+        &lt;td&gt;100 000 zł&lt;/td&gt;
+        &lt;td&gt;120 000 zł&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Koszty&lt;/th&gt;
+        &lt;td&gt;70 000 zł&lt;/td&gt;
+        &lt;td&gt;80 000 zł&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <table class="demo-table">
+                <tr><th></th><th>2023</th><th>2024</th></tr>
+                <tr><th>Przychód</th><td>100 000 zł</td><td>120 000 zł</td></tr>
+                <tr><th>Koszty</th><td>70 000 zł</td><td>80 000 zł</td></tr>
+            </table>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>9. Częste błędy i dobre praktyki</h2>
+        <div class="good-bad">
+            <div class="good">
+<h4>Dobre praktyki</h4>
+                <ul>
+                    <li>Używaj <code>&lt;th&gt;</code> dla nagłówków.</li>
+                    <li>Stosuj <code>scope</code> dla lepszej dostępności.</li>
+                    <li>Grupuj wiersze w <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;tfoot&gt;</code>.</li>
+                    <li>Unikaj tabel do layoutu strony - służą tylko do danych tabelarycznych.</li>
+                </ul>
+</div>
+            <div class="bad">
+<h4>Błędy</h4>
+                <ul>
+                    <li>Brak <code>&lt;/tr&gt;</code> lub nieodpowiednia liczba komórek w wierszu.</li>
+                    <li>Zagnieżdżanie tabel (niepotrzebne i błędne).</li>
+                    <li>Używanie <code>border</code>, <code>cellpadding</code> i innych atrybutów prezentacyjnych (CSS zamiast tego).</li>
+                </ul>
+</div>
+</div>
+        <div class="coord-note">
+            W HTML5 atrybuty takie jak <code>border</code>, <code>cellspacing</code>, <code>cellpadding</code>, <code>width</code> są przestarzałe. Wszystkie efekty wizualne przenosimy do CSS.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>10. Co musisz zapamiętać na egzamin INF03</h2>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>&lt;table&gt;</strong> - kontener tabeli.</div>
+            <div class="attr-card"><strong>&lt;tr&gt;</strong> - wiersz.</div>
+            <div class="attr-card"><strong>&lt;td&gt;</strong> - komórka danych.</div>
+            <div class="attr-card"><strong>&lt;th&gt;</strong> - komórka nagłówkowa (pogrubienie, centrowanie).</div>
+            <div class="attr-card"><strong>colspan</strong> - łączenie w poziomie (na kolumnach).</div>
+            <div class="attr-card"><strong>rowspan</strong> - łączenie w pionie (na wierszach).</div>
+            <div class="attr-card"><strong>scope</strong> - relacja nagłówka do danych.</div>
+</div>
+        <div class="coord-note">
+            Na egzaminie często pojawia się zadanie: „Stwórz tabelę przedstawiającą ... z scalonymi komórkami”. Pamiętaj o poprawnym zagnieżdżeniu i liczbie komórek.
+</div>
+        <div class="code-sample" style="margin-top:20px;"><pre>
+&lt;!-- Przykład poprawnej tabeli z colspan i rowspan --&gt;
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th rowspan="2"&gt;Lp.&lt;/th&gt;
+        &lt;th colspan="2"&gt;Dane&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Imię&lt;/th&gt;
+        &lt;th&gt;Wiek&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;1&lt;/td&gt;
+        &lt;td&gt;Anna&lt;/td&gt;
+        &lt;td&gt;25&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+</div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 Samouczek INF03 - Rozdział 8: Tabele w HTML (table, tr, td, th, colspan, rowspan).</p>
+</footer>
+
+</body>
+</html>

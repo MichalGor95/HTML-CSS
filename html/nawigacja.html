@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nawigacja i struktura strony | Podstawy INF03</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Dodatkowe style - zachowują pełną spójność z oryginalnym style.css */
+        .doctype-box {
+            background: #1e2a2a;
+            color: #d0f0e5;
+            border-radius: 16px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        .structure-visual {
+            background: #fefcf5;
+            border: 1px solid #ddd2b5;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 25px 0;
+            font-family: monospace;
+            line-height: 1.6;
+        }
+        .tag-demo {
+            background: #f4f1ea;
+            border-radius: 14px;
+            padding: 12px 16px;
+            margin: 12px 0;
+            font-family: monospace;
+            border-left: 4px solid #2f7a67;
+        }
+        .attr-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-badge {
+            background: #eef3f0;
+            border-radius: 40px;
+            padding: 6px 14px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            border: 1px solid #cbdcd3;
+        }
+        .good-bad {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .good, .bad {
+            flex: 1;
+            background: white;
+            border-radius: 18px;
+            padding: 16px 20px;
+            border: 1px solid #e2dfd7;
+        }
+        .good h4 { color: #2f7a67; margin-bottom: 12px; }
+        .bad h4 { color: #b1624b; margin-bottom: 12px; }
+        .attrs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-card {
+            background: #fcf9f2;
+            border-radius: 14px;
+            padding: 12px 16px;
+            border: 1px solid #e5dfd1;
+        }
+        .attr-card strong {
+            color: #1f5e4f;
+            font-family: monospace;
+            font-size: 1.05rem;
+        }
+        .coord-note {
+            background: #eef5f2;
+            border-left: 4px solid #2f7a67;
+            padding: 12px 18px;
+            margin: 15px 0;
+            font-size: 0.95rem;
+            border-radius: 12px;
+        }
+        .warning-tip {
+            background: #fff2df;
+            border-radius: 14px;
+            padding: 12px 18px;
+            margin: 20px 0;
+            border-left: 5px solid #e6a017;
+        }
+        .custom-list {
+            padding-left: 28px;
+            margin: 20px 0;
+        }
+        .custom-list li {
+            margin: 8px 0;
+        }
+        .code-sample {
+            background-color: #1e2a2a;
+            color: #d9f0ea;
+            padding: 20px;
+            border-radius: 16px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+        }
+        .code-sample pre {
+            background: transparent;
+            color: #d0f0e5;
+            margin: 0;
+        }
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 25px 0;
+        }
+        .value-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fefef9;
+        }
+        .value-table th, .value-table td {
+            border: 1px solid #d6d0c4;
+            padding: 12px 16px;
+            text-align: left;
+            vertical-align: top;
+        }
+        .value-table th {
+            background-color: #eef3f0;
+            color: #1b4d41;
+            font-weight: 700;
+        }
+        .demo-nav {
+            background: #f4f1ea;
+            border-radius: 12px;
+            padding: 10px;
+            margin: 15px 0;
+        }
+        .demo-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            padding: 0;
+            margin: 0;
+        }
+        .demo-nav a {
+            text-decoration: none;
+            color: #2f7a67;
+            font-weight: bold;
+        }
+        .demo-section {
+            background: white;
+            border: 1px solid #e2dfd7;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            scroll-margin-top: 20px;
+        }
+        .layout-schema {
+            background: #fefcf5;
+            border: 1px solid #ddd2b5;
+            border-radius: 20px;
+            padding: 20px;
+            font-family: monospace;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        HTML<span>&CSS</span>
+</div>
+    <nav>
+        <a href="../index.html">Start</a>
+        <a href="../html.html" class="active">HTML</a>
+        <a href="../css.html">CSS</a>
+    </nav>
+</header>
+
+<main class="content-page">
+    <div class="page-header">
+        <h1>Rozdział 17: Nawigacja i struktura strony</h1>
+        <p>
+            Dobra nawigacja to podstawa użytecznej strony internetowej. Poznaj jak tworzyć menu,
+            linkować sekcje (kotwice) oraz jak zbudować typowy układ strony z wykorzystaniem
+            semantycznych znaczników HTML5.
+</p>
+</div>
+
+    <section class="topic-section">
+        <h2>1. Tworzenie menu nawigacyjnego</h2>
+        <p>Menu nawigacyjne najczęściej tworzy się za pomocą listy <code>&lt;ul&gt;</code> wewnątrz znacznika <code>&lt;nav&gt;</code>. Dzięki temu jest semantycznie poprawne i dostępne.</p>
+        <div class="code-sample"><pre>
+&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="../index.html"&gt;Strona główna&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="oferta.html"&gt;Oferta&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="kontakt.html"&gt;Kontakt&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+</pre>
+</div>
+        <div class="demo-nav">
+            <ul>
+                <li><a href="#">Strona główna</a></li>
+                <li><a href="#">Oferta</a></li>
+                <li><a href="#">Kontakt</a></li>
+            </ul>
+</div>
+        <ul class="custom-list">
+            <li>Menu powinno być spójne na wszystkich podstronach.</li>
+            <li>Aktywny element menu można wyróżnić klasą CSS (np. <code>class="active"</code>).</li>
+            <li>W większych serwisach stosuje się menu rozwijane (zagnieżdżone listy).</li>
+        </ul>
+        <div class="coord-note">
+            Umieszczaj menu w znaczniku <code>&lt;nav&gt;</code> - to pomaga czytnikom ekranu i robotom wyszukiwarek.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>2. Linkowanie sekcji - kotwice (anchor links)</h2>
+        <p>Kotwice pozwalają na płynne przewijanie do konkretnego fragmentu tej samej strony. Wymagają dwóch elementów: linku z <code>href="#identyfikator"</code> oraz elementu docelowego z atrybutem <code>id="identyfikator"</code>.</p>
+        <div class="code-sample"><pre>
+&lt;!-- Spis treści (linki) --&gt;
+&lt;ul&gt;
+    &lt;li&gt;&lt;a href="#rozdzial1"&gt;Rozdział 1&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#rozdzial2"&gt;Rozdział 2&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#rozdzial3"&gt;Rozdział 3&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Miejsca docelowe --&gt;
+&lt;section id="rozdzial1"&gt;
+    &lt;h2&gt;Rozdział 1&lt;/h2&gt;
+&lt;/section&gt;
+&lt;section id="rozdzial2"&gt;
+    &lt;h2&gt;Rozdział 2&lt;/h2&gt;
+&lt;/section&gt;
+</pre>
+</div>
+        <div class="demo-section">
+            <h3>Przykład działania kotwic (zobacz w praktyce)</h3>
+            <ul>
+                <li><a href="#demo1"> Przejdź do Sekcji A</a></li>
+                <li><a href="#demo2"> Przejdź do Sekcji B</a></li>
+                <li><a href="#demo3"> Przejdź do Sekcji C</a></li>
+            </ul>
+            <div id="demo1" style="background:#f9f5eb; padding:15px; margin:15px 0; border-radius:12px;">
+<h4>Sekcja A (id="demo1")</h4>
+                <p>To jest pierwsza sekcja. Link powyżej przeniósł Cię tutaj.</p>
+                <a href="#">↑ Powrót do spisu</a>
+</div>
+            <div id="demo2" style="background:#f9f5eb; padding:15px; margin:15px 0; border-radius:12px;">
+<h4>Sekcja B (id="demo2")</h4>
+                <p>Druga sekcja - osiągnięta przez kotwicę.</p>
+                <a href="#">↑ Powrót do spisu</a>
+</div>
+            <div id="demo3" style="background:#f9f5eb; padding:15px; margin:15px 0; border-radius:12px;">
+<h4>Sekcja C (id="demo3")</h4>
+                <p>Trzecia sekcja. Kotwice świetnie sprawdzają się w długich stronach.</p>
+                <a href="#">↑ Powrót do spisu</a>
+</div>
+</div>
+        <div class="coord-note">
+            Aby przewijanie było płynne, w CSS można dodać <code>scroll-behavior: smooth;</code>. Można też użyć kotwic do linkowania z innej strony: <code>&lt;a href="strona.html#sekcja"&gt;</code>.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>3. Układ typowej strony internetowej</h2>
+        <p>Nowoczesna strona opiera się na semantycznych znacznikach HTML5, takich jak <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code>. Oto typowy schemat:</p>
+        <div class="layout-schema">
+            <pre style="margin:0; background:transparent; color:#2c4a3e;">
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;div class="logo"&gt;Logo&lt;/div&gt;
+        &lt;nav&gt;...&lt;/nav&gt;
+    &lt;/header&gt;
+    
+    &lt;main&gt;
+        &lt;section&gt;
+            &lt;h2&gt;Główna treść&lt;/h2&gt;
+            &lt;article&gt;...&lt;/article&gt;
+        &lt;/section&gt;
+        
+        &lt;aside&gt;
+            &lt;h3&gt;Sidebar&lt;/h3&gt;
+            &lt;p&gt;Reklamy, linki, dodatki&lt;/p&gt;
+        &lt;/aside&gt;
+    &lt;/main&gt;
+    
+    &lt;footer&gt;
+        &lt;p&gt;Stopka &amp;copy;&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+            </pre>
+</div>
+        <div class="good-bad">
+            <div class="good">
+<h4>Dobra struktura</h4>
+                <ul>
+                    <li><code>&lt;header&gt;</code> - logo, tytuł, nawigacja.</li>
+                    <li><code>&lt;nav&gt;</code> - główne menu.</li>
+                    <li><code>&lt;main&gt;</code> - unikalna treść (tylko jeden).</li>
+                    <li><code>&lt;section&gt;</code> - logiczne bloki tematyczne.</li>
+                    <li><code>&lt;article&gt;</code> - samodzielne wpisy.</li>
+                    <li><code>&lt;aside&gt;</code> - treść poboczna.</li>
+                    <li><code>&lt;footer&gt;</code> - stopka.</li>
+                </ul>
+</div>
+            <div class="bad">
+<h4>Zła struktura (divitis)</h4>
+                <ul>
+                    <li><code>&lt;div class="header"&gt;</code></li>
+                    <li><code>&lt;div class="nav"&gt;</code></li>
+                    <li><code>&lt;div class="content"&gt;</code></li>
+                    <li><code>&lt;div class="footer"&gt;</code></li>
+                </ul>
+</div>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>4. Przykład kompletnej strony z nawigacją i kotwicami</h2>
+        <div class="code-sample"><pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pl"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Moja strona&lt;/title&gt;
+    &lt;style&gt;
+        html { scroll-behavior: smooth; }
+        body { font-family: Arial; margin: 0; padding: 0; }
+        header { background: #2f7a67; color: white; padding: 20px; text-align: center; }
+        nav { background: #1e5a4a; padding: 10px; text-align: center; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; }
+        main { max-width: 1000px; margin: 20px auto; padding: 20px; }
+        section { margin-bottom: 50px; padding: 20px; border-bottom: 1px solid #ccc; }
+        footer { background: #1e2a2a; color: white; text-align: center; padding: 15px; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Moja firma&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;nav&gt;
+        &lt;a href="#home"&gt;Start&lt;/a&gt;
+        &lt;a href="#oferta"&gt;Oferta&lt;/a&gt;
+        &lt;a href="#kontakt"&gt;Kontakt&lt;/a&gt;
+    &lt;/nav&gt;
+    &lt;main&gt;
+        &lt;section id="home"&gt;
+            &lt;h2&gt;Witamy&lt;/h2&gt;
+            &lt;p&gt;Treść strony głównej...&lt;/p&gt;
+        &lt;/section&gt;
+        &lt;section id="oferta"&gt;
+            &lt;h2&gt;Nasza oferta&lt;/h2&gt;
+            &lt;p&gt;Opis usług...&lt;/p&gt;
+        &lt;/section&gt;
+        &lt;section id="kontakt"&gt;
+            &lt;h2&gt;Kontakt&lt;/h2&gt;
+            &lt;p&gt;Telefon: 123 456 789&lt;/p&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;
+        &lt;p&gt;&amp;copy; 2026 Moja firma&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+        <div class="demo-section">
+<h4>Symulacja działania:</h4>
+            <div style="background:#1e2a2a; color:white; padding:10px; text-align:center; border-radius:8px;">Nagłówek strony</div>
+            <div style="background:#2f7a67; padding:10px; text-align:center; border-radius:8px; margin-top:5px;">
+                <a href="#" style="color:white; margin:0 15px;">Start</a>
+                <a href="#" style="color:white; margin:0 15px;">Oferta</a>
+                <a href="#" style="color:white; margin:0 15px;">Kontakt</a>
+</div>
+            <div style="padding:15px;">
+                <section style="margin:15px 0;"><h3>Start</h3><p>Treść strony głównej...</p></section>
+                <section style="margin:15px 0;"><h3>Oferta</h3><p>Opis usług...</p></section>
+                <section style="margin:15px 0;"><h3>Kontakt</h3><p>Telefon: 123 456 789</p></section>
+</div>
+            <div style="background:#1e2a2a; color:white; text-align:center; padding:10px; border-radius:8px;">Stopka</div>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>5. Nawigacja między podstronami - linki względne</h2>
+        <p>W przypadku witryn wielostronicowych linki prowadzą do innych plików HTML. Ważne jest stosowanie poprawnych ścieżek względnych.</p>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <thead><tr><th>Przykład</th><th>Opis</th></tr></thead>
+                <tbody>
+                    <tr><td><code>&lt;a href="kontakt.html"&gt;Kontakt&lt;/a&gt;</code></td><td>Plik w tym samym katalogu.</td> </tr>
+                    <tr> <td><code>&lt;a href="podstrony/oferta.html"&gt;Oferta&lt;/a&gt;</code></td><td>Plik w podfolderze <code>podstrony</code>.</td> </tr>
+                    <tr> <td><code>&lt;a href="../index.html"&gt;Strona główna&lt;/a&gt;</code></td><td>Plik w katalogu nadrzędnym (../).</td> </tr>
+                </tbody>
+            </table>
+</div>
+        <div class="coord-note">
+            Unikaj bezwzględnych ścieżek lokalnych (typu <code>C:\folder\strona.html</code>) - nie działają na serwerze.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>6. Responsywność nawigacji - menu mobilne (zarys)</h2>
+        <p>Współczesne strony często na urządzeniach mobilnych chowają menu pod przycisk "hamburger". Realizuje się to za pomocą CSS (media queries) i JavaScript. Na egzaminie INF03 warto znać podstawy responsywnego menu.</p>
+        <div class="code-sample"><pre>
+&lt;style&gt;
+    @media (max-width: 600px) {
+        nav ul { flex-direction: column; }
+        .menu-toggle { display: block; }
+        nav ul { display: none; }
+        nav ul.show { display: flex; }
+    }
+&lt;/style&gt;
+</pre>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>7. Nawigacja a dostępność (WCAG)</h2>
+        <ul class="custom-list">
+            <li>Menu powinno być w pełni nawigowalne za pomocą klawiatury (TAB).</li>
+            <li>Linki powinny mieć sensowne etykiety (unikaj "kliknij tutaj").</li>
+            <li>Można dodać atrybut <code>aria-label</code> lub <code>aria-current="page"</code> dla aktywnego elementu.</li>
+            <li>Kotwice powinny być dobrze widoczne - warto dodać <code>scroll-margin-top</code> (CSS), aby nie chowały się pod stałym nagłówkiem.</li>
+        </ul>
+        <div class="code-sample"><pre>
+&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="../index.html" aria-current="page"&gt;Start&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="oferta.html"&gt;Oferta&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+</pre>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>8. Typowe błędy i dobre praktyki</h2>
+        <div class="good-bad">
+            <div class="good">
+<h4>Dobre praktyki</h4>
+                <ul>
+                    <li>Stosuj semantyczny <code>&lt;nav&gt;</code> dla menu.</li>
+                    <li>Używaj kotwic dla długich stron (np. FAQ).</li>
+                    <li>Zapewnij spójność nawigacji na wszystkich podstronach.</li>
+                    <li>Wyróżnij aktywny element menu.</li>
+                    <li>Linki prowadzące do sekcji na tej samej stronie - używaj <code>href="#id"</code>.</li>
+                </ul>
+</div>
+            <div class="bad">
+<h4>Częste błędy</h4>
+                <ul>
+                    <li>Brak znacznika <code>&lt;nav&gt;</code> - sama lista bez semantyki.</li>
+                    <li>Kotwice bez <code>id</code> lub zduplikowane identyfikatory.</li>
+                    <li>Nieużywanie <code>scroll-behavior: smooth</code> - nagłe przeskoki.</li>
+                    <li>Menu nieprzystosowane do urządzeń mobilnych.</li>
+                </ul>
+</div>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>9. Co musisz zapamiętać na egzamin INF03</h2>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>&lt;nav&gt;</strong> - kontener menu nawigacyjnego.</div>
+            <div class="attr-card"><strong>Kotwice</strong> - <code>href="#id"</code> oraz element docelowy z <code>id</code>.</div>
+            <div class="attr-card"><strong>Typowy układ</strong> - header, nav, main, section/article, aside, footer.</div>
+            <div class="attr-card"><strong>Linki względne</strong> - do poruszania się między podstronami.</div>
+            <div class="attr-card"><strong>Dostępność</strong> - aria-current, nawigacja klawiaturą.</div>
+</div>
+        <div class="coord-note">
+            Na egzaminie często pojawia się zadanie: "Zaprojektuj stronę z menu nawigacyjnym i kotwicami do sekcji". Pamiętaj o poprawnym użyciu <code>id</code> i <code>href</code>.
+</div>
+        <div class="code-sample" style="margin-top:20px;"><pre>
+&lt;!-- Kompletny przykład strony z nawigacją i sekcjami --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pl"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Strona z nawigacją&lt;/title&gt;
+    &lt;style&gt;
+        html { scroll-behavior: smooth; }
+        section { min-height: 300px; padding: 20px; border-bottom: 1px solid #ccc; }
+        nav { background: #333; padding: 10px; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;nav&gt;
+        &lt;a href="#home"&gt;Start&lt;/a&gt;
+        &lt;a href="#about"&gt;O nas&lt;/a&gt;
+        &lt;a href="#contact"&gt;Kontakt&lt;/a&gt;
+    &lt;/nav&gt;
+    &lt;section id="home"&gt;&lt;h2&gt;Start&lt;/h2&gt;&lt;p&gt;Treść...&lt;/p&gt;&lt;/section&gt;
+    &lt;section id="about"&gt;&lt;h2&gt;O nas&lt;/h2&gt;&lt;p&gt;Opis...&lt;/p&gt;&lt;/section&gt;
+    &lt;section id="contact"&gt;&lt;h2&gt;Kontakt&lt;/h2&gt;&lt;p&gt;Email: ...&lt;/p&gt;&lt;/section&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 Samouczek INF03 - Rozdział 17: Nawigacja i struktura strony (menu, kotwice, układ typowej strony).</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listy w HTML | Podstawy INF03</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Dodatkowe style - zachowują pełną spójność z oryginałem */
+        .doctype-box {
+            background: #1e2a2a;
+            color: #d0f0e5;
+            border-radius: 16px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        .structure-visual {
+            background: #fefcf5;
+            border: 1px solid #ddd2b5;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 25px 0;
+            font-family: monospace;
+            line-height: 1.6;
+        }
+        .tag-demo {
+            background: #f4f1ea;
+            border-radius: 14px;
+            padding: 12px 16px;
+            margin: 12px 0;
+            font-family: monospace;
+            border-left: 4px solid #2f7a67;
+        }
+        .attr-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-badge {
+            background: #eef3f0;
+            border-radius: 40px;
+            padding: 6px 14px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            border: 1px solid #cbdcd3;
+        }
+        .good-bad {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .good, .bad {
+            flex: 1;
+            background: white;
+            border-radius: 18px;
+            padding: 16px 20px;
+            border: 1px solid #e2dfd7;
+        }
+        .good h4 { color: #2f7a67; margin-bottom: 12px; }
+        .bad h4 { color: #b1624b; margin-bottom: 12px; }
+        .attrs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-card {
+            background: #fcf9f2;
+            border-radius: 14px;
+            padding: 12px 16px;
+            border: 1px solid #e5dfd1;
+        }
+        .attr-card strong {
+            color: #1f5e4f;
+            font-family: monospace;
+            font-size: 1.05rem;
+        }
+        .coord-note {
+            background: #eef5f2;
+            border-left: 4px solid #2f7a67;
+            padding: 12px 18px;
+            margin: 15px 0;
+            font-size: 0.95rem;
+            border-radius: 12px;
+        }
+        .warning-tip {
+            background: #fff2df;
+            border-radius: 14px;
+            padding: 12px 18px;
+            margin: 20px 0;
+            border-left: 5px solid #e6a017;
+        }
+        .custom-list {
+            padding-left: 28px;
+            margin: 20px 0;
+        }
+        .custom-list li {
+            margin: 8px 0;
+        }
+        .code-sample {
+            background-color: #1e2a2a;
+            color: #d9f0ea;
+            padding: 20px;
+            border-radius: 16px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+        }
+        .code-sample pre {
+            background: transparent;
+            color: #d0f0e5;
+            margin: 0;
+        }
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 25px 0;
+        }
+        .value-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fefef9;
+        }
+        .value-table th, .value-table td {
+            border: 1px solid #d6d0c4;
+            padding: 12px 16px;
+            text-align: left;
+            vertical-align: top;
+        }
+        .value-table th {
+            background-color: #eef3f0;
+            color: #1b4d41;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        HTML<span>&CSS</span>
+</div>
+    <nav>
+        <a href="../index.html">Start</a>
+        <a href="../html.html" class="active">HTML</a>
+        <a href="../css.html">CSS</a>
+    </nav>
+</header>
+
+<main class="content-page">
+    <div class="page-header">
+        <h1>Rozdział 7: Listy w HTML</h1>
+        <p>
+            Listy pozwalają uporządkować informacje w czytelny sposób. Poznaj listy wypunktowane (<code>&lt;ul&gt;</code>),
+            numerowane (<code>&lt;ol&gt;</code>), elementy listy (<code>&lt;li&gt;</code>) oraz zaawansowane techniki,
+            takie jak listy zagnieżdżone i listy definicji.
+</p>
+</div>
+
+    <section class="topic-section">
+        <h2>1. Lista nieuporządkowana &lt;ul&gt; (unordered list)</h2>
+        <p>Lista wypunktowana - kolejność elementów nie ma znaczenia. Każdy element oznaczony jest domyślnie okrągłym punktorem (można zmienić za pomocą CSS).</p>
+        <div class="code-sample"><pre>
+&lt;ul&gt;
+    &lt;li&gt;Chleb&lt;/li&gt;
+    &lt;li&gt;Mleko&lt;/li&gt;
+    &lt;li&gt;Jajka&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <ul>
+                <li>Chleb</li>
+                <li>Mleko</li>
+                <li>Jajka</li>
+            </ul>
+</div>
+        <div class="coord-note">
+            Atrybut <code>type</code> (disc, circle, square) jest przestarzały - zamiast tego używaj CSS (<code>list-style-type</code>).
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>2. Lista uporządkowana &lt;ol&gt; (ordered list)</h2>
+        <p>Lista numerowana - kolejność elementów jest ważna. Domyślnie używane są cyfry arabskie (1, 2, 3...).</p>
+        <div class="code-sample"><pre>
+&lt;ol&gt;
+    &lt;li&gt;Włącz komputer&lt;/li&gt;
+    &lt;li&gt;Otwórz przeglądarkę&lt;/li&gt;
+    &lt;li&gt;Wpisz adres strony&lt;/li&gt;
+&lt;/ol&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <ol>
+                <li>Włącz komputer</li>
+                <li>Otwórz przeglądarkę</li>
+                <li>Wpisz adres strony</li>
+            </ol>
+</div>
+        <h3>Atrybuty &lt;ol&gt;</h3>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <thead><tr><th>Atrybut</th><th>Opis</th><th>Przykład</th></tr></thead>
+                <tbody>
+                    <tr><td><code>type</code></td><td>Określa rodzaj numeracji</td><td><code>type="A"</code> (A, B, C...), <code>type="I"</code> (I, II, III...)</td></tr>
+                    <tr><td><code>start</code></td><td>Numer początkowej wartości</td><td><code>start="5"</code> (zaczyna od 5)</td></tr>
+                    <tr><td><code>reversed</code></td><td>Odwrócona kolejność (malejąco)</td><td><code>reversed</code> - znacznik logiczny</td></tr>
+                </tbody>
+            </table>
+</div>
+        <div class="code-sample"><pre>
+&lt;ol type="A" start="3"&gt;
+    &lt;li&gt;Trzecia opcja&lt;/li&gt;
+    &lt;li&gt;Czwarta opcja&lt;/li&gt;
+&lt;/ol&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <ol type="A" start="3">
+                <li>Trzecia opcja</li>
+                <li>Czwarta opcja</li>
+            </ol>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>3. Element listy &lt;li&gt; (list item)</h2>
+        <p>Znacznik <code>&lt;li&gt;</code> definiuje pojedynczy element wewnątrz <code>&lt;ul&gt;</code> lub <code>&lt;ol&gt;</code>. Może zawierać dowolną treść: tekst, obrazy, linki, a nawet inne listy.</p>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>Atrybut value</strong> - tylko dla <code>&lt;ol&gt;</code>, zmienia numer bieżącego elementu.<br>
+            <code>&lt;li value="10"&gt;Dziesiąty&lt;/li&gt;</code></div>
+            <div class="attr-card"><strong>Zagnieżdżanie</strong> - <code>&lt;li&gt;</code> może zawierać kolejną listę.</div>
+</div>
+        <div class="warning-tip">
+            Nie używaj <code>&lt;li&gt;</code> poza listami - to niepoprawne składniowo.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>4. Listy zagnieżdżone (listy w listach)</h2>
+        <p>Bardzo przydatne do tworzenia hierarchii (menu wielopoziomowe, spisy treści, kategorie). Pamiętaj, że nowa lista musi znajdować się <strong>wewnątrz</strong> elementu <code>&lt;li&gt;</code>.</p>
+        <div class="code-sample"><pre>
+&lt;ul&gt;
+    &lt;li&gt;Polska
+        &lt;ul&gt;
+            &lt;li&gt;Warszawa&lt;/li&gt;
+            &lt;li&gt;Kraków&lt;/li&gt;
+            &lt;li&gt;Wrocław&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Niemcy
+        &lt;ul&gt;
+            &lt;li&gt;Berlin&lt;/li&gt;
+            &lt;li&gt;Monachium&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <ul>
+                <li>Polska
+                    <ul><li>Warszawa</li><li>Kraków</li><li>Wrocław</li></ul>
+</li>
+                <li>Niemcy
+                    <ul><li>Berlin</li><li>Monachium</li></ul>
+</li>
+            </ul>
+</div>
+        <div class="coord-note">
+            Możesz mieszać typy list: numerowaną wewnątrz wypunktowanej i odwrotnie. Zawsze zachowuj poprawną strukturę.
+</div>
+        <div class="good-bad">
+            <div class="good">
+<h4>Poprawne zagnieżdżenie</h4>
+                <code>&lt;ul&gt;&lt;li&gt;Poziom 1<br>
+                &nbsp;&nbsp;&lt;ol&gt;&lt;li&gt;Poziom 2&lt;/li&gt;&lt;/ol&gt;<br>
+                &lt;/li&gt;&lt;/ul&gt;</code>
+</div>
+            <div class="bad">
+<h4>Błędne zagnieżdżenie</h4>
+                <code>&lt;ul&gt;<br>
+                &lt;li&gt;Poziom 1&lt;/li&gt;<br>
+                &lt;ul&gt;&lt;li&gt;Błąd (poza li)&lt;/li&gt;&lt;/ul&gt;<br>
+                &lt;/ul&gt;</code>
+</div>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>5. Lista definicji &lt;dl&gt;, &lt;dt&gt;, &lt;dd&gt;</h2>
+        <p>Specjalny typ listy dla par termin - definicja. Nie używa <code>&lt;li&gt;</code>, lecz pary <code>&lt;dt&gt;</code> (term) i <code>&lt;dd&gt;</code> (description).</p>
+        <div class="code-sample"><pre>
+&lt;dl&gt;
+    &lt;dt&gt;HTML&lt;/dt&gt;
+    &lt;dd&gt;HyperText Markup Language - język znaczników do tworzenia stron.&lt;/dd&gt;
+    &lt;dt&gt;CSS&lt;/dt&gt;
+    &lt;dd&gt;Cascading Style Sheets - język stylów.&lt;/dd&gt;
+&lt;/dl&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <dl>
+                <dt>HTML</dt>
+                <dd>HyperText Markup Language - język znaczników do tworzenia stron.</dd>
+                <dt>CSS</dt>
+                <dd>Cascading Style Sheets - język stylów.</dd>
+            </dl>
+</div>
+        <div class="coord-note">
+            Listy definicji są idealne do słowniczków, metadanych, często pomijane, ale bardzo przydatne.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>6. Różnice między typami list</h2>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <thead><tr><th>Lista</th><th>Znacznik</th><th>Przeznaczenie</th><th>Przykład</th></tr></thead>
+                <tbody>
+                    <tr><td>Nieuporządkowana</td><td><code>&lt;ul&gt;</code></td><td>Zbiór elementów bez kolejności</td><td>Lista zakupów, nawigacja</td></tr>
+                    <tr><td>Uporządkowana</td><td><code>&lt;ol&gt;</code></td><td>Kolejność ma znaczenie</td><td>Instrukcje krok po kroku, rankingi</td></tr>
+                    <tr><td>Definicji</td><td><code>&lt;dl&gt;</code></td><td>Pojęcie - opis</td><td>Słownik, FAQ, metadane</td></tr>
+                </tbody>
+            </table>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>7. Praktyczne zastosowanie - menu nawigacyjne</h2>
+        <p>Listy są często używane do budowania menu - łatwo je stylować za pomocą CSS (usunięcie punktorów, wyświetlanie w poziomie).</p>
+        <div class="code-sample"><pre>
+&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="../index.html"&gt;Start&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="oferta.html"&gt;Oferta&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="kontakt.html"&gt;Kontakt&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+</pre>
+</div>
+        <div class="warning-tip">
+            Nawigacja w <code>&lt;nav&gt;</code> z listą to standard dostępności (screen reader). Unikaj samych <code>&lt;div&gt;</code> z linkami.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>8. Stylowanie list za pomocą CSS (zarys)</h2>
+        <p>Chociaż to rozdział o HTML, warto wiedzieć, że wygląd punktorów i numeracji definiuje się w CSS:</p>
+        <ul class="custom-list">
+            <li><code>list-style-type</code> - zmienia punktory (disc, circle, square, none, decimal, lower-roman, upper-alpha itd.)</li>
+            <li><code>list-style-image</code> - własny obrazek jako punktor</li>
+            <li><code>list-style-position</code> - położenie punktorów (inside/outside)</li>
+        </ul>
+        <div class="coord-note">
+            W HTML5 nie używaj atrybutów <code>type</code> w <code>&lt;ul&gt;</code> ani <code>&lt;li&gt;</code> - to relikt przeszłości. Wszystkie efekty wizualne przenieś do CSS.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>9. Przykład złożony - spis treści z podrozdziałami</h2>
+        <div class="code-sample"><pre>
+&lt;h2&gt;Spis treści&lt;/h2&gt;
+&lt;ol&gt;
+    &lt;li&gt;Wprowadzenie
+        &lt;ul&gt;
+            &lt;li&gt;Czym jest HTML&lt;/li&gt;
+            &lt;li&gt;Historia&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Podstawowe znaczniki
+        &lt;ul&gt;
+            &lt;li&gt;Nagłówki&lt;/li&gt;
+            &lt;li&gt;Akapity&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Listy
+        &lt;ul&gt;
+            &lt;li&gt;ul, ol, li&lt;/li&gt;
+            &lt;li&gt;Zagnieżdżanie&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ol&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+<h4>Spis treści (efekt):</h4>
+            <ol>
+                <li>Wprowadzenie
+                    <ul><li>Czym jest HTML</li><li>Historia</li></ul>
+</li>
+                <li>Podstawowe znaczniki
+                    <ul><li>Nagłówki</li><li>Akapity</li></ul>
+</li>
+                <li>Listy
+                    <ul><li>ul, ol, li</li><li>Zagnieżdżanie</li></ul>
+</li>
+            </ol>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>10. Co musisz zapamiętać na egzamin INF03</h2>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>&lt;ul&gt;</strong> - lista wypunktowana (kolejność nieistotna).</div>
+            <div class="attr-card"><strong>&lt;ol&gt;</strong> - lista numerowana (ważna kolejność). Atrybuty: <code>type</code>, <code>start</code>, <code>reversed</code>.</div>
+            <div class="attr-card"><strong>&lt;li&gt;</strong> - element listy. Może zawierać inne listy.</div>
+            <div class="attr-card"><strong>Zagnieżdżanie</strong> - nowa lista zawsze wewnątrz <code>&lt;li&gt;</code>.</div>
+            <div class="attr-card"><strong>&lt;dl&gt;, &lt;dt&gt;, &lt;dd&gt;</strong> - lista definicji.</div>
+</div>
+        <div class="coord-note">
+            Częste zadanie egzaminacyjne: utwórz menu w postaci listy <code>&lt;ul&gt;</code> z podstronami (zagnieżdżona lista). Pamiętaj o poprawnej składni.
+</div>
+        <div class="code-sample" style="margin-top:20px;"><pre>
+&lt;!-- Poprawna struktura listy zagnieżdżonej --&gt;
+&lt;ul&gt;
+    &lt;li&gt;Kategoria 1
+        &lt;ul&gt;
+            &lt;li&gt;Podkategoria 1.1&lt;/li&gt;
+            &lt;li&gt;Podkategoria 1.2&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Kategoria 2&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+</div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 Samouczek INF03 - Rozdział 7: Listy w HTML (ul, ol, li, zagnieżdżanie, listy definicji).</p>
+</footer>
+
+</body>
+</html>

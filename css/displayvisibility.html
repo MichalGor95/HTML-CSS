@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display i widoczność | Samouczek INF03</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        HTML<span>&CSS</span>
+</div>
+
+    <nav>
+        <a href="../index.html">Start</a>
+        <a href="../html.html">HTML</a>
+        <a href="../css.html" class="active">CSS</a>
+    </nav>
+</header>
+
+<main class="content-page">
+
+    <div class="page-header">
+        <h1>Rozdział CSS: Display i widoczność</h1>
+        <p>
+            Właściwość <code>display</code> określa, jak element zachowuje się w układzie strony.
+            <code>visibility</code> steruje widocznością elementu bez wpływu na układ.
+            To kluczowe tematy na egzaminie INF03.
+</p>
+</div>
+
+    <!-- CZYM JEST DISPLAY? -->
+    <section class="topic-section">
+        <h2>1. Czym jest właściwość display?</h2>
+        <p>
+            Każdy element HTML ma domyślny typ wyświetlania. Możemy go zmienić za pomocą <code>display</code>.
+            Najważniejsze wartości to: <strong>block</strong>, <strong>inline</strong>, <strong>inline-block</strong>, <strong>none</strong>.
+</p>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <tr><th>Wartość</th><th>Zachowanie</th><th>Przykładowe elementy (domyślnie)</th></tr>
+                <tr><td><code>block</code></th><td>zajmuje całą szerokość, rozpoczyna nową linię</th><td><code>&lt;div&gt;, &lt;p&gt;, &lt;h1&gt;, &lt;section&gt;</code></th></tr>
+                <tr><td><code>inline</code></th><td>tylko tyle miejsca ile treść, nie łamie linii</th><td><code>&lt;span&gt;, &lt;a&gt;, &lt;strong&gt;, &lt;em&gt;</code></th></tr>
+                <tr><td><code>inline-block</code></th><td>jak inline, ale można ustawić szerokość/wysokość</th><td><code>&lt;button&gt;, &lt;input&gt;</code> (często)</th></tr>
+                <tr><td><code>none</code></th>.\]
+
+całkowicie usuwa element z układu</th><td>brak (całkowicie ukryty)</th></tr>
+            </table>
+</div>
+    </section>
+
+    <!-- DISPLAY: BLOCK -->
+    <section class="topic-section">
+        <h2>2. display: block</h2>
+        <p>
+            Element blokowy zajmuje <strong>całą dostępną szerokość</strong> (100% rodzica) i <strong>zawsze zaczyna się od nowej linii</strong>.
+            Można mu nadać <code>width</code>, <code>height</code>, <code>margin</code>, <code>padding</code>.
+</p>
+        <div class="code-sample"><pre>
+/* każdy div jest domyślnie block */
+div {
+    display: block;
+    width: 300px;
+    margin: 20px auto;
+    padding: 15px;
+    background: lightblue;
+}
+
+/* zamiana elementu inline na block */
+span {
+    display: block;
+    background: orange;
+}
+</pre>
+</div>
+        <p>Przykładowe elementy blokowe: <code>&lt;div&gt;, &lt;p&gt;, &lt;h1&gt;-&lt;h6&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;section&gt;, &lt;article&gt;, &lt;header&gt;, &lt;footer&gt;</code>.</p>
+        <p>Zastosowanie: layout strony, kontenery, sekcje.</p>
+    </section>
+
+    <!-- DISPLAY: INLINE -->
+    <section class="topic-section">
+        <h2>3. display: inline</h2>
+        <p>
+            Element liniowy zajmuje tylko tyle miejsca, ile potrzebuje jego treść.
+            <strong>Nie można</strong> ustawić <code>width</code> ani <code>height</code> (ignorowane).
+            <strong>Nie rozpoczyna nowej linii</strong> - ustawia się obok siebie.
+</p>
+        <div class="code-sample"><pre>
+/* domyślnie span jest inline */
+span {
+    display: inline;
+    background: lightgreen;
+    width: 200px;   /* to nie zadziała! */
+    height: 50px;   /* to też nie zadziała! */
+    margin: 20px;   /* tylko lewy/prawy margin działa */
+}
+</pre>
+</div>
+        <p>Przykłady: <code>&lt;span&gt;, &lt;a&gt;, &lt;strong&gt;, &lt;em&gt;, &lt;b&gt;, &lt;i&gt;, &lt;img&gt;</code> (choć <code>&lt;img&gt;</code> jest inline, ale można mu dać width/height - to specjalny przypadek).</p>
+        <p>️ <strong>Ograniczenia inline:</strong> nie działają <code>width</code>, <code>height</code>, pionowe <code>margin</code> i <code>padding</code> nie wpływają na układ otoczenia.</p>
+    </section>
+
+    <!-- DISPLAY: INLINE-BLOCK -->
+    <section class="topic-section">
+        <h2>4. display: inline-block</h2>
+        <p>
+            Łączy cechy <code>inline</code> i <code>block</code>:
+</p>
+        <ul class="custom-list">
+            <li>elementy ustawiają się obok siebie (nie łamią linii)</li>
+            <li>można ustawić <code>width</code>, <code>height</code>, <code>margin</code>, <code>padding</code> (działają poprawnie)</li>
+            <li>odstępy między elementami (białe znaki w HTML) tworzą przerwy - trzeba na to uważać</li>
+        </ul>
+        <div class="code-sample"><pre>
+.inline-block-box {
+    display: inline-block;
+    width: 150px;
+    height: 100px;
+    margin: 10px;
+    padding: 10px;
+    background: coral;
+    text-align: center;
+}
+</pre>
+</div>
+        <p>Świetne do: tworzenia menu poziomego, galerii, przycisków w rzędzie, kart.</p>
+    </section>
+
+    <!-- DISPLAY: NONE -->
+    <section class="topic-section">
+        <h2>5. display: none - całkowite ukrycie</h2>
+        <p>
+            <code>display: none</code> usuwa element z układu strony - <strong>znika całkowicie</strong>,
+            nie zajmuje miejsca, jakby go nie było.
+</p>
+        <div class="code-sample"><pre>
+.ukryty {
+    display: none;
+}
+/* Element z tą klasą będzie niewidoczny i nie wpłynie na otoczenie */
+</pre>
+</div>
+        <p><strong>Ważne:</strong> element nie jest renderowany, nie można go kliknąć, nie wchodzi w interakcje.</p>
+        <p>Zastosowanie: ukrywanie elementów przy media queries, menu mobilne (hamburger), dynamiczne pokazywanie/ukrywanie za pomocą JS.</p>
+    </section>
+
+    <!-- VISIBILITY -->
+    <section class="topic-section">
+        <h2>6. visibility - widoczność z zachowaniem miejsca</h2>
+        <p>
+            Właściwość <code>visibility</code> pozwala ukryć element, ale <strong>zachowuje on swoje miejsce w układzie</strong>.
+</p>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <tr><th>Wartość</th><th>Efekt</th></tr>
+                <tr><td><code>visible</code></th>}.\]
+
+element widoczny (domyślnie)</th></tr>
+                <tr><td><code>hidden</code></th>.\]
+
+element niewidoczny, ale zajmuje miejsce (jest przezroczysty)</th></tr>
+                <tr><td><code>collapse</code></th>.\]
+
+dla tabel - usuwa wiersz/kolumnę; dla innych jak <code>hidden</code></th></tr>
+            </table>
+</div>
+        <div class="code-sample"><pre>
+.visibility-hidden {
+    visibility: hidden;
+    /* element jest niewidoczny, ale jego miejsce pozostaje puste */
+}
+
+.visible {
+    visibility: visible;
+}
+</pre>
+</div>
+        <p>
+            ️ Różnica między <code>display: none</code> a <code>visibility: hidden</code>:
+</p>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <tr><th>Cecha</th><th>display: none</th><th>visibility: hidden</th></tr>
+                <tr><td>Zajmowane miejsce</th><td>Nie - element znika całkowicie</th><td>Tak - element jest niewidoczny, ale rezerwuje miejsce</th></tr>
+                <tr><td>Wpływ na układ</th><td>Inne elementy go zastępują</th><td>Pozostaje pusta przestrzeń</th></tr>
+                <tr><td>Dostępność (screen reader)</th>}.\]
+
+ignorowany</th>}.\]
+
+ignorowany (często)</th></tr>
+            </table>
+</div>
+    </section>
+
+    <!-- PORÓWNANIE DISPLAY I VISIBILITY -->
+    <section class="topic-section">
+        <h2>7. Porównanie - kiedy używać?</h2>
+        <div class="code-sample"><pre>
+/* Całkowite ukrycie elementu (znika z układu) */
+.element {
+    display: none;
+}
+
+/* Ukrycie wizualne, ale miejsce zostaje (np. dla animacji, ładowania) */
+.element {
+    visibility: hidden;
+}
+
+/* Element wraca */
+.element {
+    display: block; /* lub inline, inline-block */
+    visibility: visible;
+}
+</pre>
+</div>
+        <p>
+             Praktyczne zastosowania:
+</p>
+        <ul class="custom-list">
+            <li><code>display: none</code> - ukrywanie całych sekcji, menu mobilnego, elementów warunkowych.</li>
+            <li><code>visibility: hidden</code> - gdy potrzebujemy zachować layout (np. placeholdery, stan ładowania, elementy z animacją zanikania).</li>
+            <li><code>display: block/inline-block</code> - tworzenie przycisków, kart, nawigacji.</li>
+            <li><code>display: inline</code> - łączenie elementów w tekście (np. ikony z opisem).</li>
+        </ul>
+    </section>
+
+    <!-- PRZYKŁAD PRAKTYCZNY -->
+    <section class="topic-section">
+        <h2>8. Przykład - menu poziome z użyciem inline-block</h2>
+        <div class="code-sample"><pre>
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: #333;
+    text-align: center;
+}
+
+nav li {
+    display: inline-block;   /* elementy w poziomie */
+    margin: 0;
+}
+
+nav a {
+    display: inline-block;   /* lub block - ale inline-block pozwala na padding */
+    padding: 12px 20px;
+    color: white;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background: #2f7a67;
+}
+
+/* ukrywanie podmenu na małym ekranie */
+@media (max-width: 600px) {
+    nav li {
+        display: block;      /* układ pionowy */
+    }
+}
+</pre>
+</div>
+        <p>
+            Dzięki <code>inline-block</code> elementy menu układają się poziomo,
+            a na małym ekranie zmieniają się na blokowe.
+</p>
+    </section>
+
+    <!-- ĆWICZENIE EGZAMINACYJNE -->
+    <section class="topic-section">
+        <h2>9. Typowe pytania INF03</h2>
+        <div class="code-sample"><pre>
+/* Pytanie: Jaka będzie różnica w wyglądzie? */
+span.a { display: block; width: 100px; background: red; }
+span.b { display: inline; width: 100px; background: green; }
+span.c { display: inline-block; width: 100px; background: blue; }
+</pre>
+</div>
+        <p>Odpowiedź:</p>
+        <ul class="custom-list">
+            <li><code>display: block</code> - czerwony prostokąt 100px szerokości, nowa linia.</li>
+            <li><code>display: inline</code> - zielony pasek tylko wokół tekstu (width zignorowane), brak nowej linii.</li>
+            <li><code>display: inline-block</code> - niebieski prostokąt 100px, elementy obok siebie.</li>
+        </ul>
+        <p>
+             Zapamiętaj: <strong>inline</strong> - ignoruje width/height, <strong>inline-block</strong> - respektuje.
+</p>
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 Samouczek INF03 - Display i widoczność.</p>
+</footer>
+
+</body>
+</html>

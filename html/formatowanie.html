@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formatowanie tekstu | Podstawy INF03</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .doctype-box {
+            background: #1e2a2a;
+            color: #d0f0e5;
+            border-radius: 16px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        .structure-visual {
+            background: #fefcf5;
+            border: 1px solid #ddd2b5;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 25px 0;
+            font-family: monospace;
+            line-height: 1.6;
+        }
+        .tag-demo {
+            background: #f4f1ea;
+            border-radius: 14px;
+            padding: 12px 16px;
+            margin: 12px 0;
+            font-family: monospace;
+            border-left: 4px solid #2f7a67;
+        }
+        .attr-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-badge {
+            background: #eef3f0;
+            border-radius: 40px;
+            padding: 6px 14px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            border: 1px solid #cbdcd3;
+        }
+        .good-bad {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .good, .bad {
+            flex: 1;
+            background: white;
+            border-radius: 18px;
+            padding: 16px 20px;
+            border: 1px solid #e2dfd7;
+        }
+        .good h4 { color: #2f7a67; margin-bottom: 12px; }
+        .bad h4 { color: #b1624b; margin-bottom: 12px; }
+        .attrs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-card {
+            background: #fcf9f2;
+            border-radius: 14px;
+            padding: 12px 16px;
+            border: 1px solid #e5dfd1;
+        }
+        .attr-card strong {
+            color: #1f5e4f;
+            font-family: monospace;
+            font-size: 1.05rem;
+        }
+        .coord-note {
+            background: #eef5f2;
+            border-left: 4px solid #2f7a67;
+            padding: 12px 18px;
+            margin: 15px 0;
+            font-size: 0.95rem;
+            border-radius: 12px;
+        }
+        .warning-tip {
+            background: #fff2df;
+            border-radius: 14px;
+            padding: 12px 18px;
+            margin: 20px 0;
+            border-left: 5px solid #e6a017;
+        }
+        .format-preview {
+            background: white;
+            border: 1px solid #e2dfd7;
+            border-radius: 16px;
+            padding: 20px;
+            margin: 20px 0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        HTML<span>&CSS</span>
+</div>
+    <nav>
+        <a href="../index.html">Start</a>
+        <a href="../html.html" class="active">HTML</a>
+        <a href="../css.html">CSS</a>
+    </nav>
+</header>
+
+<main class="content-page">
+    <div class="page-header">
+        <h1>Rozdział 4: Formatowanie tekstu</h1>
+        <p>
+            Znaczniki do wyróżniania, podkreślania, indeksów i innych efektów.
+            <strong>Ważne:</strong> za wygląd (pogrubienie, kursywa, kolor) powinien odpowiadać <strong>CSS</strong>,
+            a same znaczniki niosą głównie znaczenie semantyczne lub strukturalne.
+</p>
+</div>
+
+    <section class="topic-section">
+        <h2>1. Pogrubienie: &lt;strong&gt; vs &lt;b&gt;</h2>
+        <p>Oba znaczniki domyślnie pogrubiają tekst, ale mają różne znaczenie:</p>
+        <div class="attrs-grid">
+            <div class="attr-card">
+                <strong>&lt;strong&gt;</strong> - <strong>ważność semantyczna</strong>. Oznacza treść o dużym znaczeniu (dla czytników ekranu, SEO).<br>
+                <em>Przykład:</em> <strong>Ostrzeżenie!</strong> - to jest ważne.
+</div>
+            <div class="attr-card">
+                <strong>&lt;b&gt;</strong> - <strong>tylko wizualne pogrubienie</strong> (bez dodatkowej wagi). Używaj do przyciągnięcia uwagi, ale bez zmiany znaczenia.<br>
+                <em>Przykład:</em> <b>Uwaga:</b> zwykłe wyróżnienie.
+</div>
+</div>
+        <div class="code-sample"><pre>
+&lt;p&gt;&lt;strong&gt;Uwaga!&lt;/strong&gt; To jest bardzo ważna informacja.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Promocja&lt;/b&gt; - tylko do weekendu.&lt;/p&gt;
+</pre>
+</div>
+        <div class="coord-note">
+            Zawsze preferuj <code>&lt;strong&gt;</code> nad <code>&lt;b&gt;</code>, jeśli chcesz nadać tekstowi rzeczywistą wagę. Czytniki ekranu akcentują <code>&lt;strong&gt;</code>.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>2. Kursywa: &lt;em&gt; vs &lt;i&gt;</h2>
+        <p>Analogicznie - jeden ma znaczenie emocjonalne/nacisku, drugi tylko wizualne przechylenie.</p>
+        <div class="attrs-grid">
+            <div class="attr-card">
+                <strong>&lt;em&gt;</strong> (emphasis) - semantyczne podkreślenie, zmiana tonu wypowiedzi. Czytnik ekranu może zmienić intonację.<br>
+                <em>Przykład:</em> Ja naprawdę <em>nie wiem</em>, o co chodzi.
+</div>
+            <div class="attr-card">
+                <strong>&lt;i&gt;</strong> (italic) - tylko wizualna kursywa, używana do tytułów, cytatów, terminów obcojęzycznych.<br>
+                <i>Przykład:</i> Słowo <i>rendez-vous</i> pochodzi z francuskiego.
+</div>
+</div>
+        <div class="code-sample"><pre>
+&lt;p&gt;To jest &lt;em&gt;bardzo ważne&lt;/em&gt; zdanie.&lt;/p&gt;
+&lt;p&gt;Książka &lt;i&gt;Władca Pierścieni&lt;/i&gt; Tolkiena.&lt;/p&gt;
+</pre>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>3. Podkreślenie &lt;u&gt;</h2>
+        <p><strong>&lt;u&gt;</strong> (underline) - podkreśla tekst. Dawniej używany do linków (dziś robi to CSS). W HTML5 ma znaczenie: tekst, który jest inny niż zwykły, np. błędnie napisany, nazwy własne w języku chińskim. Unikaj podkreślania zwykłego tekstu, bo użytkownicy mogą pomylić z linkiem.</p>
+        <div class="tag-demo">
+            Przykład: <u>Ten fragment jest podkreślony</u> (ale to nie jest link).
+</div>
+        <div class="code-sample"><pre>
+&lt;p&gt;To słowo &lt;u&gt;zostało&lt;/u&gt; podkreślone.&lt;/p&gt;
+</pre>
+</div>
+        <div class="warning-tip">
+            Do podkreślania linków użyj CSS (<code>text-decoration: underline</code>). Znacznik <code>&lt;u&gt;</code> stosuj tylko gdy ma to uzasadnienie semantyczne.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>4. Podświetlenie &lt;mark&gt;</h2>
+        <p><strong>&lt;mark&gt;</strong> - oznacza tekst, który został <mark>podświetlony</mark> (jak markerem), np. wyniki wyszukiwania, istotne fragmenty. Domyślnie ma żółte tło (można zmienić CSS).</p>
+        <div class="code-sample"><pre>
+&lt;p&gt;W wynikach wyszukiwania fraza &lt;mark&gt;HTML&lt;/mark&gt; jest podświetlona.&lt;/p&gt;
+</pre>
+</div>
+        <div class="format-preview">
+            Przykład: <mark>To jest podświetlony tekst</mark> (żółte tło).
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>5. Mały tekst &lt;small&gt;</h2>
+        <p><strong>&lt;small&gt;</strong> - zmniejsza czcionkę (o jeden poziom). Często używany do <small>drobnego druku</small>, zastrzeżeń prawnych, przypisów. Ma znaczenie "drobny druk", a nie tylko wizualne zmniejszenie.</p>
+        <div class="code-sample"><pre>
+&lt;p&gt;Cena: 199 zł &lt;small&gt;+ VAT&lt;/small&gt;&lt;/p&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            Normalny tekst, a to <small>jest mały tekst</small>.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>6. Indeks górny &lt;sup&gt; i dolny &lt;sub&gt;</h2>
+        <p><strong>&lt;sup&gt;</strong> (superscript) - indeks górny, np. potęgi, oznaczenia liczb porządkowych. <strong>&lt;sub&gt;</strong> (subscript) - indeks dolny, wzory chemiczne.</p>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>&lt;sup&gt;</strong> - E = mc<sup>2</sup>, 2<sup>3</sup> = 8, 1<sup>st</sup></div>
+            <div class="attr-card"><strong>&lt;sub&gt;</strong> - H<sub>2</sub>O, CO<sub>2</sub>, log<sub>2</sub>8 = 3</div>
+</div>
+        <div class="code-sample"><pre>
+&lt;p&gt;Wzór na wodę: H&lt;sub&gt;2&lt;/sub&gt;O&lt;/p&gt;
+&lt;p&gt;Wzór E=mc&lt;sup&gt;2&lt;/sup&gt; (teoria względności).&lt;/p&gt;
+</pre>
+</div>
+        <div class="format-preview">
+            Przykłady: H<sub>2</sub>O, E = mc<sup>2</sup>, 10<sup>th</sup>.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>7. Dlaczego formatowanie powinno być w CSS (głównie)?</h2>
+        <div class="warning-tip" style="background: #eef5f2; border-left-color: #2f7a67;">
+            <strong>Zasada separacji treści od prezentacji:</strong><br>
+            Znaczniki HTML mają opisywać <strong>strukturę i znaczenie</strong> (semantykę). Wygląd (pogrubienie, kursywa, kolor, rozmiar) należy definiować w CSS. Dlatego:
+            <ul style="margin-top: 10px;">
+                <li><code>&lt;strong&gt;</code> jest lepszy niż <code>&lt;b&gt;</code> - bo mówi "to jest ważne", a nie "to ma być pogrubione".</li>
+                <li><code>&lt;em&gt;</code> lepszy niż <code>&lt;i&gt;</code> - bo mówi "połóż nacisk".</li>
+                <li><code>&lt;u&gt;</code> nie powinno być używane do podkreśleń dekoracyjnych - CSS robi to lepiej.</li>
+                <li><code>&lt;mark&gt;</code> ma sens semantyczny (podświetlenie wyniku), ale jego kolor możesz zmienić CSS.</li>
+                <li><code>&lt;small&gt;</code> - "drobny druk" - można stylować CSS.</li>
+                <li><code>&lt;sup&gt;</code> i <code>&lt;sub&gt;</code> mają konkretne zastosowania matematyczne/chemiczne - są w porządku, ale ich rozmiar i pozycję też można modyfikować CSS.</li>
+            </ul>
+</div>
+        <div class="good-bad">
+            <div class="good">
+<h4>Dobre praktyki (semantyka)</h4>
+                <code>&lt;strong&gt;Ważne&lt;/strong&gt;</code><br>
+                <code>&lt;em&gt;Uwaga&lt;/em&gt;</code><br>
+                <code>&lt;mark&gt;wynik&lt;/mark&gt;</code>
+</div>
+            <div class="bad">
+<h4>Złe (czysto wizualne)</h4>
+                <code>&lt;b&gt;Ważne&lt;/b&gt;</code> - jeśli to naprawdę ważne<br>
+                <code>&lt;i&gt;Uwaga&lt;/i&gt;</code> - bez powodu<br>
+                <code>&lt;span style="font-weight:bold"&gt;Tekst&lt;/span&gt;</code> - to już CSS, ale lepiej użyć strong jeśli chodzi o znaczenie.
+</div>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>8. Przykład zbiorczy (różne znaczniki w akapicie)</h2>
+        <div class="code-sample"><pre>
+&lt;p&gt;
+    &lt;strong&gt;Uwaga!&lt;/strong&gt; To jest bardzo ważne. 
+    &lt;em&gt;Przeczytaj uważnie&lt;/em&gt; przed użyciem. 
+    Wzór chemiczny: H&lt;sub&gt;2&lt;/sub&gt;O. 
+    Potęga: 2&lt;sup&gt;10&lt;/sup&gt; = 1024. 
+    &lt;mark&gt;Wyróżniony fragment&lt;/mark&gt; oraz &lt;small&gt;drobny druk&lt;/small&gt;.
+&lt;/p&gt;
+</pre>
+</div>
+        <div class="format-preview">
+            <strong>Uwaga!</strong> To jest bardzo ważne. 
+            <em>Przeczytaj uważnie</em> przed użyciem. 
+            Wzór chemiczny: H<sub>2</sub>O. 
+            Potęga: 2<sup>10</sup> = 1024. 
+            <mark>Wyróżniony fragment</mark> oraz <small>drobny druk</small>.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>9. Co musisz zapamiętać</h2>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>&lt;strong&gt;</strong> - ważność semantyczna (pogrubienie)</div>
+            <div class="attr-card"><strong>&lt;em&gt;</strong> - nacisk semantyczny (kursywa)</div>
+            <div class="attr-card"><strong>&lt;b&gt; / &lt;i&gt;</strong> - tylko wizualne (bez znaczenia)</div>
+            <div class="attr-card"><strong>&lt;u&gt;</strong> - podkreślenie (rzadko używane)</div>
+            <div class="attr-card"><strong>&lt;mark&gt;</strong> - podświetlenie (wyniki wyszukiwania)</div>
+            <div class="attr-card"><strong>&lt;small&gt;</strong> - drobny druk</div>
+            <div class="attr-card"><strong>&lt;sup&gt; / &lt;sub&gt;</strong> - indeksy górny/dolny</div>
+            <div class="attr-card"><strong>CSS</strong> - odpowiada za wygląd (pogrubienie, kolor, rozmiar)</div>
+</div>
+        <div class="coord-note">
+            Na egzaminie INF03 często pytają o różnicę między <code>&lt;strong&gt;</code> a <code>&lt;b&gt;</code> oraz między <code>&lt;em&gt;</code> a <code>&lt;i&gt;</code>. Pamiętaj: semantyka vs. wizualność.
+</div>
+        <div class="code-sample" style="margin-top:20px;"><pre>
+&lt;!-- Przykład zgodny z dobrymi praktykami --&gt;
+&lt;p&gt;
+    &lt;strong&gt;Ostrzeżenie!&lt;/strong&gt; 
+    &lt;em&gt;Nie dotykaj&lt;/em&gt; gorącej powierzchni.
+    Wzór: H&lt;sub&gt;2&lt;/sub&gt;SO&lt;sub&gt;4&lt;/sub&gt;.
+    &lt;mark&gt;Nowość!&lt;/mark&gt;
+&lt;/p&gt;
+</pre>
+</div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 Samouczek INF03 - Rozdział 4: Formatowanie tekstu (semantyka vs. CSS).</p>
+</footer>
+
+</body>
+</html>

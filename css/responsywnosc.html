@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsywność | Samouczek INF03</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* dodatkowe style dla przykładów */
+        .responsive-demo {
+            background: #f0f4f2;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .demo-box {
+            background: #2f7a67;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+        }
+        /* przykładowy breakpoint w ramach demonstracji - tu tylko wizualizacja */
+        @media (max-width: 600px) {
+            .demo-box {
+                background: #e67e22;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        HTML<span>&CSS</span>
+</div>
+
+    <nav>
+        <a href="../index.html">Start</a>
+        <a href="../html.html">HTML</a>
+        <a href="../css.html" class="active">CSS</a>
+    </nav>
+</header>
+
+<main class="content-page">
+
+    <div class="page-header">
+        <h1>Rozdział CSS: Responsywność</h1>
+        <p>
+            Responsywność to umiejętność dostosowywania się strony do różnych rozmiarów ekranu
+            - od telefonów komórkowych, przez tablety, aż po szerokie monitory.
+            Kluczowymi narzędziami są <strong>media queries</strong>, <strong>breakpointy</strong>,
+            strategia <strong>mobile-first</strong> oraz <strong>elastyczne układy</strong> (flexbox/grid).
+            To obowiązkowy temat na egzaminie INF03.
+</p>
+</div>
+
+    <!-- CZYM JEST RESPONSYWNOŚĆ -->
+    <section class="topic-section">
+        <h2>1. Czym jest responsywność?</h2>
+        <p>
+            Responsywny Web Design (RWD) to podejście, w którym strona automatycznie dostosowuje swój wygląd
+            i układ do szerokości okna przeglądarki. Dzięki temu strona jest użyteczna na każdym urządzeniu.
+</p>
+        <ul class="custom-list">
+            <li>płynne siatki (procenty, fr, flexbox, grid)</li>
+            <li>elastyczne obrazy (<code>max-width: 100%</code>)</li>
+            <li>media queries - reguły warunkowe dla różnych rozmiarów</li>
+            <li>viewport meta tag - kontrolowanie skali na urządzeniach mobilnych</li>
+        </ul>
+        <div class="code-sample"><pre>
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+</pre>
+</div>
+        <p>Bez tego meta tagu strony na telefonach będą wyglądać jak pomniejszone wersje desktopowe.</p>
+    </section>
+
+    <!-- MEDIA QUERIES -->
+    <section class="topic-section">
+        <h2>2. @media - zapytania medialne</h2>
+        <p>
+            Media queries pozwalają stosować style tylko w określonych warunkach, np. przy maksymalnej szerokości ekranu.
+</p>
+        <div class="code-sample"><pre>
+/* Dla ekranów o szerokości do 768px */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    .sidebar {
+        display: none;
+    }
+}
+
+/* Dla ekranów powyżej 1200px */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+        margin: 0 auto;
+    }
+}
+
+/* Zakres między 768px a 1024px (tablety) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .card {
+        width: 50%;
+    }
+}
+</pre>
+</div>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <tr><th>Warunek</th><th>Znaczenie</th></tr>
+                <tr><td><code>max-width: 768px</code></th><td>dla urządzeń o szerokości ≤ 768px (telefony, małe tablety)</th></tr>
+                <tr><td><code>min-width: 768px</code></th><td>dla urządzeń o szerokości ≥ 768px (tablety i większe)</th></tr>
+                <tr><td><code>orientation: portrait</code></th><td>pionowa orientacja ekranu</th></tr>
+                <tr><td><code>orientation: landscape</code></th><td>pozioma orientacja</th></tr>
+                <tr><td><code>min-resolution: 192dpi</code></th><td>ekrany o wysokiej rozdzielczości (Retina)</th></tr>
+            </table>
+</div>
+        <p>Można też łączyć z <code>screen</code> (ekrany) lub <code>print</code> (druk).</p>
+    </section>
+
+    <!-- BREAKPOINTY -->
+    <section class="topic-section">
+        <h2>3. Breakpointy - punkty przełomowe</h2>
+        <p>
+            Breakpointy to konkretne wartości szerokości, przy których zmienia się układ strony.
+            Najczęściej używa się kilku standardowych punktów.
+</p>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <tr><th>Typ urządzenia</th><th>Szerokość (częste breakpointy)</th></tr>
+                <tr><td>telefony (portret)</th><td>< 576px</th></tr>
+                <tr><td>telefony (landscape) / małe tablety</th><td>576px - 768px</th></tr>
+                <tr><td>tablety</th><td>768px - 992px</th></tr>
+                <tr><td>desktopy</th><td>992px - 1200px</th></tr>
+                <tr><td>duże ekrany</th><td>> 1200px</th></tr>
+            </table>
+</div>
+        <div class="code-sample"><pre>
+/* Popularne breakpointy w praktyce */
+/* Telefony */
+@media (max-width: 576px) { ... }
+
+/* Tablety pionowe */
+@media (min-width: 577px) and (max-width: 768px) { ... }
+
+/* Tablety poziome / małe laptopy */
+@media (min-width: 769px) and (max-width: 992px) { ... }
+
+/* Desktopy */
+@media (min-width: 993px) and (max-width: 1200px) { ... }
+
+/* Duże ekrany */
+@media (min-width: 1201px) { ... }
+</pre>
+</div>
+        <p>
+             Breakpointy warto dobierać w oparciu o treść, a nie tylko urządzenia.
+            Często używa się 576px, 768px, 992px, 1200px (zgodnie z Bootstrapem).
+</p>
+    </section>
+
+    <!-- MOBILE-FIRST -->
+    <section class="topic-section">
+        <h2>4. Strategia mobile-first</h2>
+        <p>
+            Mobile-first oznacza projektowanie najpierw dla najmniejszych ekranów (telefonów),
+            a następnie dodawanie stylów dla większych urządzeń za pomocą <code>min-width</code>.
+            Dzięki temu strona jest lżejsza i lepiej działa na urządzeniach mobilnych.
+</p>
+        <div class="code-sample"><pre>
+/* Styl domyślny - dla telefonów (brak media query) */
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.card {
+    width: 100%;
+}
+
+/* Dla tabletów i większych */
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .card {
+        width: calc(50% - 10px);
+    }
+}
+
+/* Dla desktopów */
+@media (min-width: 992px) {
+    .card {
+        width: calc(33.333% - 10px);
+    }
+}
+</pre>
+</div>
+        <div class="responsive-demo">
+            <div class="demo-box" style="background: #2f7a67;">
+                Ten kolor zmienia się na pomarańczowy gdy ekran ma szerokość &le; 600px (przykład)
+</div>
+            <p class="demo-label" style="margin-top: 10px;">(zmniejsz okno przeglądarki, aby zobaczyć)</p>
+</div>
+        <p>
+             Zalety mobile-first: lepsza wydajność na urządzeniach mobilnych, mniej kodu,
+            naturalne stopniowe ulepszanie (progressive enhancement).
+</p>
+    </section>
+
+    <!-- ELastyczne UKŁADY -->
+    <section class="topic-section">
+        <h2>5. Elastyczne układy - bez media queries</h2>
+        <p>
+            Responsywność można osiągnąć także bez media queries, używając elastycznych jednostek i właściwości CSS.
+</p>
+        <ul class="custom-list">
+            <li><strong>Procenty</strong> - <code>width: 100%</code>, <code>width: 50%</code></li>
+            <li><strong>max-width</strong> - <code>img { max-width: 100%; }</code></li>
+            <li><strong>Jednostki vw/vh</strong> - względem viewportu</li>
+            <li><strong>Flexbox z wrap</strong> - <code>flex-wrap: wrap</code> + <code>flex-basis</code></li>
+            <li><strong>Grid z auto-fit / auto-fill</strong> - <code>repeat(auto-fit, minmax(200px, 1fr))</code></li>
+            <li><strong>Funkcje clamp(), min(), max()</strong> - płynne skalowanie</li>
+        </ul>
+        <div class="code-sample"><pre>
+/* Elastyczna siatka z flexbox */
+.flex-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.flex-item {
+    flex: 1 1 250px;  /* minimum 250px, rośnie jeśli miejsce */
+}
+
+/* Elastyczna siatka z grid (bez media queries) */
+.grid-auto {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+/* Płynna czcionka */
+h1 {
+    font-size: clamp(24px, 5vw, 48px);
+}
+</pre>
+</div>
+        <p>
+             <code>clamp(min, preferred, max)</code> - idealne do responsywnych czcionek i odstępów.
+</p>
+    </section>
+
+    <!-- PRZYKŁAD PRAKTYCZNY - MOBILE FIRST NAVIGATION -->
+    <section class="topic-section">
+        <h2>6. Przykład - nawigacja mobile-first</h2>
+        <div class="code-sample"><pre>
+&lt;style&gt;
+    /* domyślnie (telefon) - menu pionowe */
+    .nav {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background: #333;
+        padding: 15px;
+    }
+    .nav a {
+        color: white;
+        text-decoration: none;
+        padding: 8px;
+        text-align: center;
+        border-radius: 5px;
+    }
+    .nav a:hover {
+        background: #2f7a67;
+    }
+
+    /* tablet i większe - menu poziome */
+    @media (min-width: 768px) {
+        .nav {
+            flex-direction: row;
+            justify-content: space-around;
+        }
+        .nav a {
+            flex: 1;
+        }
+    }
+
+    /* desktop - większe odstępy */
+    @media (min-width: 1200px) {
+        .nav {
+            justify-content: flex-start;
+            gap: 30px;
+            padding-left: 50px;
+        }
+        .nav a {
+            flex: 0 0 auto;
+        }
+    }
+&lt;/style&gt;
+</pre>
+</div>
+    </section>
+
+    <!-- RESPONSYWNE OBRAZY I MULTIMEDIA -->
+    <section class="topic-section">
+        <h2>7. Responsywne obrazy i filmy</h2>
+        <div class="code-sample"><pre>
+/* Podstawowa zasada */
+img, video, iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Dla filmów YouTube - zachowanie proporcji 16:9 */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 9/16 */
+    height: 0;
+    overflow: hidden;
+}
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+</pre>
+</div>
+    </section>
+
+    <!-- VIEWPORT META -->
+    <section class="topic-section">
+        <h2>8. Viewport meta tag - niezbędnik RWD</h2>
+        <div class="code-sample"><pre>
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+</pre>
+</div>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <tr><th>Parametr</th><th>Znaczenie</th></tr>
+                <tr><td><code>width=device-width</code></th><td>szerokość układu równa szerokości ekranu urządzenia</th></tr>
+                <tr><td><code>initial-scale=1.0</code></td><td>początkowy poziom powiększenia = 1 (bez zoomu)</td></tr>
+<tr><td><code>user-scalable=yes/no</code></th><td>czy użytkownik może powiększać (dostępność: lepiej yes)</th></tr>
+            </table>
+</div>
+        <p>️ Bez tego tagu przeglądarki mobilne domyślnie ustawiają szerokość ok. 980px i skalują stronę.</p>
+    </section>
+
+    <!-- TYPOWE PYTANIA EGZAMINACYJNE -->
+    <section class="topic-section">
+        <h2>9. Ćwiczenia INF03 - responsywność</h2>
+        <p><strong>Pytanie 1:</strong> Jaka jest różnica między <code>@media (max-width: 600px)</code> a <code>@media (min-width: 600px)</code>?</p>
+        <p>Odpowiedź: <code>max-width</code> stosuje style dla ekranów o szerokości ≤ 600px. <code>min-width</code> dla ekranów ≥ 600px (strategia mobile-first).</p>
+
+        <p><strong>Pytanie 2:</strong> Dlaczego warto używać mobile-first?</p>
+        <p>Odpowiedź: Ponieważ większość ruchu pochodzi z urządzeń mobilnych, strona ładuje się szybciej, a style są stopniowo ulepszane dla większych ekranów.</p>
+
+        <p><strong>Pytanie 3:</strong> Jak sprawić, by obraz nie był większy od swojego kontenera?</p>
+        <div class="code-sample"><pre>
+img {
+    max-width: 100%;
+    height: auto;
+}
+</pre>
+</div>
+
+        <p><strong>Pytanie 4:</strong> Co daje <code>flex-wrap: wrap</code> w responsywności?</p>
+        <p>Odpowiedź: Pozwala elementom flex przenosić się do nowych wierszy, gdy brakuje miejsca, tworząc responsywny układ.</p>
+    </section>
+
+    <!-- PODSUMOWANIE -->
+    <section class="topic-section">
+        <h2>10. Podsumowanie - dobra praktyka RWD</h2>
+        <ul class="custom-list">
+            <li>Zawsze dodawaj <code>meta viewport</code></li>
+            <li>Stosuj elastyczne jednostki (%, fr, vw, rem, clamp)</li>
+            <li>Używaj <code>max-width: 100%</code> dla obrazów i multimediów</li>
+            <li>Projektuj z podejściem mobile-first (style domyślne dla telefonów)</li>
+            <li>Definiuj breakpointy tam, gdzie układ przestaje działać (content-driven)</li>
+            <li>Testuj na rzeczywistych urządzeniach lub w narzędziach deweloperskich</li>
+        </ul>
+        <div class="code-sample"><pre>
+/* Przykład kompletnego, responsywnego kontenera */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+/* Dla dużych ekranów zwiększamy padding */
+@media (min-width: 1400px) {
+    .container {
+        padding: 0 40px;
+    }
+}
+</pre>
+</div>
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 Samouczek INF03 - Responsywność.</p>
+</footer>
+
+</body>
+</html>

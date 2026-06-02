@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pozycjonowanie | Samouczek INF03</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* dodatkowe style demonstracyjne dla przykładów */
+        .demo-container {
+            background: #f0f0f0;
+            border: 2px dashed #ccc;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+            min-height: 200px;
+        }
+        .demo-box {
+            background: #2f7a67;
+            color: white;
+            padding: 10px;
+            margin: 5px;
+            text-align: center;
+            width: 120px;
+            display: inline-block;
+        }
+        .relative-box {
+            position: relative;
+            top: 20px;
+            left: 20px;
+            background: #e67e22;
+        }
+        .absolute-box {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: #c0392b;
+            width: auto;
+        }
+        .fixed-demo {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #2980b9;
+            padding: 10px 15px;
+            border-radius: 8px;
+            z-index: 1000;
+        }
+        .sticky-demo {
+            position: sticky;
+            top: 0;
+            background: #8e44ad;
+            padding: 10px;
+            margin: 0;
+            color: white;
+        }
+        .overflow-demo {
+            width: 200px;
+            height: 100px;
+            background: #ecf0f1;
+            border: 1px solid #999;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        HTML<span>&CSS</span>
+</div>
+
+    <nav>
+        <a href="../index.html">Start</a>
+        <a href="../html.html">HTML</a>
+        <a href="../css.html" class="active">CSS</a>
+    </nav>
+</header>
+
+<main class="content-page">
+
+    <div class="page-header">
+        <h1>Rozdział CSS: Pozycjonowanie</h1>
+        <p>
+            Pozycjonowanie w CSS określa, jak elementy są rozmieszczane na stronie.
+            Dzięki niemu możesz umieszczać elementy w konkretnych miejscach, tworzyć nawigacje przyklejone do ekranu,
+            nakładki czy menu kontekstowe. To jeden z ważniejszych tematów na egzaminie INF03.
+</p>
+</div>
+
+    <!-- WPROWADZENIE -->
+    <section class="topic-section">
+        <h2>1. Czym jest pozycjonowanie?</h2>
+        <p>
+            Właściwość <code>position</code> określa typ pozycjonowania elementu. Może przyjmować wartości:
+            <code>static</code> (domyślnie), <code>relative</code>, <code>absolute</code>, <code>fixed</code>, <code>sticky</code>.
+</p>
+        <p>
+            Dla elementów pozycjonowanych (innych niż <code>static</code>) można użyć właściwości
+            <code>top</code>, <code>right</code>, <code>bottom</code>, <code>left</code> do przesunięcia.
+</p>
+    </section>
+
+    <!-- STATIC -->
+    <section class="topic-section">
+        <h2>2. position: static</h2>
+        <p>
+            Wartość domyślna. Element pozostaje w normalnym przepływie dokumentu.
+            Właściwości <code>top/right/bottom/left</code> oraz <code>z-index</code> <strong>nie działają</strong>.
+</p>
+        <div class="code-sample"><pre>
+/* Domyślnie każdy element ma position: static */
+div {
+    position: static;
+    top: 20px;   /* ignorowane */
+    left: 20px;  /* ignorowane */
+}
+</pre>
+</div>
+        <p>Nie trzeba go ustawiać - to wartość początkowa. Używa się go czasem, aby "odjąć" pozycjonowanie.</p>
+    </section>
+
+    <!-- RELATIVE -->
+    <section class="topic-section">
+        <h2>3. position: relative</h2>
+        <p>
+            Element pozostaje w normalnym przepływie, ale można go przesunąć względem jego normalnej pozycji
+            za pomocą <code>top/right/bottom/left</code>. Inne elementy nie reagują na to przesunięcie
+            (zachowują oryginalne miejsce).
+</p>
+        <div class="code-sample"><pre>
+.relative-box {
+    position: relative;
+    top: 20px;    /* przesuwa w dół o 20px od normalnej pozycji */
+    left: 30px;   /* przesuwa w prawo o 30px */
+    background: orange;
+}
+</pre>
+</div>
+        <div class="demo-container">
+            <div class="demo-box">normalny 1</div>
+            <div class="demo-box relative-box">relative (top:20px, left:20px)</div>
+            <div class="demo-box">normalny 2</div>
+</div>
+        <p>
+             <strong>Ważne:</strong> Element z <code>relative</code> staje się punktem odniesienia dla pozycjonowanych
+            absolutnie dzieci (jeśli nie mają własnego pozycjonowanego rodzica).
+</p>
+    </section>
+
+    <!-- ABSOLUTE -->
+    <section class="topic-section">
+        <h2>4. position: absolute</h2>
+        <p>
+            Element zostaje <strong>wyrwany z normalnego przepływu</strong>. Nie wpływa na układ innych elementów.
+            Jest pozycjonowany względem <strong>najbliższego przodka z pozycjonowaniem</strong> (nie static)
+            lub względem &lt;html&gt;, jeśli takiego nie ma.
+</p>
+        <div class="code-sample"><pre>
+.kontener {
+    position: relative;  /* punkt odniesienia */
+}
+.absolute-box {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: red;
+}
+</pre>
+</div>
+        <div class="demo-container" style="position: relative; min-height: 150px;">
+            <div class="demo-box">zwykły</div>
+            <div class="demo-box absolute-box" style="position: absolute; bottom: 10px; right: 10px;">absolute</div>
+            <div style="background: #ddd; padding: 10px;">Ten kontener ma position: relative, więc absolute jest względem niego.</div>
+</div>
+        <p>
+             Zastosowania: menu rozwijane, dymki, nakładki, modale, przyciski w rogu kontenera.
+</p>
+    </section>
+
+    <!-- FIXED -->
+    <section class="topic-section">
+        <h2>5. position: fixed</h2>
+        <p>
+            Element jest pozycjonowany względem <strong>okna przeglądarki</strong> (viewport).
+            Pozostaje w tym samym miejscu podczas przewijania strony.
+            Zostaje wyrwany z przepływu.
+</p>
+        <div class="code-sample"><pre>
+.fixed-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #2980b9;
+    padding: 10px 15px;
+    border-radius: 8px;
+    z-index: 100;
+}
+</pre>
+</div>
+        <div class="fixed-demo" style="position: static; display: inline-block; background: #2980b9; margin-top: 10px;">
+            (przykład: przycisk fixed pojawiłby się w rogu okna)
+</div>
+        <p>
+             Zastosowania: przycisk "Do góry", stałe menu, pasek zgody na cookies, czat.
+            ️ Uwaga: na urządzeniach mobilnych fixed może sprawiać problemy - ale to już zaawansowane.
+</p>
+    </section>
+
+    <!-- STICKY -->
+    <section class="topic-section">
+        <h2>6. position: sticky</h2>
+        <p>
+            Mieszanka <code>relative</code> i <code>fixed</code>. Element zachowuje się jak <code>relative</code>,
+            ale gdy użytkownik przewinie stronę do określonego progu (<code>top</code>, <code>bottom</code> itp.),
+            "przykleja się" do ekranu jak <code>fixed</code> w obrębie rodzica.
+</p>
+        <div class="code-sample"><pre>
+.sticky-header {
+    position: sticky;
+    top: 0;
+    background: #8e44ad;
+    color: white;
+    padding: 10px;
+}
+</pre>
+</div>
+        <div style="height: 150px; overflow-y: auto; border: 1px solid #ccc;">
+            <div class="sticky-demo" style="position: sticky; top: 0;">Przyklejony nagłówek (przewiń)</div>
+            <p>Linia 1</p><p>Linia 2</p><p>Linia 3</p><p>Linia 4</p><p>Linia 5</p>
+            <p>Linia 6</p><p>Linia 7</p><p>Linia 8</p><p>Linia 9</p><p>Linia 10</p>
+</div>
+        <p>
+             Zastosowania: nagłówki sekcji, menu boczne, panele, które mają być widoczne podczas przewijania.
+            ️ Wymaga podania <code>top</code>, <code>bottom</code> itp. - inaczej nie zadziała.
+</p>
+    </section>
+
+    <!-- TOP, RIGHT, BOTTOM, LEFT -->
+    <section class="topic-section">
+        <h2>7. top, right, bottom, left - przesunięcia</h2>
+        <p>
+            Właściwości te określają odległość od odpowiedniej krawędzi <strong>elementu pozycjonowanego</strong>
+            do krawędzi <strong>elementu odniesienia</strong> (czyli najbliższego pozycjonowanego przodka dla absolute,
+            viewport dla fixed, lub normalnej pozycji dla relative).
+</p>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <tr><th>Właściwość</th><th>Działanie</th></tr>
+                <tr><td><code>top: 20px;</code></th><td>odsuwa od górnej krawędzi (w dół)</th></tr>
+                <tr><td><code>right: 10px;</code></th><td>odsuwa od prawej krawędzi (w lewo)</th></tr>
+                <tr><td><code>bottom: 30px;</code></th><td>odsuwa od dolnej krawędzi (w górę)</th></tr>
+                <tr><td><code>left: 15px;</code></th><td>odsuwa od lewej krawędzi (w prawo)</th></tr>
+            </table>
+</div>
+        <div class="code-sample"><pre>
+/* Przykład: element absolutny 20px od górnej i 10px od lewej krawędzi rodzica */
+.box {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+}
+</pre>
+</div>
+        <p>Dla <code>relative</code>: <code>top: 20px</code> przesuwa element w dół od jego normalnej pozycji.</p>
+    </section>
+
+    <!-- Z-INDEX -->
+    <section class="topic-section">
+        <h2>8. z-index - warstwy (kolejność nakładania)</h2>
+        <p>
+            Właściwość <code>z-index</code> określa, który element znajduje się na wierzchu, gdy się nakładają.
+            Działa tylko na elementach pozycjonowanych (nie static). Im wyższa wartość, tym wyżej.
+</p>
+        <div class="code-sample"><pre>
+.div1 {
+    position: absolute;
+    z-index: 10;
+    background: red;
+}
+.div2 {
+    position: absolute;
+    z-index: 20;  /* będzie wyżej niż div1 */
+    background: blue;
+}
+</pre>
+</div>
+        <div class="demo-container" style="position: relative; height: 120px;">
+            <div style="position: absolute; top: 20px; left: 20px; width: 100px; height: 80px; background: red; z-index: 1; color: white; padding: 5px;">z-index:1</div>
+            <div style="position: absolute; top: 40px; left: 40px; width: 100px; height: 80px; background: blue; z-index: 2; color: white; padding: 5px;">z-index:2 (wyżej)</div>
+            <div style="position: absolute; top: 60px; left: 60px; width: 100px; height: 80px; background: green; z-index: 3; color: white; padding: 5px;">z-index:3 (najwyżej)</div>
+</div>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <tr><th>Wartość</th><th>Znaczenie</th></tr>
+                <tr><td><code>auto</code></th><td>domyślnie, 0 (lub dziedziczy)</th></tr>
+                <tr><td><code>0</code>, <code>1</code>, <code>999</code> ...</th>.\]
+
+liczba całkowita - im wyższa, tym wyżej</th></tr>
+                <tr><td><code>-1</code></th><td>można umieścić pod spodem</th></tr>
+            </table>
+</div>
+        <p>️ <code>z-index</code> działa tylko w obrębie tego samego kontekstu nakładania (np. rodzica).</p>
+    </section>
+
+    <!-- OVERFLOW -->
+    <section class="topic-section">
+        <h2>9. overflow - co robić z nadmiarem treści</h2>
+        <p>
+            Gdy treść jest większa niż rozmiar elementu, <code>overflow</code> określa, czy dodać paski przewijania,
+            przyciąć, czy pozwolić na wyjście poza element.
+</p>
+        <div class="code-sample"><pre>
+/* Domyślnie overflow: visible - treść wychodzi poza ramkę */
+.box1 {
+    overflow: visible;
+}
+
+/* Przycinanie - treść obcięta, bez pasków */
+.box2 {
+    overflow: hidden;
+}
+
+/* Dodaje paski przewijania (zawsze) */
+.box3 {
+    overflow: scroll;
+}
+
+/* Dodaje paski tylko gdy potrzebne (najczęściej używane) */
+.box4 {
+    overflow: auto;
+}
+</pre>
+</div>
+        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+            <div class="overflow-demo" style="overflow: visible;">
+                <strong>visible</strong><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</div>
+            <div class="overflow-demo" style="overflow: hidden;">
+                <strong>hidden</strong><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</div>
+            <div class="overflow-demo" style="overflow: scroll;">
+                <strong>scroll</strong><br>Lorem ipsum dolor sit amet.
+</div>
+            <div class="overflow-demo" style="overflow: auto;">
+                <strong>auto</strong><br>Lorem ipsum dolor sit amet.
+</div>
+</div>
+        <p>Można też użyć <code>overflow-x</code> i <code>overflow-y</code> dla oddzielnych osi.</p>
+    </section>
+
+    <!-- PRZYKŁAD PRAKTYCZNY -->
+    <section class="topic-section">
+        <h2>10. Przykład - kombinacja różnych pozycjonowań</h2>
+        <div class="code-sample"><pre>
+&lt;style&gt;
+    .card {
+        position: relative;
+        width: 300px;
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .card-img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+    .badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: #e74c3c;
+        color: white;
+        padding: 4px 8px;
+        border-radius: 20px;
+        font-size: 12px;
+        z-index: 2;
+    }
+    .card-content {
+        padding: 15px;
+    }
+    .sticky-note {
+        position: sticky;
+        top: 20px;
+        background: #f1c40f;
+        padding: 8px;
+        text-align: center;
+    }
+    .back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #2f7a67;
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 40px;
+        text-decoration: none;
+        z-index: 1000;
+    }
+&lt;/style&gt;
+</pre>
+</div>
+        <p>Ten przykład pokazuje: kartę z absolutną etykietą, stały przycisk "do góry" i lepką notatkę.</p>
+    </section>
+
+    <!-- TYPOWE PYTANIA EGZAMINACYJNE -->
+    <section class="topic-section">
+        <h2>11. Ćwiczenia INF03</h2>
+        <p><strong>Pytanie 1:</strong> Różnica między <code>relative</code> a <code>absolute</code>?</p>
+        <p>Odpowiedź: <code>relative</code> pozostawia miejsce w przepływie i przesuwa względem siebie. <code>absolute</code> usuwa element z przepływu i pozycjonuje względem przodka pozycjonowanego.</p>
+
+        <p><strong>Pytanie 2:</strong> Co to jest <code>z-index</code> i kiedy działa?</p>
+        <p>Odpowiedź: Określa kolejność nakładania elementów pozycjonowanych (nie static). Wyższa wartość = wyżej.</p>
+
+        <p><strong>Pytanie 3:</strong> Dlaczego <code>position: sticky</code> nie działa, gdy nie ustawimy <code>top</code>?</p>
+        <p>Odpowiedź: Bo nie wiadomo, w którym momencie ma się przykleić. Potrzebuje progu.</p>
+
+        <p><strong>Pytanie 4:</strong> Co zrobi <code>overflow: hidden</code>?</p>
+        <p>Odpowiedź: Przycina treść wychodzącą poza ramkę, nie dodaje pasków przewijania.</p>
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 Samouczek INF03 - Pozycjonowanie.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nagłówki i akapity | Podstawy INF03</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .doctype-box {
+            background: #1e2a2a;
+            color: #d0f0e5;
+            border-radius: 16px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        .structure-visual {
+            background: #fefcf5;
+            border: 1px solid #ddd2b5;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 25px 0;
+            font-family: monospace;
+            line-height: 1.6;
+        }
+        .tag-demo {
+            background: #f4f1ea;
+            border-radius: 14px;
+            padding: 12px 16px;
+            margin: 12px 0;
+            font-family: monospace;
+            border-left: 4px solid #2f7a67;
+        }
+        .attr-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-badge {
+            background: #eef3f0;
+            border-radius: 40px;
+            padding: 6px 14px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            border: 1px solid #cbdcd3;
+        }
+        .good-bad {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .good, .bad {
+            flex: 1;
+            background: white;
+            border-radius: 18px;
+            padding: 16px 20px;
+            border: 1px solid #e2dfd7;
+        }
+        .good h4 { color: #2f7a67; margin-bottom: 12px; }
+        .bad h4 { color: #b1624b; margin-bottom: 12px; }
+        .attrs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px,1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-card {
+            background: #fcf9f2;
+            border-radius: 14px;
+            padding: 12px 16px;
+            border: 1px solid #e5dfd1;
+        }
+        .attr-card strong {
+            color: #1f5e4f;
+            font-family: monospace;
+            font-size: 1.05rem;
+        }
+        .coord-note {
+            background: #eef5f2;
+            border-left: 4px solid #2f7a67;
+            padding: 12px 18px;
+            margin: 15px 0;
+            font-size: 0.95rem;
+            border-radius: 12px;
+        }
+        .warning-tip {
+            background: #fff2df;
+            border-radius: 14px;
+            padding: 12px 18px;
+            margin: 20px 0;
+            border-left: 5px solid #e6a017;
+        }
+        .heading-demo {
+            background: white;
+            border: 1px solid #e2dfd7;
+            border-radius: 16px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .heading-demo h1, .heading-demo h2, .heading-demo h3, 
+        .heading-demo h4, .heading-demo h5, .heading-demo h6 {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        HTML<span>&CSS</span>
+</div>
+    <nav>
+        <a href="../index.html">Start</a>
+        <a href="../html.html" class="active">HTML</a>
+        <a href="../css.html">CSS</a>
+    </nav>
+</header>
+
+<main class="content-page">
+    <div class="page-header">
+        <h1>Rozdział 3: Nagłówki i akapity</h1>
+        <p>
+            Hierarchia nagłówków <code>&lt;h1&gt;</code> - <code>&lt;h6&gt;</code>, akapity <code>&lt;p&gt;</code>,
+            ręczne łamanie linii <code>&lt;br&gt;</code> oraz poziome linie <code>&lt;hr&gt;</code>.
+            To podstawa formatowania tekstu w HTML.
+</p>
+</div>
+
+    <section class="topic-section">
+        <h2>1. Nagłówki &lt;h1&gt; - &lt;h6&gt;</h2>
+        <p>Nagłówki określają hierarchię i ważność treści. <strong>&lt;h1&gt;</strong> to najważniejszy nagłówek (tytuł strony), a <strong>&lt;h6&gt;</strong> - najmniej ważny. Wyszukiwarki przywiązują dużą wagę do nagłówków (SEO).</p>
+        
+        <div class="heading-demo">
+            <h1 style="font-size: 2em; margin: 0.5em 0;">To jest &lt;h1&gt; - najważniejszy</h1>
+            <h2 style="font-size: 1.5em; margin: 0.5em 0;">To jest &lt;h2&gt;</h2>
+            <h3 style="font-size: 1.17em; margin: 0.5em 0;">To jest &lt;h3&gt;</h3>
+            <h4 style="font-size: 1em; margin: 0.5em 0;">To jest &lt;h4&gt;</h4>
+            <h5 style="font-size: 0.83em; margin: 0.5em 0;">To jest &lt;h5&gt;</h5>
+            <h6 style="font-size: 0.67em; margin: 0.5em 0;">To jest &lt;h6&gt;</h6>
+</div>
+
+        <div class="table-wrapper">
+            <table class="value-table">
+                <thead><tr><th>Znacznik</th><th>Poziom ważności</th><th>Typowe zastosowanie</th></tr></thead>
+                <tbody>
+                    <tr><td><code>&lt;h1&gt;</code></td><td>Najwyższy</td><td>Tytuł strony, główny nagłówek - tylko jeden na stronie.</td></tr>
+                    <tr><td><code>&lt;h2&gt;</code></td><td>Bardzo wysoki</td><td>Główne sekcje rozdziałów.</td></tr>
+                    <tr><td><code>&lt;h3&gt;</code></td><td>Wysoki</td><td>Podsekcje w ramach <code>&lt;h2&gt;</code>.</td></tr>
+                    <tr><td><code>&lt;h4&gt; - &lt;h6&gt;</code></td><td>Średni / niski</td><td>Dalsze podziały, rzadziej używane.</td></tr>
+                </tbody>
+            </table>
+</div>
+
+        <div class="good-bad">
+            <div class="good">
+<h4>Poprawna hierarchia</h4>
+                <code>&lt;h1&gt;Tytuł&lt;/h1&gt;<br>
+                &lt;h2&gt;Rozdział 1&lt;/h2&gt;<br>
+                &lt;h3&gt;Podrozdział 1.1&lt;/h3&gt;<br>
+                &lt;h2&gt;Rozdział 2&lt;/h2&gt;</code>
+</div>
+            <div class="bad">
+<h4>Błędna hierarchia (SEO)</h4>
+                <code>&lt;h3&gt;Wstęp&lt;/h3&gt;<br>
+                &lt;h1&gt;Tytuł&lt;/h1&gt;<br>
+                &lt;h4&gt;Treść&lt;/h4&gt;</code><br>
+                Pomijanie poziomów i niekolejność są niezalecane.
+</div>
+</div>
+        <div class="coord-note">
+            Na stronie powinien być <strong>tylko jeden</strong> nagłówek <code>&lt;h1&gt;</code> - to tytuł całej strony. Kolejne nagłówki budują logiczną strukturę.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>2. Akapit &lt;p&gt;</h2>
+        <p>Znacznik <strong>&lt;p&gt;</strong> (paragraph) definiuje akapit tekstu. Przeglądarki automatycznie dodają odstępy przed i po akapicie. To podstawowy sposób grupowania zdań w bloki tekstu.</p>
+        <div class="code-sample"><pre>
+&lt;p&gt;To jest pierwszy akapit. Ma odstęp przed i po sobie.&lt;/p&gt;
+&lt;p&gt;To drugi akapit - widać wyraźną przerwę.&lt;/p&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&lt;/p&gt;
+</div>
+        <ul class="custom-list">
+            <li><strong>Blokowy</strong> - zajmuje całą dostępną szerokość.</li>
+            <li>Nie można w nim zagnieżdżać innych bloków (np. <code>&lt;div&gt;</code>, <code>&lt;h1&gt;</code>).</li>
+            <li>Wewnątrz akapitu można używać znaczników liniowych: <code>&lt;a&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>, <code>&lt;br&gt;</code>.</li>
+        </ul>
+        <div class="warning-tip">
+            Nie używaj pustego akapitu (<code>&lt;p&gt;&lt;/p&gt;</code>) do tworzenia odstępów - to zła praktyka. Odstępy reguluj CSS (margin/padding).
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>3. Łamanie linii &lt;br&gt;</h2>
+        <p><strong>&lt;br&gt;</strong> (line break) to znacznik pusty - powoduje przejście do nowej linii w tym samym akapicie lub bloku tekstu. Nie tworzy nowego akapitu, tylko miękkie złamanie.</p>
+        <div class="code-sample"><pre>
+&lt;p&gt;
+To jest pierwsza linia.&lt;br&gt;
+To druga linia (wciąż w tym samym akapicie).&lt;br&gt;
+I trzecia linia.
+&lt;/p&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            Przykład użycia &lt;br&gt;:<br>
+            Linia 1<br>
+            Linia 2<br>
+            Linia 3
+</div>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>&lt;br&gt;</strong> - nie ma atrybutów (oprócz globalnych).</div>
+            <div class="attr-card"><strong>Zastosowanie</strong> - wiersze adresu, wiersze poezji, teksty, gdzie podział linii jest istotny.</div>
+</div>
+        <div class="good-bad">
+            <div class="good">
+<h4>Dobre użycie</h4>
+                <code>&lt;p&gt;ul. Kwiatowa 12&lt;br&gt;00-001 Warszawa&lt;/p&gt;</code>
+</div>
+            <div class="bad">
+<h4>Złe użycie</h4>
+                <code>&lt;p&gt;Tekst&lt;br&gt;&lt;br&gt;Tekst&lt;/p&gt;</code><br>
+                (zamiast podwójnego &lt;br&gt; lepiej użyć osobnych akapitów).
+</div>
+</div>
+        <div class="coord-note">
+            <code>&lt;br&gt;</code> nie powinien być nadużywany do tworzenia pionowych odstępów - do tego służy CSS (margin).
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>4. Pozioma linia &lt;hr&gt;</h2>
+        <p><strong>&lt;hr&gt;</strong> (horizontal rule) rysuje linię poziomą, która wizualnie oddziela sekcje treści. Jest znacznikiem pustym. W HTML5 ma znaczenie semantyczne - oznacza zmianę tematu lub rozdziału.</p>
+        <div class="code-sample"><pre>
+&lt;h2&gt;Rozdział 1&lt;/h2&gt;
+&lt;p&gt;Treść rozdziału pierwszego...&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Rozdział 2&lt;/h2&gt;
+&lt;p&gt;Treść rozdziału drugiego...&lt;/p&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            Przykład wizualny:
+            <hr style="margin: 15px 0;">
+            Powyżej znajduje się linia pozioma.
+</div>
+        <ul class="custom-list">
+            <li>Domyślnie wyświetla cienką, szarą linię (można stylować CSS).</li>
+            <li>Nie potrzebuje zamykającego znacznika.</li>
+            <li>Atrybuty w HTML5: <code>size</code>, <code>width</code>, <code>color</code> są przestarzałe - używaj CSS.</li>
+        </ul>
+        <div class="warning-tip">
+            Nie stosuj <code>&lt;hr&gt;</code> wyłącznie jako dekoracji - ma znaczenie semantyczne. Do czysto wizualnych linii lepiej użyć CSS (border-bottom).
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>5. Różnice pomiędzy &lt;p&gt;, &lt;br&gt; i &lt;hr&gt;</h2>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <thead><tr><th>Znacznik</th><th>Typ</th><th>Efekt</th><th>Kiedy używać?</th></tr></thead>
+                <tbody>
+                    <tr><td><code>&lt;p&gt;</code></td><td>Blokowy</td><td>Nowy akapit z odstępami</td><td>Grupy zdań, normalny tekst</td></tr>
+                    <tr><td><code>&lt;br&gt;</code></td><td>Pusty (inline)</td><td>Nowa linia bez odstępu</td><td>Adresy, wiersze, precyzyjne łamanie</td></tr>
+                    <tr><td><code>&lt;hr&gt;</code></td><td>Pusty (blokowy)</td><td>Linia pozioma (tematyczna przerwa)</td><td>Zmiana sekcji, rozdziału</td></tr>
+                </tbody>
+            </table>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>6. Przykład łączący wszystkie elementy</h2>
+        <div class="code-sample"><pre>
+&lt;h1&gt;Moja strona o przyrodzie&lt;/h1&gt;
+&lt;p&gt;Witaj na stronie poświęconej pięknu lasów i gór.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Lasy deszczowe&lt;/h2&gt;
+&lt;p&gt;
+Amazonia to największy las tropikalny.&lt;br&gt;
+Znajduje się w Ameryce Południowej.&lt;br&gt;
+Jest domem dla milionów gatunków.
+&lt;/p&gt;
+&lt;h2&gt;Góry&lt;/h2&gt;
+&lt;p&gt;Himalaje to najwyższe pasmo górskie na Ziemi.&lt;/p&gt;
+</pre>
+</div>
+        <div class="structure-visual">
+            <pre style="margin:0;">
+Wynik wizualny:
+─────────────────────────────────────
+Moja strona o przyrodzie (duży nagłówek)
+Witaj na stronie...
+───────────────────────────────────── (linia hr)
+Lasy deszczowe (h2)
+Amazonia to największy las tropikalny.
+Znajduje się w Ameryce Południowej.
+Jest domem dla milionów gatunków.
+Góry (h2)
+Himalaje to najwyższe pasmo górskie.
+            </pre>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>7. Częste błędy i dobre praktyki</h2>
+        <div class="good-bad">
+            <div class="good">
+<h4>Dobre praktyki</h4>
+                <ul>
+                    <li>Tylko jeden <code>&lt;h1&gt;</code> na stronie.</li>
+                    <li>Używaj nagłówków hierarchicznie (h1 → h2 → h3).</li>
+                    <li>Akapitów używaj do zdań - nie do pojedynczych słów.</li>
+                    <li><code>&lt;br&gt;</code> tylko gdy naprawdę potrzebujesz złamania linii.</li>
+                    <li><code>&lt;hr&gt;</code> do oddzielenia tematycznie różnych części.</li>
+                </ul>
+</div>
+            <div class="bad">
+<h4>Błędy</h4>
+                <ul>
+                    <li>Pomijanie poziomów nagłówków (h1 potem h4).</li>
+                    <li>Używanie <code>&lt;br&gt;&lt;br&gt;</code> zamiast akapitów.</li>
+                    <li>Wielokrotne <code>&lt;hr&gt;</code> bez celu semantycznego.</li>
+                    <li>Zagnieżdżanie <code>&lt;div&gt;</code> wewnątrz <code>&lt;p&gt;</code>.</li>
+                </ul>
+</div>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>8. Co musisz zapamiętać</h2>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong><code>&lt;h1&gt; - &lt;h6&gt;</code></strong> - hierarchia nagłówków, tylko jeden h1.</div>
+            <div class="attr-card"><strong><code>&lt;p&gt;</code></strong> - akapit, blok tekstu z odstępami.</div>
+            <div class="attr-card"><strong><code>&lt;br&gt;</code></strong> - ręczne złamanie linii (znacznik pusty).</div>
+            <div class="attr-card"><strong><code>&lt;hr&gt;</code></strong> - linia pozioma (zmiana tematu).</div>
+</div>
+        <div class="coord-note">
+            Na egzaminie INF03 często pojawia się zadanie z formatowaniem tekstu - musisz wiedzieć, kiedy użyć akapitu, a kiedy nagłówka. Prawidłowa hierarchia wpływa na ocenę dostępności i SEO.
+</div>
+        <div class="code-sample" style="margin-top:20px;"><pre>
+&lt;h1&gt;Tytuł strony&lt;/h1&gt;
+&lt;p&gt;Wprowadzenie...&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Podrozdział&lt;/h2&gt;
+&lt;p&gt;Treść podrozdziału.&lt;br&gt;Nowa linia bez odstępu.&lt;/p&gt;
+</pre>
+</div>
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 Samouczek INF03 - Rozdział 3: Nagłówki i akapity w HTML.</p>
+</footer>
+
+</body>
+</html>

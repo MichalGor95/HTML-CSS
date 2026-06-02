@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tekst i czcionki | Samouczek INF03</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        HTML<span>&CSS</span>
+</div>
+
+    <nav>
+        <a href="../index.html">Start</a>
+        <a href="../html.html">HTML</a>
+        <a href="../css.html" class="active">CSS</a>
+    </nav>
+</header>
+
+<main class="content-page">
+
+    <div class="page-header">
+        <h1>Rozdział CSS: Tekst i czcionki</h1>
+        <p>
+            Wygląd tekstu wpływa na czytelność i estetykę strony. CSS daje pełną kontrolę
+            nad krojem, rozmiarem, grubością, odstępami i wyrównaniem tekstu.
+</p>
+</div>
+
+    <!-- FONT-FAMILY -->
+    <section class="topic-section">
+        <h2>1. Krój czcionki - font-family</h2>
+        <p>
+            Określa, jakiej czcionki ma użyć przeglądarka. Podaje się listę "fallback" - jeśli pierwszej nie ma,
+            używana jest następna.
+</p>
+        <div class="code-sample"><pre>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.specjalny {
+    font-family: 'Courier New', monospace;
+}
+</pre>
+</div>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <tr><th>Rodzaj ogólny</th><th>Przykłady czcionek</th><th>Zastosowanie</th></tr>
+                <tr><td>sans-serif</th><td>Arial, Helvetica, Verdana, Roboto</th><td>czytelna na ekranie, bez szeryfów</th></tr>
+                <tr><td>serif</th><td>Times New Roman, Georgia, Garamond</th><td>tradycyjna, do druku</th></tr>
+                <tr><td>monospace</th><td>Courier New, Consolas, Monaco</th><td>kody źródłowe, terminale</th></tr>
+                <tr><td>cursive</th><td>Comic Sans MS, cursive</th><td>odręczne, dekoracyjne</th></tr>
+                <tr><td>fantasy</th><td>Impact, Papyrus</th><td>efektowne, nagłówki</th></tr>
+            </table>
+</div>
+        <p>Zawsze kończ listę <strong>rodzajem ogólnym</strong> (np. <code>sans-serif</code>).</p>
+    </section>
+
+    <!-- FONT-SIZE -->
+    <section class="topic-section">
+        <h2>2. Rozmiar czcionki - font-size</h2>
+        <p>
+            Ustawia rozmiar tekstu. Można używać różnych jednostek.
+</p>
+        <div class="code-sample"><pre>
+p {
+    font-size: 16px;     /* piksele - sztywny rozmiar */
+}
+
+h1 {
+    font-size: 2.5rem;   /* względem root'a (zwykle 16px = 2.5rem = 40px) */
+}
+
+small {
+    font-size: 0.8em;    /* względem rodzica */
+}
+</pre>
+</div>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <tr><th>Jednostka</th><th>Opis</th></tr>
+                <tr><td><code>px</code></th><td>piksele - absolutna, najczęstsza</th></tr>
+                <tr><td><code>em</code></th><td>względna - względem rozmiaru czcionki rodzica</th></tr>
+                <tr><td><code>rem</code></th><td>względna - względem rozmiaru czcionki elementu &lt;html&gt; (domyślnie 16px)</th></tr>
+                <tr><td><code>%</code></th><td>procenty - względem rodzica</th></tr>
+                <tr><td><code>vw</code>, <code>vh</code></th><td>względem szerokości/wysokości okna</th></tr>
+            </table>
+</div>
+        <p>
+             <strong>Dobra praktyka:</strong> <code>rem</code> dla ogólnego rozmiaru, <code>em</code> dla elementów zależnych od kontekstu.
+</p>
+    </section>
+
+    <!-- FONT-WEIGHT -->
+    <section class="topic-section">
+        <h2>3. Grubość czcionki - font-weight</h2>
+        <p>
+            Określa pogrubienie tekstu.
+</p>
+        <div class="code-sample"><pre>
+strong {
+    font-weight: bold;      /* 700 */
+}
+
+.normal {
+    font-weight: normal;    /* 400 */
+}
+
+.light {
+    font-weight: 300;       /* cienka */
+}
+
+.black {
+    font-weight: 900;       /* bardzo gruba */
+}
+</pre>
+</div>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <tr><th>Wartość słowna</th><th>Wartość numeryczna</th><th>Efekt</th></tr>
+                <tr><td><code>normal</code></th><td>400</th><td>normalna</th></tr>
+                <tr><td><code>bold</code></th><td>700</th><td>pogrubiona</th></tr>
+                <tr><td><code>lighter</code></th><td>-</th>-
+
+</th>
+                <tr><td><code>bolder</code></th><td>-</th>-
+
+</th>
+                <tr><td><code>100,200,...,900</code></th><td>wielokrotności 100</th><td>od bardzo cienkiej (100) do bardzo grubej (900)</th></tr>
+            </table>
+</div>
+        <p>️ Nie wszystkie czcionki obsługują wszystkie grubości - trzeba sprawdzić.</p>
+    </section>
+
+    <!-- FONT-STYLE -->
+    <section class="topic-section">
+        <h2>4. Styl czcionki - font-style</h2>
+        <p>
+            Najczęściej używany do kursywy.
+</p>
+        <div class="code-sample"><pre>
+em, i {
+    font-style: italic;   /* kursywa */
+}
+
+.uwaga {
+    font-style: oblique;  /* pochylona (sztuczna) */
+}
+
+.zwykly {
+    font-style: normal;
+}
+</pre>
+</div>
+        <p>
+            Różnica między <code>italic</code> a <code>oblique</code>: <em>italic</em> to specjalna kursywa projektanta,
+            <em>oblique</em> to zwykła czcionka sztucznie pochylona.
+</p>
+    </section>
+
+    <!-- TEXT-ALIGN -->
+    <section class="topic-section">
+        <h2>5. Wyrównanie tekstu - text-align</h2>
+        <p>
+            Wyrównuje tekst w bloku (np. akapicie, divie).
+</p>
+        <div class="code-sample"><pre>
+.lewy {
+    text-align: left;      /* domyślnie */
+}
+
+.prawy {
+    text-align: right;
+}
+
+.srodek {
+    text-align: center;
+}
+
+.justowany {
+    text-align: justify;   /* wyjustowanie - równe marginesy */
+}
+</pre>
+</div>
+        <p>
+             <code>text-align: justify</code> jest często używane w artykułach, ale może tworzyć brzydkie przerwy między wyrazami.
+</p>
+    </section>
+
+    <!-- TEXT-DECORATION -->
+    <section class="topic-section">
+        <h2>6. Dekoracja tekstu - text-decoration</h2>
+        <p>
+            Dodaje linie pod tekstem, nad nim lub przez niego.
+</p>
+        <div class="code-sample"><pre>
+a {
+    text-decoration: none;       /* usuwa podkreślenie z linków */
+}
+
+.przekreslony {
+    text-decoration: line-through;  /* przekreślenie */
+}
+
+.nadkreslony {
+    text-decoration: overline;
+}
+
+.podkreslony {
+    text-decoration: underline;
+}
+
+.kombinacja {
+    text-decoration: underline wavy red;  /* CSS3 - kolor i styl */
+}
+</pre>
+</div>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <tr><th>Właściwość</th><th>Przykład</th><th>Opis</th></tr>
+                <tr><td><code>text-decoration-line</code></th><td>underline, overline, line-through</th><td>rodzaj linii</th></tr>
+                <tr><td><code>text-decoration-color</code></th><td>red, #00f</th><td>kolor linii</th></tr>
+                <tr><td><code>text-decoration-style</code></th><td>solid, dotted, dashed, wavy</th><td>styl linii</th></tr>
+            </table>
+</div>
+    </section>
+
+    <!-- LINE-HEIGHT -->
+    <section class="topic-section">
+        <h2>7. Wysokość linii - line-height</h2>
+        <p>
+            Odstęp między wierszami tekstu. Wpływa na czytelność.
+</p>
+        <div class="code-sample"><pre>
+p {
+    line-height: 1.5;      /* 1.5 * rozmiar czcionki - najczęściej */
+}
+
+.ciasto {
+    line-height: 2;        /* podwójny odstęp */
+}
+
+.scisly {
+    line-height: 1.2;
+}
+</pre>
+</div>
+        <p>
+             <strong>Zalecane wartości:</strong> 1.4 - 1.6 dla tekstu ciągłego.
+            Wartość <strong>bez jednostki</strong> (np. <code>1.5</code>) jest lepsza od <code>px</code>, bo skaluje się z czcionką.
+</p>
+        <p>
+            Można też używać <code>px</code> lub <code>em</code>, ale wtedy nie skaluje się proporcjonalnie.
+</p>
+    </section>
+
+    <!-- LETTER-SPACING -->
+    <section class="topic-section">
+        <h2>8. Odstęp między literami - letter-spacing</h2>
+        <p>
+            Zwiększa lub zmniejsza odstępy między znakami.
+</p>
+        <div class="code-sample"><pre>
+.rozstrzelony {
+    letter-spacing: 2px;
+}
+
+.scisly {
+    letter-spacing: -0.5px;  /* ujemna wartość zbliża litery */
+}
+
+.naglowek {
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+</pre>
+</div>
+        <p>
+            Przydatne w nagłówkach, logo, akcentach. Długi tekst nie powinien mieć dużego <code>letter-spacing</code>, bo traci czytelność.
+</p>
+    </section>
+
+    <!-- SKRÓCONA WŁAŚCIWOŚĆ FONT -->
+    <section class="topic-section">
+        <h2>9. Skrócona właściwość font</h2>
+        <p>
+            Łączy wiele właściwości czcionki w jednej linii. Kolejność (zalecana):
+            <code>font-style font-weight font-size/line-height font-family</code>.
+</p>
+        <div class="code-sample"><pre>
+body {
+    font: italic normal 16px/1.5 Arial, sans-serif;
+}
+
+/* to samo co: */
+body {
+    font-style: italic;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: Arial, sans-serif;
+}
+</pre>
+</div>
+        <p>
+            ️ <strong>Uwaga:</strong> <code>font-family</code> i <code>font-size</code> są wymagane.
+            Jeśli pominiesz <code>line-height</code>, nie zostanie ono nadpisane.
+</p>
+    </section>
+
+    <!-- PRZYKŁAD PRAKTYCZNY -->
+    <section class="topic-section">
+        <h2>10. Przykład - stylizacja artykułu</h2>
+        <div class="code-sample"><pre>
+article {
+    font-family: 'Georgia', serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #222;
+    text-align: justify;
+}
+
+article h2 {
+    font-family: 'Arial', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #2f7a67;
+}
+
+article a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #2f7a67;
+}
+
+article a:hover {
+    text-decoration: underline;
+}
+</pre>
+</div>
+        <p>
+            Dzięki tym właściwościom możesz stworzyć czytelny, profesjonalny layout tekstowy.
+</p>
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 Samouczek INF03 - Tekst i czcionki.</p>
+</footer>
+
+</body>
+</html>

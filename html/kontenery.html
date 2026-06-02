@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontenery i grupowanie | Podstawy INF03</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Dodatkowe style - zachowują pełną spójność z oryginalnym style.css */
+        .doctype-box {
+            background: #1e2a2a;
+            color: #d0f0e5;
+            border-radius: 16px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        .structure-visual {
+            background: #fefcf5;
+            border: 1px solid #ddd2b5;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 25px 0;
+            font-family: monospace;
+            line-height: 1.6;
+        }
+        .tag-demo {
+            background: #f4f1ea;
+            border-radius: 14px;
+            padding: 12px 16px;
+            margin: 12px 0;
+            font-family: monospace;
+            border-left: 4px solid #2f7a67;
+        }
+        .attr-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-badge {
+            background: #eef3f0;
+            border-radius: 40px;
+            padding: 6px 14px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            border: 1px solid #cbdcd3;
+        }
+        .good-bad {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .good, .bad {
+            flex: 1;
+            background: white;
+            border-radius: 18px;
+            padding: 16px 20px;
+            border: 1px solid #e2dfd7;
+        }
+        .good h4 { color: #2f7a67; margin-bottom: 12px; }
+        .bad h4 { color: #b1624b; margin-bottom: 12px; }
+        .attrs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-card {
+            background: #fcf9f2;
+            border-radius: 14px;
+            padding: 12px 16px;
+            border: 1px solid #e5dfd1;
+        }
+        .attr-card strong {
+            color: #1f5e4f;
+            font-family: monospace;
+            font-size: 1.05rem;
+        }
+        .coord-note {
+            background: #eef5f2;
+            border-left: 4px solid #2f7a67;
+            padding: 12px 18px;
+            margin: 15px 0;
+            font-size: 0.95rem;
+            border-radius: 12px;
+        }
+        .warning-tip {
+            background: #fff2df;
+            border-radius: 14px;
+            padding: 12px 18px;
+            margin: 20px 0;
+            border-left: 5px solid #e6a017;
+        }
+        .custom-list {
+            padding-left: 28px;
+            margin: 20px 0;
+        }
+        .custom-list li {
+            margin: 8px 0;
+        }
+        .code-sample {
+            background-color: #1e2a2a;
+            color: #d9f0ea;
+            padding: 20px;
+            border-radius: 16px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+        }
+        .code-sample pre {
+            background: transparent;
+            color: #d0f0e5;
+            margin: 0;
+        }
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 25px 0;
+        }
+        .value-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fefef9;
+        }
+        .value-table th, .value-table td {
+            border: 1px solid #d6d0c4;
+            padding: 12px 16px;
+            text-align: left;
+            vertical-align: top;
+        }
+        .value-table th {
+            background-color: #eef3f0;
+            color: #1b4d41;
+            font-weight: 700;
+        }
+        .demo-box {
+            background: #f0f0e8;
+            border: 1px dashed #2f7a67;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .demo-inline {
+            background: #fff2df;
+            padding: 2px 6px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        HTML<span>&CSS</span>
+</div>
+    <nav>
+        <a href="../index.html">Start</a>
+        <a href="../html.html" class="active">HTML</a>
+        <a href="../css.html">CSS</a>
+    </nav>
+</header>
+
+<main class="content-page">
+    <div class="page-header">
+        <h1>Rozdział 9: Kontenery i grupowanie</h1>
+        <p>
+            <code>&lt;div&gt;</code> i <code>&lt;span&gt;</code> to uniwersalne pojemniki do grupowania elementów.
+            Służą głównie do zastosowania stylów CSS oraz manipulacji JavaScript. Poznaj różnice między blokowym a liniowym kontenerem oraz dobre praktyki.
+</p>
+</div>
+
+    <section class="topic-section">
+        <h2>1. &lt;div&gt; - blokowy kontener</h2>
+        <p><strong>&lt;div&gt;</strong> (division) to element blokowy. Zajmuje całą dostępną szerokość, rozpoczyna nową linię i może zawierać dowolne inne elementy (blokowe i liniowe). Najczęściej używany do tworzenia sekcji, layoutu, kontenerów dla CSS.</p>
+        <div class="code-sample"><pre>
+&lt;div class="kontener"&gt;
+    &lt;h2&gt;Nagłówek w divie&lt;/h2&gt;
+    &lt;p&gt;Akapit tekstu wewnątrz tego samego kontenera.&lt;/p&gt;
+&lt;/div&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <div class="demo-box">
+                <h3>Nagłówek w divie</h3>
+                <p>Akapit tekstu wewnątrz tego samego kontenera.</p>
+</div>
+</div>
+        <ul class="custom-list">
+            <li><strong>Blokowość</strong> - zawsze zaczyna od nowej linii, rozciąga się na całą szerokość rodzica.</li>
+            <li><strong>Brak znaczenia semantycznego</strong> - używaj go tylko gdy nie ma odpowiedniego znacznika HTML5 (np. <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>).</li>
+            <li><strong>Atrybuty</strong> - najczęściej <code>class</code>, <code>id</code>, <code>style</code>, <code>data-*</code>.</li>
+        </ul>
+        <div class="coord-note">
+            W HTML5 zamiast <code>&lt;div&gt;</code> warto stosować semantyczne znaczniki (<code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code>), ale <code>&lt;div&gt;</code> wciąż jest niezbędny do grupowania elementów bez znaczenia.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>2. &lt;span&gt; - liniowy kontener</h2>
+        <p><strong>&lt;span&gt;</strong> to element liniowy (inline). Nie łamie linii, zajmuje tylko tyle miejsca, ile potrzebuje jego zawartość. Idealny do wyróżniania fragmentów tekstu wewnątrz akapitu.</p>
+        <div class="code-sample"><pre>
+&lt;p&gt;To jest &lt;span style="color: #2f7a67; font-weight: bold;"&gt;ważny fragment&lt;/span&gt; w zdaniu.&lt;/p&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <p>To jest <span style="color: #2f7a67; font-weight: bold;">ważny fragment</span> w zdaniu.</p>
+</div>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>Liniowy</strong> - nie tworzy nowej linii, może występować obok innych elementów liniowych.</div>
+            <div class="attr-card"><strong>Zastosowanie</strong> - podświetlenie słów, ikony w tekście, dynamiczna zmiana treści (JS).</div>
+</div>
+        <div class="warning-tip">
+            Nie umieszczaj elementów blokowych (np. <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>) wewnątrz <code>&lt;span&gt;</code> - to niepoprawne składniowo.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>3. Porównanie div vs span</h2>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <thead><tr><th>Cecha</th><th>&lt;div&gt;</th><th>&lt;span&gt;</th></tr></thead>
+                <tbody>
+                    <tr><td>Typ</td><td>Blokowy (block)</td><td>Liniowy (inline)</td></tr>
+                    <tr><td>Nowa linia</td><td>Tak (zaczyna od nowej linii)</td><td>Nie (pozostaje w linii)</td></tr>
+                    <tr><td>Szerokość</td><td>Cała dostępna szerokość rodzica</td><td>Zgodna z zawartością</td></tr>
+                    <tr><td>Może zawierać</td><td>Elementy blokowe i liniowe</td><td>Tylko elementy liniowe i tekst</td></tr>
+                    <tr><td>Typowe użycie</td><td>Layout, sekcje, kontenery CSS</td><td>Fragmenty tekstu, ikony, podświetlenia</td></tr>
+                </tbody>
+            </table>
+</div>
+        <div class="coord-note">
+            Za pomocą CSS możesz zmienić zachowanie: <code>display: inline</code> dla div lub <code>display: block</code> dla span, ale lepiej od razu używać odpowiedniego znacznika.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>4. Grupowanie elementów - praktyczne zastosowania</h2>
+        <p>Kontenery <code>&lt;div&gt;</code> i <code>&lt;span&gt;</code> są podstawą nowoczesnych technik CSS (Flexbox, Grid) oraz manipulacji DOM.</p>
+        
+        <h3>Przykład 1: Stylowanie całej sekcji</h3>
+        <div class="code-sample"><pre>
+&lt;div class="card"&gt;
+    &lt;h3&gt;Karta produktu&lt;/h3&gt;
+    &lt;p&gt;Cena: 199 zł&lt;/p&gt;
+    &lt;button&gt;Kup&lt;/button&gt;
+&lt;/div&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <div style="border:1px solid #ccc; border-radius:12px; padding:15px; max-width:250px;">
+                <h3>Karta produktu</h3>
+                <p>Cena: 199 zł</p>
+                <button>Kup</button>
+</div>
+</div>
+
+        <h3>Przykład 2: Wyróżnienie słowa w tekście</h3>
+        <div class="code-sample"><pre>
+&lt;p&gt;Kliknij &lt;span class="highlight"&gt;tutaj&lt;/span&gt;, aby zapisać się na newsletter.&lt;/p&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <p>Kliknij <span style="background:#fff2df; padding:2px 6px; border-radius:6px;">tutaj</span>, aby zapisać się na newsletter.</p>
+</div>
+
+        <h3>Przykład 3: Layout strony z divami (klasyczny układ)</h3>
+        <div class="code-sample"><pre>
+&lt;div class="header"&gt;Nagłówek&lt;/div&gt;
+&lt;div class="container"&gt;
+    &lt;div class="sidebar"&gt;Menu boczne&lt;/div&gt;
+    &lt;div class="content"&gt;Treść główna&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="footer"&gt;Stopka&lt;/div&gt;
+</pre>
+</div>
+        <div class="warning-tip">
+            Dziś do layoutu zaleca się używanie semantycznych znaczników HTML5 (<code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code>) oraz CSS Grid/Flexbox, ale <code>&lt;div&gt;</code> wciąż jest używany wewnątrz tych sekcji.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>5. Atrybuty class i id - klucz do grupowania i stylowania</h2>
+        <p>Kontenery najczęściej otrzymują atrybuty <code>class</code> (do wielokrotnego użycia) lub <code>id</code> (unikalny identyfikator). To pozwala na podpięcie CSS i JavaScript.</p>
+        <div class="code-sample"><pre>
+&lt;div class="produkt" id="produkt-1"&gt;
+    &lt;span class="cena"&gt;99 zł&lt;/span&gt;
+&lt;/div&gt;
+</pre>
+</div>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>class</strong> - może być przypisana do wielu elementów. W CSS: <code>.nazwa</code>.</div>
+            <div class="attr-card"><strong>id</strong> - unikalny w obrębie strony. W CSS: <code>#nazwa</code>. Wyższa specyficzność.</div>
+            <div class="attr-card"><strong>style</strong> - stylowanie inline (unikać, jeśli to możliwe).</div>
+            <div class="attr-card"><strong>data-*</strong> - atrybuty do przechowywania danych dla JavaScript.</div>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>6. Kiedy używać div, a kiedy semantycznych znaczników?</h2>
+        <div class="good-bad">
+            <div class="good">
+<h4>Używaj &lt;div&gt;, gdy:</h4>
+                <ul>
+                    <li>Potrzebujesz kontenera wyłącznie do stylizacji (CSS).</li>
+                    <li>Grupujesz elementy, które nie mają logicznego znaczenia (np. wiersz w gridzie).</li>
+                    <li>Brak odpowiedniego semantycznego znacznika HTML5.</li>
+                </ul>
+</div>
+            <div class="good">
+<h4>Używaj znaczników semantycznych, gdy:</h4>
+                <ul>
+                    <li>Jest to nagłówek (<code>&lt;header&gt;</code>), nawigacja (<code>&lt;nav&gt;</code>), sekcja (<code>&lt;section&gt;</code>), artykuł (<code>&lt;article&gt;</code>), stopka (<code>&lt;footer&gt;</code>).</li>
+                    <li>Chcesz poprawić SEO i dostępność.</li>
+                </ul>
+</div>
+</div>
+        <div class="coord-note">
+            Nadmiar <code>&lt;div&gt;</code> to tzw. "divitis" - staraj się używać minimalnej liczby kontenerów, tylko gdy są naprawdę potrzebne.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>7. Przykład złożony - karta produktu z div i span</h2>
+        <div class="code-sample"><pre>
+&lt;div class="product-card"&gt;
+    &lt;h3&gt;Smartfon XYZ&lt;/h3&gt;
+    &lt;div class="price"&gt;
+        &lt;span class="old-price"&gt;1999 zł&lt;/span&gt;
+        &lt;span class="new-price"&gt;1499 zł&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Najlepszy telefon na rynku! &lt;span class="badge"&gt;Promocja&lt;/span&gt;&lt;/p&gt;
+    &lt;button&gt;Kup teraz&lt;/button&gt;
+&lt;/div&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <div style="border:1px solid #e2dfd7; border-radius:16px; padding:20px; max-width:300px;">
+                <h3>Smartfon XYZ</h3>
+                <div style="margin:10px 0;">
+                    <span style="text-decoration:line-through; color:#999;">1999 zł</span>
+                    <span style="color:#2f7a67; font-weight:bold; margin-left:10px;">1499 zł</span>
+</div>
+                <p>Najlepszy telefon na rynku! <span style="background:#2f7a67; color:white; padding:2px 8px; border-radius:20px; font-size:12px;">Promocja</span></p>
+                <button>Kup teraz</button>
+</div>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>8. Zagnieżdżanie div i span</h2>
+        <p>Kontenery można dowolnie zagnieżdżać, ale pamiętaj o poprawnym domykaniu i zachowaniu typu (blokowy w liniowym jest niedozwolony).</p>
+        <div class="code-sample"><pre>
+&lt;div class="wrapper"&gt;
+    &lt;div class="inner"&gt;
+        &lt;p&gt;Tekst z &lt;span class="accent"&gt;akcentem&lt;/span&gt;.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+</div>
+        <div class="warning-tip">
+            Nie możesz umieścić <code>&lt;div&gt;</code> wewnątrz <code>&lt;span&gt;</code> - to narusza składnię HTML (element blokowy wewnątrz liniowego).
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>9. Praktyka - grupowanie w formularzach</h2>
+        <div class="code-sample"><pre>
+&lt;div class="form-group"&gt;
+    &lt;label&gt;Imię: &lt;/label&gt;
+    &lt;input type="text" name="imie"&gt;
+&lt;/div&gt;
+&lt;div class="form-group"&gt;
+    &lt;label&gt;E-mail: &lt;/label&gt;
+    &lt;input type="email" name="email"&gt;
+&lt;/div&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <div style="margin-bottom:10px;"><label>Imię: </label> <input type="text" placeholder="Jan"></div>
+            <div style="margin-bottom:10px;"><label>E-mail: </label> <input type="email" placeholder="jan@example.com"></div>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>10. Co musisz zapamiętać na egzamin INF03</h2>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>&lt;div&gt;</strong> - blokowy kontener (zajmuje całą szerokość, nowa linia).</div>
+            <div class="attr-card"><strong>&lt;span&gt;</strong> - liniowy kontener (tylko tyle miejsca ile treść).</div>
+            <div class="attr-card"><strong>Grupowanie</strong> - umożliwia stylowanie CSS i manipulację JS.</div>
+            <div class="attr-card"><strong>class / id</strong> - identyfikatory do podpinania stylów i skryptów.</div>
+            <div class="attr-card"><strong>Semantyka</strong> - używaj div tylko gdy brak odpowiedniego znacznika HTML5.</div>
+</div>
+        <div class="coord-note">
+            Egzaminatorzy często sprawdzają, czy rozumiesz różnicę między elementami blokowymi a liniowymi. Pamiętaj: <code>&lt;div&gt;</code> jest blokowy, <code>&lt;span&gt;</code> liniowy.
+</div>
+        <div class="code-sample" style="margin-top:20px;"><pre>
+&lt;!-- Poprawne użycie div i span --&gt;
+&lt;div class="container"&gt;
+    &lt;h1&gt;Nagłówek&lt;/h1&gt;
+    &lt;p&gt;To jest &lt;span class="highlight"&gt;ważne&lt;/span&gt; zdanie.&lt;/p&gt;
+&lt;/div&gt;
+</pre>
+</div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 Samouczek INF03 - Rozdział 9: Kontenery i grupowanie (div, span).</p>
+</footer>
+
+</body>
+</html>

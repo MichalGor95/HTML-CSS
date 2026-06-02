@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multimedia w HTML | Podstawy INF03</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Dodatkowe style - zachowują pełną spójność z oryginalnym style.css */
+        .doctype-box {
+            background: #1e2a2a;
+            color: #d0f0e5;
+            border-radius: 16px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        .structure-visual {
+            background: #fefcf5;
+            border: 1px solid #ddd2b5;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 25px 0;
+            font-family: monospace;
+            line-height: 1.6;
+        }
+        .tag-demo {
+            background: #f4f1ea;
+            border-radius: 14px;
+            padding: 12px 16px;
+            margin: 12px 0;
+            font-family: monospace;
+            border-left: 4px solid #2f7a67;
+        }
+        .attr-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-badge {
+            background: #eef3f0;
+            border-radius: 40px;
+            padding: 6px 14px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            border: 1px solid #cbdcd3;
+        }
+        .good-bad {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .good, .bad {
+            flex: 1;
+            background: white;
+            border-radius: 18px;
+            padding: 16px 20px;
+            border: 1px solid #e2dfd7;
+        }
+        .good h4 { color: #2f7a67; margin-bottom: 12px; }
+        .bad h4 { color: #b1624b; margin-bottom: 12px; }
+        .attrs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-card {
+            background: #fcf9f2;
+            border-radius: 14px;
+            padding: 12px 16px;
+            border: 1px solid #e5dfd1;
+        }
+        .attr-card strong {
+            color: #1f5e4f;
+            font-family: monospace;
+            font-size: 1.05rem;
+        }
+        .coord-note {
+            background: #eef5f2;
+            border-left: 4px solid #2f7a67;
+            padding: 12px 18px;
+            margin: 15px 0;
+            font-size: 0.95rem;
+            border-radius: 12px;
+        }
+        .warning-tip {
+            background: #fff2df;
+            border-radius: 14px;
+            padding: 12px 18px;
+            margin: 20px 0;
+            border-left: 5px solid #e6a017;
+        }
+        .custom-list {
+            padding-left: 28px;
+            margin: 20px 0;
+        }
+        .custom-list li {
+            margin: 8px 0;
+        }
+        .code-sample {
+            background-color: #1e2a2a;
+            color: #d9f0ea;
+            padding: 20px;
+            border-radius: 16px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+        }
+        .code-sample pre {
+            background: transparent;
+            color: #d0f0e5;
+            margin: 0;
+        }
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 25px 0;
+        }
+        .value-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fefef9;
+        }
+        .value-table th, .value-table td {
+            border: 1px solid #d6d0c4;
+            padding: 12px 16px;
+            text-align: left;
+            vertical-align: top;
+        }
+        .value-table th {
+            background-color: #eef3f0;
+            color: #1b4d41;
+            font-weight: 700;
+        }
+        .media-demo {
+            background: #fcf9f2;
+            border: 1px solid #e2dfd7;
+            border-radius: 16px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        audio, video {
+            max-width: 100%;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        HTML<span>&CSS</span>
+</div>
+    <nav>
+        <a href="../index.html">Start</a>
+        <a href="../html.html" class="active">HTML</a>
+        <a href="../css.html">CSS</a>
+    </nav>
+</header>
+
+<main class="content-page">
+    <div class="page-header">
+        <h1>Rozdział 15: Multimedia w HTML</h1>
+        <p>
+            HTML5 wprowadza natywne znaczniki do osadzania dźwięku i wideo bez dodatkowych wtyczek.
+            Poznaj <code>&lt;audio&gt;</code>, <code>&lt;video&gt;</code>, atrybut <strong>controls</strong>,
+            oraz korzystanie z wielu źródeł plików (<code>&lt;source&gt;</code>), aby zapewnić kompatybilność między przeglądarkami.
+</p>
+</div>
+
+    <section class="topic-section">
+        <h2>1. &lt;audio&gt; - odtwarzanie dźwięku</h2>
+        <p>Znacznik <code>&lt;audio&gt;</code> umożliwia osadzenie plików dźwiękowych. Wymaga co najmniej atrybutu <code>src</code> lub wewnętrznych źródeł <code>&lt;source&gt;</code>. Aby użytkownik mógł sterować odtwarzaniem, dodaj atrybut <strong>controls</strong>.</p>
+        <div class="code-sample"><pre>
+&lt;audio controls&gt;
+    &lt;source src="muzyka.mp3" type="audio/mpeg"&gt;
+    &lt;source src="muzyka.ogg" type="audio/ogg"&gt;
+    Twoja przeglądarka nie obsługuje elementu audio.
+&lt;/audio&gt;
+</pre>
+</div>
+        <div class="media-demo">
+            <audio controls>
+                <source src="#" type="audio/mpeg">
+                Twoja przeglądarka nie obsługuje audio. (Przykład poglądowy - brak rzeczywistego pliku)
+            </audio>
+            <p><small>Przykład pokazuje panel sterowania - w praktyce podajesz prawdziwe źródła.</small></p>
+</div>
+        <h3>Najczęstsze atrybuty &lt;audio&gt;</h3>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>controls</strong> - wyświetla panel sterowania (odtwarzanie, pauza, głośność).</div>
+            <div class="attr-card"><strong>autoplay</strong> - automatyczne odtwarzanie po załadowaniu (często blokowane przez przeglądarki).</div>
+            <div class="attr-card"><strong>loop</strong> - zapętlenie utworu.</div>
+            <div class="attr-card"><strong>muted</strong> - wyciszenie domyślne.</div>
+            <div class="attr-card"><strong>preload</strong> - wstępne ładowanie (auto, metadata, none).</div>
+</div>
+        <div class="coord-note">
+            Autoodtwarzanie z dźwiękiem jest często blokowane przez przeglądarki - zaleca się dodanie <code>muted</code> do autoplay lub pozostawienie użytkownikowi inicjacji odtwarzania.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>2. &lt;video&gt; - osadzanie filmów</h2>
+        <p>Znacznik <code>&lt;video&gt;</code> działa podobnie do audio, ale dodatkowo pozwala na wyświetlanie obrazu. Obsługuje wiele kodeków i formatów.</p>
+        <div class="code-sample"><pre>
+&lt;video width="640" height="360" controls&gt;
+    &lt;source src="film.mp4" type="video/mp4"&gt;
+    &lt;source src="film.webm" type="video/webm"&gt;
+    &lt;track src="napisy.vtt" kind="subtitles" srclang="pl" label="Polski"&gt;
+    Twoja przeglądarka nie obsługuje wideo.
+&lt;/video&gt;
+</pre>
+</div>
+        <div class="media-demo">
+            <video width="100%" height="auto" controls style="max-width:500px;">
+                <source src="#" type="video/mp4">
+                Twój przeglądarka nie obsługuje wideo.
+            </video>
+            <p><small>Przykład kontrolek - w rzeczywistości podajesz prawdziwe pliki.</small></p>
+</div>
+        <h3>Atrybuty specyficzne dla &lt;video&gt;</h3>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>width / height</strong> - rozmiary odtwarzacza (w pikselach lub %).</div>
+            <div class="attr-card"><strong>poster</strong> - adres obrazka wyświetlanego przed odtworzeniem filmu.</div>
+            <div class="attr-card"><strong>controls</strong> - panel sterowania (jak w audio).</div>
+            <div class="attr-card"><strong>autoplay, loop, muted</strong> - analogicznie do audio.</div>
+            <div class="attr-card"><strong>playsinline</strong> - na urządzeniach mobilnych odtwarza w linii (nie na pełnym ekranie).</div>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>3. Atrybut controls - panel sterowania</h2>
+        <p>Atrybut <strong>controls</strong> (logiczny) dodaje domyślny interfejs użytkownika: przycisk odtwarzania/pauzy, pasek postępu, głośność, przycisk pełnego ekranu (dla wideo). Bez tego znacznik nie pokazuje żadnych elementów sterowania - użytkownik nie ma jak odtworzyć multimediów (chyba że użyjesz własnego JS).</p>
+        <div class="code-sample"><pre>
+&lt;!-- z kontrolkami --&gt;
+&lt;audio controls src="dzwiek.mp3"&gt;&lt;/audio&gt;
+
+&lt;!-- bez kontrolek (przydatne gdy tworzysz własny interfejs JS) --&gt;
+&lt;video src="film.mp4"&gt;&lt;/video&gt;
+</pre>
+</div>
+        <div class="warning-tip">
+            Zawsze dodawaj <code>controls</code> dla użytkowników, chyba że implementujesz własne przyciski JavaScript. Bez tego plik będzie niewidoczny dla odbiorcy.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>4. Wiele źródeł plików - &lt;source&gt;</h2>
+        <p>Różne przeglądarki obsługują różne formaty audio/wideo. Aby dotrzeć do jak największej liczby użytkowników, podaj kilka źródeł. Przeglądarka wybiera pierwszy obsługiwany format.</p>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <thead><tr><th>Format audio</th><th>type</th><th>Wsparcie</th></tr></thead>
+                <tbody>
+                    <tr><td>MP3</td><td><code>audio/mpeg</code></td><td>Wszystkie przeglądarki</td></tr>
+                    <tr><td>OGG</td><td><code>audio/ogg</code></td><td>Firefox, Chrome, Opera</td></tr>
+                    <tr><td>WAV</td><td><code>audio/wav</code></td><td>Większość, ale duży rozmiar</td></tr>
+                </tbody>
+            </table>
+</div>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <thead><tr><th>Format wideo</th><th>type</th><th>Uwagi</th></tr></thead>
+                <tbody>
+                    <tr><td>MP4 (H.264 + AAC)</td><td><code>video/mp4</code></td><td>Najlepsza kompatybilność</td></tr>
+                    <tr><td>WebM</td><td><code>video/webm</code></td><td>Open source, dobra jakość</td></tr>
+                    <tr><td>OGG</td><td><code>video/ogg</code></td><td>Rzadziej używany</td></tr>
+                </tbody>
+            </table>
+</div>
+        <div class="code-sample"><pre>
+&lt;video controls width="640"&gt;
+    &lt;source src="film.mp4" type="video/mp4"&gt;
+    &lt;source src="film.webm" type="video/webm"&gt;
+    &lt;source src="film.ogv" type="video/ogg"&gt;
+    &lt;p&gt;Twoja przeglądarka nie obsługuje wideo. Możesz pobrać plik &lt;a href="film.mp4"&gt;tutaj&lt;/a&gt;.&lt;/p&gt;
+&lt;/video&gt;
+</pre>
+</div>
+        <div class="coord-note">
+            Zawsze dodawaj tekst zastępczy między tagami <code>&lt;video&gt;</code> i <code>&lt;/video&gt;</code> - wyświetli się, gdy przeglądarka nie obsługuje żadnego formatu.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>5. Napisy i ścieżki - &lt;track&gt;</h2>
+        <p>Dla dostępności i wielojęzyczności możesz dodać napisy do wideo za pomocą <code>&lt;track&gt;</code> z plikiem WebVTT (.vtt).</p>
+        <div class="code-sample"><pre>
+&lt;video controls&gt;
+    &lt;source src="film.mp4" type="video/mp4"&gt;
+    &lt;track kind="subtitles" src="napisy_pl.vtt" srclang="pl" label="Polski" default&gt;
+    &lt;track kind="subtitles" src="napisy_en.vtt" srclang="en" label="English"&gt;
+&lt;/video&gt;
+</pre>
+</div>
+        <div class="warning-tip">
+            Atrybut <code>kind</code> może przyjmować wartości: subtitles, captions, descriptions, chapters, metadata.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>6. Przykład kompleksowego osadzenia multimediów</h2>
+        <div class="code-sample"><pre>
+&lt;!-- Odtwarzacz audio z zapętleniem --&gt;
+&lt;audio controls loop&gt;
+    &lt;source src="tlo.mp3" type="audio/mpeg"&gt;
+    &lt;source src="tlo.ogg" type="audio/ogg"&gt;
+    Twoja przeglądarka nie wspiera odtwarzania audio.
+&lt;/audio&gt;
+
+&lt;!-- Odtwarzacz wideo z posterem i napisami --&gt;
+&lt;video width="100%" max-width="800px" controls poster="klatka.jpg"&gt;
+    &lt;source src="prezentacja.mp4" type="video/mp4"&gt;
+    &lt;source src="prezentacja.webm" type="video/webm"&gt;
+    &lt;track kind="subtitles" src="napisy.vtt" srclang="pl" label="Polski" default&gt;
+    &lt;p&gt;Nie możesz obejrzeć? &lt;a href="prezentacja.mp4"&gt;pobierz plik&lt;/a&gt;&lt;/p&gt;
+&lt;/video&gt;
+</pre>
+</div>
+        <div class="media-demo">
+<h4>Przykład audio (placeholder)</h4>
+            <audio controls>
+                <source src="#" type="audio/mpeg">
+                (brak pliku - demonstracja kontrolek)
+            </audio>
+<h4>Przykład wideo (placeholder)</h4>
+            <video controls width="100%" style="max-width:500px;">
+                <source src="#" type="video/mp4">
+                (brak pliku - demonstracja kontrolek)
+            </video>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>7. Dodatkowe atrybuty i ich zastosowanie</h2>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>autoplay</strong> - uruchamia odtwarzanie natychmiast po załadowaniu. Używaj ostrożnie (denerwuje użytkowników).</div>
+            <div class="attr-card"><strong>loop</strong> - zapętla utwór/film (np. pętla tła).</div>
+            <div class="attr-card"><strong>muted</strong> - wycisza domyślnie. W połączeniu z autoplay często wymagane przez przeglądarki.</div>
+            <div class="attr-card"><strong>preload</strong> - ładowanie wstępne: "auto" (cały plik), "metadata" (tylko metadane), "none" (brak).</div>
+            <div class="attr-card"><strong>poster</strong> (tylko video) - obrazek zastępczy przed rozpoczęciem odtwarzania.</div>
+</div>
+        <div class="good-bad">
+            <div class="good">
+<h4>Dobre praktyki</h4>
+                <ul>
+                    <li>Zawsze dodawaj <code>controls</code> dla użytkownika.</li>
+                    <li>Podawaj co najmniej dwa formaty (MP4 + WebM dla wideo, MP3 + OGG dla audio).</li>
+                    <li>Unikaj autoplay z dźwiękiem - może być blokowane i denerwuje.</li>
+                    <li>Używaj <code>poster</code> dla wideo, aby strona nie wyglądała pusto.</li>
+                    <li>Dodawaj napisy dla dostępności.</li>
+                </ul>
+</div>
+            <div class="bad">
+<h4>Częste błędy</h4>
+                <ul>
+                    <li>Brak atrybutu <code>controls</code> - użytkownik nie ma jak odtworzyć multimediów.</li>
+                    <li>Podanie tylko jednego formatu (np. tylko .ogg) - nie zadziała w Safari/Edge.</li>
+                    <li>Niepodanie tekstu zastępczego - użytkownik zobaczy pustkę przy braku wsparcia.</li>
+                    <li>Autoplay z dźwiękiem - uciekający klienci.</li>
+                </ul>
+</div>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>8. Różnice między przeglądarkami - formaty</h2>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <thead><tr><th>Format</th><th>Chrome</th><th>Firefox</th><th>Safari</th><th>Edge</th></tr></thead>
+                <tbody>
+                    <tr><td>MP3 (audio)</td><td>Tak</td><td>Tak</td><td>Tak</td><td>Tak</td></tr>
+                    <tr><td>OGG (audio)</td><td>Tak</td><td>Tak</td><td>Nie</td><td>Tak (z kodekami)</td></tr>
+                    <tr><td>MP4 (H.264)</td><td>Tak</td><td>Tak</td><td>Tak</td><td>Tak</td></tr>
+                    <tr><td>WebM</td><td>Tak</td><td>Tak</td><td>Ograniczone</td><td>Tak</td></tr>
+                </tbody>
+            </table>
+</div>
+        <div class="coord-note">
+            Aby zapewnić maksymalną kompatybilność, podawaj MP4 (dla wideo) i MP3 (dla audio) jako pierwsze źródła, a dodatkowo WebM/OGG.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>9. Osadzanie multimediów z serwisów zewnętrznych (iframe)</h2>
+        <p>Choć <code>&lt;audio&gt;</code> i <code>&lt;video&gt;</code> służą do własnych plików, często korzystamy z YouTube, Vimeo, Spotify - wtedy używamy <code>&lt;iframe&gt;</code>. Nie jest to omawiane szczegółowo w tym rozdziale, ale warto wiedzieć.</p>
+        <div class="code-sample"><pre>
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/... "&gt;&lt;/iframe&gt;
+</pre>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>10. Co musisz zapamiętać na egzamin INF03</h2>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>&lt;audio&gt;</strong> - odtwarzanie dźwięku.</div>
+            <div class="attr-card"><strong>&lt;video&gt;</strong> - odtwarzanie filmów.</div>
+            <div class="attr-card"><strong>controls</strong> - panel sterowania (obowiązkowy dla UX).</div>
+            <div class="attr-card"><strong>&lt;source&gt;</strong> - wiele źródeł, atrybuty <code>src</code> i <code>type</code>.</div>
+            <div class="attr-card"><strong>autoplay, loop, muted, poster</strong> - dodatkowe atrybuty.</div>
+            <div class="attr-card"><strong>Kompatybilność</strong> - podawaj MP4 + WebM (video), MP3 + OGG (audio).</div>
+</div>
+        <div class="coord-note">
+            Na egzaminie możesz dostać zadanie: "Osadź plik wideo z kontrolkami, podaj dwa źródła i dodaj obrazek zastępczy (poster)". Pamiętaj o poprawnych atrybutach.
+</div>
+        <div class="code-sample" style="margin-top:20px;"><pre>
+&lt;!-- Wzorcowy osadzony film --&gt;
+&lt;video width="640" height="360" controls poster="zajawka.jpg"&gt;
+    &lt;source src="film.mp4" type="video/mp4"&gt;
+    &lt;source src="film.webm" type="video/webm"&gt;
+    &lt;p&gt;Twoja przeglądarka nie obsługuje wideo. &lt;a href="film.mp4"&gt;Pobierz&lt;/a&gt;&lt;/p&gt;
+&lt;/video&gt;
+
+&lt;!-- Wzorcowy odtwarzacz audio --&gt;
+&lt;audio controls&gt;
+    &lt;source src="dzwiek.mp3" type="audio/mpeg"&gt;
+    &lt;source src="dzwiek.ogg" type="audio/ogg"&gt;
+    Twoja przeglądarka nie obsługuje audio.
+&lt;/audio&gt;
+</pre>
+</div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 Samouczek INF03 - Rozdział 15: Multimedia w HTML (audio, video, controls, źródła plików).</p>
+</footer>
+
+</body>
+</html>

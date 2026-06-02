@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularze - podstawy | Podstawy INF03</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Dodatkowe style - zachowują pełną spójność z oryginalnym style.css */
+        .doctype-box {
+            background: #1e2a2a;
+            color: #d0f0e5;
+            border-radius: 16px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        .structure-visual {
+            background: #fefcf5;
+            border: 1px solid #ddd2b5;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 25px 0;
+            font-family: monospace;
+            line-height: 1.6;
+        }
+        .tag-demo {
+            background: #f4f1ea;
+            border-radius: 14px;
+            padding: 12px 16px;
+            margin: 12px 0;
+            font-family: monospace;
+            border-left: 4px solid #2f7a67;
+        }
+        .attr-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-badge {
+            background: #eef3f0;
+            border-radius: 40px;
+            padding: 6px 14px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            border: 1px solid #cbdcd3;
+        }
+        .good-bad {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .good, .bad {
+            flex: 1;
+            background: white;
+            border-radius: 18px;
+            padding: 16px 20px;
+            border: 1px solid #e2dfd7;
+        }
+        .good h4 { color: #2f7a67; margin-bottom: 12px; }
+        .bad h4 { color: #b1624b; margin-bottom: 12px; }
+        .attrs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-card {
+            background: #fcf9f2;
+            border-radius: 14px;
+            padding: 12px 16px;
+            border: 1px solid #e5dfd1;
+        }
+        .attr-card strong {
+            color: #1f5e4f;
+            font-family: monospace;
+            font-size: 1.05rem;
+        }
+        .coord-note {
+            background: #eef5f2;
+            border-left: 4px solid #2f7a67;
+            padding: 12px 18px;
+            margin: 15px 0;
+            font-size: 0.95rem;
+            border-radius: 12px;
+        }
+        .warning-tip {
+            background: #fff2df;
+            border-radius: 14px;
+            padding: 12px 18px;
+            margin: 20px 0;
+            border-left: 5px solid #e6a017;
+        }
+        .custom-list {
+            padding-left: 28px;
+            margin: 20px 0;
+        }
+        .custom-list li {
+            margin: 8px 0;
+        }
+        .code-sample {
+            background-color: #1e2a2a;
+            color: #d9f0ea;
+            padding: 20px;
+            border-radius: 16px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+        }
+        .code-sample pre {
+            background: transparent;
+            color: #d0f0e5;
+            margin: 0;
+        }
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 25px 0;
+        }
+        .value-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fefef9;
+        }
+        .value-table th, .value-table td {
+            border: 1px solid #d6d0c4;
+            padding: 12px 16px;
+            text-align: left;
+            vertical-align: top;
+        }
+        .value-table th {
+            background-color: #eef3f0;
+            color: #1b4d41;
+            font-weight: 700;
+        }
+        .demo-form {
+            background: #fcf9f2;
+            border: 1px solid #e2dfd7;
+            border-radius: 16px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .demo-form label {
+            display: inline-block;
+            width: 100px;
+            font-weight: 600;
+        }
+        .demo-form input, .demo-form button {
+            margin: 8px 0;
+            padding: 6px 12px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        HTML<span>&CSS</span>
+</div>
+    <nav>
+        <a href="../index.html">Start</a>
+        <a href="../html.html" class="active">HTML</a>
+        <a href="../css.html">CSS</a>
+    </nav>
+</header>
+
+<main class="content-page">
+    <div class="page-header">
+        <h1>Rozdział 11: Formularze - podstawy</h1>
+        <p>
+            Formularze HTML to podstawa interakcji z użytkownikiem. Poznaj znacznik <code>&lt;form&gt;</code>,
+            atrybuty <code>action</code> i <code>method</code> oraz etykietę <code>&lt;label&gt;</code>.
+            Dobre praktyki tworzenia dostępnych i funkcjonalnych formularzy.
+</p>
+</div>
+
+    <section class="topic-section">
+        <h2>1. Czym jest formularz HTML?</h2>
+        <p>Formularz (<code>&lt;form&gt;</code>) to kontener na pola, w które użytkownik wprowadza dane - tekst, wybór opcji, przyciski. Po wysłaniu dane trafiają do serwera (lub są przetwarzane po stronie klienta). Formularze umożliwiają logowanie, rejestrację, wyszukiwanie, zamówienia itp.</p>
+        <div class="code-sample"><pre>
+&lt;form&gt;
+    &lt;!-- pola formularza --&gt;
+    &lt;input type="text" name="imie"&gt;
+    &lt;button type="submit"&gt;Wyślij&lt;/button&gt;
+&lt;/form&gt;
+</pre>
+</div>
+        <div class="coord-note">
+            Bez <code>&lt;form&gt;</code> dane z pól nie mogą być wysłane do serwera. To obowiązkowy kontener.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>2. Atrybut action - gdzie wysłać dane?</h2>
+        <p><strong>action</strong> określa adres URL (lub ścieżkę), na który dane formularza zostaną wysłane po kliknięciu przycisku <code>type="submit"</code>. Może to być plik po stronie serwera (np. <code>formularz.php</code>, <code>api/submit</code>). Jeśli brak action, dane wysyłane są na tę samą stronę.</p>
+        <div class="code-sample"><pre>
+&lt;form action="https://example.com/wyslij.php"&gt;
+    ...
+&lt;/form&gt;
+</pre>
+</div>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>action=""</strong> - wysyła na bieżącą stronę (domyślnie).</div>
+            <div class="attr-card"><strong>action="/kontakt.php"</strong> - ścieżka względna.</div>
+            <div class="attr-card"><strong>action="https://inny-serwer.pl/form"</strong> - pełny URL.</div>
+</div>
+        <div class="warning-tip">
+            Pamiętaj, że atrybut <code>action</code> musi wskazywać na istniejący skrypt lub endpoint - w przeciwnym razie użytkownik zobaczy błąd 404.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>3. Atrybut method - GET czy POST?</h2>
+        <p><strong>method</strong> określa, w jaki sposób dane są przesyłane do serwera. Dwie podstawowe metody: <strong>GET</strong> i <strong>POST</strong>.</p>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <thead><tr><th>Metoda</th><th>Opis</th><th>Zalety</th><th>Wady</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td><code>GET</code></td>
+                        <td>Dane dołączane są do URL (parametry w ciągu zapytania).</td>
+                        <td>Możliwość zapisania strony z wynikami, łatwość testowania.</td>
+                        <td>Ograniczona długość (ok. 2048 znaków), dane widoczne w historii, nie nadaje się do poufnych informacji.</td>
+                     </tr>
+                    <tr>
+                        <td><code>POST</code></td>
+                        <td>Dane przesyłane w ciele żądania (niewidoczne w URL).</td>
+                        <td>Brak limitu rozmiaru, bezpieczniejsze (hasła, dane osobowe).</td>
+                        <td>Nie można dodać do zakładek z danymi, wymaga serwera do obsługi.</td>
+                     </tr>
+                </tbody>
+            </table>
+</div>
+        <div class="code-sample"><pre>
+&lt;!-- metoda GET (dane w URL) --&gt;
+&lt;form action="szukaj.php" method="get"&gt;
+    &lt;input type="text" name="q"&gt;
+    &lt;button type="submit"&gt;Szukaj&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;!-- metoda POST (dane niewidoczne) --&gt;
+&lt;form action="logowanie.php" method="post"&gt;
+    &lt;input type="password" name="haslo"&gt;
+    &lt;button type="submit"&gt;Zaloguj&lt;/button&gt;
+&lt;/form&gt;
+</pre>
+</div>
+        <div class="coord-note">
+            Domyślnie metoda to <strong>GET</strong>. Dla formularzy logowania, rejestracji, przesyłania plików zawsze używaj <strong>POST</strong>. Dla wyszukiwarek i filtrów możesz użyć GET (wtedy wyniki można udostępnić linkiem).
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>4. Etykieta &lt;label&gt; - dostępność i użyteczność</h2>
+        <p><strong>&lt;label&gt;</strong> (etykieta) przypisuje opis do konkretnego pola formularza. Kliknięcie na etykietę ustawia fokus w polu (lub zaznacza checkbox/radio). To podstawa dostępności (WCAG) i lepszego UX.</p>
+        <div class="code-sample"><pre>
+&lt;label for="imie"&gt;Imię:&lt;/label&gt;
+&lt;input type="text" id="imie" name="imie"&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <label for="demo_imie">Imię:</label>
+            <input type="text" id="demo_imie" name="demo_imie" placeholder="np. Jan">
+</div>
+        <p>Etykietę można też "opakować" wokół pola (nie wymaga wtedy atrybutu <code>for</code>):</p>
+        <div class="code-sample"><pre>
+&lt;label&gt;
+    Email:
+    &lt;input type="email" name="email"&gt;
+&lt;/label&gt;
+</pre>
+</div>
+        <div class="warning-tip">
+            Zawsze używaj <code>&lt;label&gt;</code> dla każdego pola (poza przyciskami). Zwiększa to klikalność i poprawia czytelność dla czytników ekranu.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>5. Podstawowe pola w formularzu (zapowiedź)</h2>
+        <p>Najczęściej używane rodzaje <code>&lt;input&gt;</code>:</p>
+        <ul class="custom-list">
+            <li><code>type="text"</code> - krótkie pole tekstowe (imię, miasto).</li>
+            <li><code>type="email"</code> - walidacja adresu e-mail.</li>
+            <li><code>type="password"</code> - maskowanie znaków.</li>
+            <li><code>type="submit"</code> - przycisk wysyłający formularz (lub <code>&lt;button type="submit"&gt;</code>).</li>
+            <li><code>type="reset"</code> - czyści pola (rzadko używany).</li>
+        </ul>
+        <div class="coord-note">
+            Każde pole przesyłane do serwera musi mieć atrybut <code>name</code> - to klucz identyfikujący dane.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>6. Przykład kompletnego formularza (podstawowego)</h2>
+        <div class="code-sample"><pre>
+&lt;form action="wyslij.php" method="post"&gt;
+    &lt;div&gt;
+        &lt;label for="imie"&gt;Imię:&lt;/label&gt;
+        &lt;input type="text" id="imie" name="imie" required&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;label for="email"&gt;E-mail:&lt;/label&gt;
+        &lt;input type="email" id="email" name="email" required&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;label&gt;
+            &lt;input type="checkbox" name="regulamin" value="tak"&gt; Akceptuję regulamin
+        &lt;/label&gt;
+    &lt;/div&gt;
+    &lt;button type="submit"&gt;Zarejestruj się&lt;/button&gt;
+&lt;/form&gt;
+</pre>
+</div>
+        <div class="demo-form">
+            <form action="#" method="post" onsubmit="alert('Przykładowe wysłanie (demonstracja)'); return false;">
+                <div><label for="przykl_imie">Imię:</label> <input type="text" id="przykl_imie" name="imie" required placeholder="Jan"></div>
+                <div><label for="przykl_email">E-mail:</label> <input type="email" id="przykl_email" name="email" required placeholder="jan@example.com"></div>
+                <div><label><input type="checkbox" name="regulamin" value="tak"> Akceptuję regulamin</label></div>
+                <button type="submit">Zarejestruj się</button>
+            </form>
+            <p><small>Przykład poglądowy - formularz nie wysyła danych (akcja #).</small></p>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>7. Grupowanie pól - &lt;fieldset&gt; i &lt;legend&gt;</h2>
+        <p>Dla lepszej organizacji formularza można grupować pola w bloki <code>&lt;fieldset&gt;</code> z tytułem <code>&lt;legend&gt;</code>. To poprawia czytelność i dostępność.</p>
+        <div class="code-sample"><pre>
+&lt;fieldset&gt;
+    &lt;legend&gt;Dane osobowe&lt;/legend&gt;
+    &lt;label&gt;Imię: &lt;input type="text" name="imie"&gt;&lt;/label&gt;
+    &lt;label&gt;Nazwisko: &lt;input type="text" name="nazwisko"&gt;&lt;/label&gt;
+&lt;/fieldset&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <fieldset style="border:1px solid #ddd; padding:12px; border-radius:12px;">
+                <legend style="font-weight:bold;">Dane osobowe</legend>
+                <label>Imię: <input type="text" name="imie_fs" placeholder="Jan"></label><br>
+                <label>Nazwisko: <input type="text" name="nazwisko_fs" placeholder="Kowalski"></label>
+            </fieldset>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>8. Atrybut name - klucz dla danych</h2>
+        <p>Każde pole, którego dane mają być wysłane do serwera, musi mieć atrybut <strong>name</strong>. Wartość <code>name</code> staje się kluczem w tablicy danych po stronie serwera (np. w PHP <code>$_POST['imie']</code>).</p>
+        <div class="code-sample"><pre>
+&lt;input type="text" name="user_login"&gt;
+&lt;!-- serwer otrzyma: user_login = "wpisana_wartość" --&gt;
+</pre>
+</div>
+        <div class="warning-tip">
+            Atrybut <code>id</code> służy do wiązania z <code>&lt;label&gt;</code> i CSS/JS, ale to <code>name</code> odpowiada za przesyłanie danych. Nie myl ich.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>9. Wysyłanie formularza - przycisk submit</h2>
+        <p>Aby użytkownik mógł wysłać formularz, potrzebny jest przycisk typu <code>submit</code>. Może to być <code>&lt;input type="submit"&gt;</code> lub <code>&lt;button type="submit"&gt;</code>. Drugi sposób jest bardziej elastyczny (można wstawić ikonę, HTML).</p>
+        <div class="code-sample"><pre>
+&lt;button type="submit"&gt;Wyślij formularz&lt;/button&gt;
+&lt;input type="submit" value="Wyślij"&gt;
+</pre>
+</div>
+        <div class="coord-note">
+            Przycisk <code>type="submit"</code> wewnątrz formularza automatycznie go wysyła. Można też użyć JavaScript do ręcznego wysyłania.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>10. Dobre praktyki tworzenia formularzy</h2>
+        <div class="good-bad">
+            <div class="good">
+<h4>Dobre praktyki</h4>
+                <ul>
+                    <li>Każde pole ma własną etykietę <code>&lt;label&gt;</code>.</li>
+                    <li>Używaj odpowiednich <code>type</code> (email, tel, number) - pomagają w walidacji.</li>
+                    <li>Stosuj <code>required</code> dla pól obowiązkowych.</li>
+                    <li>Grupuj logicznie pola za pomocą <code>&lt;fieldset&gt;</code>.</li>
+                    <li>Używaj metody POST dla danych poufnych.</li>
+                    <li>Zapewnij jasne komunikaty o błędach.</li>
+                </ul>
+</div>
+            <div class="bad">
+<h4>Błędy</h4>
+                <ul>
+                    <li>Brak <code>&lt;label&gt;</code> - utrudnia dostępność.</li>
+                    <li>Używanie GET dla haseł.</li>
+                    <li>Pominięcie <code>name</code> - dane nie zostaną wysłane.</li>
+                    <li>Brak przycisku submit - formularz nie może być wysłany.</li>
+                </ul>
+</div>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>11. Co musisz zapamiętać na egzamin INF03</h2>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>&lt;form&gt;</strong> - kontener formularza, wymagany.</div>
+            <div class="attr-card"><strong>action</strong> - adres docelowy (skrypt serwerowy).</div>
+            <div class="attr-card"><strong>method</strong> - GET (URL) lub POST (ciało żądania).</div>
+            <div class="attr-card"><strong>&lt;label&gt;</strong> - etykieta, wiązanie przez <code>for</code>/<code>id</code> lub opakowanie.</div>
+            <div class="attr-card"><strong>name</strong> - klucz danych wysyłanych do serwera.</div>
+            <div class="attr-card"><strong>submit</strong> - przycisk wysyłający formularz.</div>
+</div>
+        <div class="coord-note">
+            Egzaminatorzy często sprawdzają umiejętność stworzenia prostego formularza kontaktowego - pamiętaj o poprawnym użyciu <code>action</code>, <code>method</code> i <code>&lt;label&gt;</code> z odpowiednimi <code>for</code>/<code>id</code>.
+</div>
+        <div class="code-sample" style="margin-top:20px;"><pre>
+&lt;!-- Przykład wzorcowego prostego formularza --&gt;
+&lt;form action="kontakt.php" method="post"&gt;
+    &lt;label for="name"&gt;Imię i nazwisko:&lt;/label&gt;
+    &lt;input type="text" id="name" name="name" required&gt;
+
+    &lt;label for="mail"&gt;Adres e-mail:&lt;/label&gt;
+    &lt;input type="email" id="mail" name="email" required&gt;
+
+    &lt;button type="submit"&gt;Wyślij wiadomość&lt;/button&gt;
+&lt;/form&gt;
+</pre>
+</div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 Samouczek INF03 - Rozdział 11: Formularze - podstawy (form, action, method, label).</p>
+</footer>
+
+</body>
+</html>

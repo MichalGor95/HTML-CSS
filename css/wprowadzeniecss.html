@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wprowadzenie do CSS | Samouczek INF03</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        HTML<span>&CSS</span>
+</div>
+
+    <nav>
+        <a href="../index.html">Start</a>
+        <a href="../html.html">HTML</a>
+        <a href="../css.html" class="active">CSS</a>
+    </nav>
+</header>
+
+<main class="content-page">
+
+    <div class="page-header">
+        <h1>Rozdział CSS: Wprowadzenie do CSS</h1>
+        <p>
+            CSS (Cascading Style Sheets) to język stylów, który nadaje wygląd stronom HTML.
+            Bez niego strony byłyby tylko czarno-białym tekstem na szarym tle.
+</p>
+</div>
+
+    <!-- CZYM JEST CSS -->
+    <section class="topic-section">
+        <h2>1. Czym jest CSS?</h2>
+        <p>
+            CSS pozwala oddzielić <strong>treść</strong> od <strong>prezentacji</strong>.
+            Dzięki niemu możesz zmienić kolor, czcionkę, układ, animacje i wiele więcej.
+</p>
+        <ul class="custom-list">
+            <li>Stylizacja tekstu (kolor, rozmiar, krój)</li>
+            <li>Układ strony (marginesy, pozycjonowanie, flex, grid)</li>
+            <li>Efekty wizualne (cienie, gradienty, animacje)</li>
+            <li>Responsywność (dostosowanie do ekranów)</li>
+        </ul>
+        <p>
+            CSS działa na zasadzie <strong>kaskadowości</strong> - style mogą się nakładać,
+            a najważniejsze jest to, co zdefiniowane najbliżej elementu lub z najwyższym priorytetem.
+</p>
+    </section>
+
+    <!-- SKŁADNIA -->
+    <section class="topic-section">
+        <h2>2. Składnia CSS</h2>
+        <p>
+            Podstawowa reguła CSS składa się z <strong>selektora</strong>, <strong>właściwości</strong> i <strong>wartości</strong>.
+</p>
+        <div class="code-sample"><pre>
+selektor {
+    właściwość: wartość;
+}
+</pre>
+</div>
+        <p>Przykład:</p>
+        <div class="code-sample"><pre>
+p {
+    color: blue;
+    font-size: 16px;
+}
+</pre>
+</div>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <tr>
+                    <th>Element</th>
+                    <th>Znaczenie</th>
+                    <th>Przykład</th>
+                </tr>
+                <tr>
+                    <td>Selektor</td>
+                    <td>Określa, które elementy HTML zostaną wystylizowane</td>
+                    <td><code>h1</code>, <code>.klasa</code>, <code>#id</code></td>
+                </tr>
+                <tr>
+                    <td>Właściwość</td>
+                    <td>Cecha, którą zmieniamy (np. kolor, rozmiar)</td>
+                    <td><code>color</code>, <code>margin</code>, <code>background</code></td>
+                </tr>
+                <tr>
+                    <td>Wartość</td>
+                    <td>Konkretne ustawienie danej właściwości</td>
+                    <td><code>red</code>, <code>20px</code>, <code>none</code></td>
+                </tr>
+            </table>
+</div>
+    </section>
+
+    <!-- KOMENTARZE -->
+    <section class="topic-section">
+        <h2>3. Komentarze w CSS</h2>
+        <p>
+            Komentarze są ignorowane przez przeglądarkę - służą do opisywania kodu.
+            Przydają się przy większych projektach.
+</p>
+        <div class="code-sample"><pre>
+/* To jest komentarz w CSS */
+p {
+    color: green; /* kolor akapitów - można zmienić później */
+}
+</pre>
+</div>
+        <p>
+            Można nimi również tymczasowo „wyłączać” fragmenty stylów.
+</p>
+    </section>
+
+    <!-- GDZIE PISAĆ CSS - 3 metody -->
+    <section class="topic-section">
+        <h2>4. Gdzie pisać CSS?</h2>
+        <p>Istnieją trzy podstawowe sposoby dołączenia CSS do strony HTML.</p>
+
+        <h3 style="margin-top: 20px; color: #2f7a67;"> CSS inline (w linii)</h3>
+        <p>Style wpisuje się bezpośrednio w znaczniku HTML za pomocą atrybutu <code>style</code>.</p>
+        <div class="code-sample"><pre>
+&lt;p style="color: red; font-weight: bold;"&gt;To jest czerwony akapit&lt;/p&gt;
+</pre>
+</div>
+        <p><strong>Wady:</strong> miesza strukturę z wyglądem, trudno utrzymać większą stronę.</p>
+
+        <h3 style="margin-top: 20px; color: #2f7a67;"> CSS wewnętrzny (w sekcji &lt;style&gt;)</h3>
+        <p>Reguły CSS umieszcza się w znaczniku <code>&lt;style&gt;</code> wewnątrz <code>&lt;head&gt;</code>.</p>
+        <div class="code-sample"><pre>
+&lt;head&gt;
+    &lt;style&gt;
+        body {
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: navy;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+</pre>
+</div>
+        <p><strong>Zaleta:</strong> lepsze niż inline. <strong>Wada:</strong> style nie są współdzielone między wieloma stronami.</p>
+
+        <h3 style="margin-top: 20px; color: #2f7a67;"> CSS zewnętrzny (osobny plik .css)</h3>
+        <p>Reguły zapisuje się w pliku <code>style.css</code> i podłącza za pomocą <code>&lt;link&gt;</code>.</p>
+        <div class="code-sample"><pre>
+&lt;link rel="stylesheet" href="../style.css"&gt;
+</pre>
+</div>
+        <p><strong>Zalety:</strong> jeden plik CSS może obsłużyć wiele podstron, łatwiejsze utrzymanie, szybsze ładowanie (cache).</p>
+
+        <div class="table-wrapper">
+            <table class="value-table">
+                <tr>
+                    <th>Metoda</th>
+                    <th>Zastosowanie</th>
+                    <th>Priorytet (kaskada)</th>
+                </tr>
+                <tr>
+                    <td>inline</td>
+                    <td>pojedynczy, unikalny element</td>
+                    <td>najwyższy</td>
+                </tr>
+                <tr>
+                    <td>wewnętrzny &lt;style&gt;</td>
+                    <td>jedna konkretna strona</td>
+                    <td>średni</td>
+                </tr>
+                <tr>
+                    <td>zewnętrzny .css</td>
+                    <td>cała witryna (najlepsza praktyka)</td>
+                    <td>najniższy (może być nadpisany)</td>
+                </tr>
+            </table>
+</div>
+        <p>
+             <strong>Wskazówka na INF03:</strong> w praktyce egzaminacyjnej najczęściej wymagany jest zewnętrzny arkusz stylów.
+            Pamiętaj o poprawnym podaniu ścieżki (np. <code>css/style.css</code>).
+</p>
+    </section>
+
+    <!-- DODATKOWA SEKCJA: KASKADA I SPECYFICZNOŚĆ -->
+    <section class="topic-section">
+        <h2>5. Kaskadowość i dziedziczenie</h2>
+        <p>
+            CSS to <strong>kaskadowe arkusze stylów</strong>. Oznacza to, że:
+</p>
+        <ul class="custom-list">
+            <li>Style mogą być dziedziczone (np. rodzica na dziecko).</li>
+            <li>Jeśli kilka reguł pasuje do tego samego elementu, wygrywa ta z <strong>wyższą specyficznością</strong> (np. <code>#id</code> jest ważniejszy niż <code>.klasa</code>).</li>
+            <li>Reguła z <code>!important</code> ma najwyższy priorytet (unikać nadużywania).</li>
+        </ul>
+        <div class="code-sample"><pre>
+/* Przykład specyficzności */
+p { color: black; }           /* 1 punkt */
+.akapit { color: blue; }      /* 10 punktów - wygrywa */
+#specjalny { color: red; }    /* 100 punktów - najsilniejszy */
+</pre>
+</div>
+        <p>
+            Dzięki kaskadzie możesz tworzyć czytelne i łatwe w utrzymaniu arkusze.
+</p>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 Samouczek INF03 - Wprowadzenie do CSS.</p>
+</footer>
+
+</body>
+</html>

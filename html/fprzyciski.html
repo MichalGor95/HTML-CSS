@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Przyciski i wysyłanie formularzy | Podstawy INF03</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Dodatkowe style - zachowują pełną spójność z oryginalnym style.css */
+        .doctype-box {
+            background: #1e2a2a;
+            color: #d0f0e5;
+            border-radius: 16px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        .structure-visual {
+            background: #fefcf5;
+            border: 1px solid #ddd2b5;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 25px 0;
+            font-family: monospace;
+            line-height: 1.6;
+        }
+        .tag-demo {
+            background: #f4f1ea;
+            border-radius: 14px;
+            padding: 12px 16px;
+            margin: 12px 0;
+            font-family: monospace;
+            border-left: 4px solid #2f7a67;
+        }
+        .attr-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-badge {
+            background: #eef3f0;
+            border-radius: 40px;
+            padding: 6px 14px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            border: 1px solid #cbdcd3;
+        }
+        .good-bad {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .good, .bad {
+            flex: 1;
+            background: white;
+            border-radius: 18px;
+            padding: 16px 20px;
+            border: 1px solid #e2dfd7;
+        }
+        .good h4 { color: #2f7a67; margin-bottom: 12px; }
+        .bad h4 { color: #b1624b; margin-bottom: 12px; }
+        .attrs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-card {
+            background: #fcf9f2;
+            border-radius: 14px;
+            padding: 12px 16px;
+            border: 1px solid #e5dfd1;
+        }
+        .attr-card strong {
+            color: #1f5e4f;
+            font-family: monospace;
+            font-size: 1.05rem;
+        }
+        .coord-note {
+            background: #eef5f2;
+            border-left: 4px solid #2f7a67;
+            padding: 12px 18px;
+            margin: 15px 0;
+            font-size: 0.95rem;
+            border-radius: 12px;
+        }
+        .warning-tip {
+            background: #fff2df;
+            border-radius: 14px;
+            padding: 12px 18px;
+            margin: 20px 0;
+            border-left: 5px solid #e6a017;
+        }
+        .custom-list {
+            padding-left: 28px;
+            margin: 20px 0;
+        }
+        .custom-list li {
+            margin: 8px 0;
+        }
+        .code-sample {
+            background-color: #1e2a2a;
+            color: #d9f0ea;
+            padding: 20px;
+            border-radius: 16px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+        }
+        .code-sample pre {
+            background: transparent;
+            color: #d0f0e5;
+            margin: 0;
+        }
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 25px 0;
+        }
+        .value-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fefef9;
+        }
+        .value-table th, .value-table td {
+            border: 1px solid #d6d0c4;
+            padding: 12px 16px;
+            text-align: left;
+            vertical-align: top;
+        }
+        .value-table th {
+            background-color: #eef3f0;
+            color: #1b4d41;
+            font-weight: 700;
+        }
+        .demo-form {
+            background: #fcf9f2;
+            border: 1px solid #e2dfd7;
+            border-radius: 16px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .demo-form label {
+            display: inline-block;
+            width: 120px;
+            font-weight: 600;
+        }
+        .demo-form input, .demo-form button {
+            margin: 8px 0;
+            padding: 6px 12px;
+        }
+        button.demo-btn {
+            margin: 5px;
+            padding: 8px 16px;
+            cursor: pointer;
+        }
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        HTML<span>&CSS</span>
+</div>
+    <nav>
+        <a href="../index.html">Start</a>
+        <a href="../html.html" class="active">HTML</a>
+        <a href="../css.html">CSS</a>
+    </nav>
+</header>
+
+<main class="content-page">
+    <div class="page-header">
+        <h1>Rozdział 14: Przyciski i wysyłanie formularzy</h1>
+        <p>
+            Przyciski umożliwiają interakcję z formularzem. Poznaj znacznik <code>&lt;button&gt;</code>
+            oraz jego typy <strong>submit</strong>, <strong>reset</strong> i <strong>button</strong>.
+            Dowiedz się, jakie są różnice między <code>&lt;button&gt;</code> a <code>&lt;input type="submit"&gt;</code>,
+            jak stosować atrybuty <code>disabled</code>, <code>formaction</code>, <code>formmethod</code> i inne.
+</p>
+</div>
+
+    <section class="topic-section">
+        <h2>1. Znacznik &lt;button&gt; - uniwersalny przycisk</h2>
+        <p><strong>&lt;button&gt;</strong> to elastyczny element do tworzenia przycisków. W przeciwieństwie do <code>&lt;input&gt;</code>, może zawierać HTML wewnątrz (ikony, obrazy, pogrubienia).</p>
+        <div class="code-sample"><pre>
+&lt;button type="button"&gt;Kliknij mnie&lt;/button&gt;
+&lt;button type="submit"&gt;Wyślij formularz&lt;/button&gt;
+&lt;button type="reset"&gt;Wyczyść pola&lt;/button&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <div class="button-group">
+                <button type="button" class="demo-btn">Kliknij mnie</button>
+                <button type="submit" class="demo-btn">Wyślij formularz</button>
+                <button type="reset" class="demo-btn">Wyczyść pola</button>
+</div>
+</div>
+        <div class="coord-note">
+            Atrybut <code>type</code> w <code>&lt;button&gt;</code> jest bardzo ważny. Domyślnie (bez podania <code>type</code>) w przeglądarkach przycisk działa jak <code>submit</code> - może przypadkowo wysłać formularz.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>2. Typ submit - wysyłanie formularza</h2>
+        <p><strong>type="submit"</strong> - po kliknięciu powoduje wysłanie formularza, w którym znajduje się przycisk. Dane trafiają pod adres z atrybutu <code>action</code> formularza.</p>
+        <div class="code-sample"><pre>
+&lt;form action="wyslij.php" method="post"&gt;
+    &lt;input type="text" name="imie"&gt;
+    &lt;button type="submit"&gt;Zarejestruj&lt;/button&gt;
+&lt;/form&gt;
+</pre>
+</div>
+        <div class="demo-form">
+            <form action="#" onsubmit="alert('Formularz zostałby wysłany (demonstracja)'); return false;">
+                <label>Imię: <input type="text" name="imie" placeholder="Jan"></label><br>
+                <button type="submit">Zarejestruj (submit)</button>
+            </form>
+</div>
+        <ul class="custom-list">
+            <li>Przycisk <code>submit</code> automatycznie wysyła dane wszystkich pól w formularzu.</li>
+            <li>Jeśli w formularzu jest więcej niż jeden przycisk <code>submit</code>, kliknięty decyduje o wysłaniu.</li>
+            <li>Można nadpisać <code>action</code> i <code>method</code> za pomocą atrybutów <code>formaction</code> i <code>formmethod</code>.</li>
+        </ul>
+    </section>
+
+    <section class="topic-section">
+        <h2>3. Typ reset - czyszczenie formularza</h2>
+        <p><strong>type="reset"</strong> - przywraca wszystkie pola formularza do wartości początkowych (stanu sprzed edycji). <strong>Uwaga:</strong> Nie kasuje danych, tylko resetuje do domyślnych.</p>
+        <div class="code-sample"><pre>
+&lt;form&gt;
+    &lt;input type="text" name="szukaj" value="domyślna fraza"&gt;
+    &lt;button type="reset"&gt;Wyczyść&lt;/button&gt;
+&lt;/form&gt;
+</pre>
+</div>
+        <div class="demo-form">
+            <form onsubmit="return false;">
+                <label>Szukaj: <input type="text" name="szukaj" value="domyślna fraza"></label><br>
+                <button type="reset">Resetuj (przywróć domyślne)</button>
+                <button type="button" onclick="this.form.reset();">Reset przez JS</button>
+            </form>
+            <p><small>Po kliknięciu "Resetuj" pole wróci do "domyślna fraza".</small></p>
+</div>
+        <div class="warning-tip">
+            <strong>Uwaga:</strong> Przycisk <code>reset</code> może być frustrujący dla użytkowników (przypadkowe wyczyszczenie). W nowoczesnych formularzach często rezygnuje się z niego na rzecz osobnego przycisku "Anuluj" lub pozostawia się tylko submit.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>4. Typ button - zwykły przycisk (bez akcji)</h2>
+        <p><strong>type="button"</strong> - nie wykonuje żadnej domyślnej akcji. Służy do wywoływania skryptów JavaScript (np. walidacja przed wysłaniem, dynamiczne dodawanie pól).</p>
+        <div class="code-sample"><pre>
+&lt;button type="button" onclick="alert('Kliknięto!')"&gt;Pokaż alert&lt;/button&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <button type="button" onclick="alert('Witaj! To przycisk typu button.')">Pokaż alert</button>
+</div>
+        <div class="coord-note">
+            Używaj <code>type="button"</code>, gdy przycisk nie ma nic wspólnego z wysyłaniem formularza (np. otwieranie okna, dodawanie wiersza w tabeli).
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>5. &lt;button&gt; vs &lt;input type="submit"&gt; - różnice</h2>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <thead><tr><th>Cecha</th><th>&lt;button&gt;</th><th>&lt;input type="submit"&gt;</th></tr></thead>
+                <tbody>
+                    <tr><td>Zawartość HTML</th><td>Może zawierać HTML (ikony, obrazy, span)</td><td>Tylko tekst (atrybut value)</td></tr>
+                    <tr><th>Domyślny typ</th><td>submit (jeśli nie podano)</td><td>submit</td></tr>
+                    <tr><th>Style CSS</th><td>Łatwiej stylować, bo zawiera wnętrze</td><td>Trudniej dodać ikonę wewnątrz</td></tr>
+                    <tr><th>Dostępność</th><td>Wymaga jawnego type, ale ogólnie dobry</td><td>Dobry, ale mniej elastyczny</td></tr>
+                    <tr><th>Wsparcie dla disabled</th><td>Tak</td><td>Tak</td></tr>
+                </tbody>
+            </table>
+</div>
+        <div class="good-bad">
+            <div class="good">
+<h4>Zalety &lt;button&gt;</h4>
+                <ul>
+                    <li>Możliwość wstawienia grafiki, ikony FontAwesome.</li>
+                    <li>Większa kontrola nad wyglądem.</li>
+                    <li>Bardziej semantyczny w nowoczesnym HTML.</li>
+                </ul>
+</div>
+            <div class="good">
+<h4>Zalety &lt;input&gt;</h4>
+                <ul>
+                    <li>Prostszy w najprostszych przypadkach.</li>
+                    <li>Starsza składnia, ale nadal poprawna.</li>
+                </ul>
+</div>
+</div>
+        <div class="coord-note">
+            Obecnie zaleca się używanie <code>&lt;button&gt;</code> z określonym <code>type</code>, ponieważ jest bardziej elastyczny i semantyczny.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>6. Atrybut disabled - wyłączanie przycisku</h2>
+        <p><strong>disabled</strong> - przycisk staje się nieaktywny (szary, nieklikalny). Przydatne do blokowania wysyłki przed akceptacją regulaminu lub podczas ładowania.</p>
+        <div class="code-sample"><pre>
+&lt;button type="submit" disabled&gt;Zarejestruj (nieaktywny)&lt;/button&gt;
+&lt;input type="submit" value="Wyślij" disabled&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <button type="submit" disabled>Zarejestruj (nieaktywny)</button>
+            <input type="submit" value="Wyślij (disabled)" disabled style="margin-left:10px;">
+</div>
+        <div class="warning-tip">
+            Wyłączony przycisk nie wysyła formularza, nawet jeśli ma typ <code>submit</code>. Można go włączyć dynamicznie JavaScriptem.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>7. Nadpisywanie akcji i metody - formaction, formmethod</h2>
+        <p>Przycisk <code>submit</code> może nadpisać atrybuty <code>action</code> i <code>method</code> całego formularza. Pozwala to na różne cele wysyłki w jednym formularzu.</p>
+        <div class="code-sample"><pre>
+&lt;form action="domyslna.php" method="post"&gt;
+    &lt;input type="text" name="dane"&gt;
+    &lt;button type="submit"&gt;Domyślna akcja&lt;/button&gt;
+    &lt;button type="submit" formaction="inna.php"&gt;Wyślij do inna.php&lt;/button&gt;
+    &lt;button type="submit" formmethod="get"&gt;Wyślij metodą GET&lt;/button&gt;
+&lt;/form&gt;
+</pre>
+</div>
+        <div class="demo-form">
+            <form action="#" onsubmit="alert('Demonstracja - brak realnego wysłania'); return false;">
+                <input type="text" name="dane" placeholder="Wpisz coś">
+                <div class="button-group">
+                    <button type="submit">Domyślna akcja</button>
+                    <button type="submit" formaction="inna.php">Nadpisz action</button>
+                    <button type="submit" formmethod="get">Nadpisz na GET</button>
+</div>
+            </form>
+            <p><small>Atrybuty <code>formaction</code> i <code>formmethod</code> działają tylko dla przycisków typu <code>submit</code>.</small></p>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>8. Przyciski poza formularzem - atrybut form</h2>
+        <p>HTML5 umożliwia umieszczenie przycisku poza formularzem i powiązanie go z konkretnym formularzem za pomocą atrybutu <code>form</code> (wartość = id formularza).</p>
+        <div class="code-sample"><pre>
+&lt;form id="mojFormularz" action="wyslij.php"&gt;
+    &lt;input type="text" name="imie"&gt;
+&lt;/form&gt;
+&lt;button type="submit" form="mojFormularz"&gt;Wyślij (przycisk poza formularzem)&lt;/button&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <form id="demoForm" action="#" onsubmit="alert('Wysyłanie z przycisku poza formularzem'); return false;">
+                <label>Imię: <input type="text" name="imie" placeholder="Jan"></label>
+            </form>
+            <button type="submit" form="demoForm">Wyślij (przycisk poza formularzem)</button>
+</div>
+        <div class="coord-note">
+            Atrybut <code>form</code> działa również dla <code>&lt;input type="submit"&gt;</code> i <code>&lt;input type="reset"&gt;</code>.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>9. Automatyczne wysyłanie (bez przycisku?)</h2>
+        <p>Formularz można wysłać również bez przycisku, np. przez JavaScript (<code>form.submit()</code>) lub przy użyciu pól <code>&lt;input type="image"&gt;</code>. Jednak standardowo przycisk submit jest podstawą.</p>
+        <div class="code-sample"><pre>
+&lt;input type="image" src="przycisk.png" alt="Wyślij"&gt;
+&lt;!-- działa jak submit, ale z grafiką --&gt;
+</pre>
+</div>
+        <div class="warning-tip">
+            <code>&lt;input type="image"&gt;</code> wysyła również współrzędne kliknięcia (x, y). Rzadko używane w nowoczesnych aplikacjach.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>10. Przykład formularza z różnymi przyciskami</h2>
+        <div class="code-sample"><pre>
+&lt;form action="zapisz.php" method="post"&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Formularz kontaktowy&lt;/legend&gt;
+        &lt;label&gt;Imię: &lt;input type="text" name="imie" required&gt;&lt;/label&gt;&lt;br&gt;
+        &lt;label&gt;Wiadomość: &lt;textarea name="tresc"&gt;&lt;/textarea&gt;&lt;/label&gt;&lt;br&gt;
+        
+        &lt;div class="przyciski"&gt;
+            &lt;button type="submit"&gt;Wyślij wiadomość&lt;/button&gt;
+            &lt;button type="reset"&gt;Wyczyść formularz&lt;/button&gt;
+            &lt;button type="button" onclick="alert('Pomoc: wypełnij wszystkie pola')"&gt;Pomoc&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/fieldset&gt;
+&lt;/form&gt;
+</pre>
+</div>
+        <div class="demo-form">
+            <form action="#" onsubmit="alert('Formularz zostałby wysłany'); return false;">
+                <fieldset>
+                    <legend>Formularz kontaktowy</legend>
+                    <label>Imię: <input type="text" name="imie" required placeholder="Jan"></label><br>
+                    <label>Wiadomość: <textarea name="tresc" rows="2" cols="30" placeholder="Treść..."></textarea></label><br>
+                    <div class="button-group">
+                        <button type="submit">Wyślij wiadomość</button>
+                        <button type="reset">Wyczyść formularz</button>
+                        <button type="button" onclick="alert('Pomoc: wypełnij wszystkie pola')">Pomoc</button>
+</div>
+                </fieldset>
+            </form>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>11. Dobre praktyki dotyczące przycisków</h2>
+        <div class="good-bad">
+            <div class="good">
+<h4>Dobre praktyki</h4>
+                <ul>
+                    <li>Zawsze podawaj <code>type</code> w <code>&lt;button&gt;</code> (submit, reset, button).</li>
+                    <li>Używaj <code>&lt;button type="submit"&gt;</code> zamiast <code>&lt;input type="submit"&gt;</code> dla większej elastyczności.</li>
+                    <li>Unikaj przycisków <code>reset</code> w ważnych formularzach (łatwo o pomyłkę).</li>
+                    <li>Wyłączaj przycisk submit (<code>disabled</code>) po pierwszym kliknięciu, aby uniknąć wielokrotnego wysyłania.</li>
+                    <li>Zapewnij jasne etykiety na przyciskach (np. "Zapisz", "Wyślij", a nie "OK").</li>
+                </ul>
+</div>
+            <div class="bad">
+<h4>Częste błędy</h4>
+                <ul>
+                    <li>Brak <code>type</code> - przycisk domyślnie działa jako submit, co może przypadkowo wysłać formularz.</li>
+                    <li>Używanie <code>&lt;button&gt;</code> bez <code>type="button"</code> w miejscach, gdzie nie powinien nic wysyłać.</li>
+                    <li>Zapominanie o atrybucie <code>name</code> dla przycisku (przydatne, gdy jest wiele submit w formularzu).</li>
+                    <li>Nieobsługiwanie wielokrotnego kliknięcia (brak <code>disabled</code> po wysłaniu).</li>
+                </ul>
+</div>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>12. Co musisz zapamiętać na egzamin INF03</h2>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>&lt;button type="submit"&gt;</strong> - wysyła formularz.</div>
+            <div class="attr-card"><strong>&lt;button type="reset"&gt;</strong> - resetuje pola do wartości początkowych.</div>
+            <div class="attr-card"><strong>&lt;button type="button"&gt;</strong> - zwykły przycisk (bez domyślnej akcji).</div>
+            <div class="attr-card"><strong>Atrybut disabled</strong> - blokuje przycisk.</div>
+            <div class="attr-card"><strong>formaction, formmethod</strong> - nadpisują akcję i metodę formularza.</div>
+            <div class="attr-card"><strong>form</strong> - wiąże przycisk z formularzem (poza nim).</div>
+</div>
+        <div class="coord-note">
+            Egzaminatorzy mogą poprosić o utworzenie formularza z przyciskami submit i reset, a także o zastosowanie <code>disabled</code> w określonych warunkach. Pamiętaj o różnicach między typami przycisków.
+</div>
+        <div class="code-sample" style="margin-top:20px;"><pre>
+&lt;!-- Wzorcowy fragment formularza z przyciskami --&gt;
+&lt;form action="rejestracja.php" method="post"&gt;
+    &lt;label&gt;Login: &lt;input type="text" name="login" required&gt;&lt;/label&gt;&lt;br&gt;
+    &lt;label&gt;Hasło: &lt;input type="password" name="haslo" required&gt;&lt;/label&gt;&lt;br&gt;
+    &lt;button type="submit"&gt;Zarejestruj się&lt;/button&gt;
+    &lt;button type="reset"&gt;Wyczyść dane&lt;/button&gt;
+    &lt;button type="button" onclick="location.href='index.html'"&gt;Anuluj&lt;/button&gt;
+&lt;/form&gt;
+</pre>
+</div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 Samouczek INF03 - Rozdział 14: Przyciski i wysyłanie formularzy (button, submit, reset).</p>
+</footer>
+
+</body>
+</html>

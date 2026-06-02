@@ -1,30 +1,30 @@
 ```
-    __  __________  _____
-   / / / /_  __/  |/  / /
+    __ __________ _____
+   / / / /_ __/ |/ / /
   / /_/ / / / / /|_/ / /
- / __  / / / / /  / / /___
-/_/ /_/ /_/ /_/  /_/_____/
+ / __ / / / / / / / /___
+/_/ /_/ /_/ /_/ /_/_____/
 
-   ___        ________________
-  ( _ )      / ____/ ___/ ___/
- / __ \/|   / /    \__ \\__ \
-/ /_/  <   / /___ ___/ /__/ /
-\____/\/   \____//____/____/
+   ___ ________________
+  ( _ ) / ____/ ___/ ___/
+ / __ \/| / / \__ \\__ \
+/ /_/ < / /___ ___/ /__/ /
+\____/\/ \____//____/____/
 ```
 
 # Samouczek HTML i CSS - INF03
 
-Prosta strona z materiałami do nauki HTML i CSS, przygotowana z myslą o egzaminie INF03.
+Prosta strona z materiałami do nauki HTML i CSS, przygotowana z myślą o egzaminie INF03.
 
 ---
 
 ## O projekcie
 
-Strona zawiera podzielone na rozdzialy omowienie znacznikow HTML oraz wlasciwosci CSS. Kazdy rozdzial to osobna podstrona z tabelami wartosci, przykladami kodu i krotkim opisem. Nie ma tu zadnych frameworkow - czysty HTML i CSS.
+Strona zawiera podzielone na rozdziały omowienie znacznikow HTML oraz właściwości CSS. Każdy rozdział to osobna podstrona z tabelami wartości, przykladami kodu i krótkim opisem. Nie ma tu żadnych frameworków - czysty HTML i CSS.
 
-## Zawartosc
+## Zawartość
 
-**HTML - 20 rozdzialow**
+**HTML - 20 rozdziałów**
 - struktura dokumentu
 - znaczniki tekstowe, listy, tabele
 - formularze i ich pola
@@ -32,30 +32,30 @@ Strona zawiera podzielone na rozdzialy omowienie znacznikow HTML oraz wlasciwosc
 - semantyczne znaczniki HTML5
 - atrybuty globalne
 
-**CSS - 17 rozdzialow**
-- selektory i model pudelkowy
+**CSS - 17 rozdziałów**
+- selektory i model pudełkowy
 - kolory, jednostki, czcionki
 - Flexbox i Grid
 - pozycjonowanie
 - transformacje i przejscia
 - animacje CSS (keyframes)
 
-## Struktura plikow
+## Struktura plików
 
 ```
 /
-- index.html          strona glowna
-- html.html           lista rozdzialow HTML
-- css.html            lista rozdzialow CSS
-- style.css           wspolny arkusz stylow
-- wprowadzenie.html   rozdzial HTML 1
-- obrazy.html         rozdzial HTML 6
-- animacje.html       rozdzial CSS 17
+- index.html strona główna
+- html.html lista rozdziałów HTML
+- css.html lista rozdziałów CSS
+- style.css wspólny arkusz stylów
+- wprowadzenie.html rozdział HTML 1
+- obrazy.html rozdział HTML 6
+- animacje.html rozdział CSS 17
 ```
 
 ## Uruchomienie
 
-Pobierz pliki i otworz `index.html` w przegladarce. Nie wymaga serwera ani zadnych zaleznosci.
+Pobierz pliki i otwórz `index.html` w przegladarce. Nie wymaga serwera ani żadnych zależności.
 
 ## Autor
 

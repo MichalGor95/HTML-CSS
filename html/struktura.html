@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podstawowa struktura dokumentu | Podstawy INF03</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Dodatkowe style specyficzne dla tej strony (zachowujące spójność) */
+        .doctype-box {
+            background: #1e2a2a;
+            color: #d0f0e5;
+            border-radius: 16px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        .structure-visual {
+            background: #fefcf5;
+            border: 1px solid #ddd2b5;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 25px 0;
+            font-family: monospace;
+            line-height: 1.6;
+        }
+        .tag-demo {
+            background: #f4f1ea;
+            border-radius: 14px;
+            padding: 12px 16px;
+            margin: 12px 0;
+            font-family: monospace;
+            border-left: 4px solid #2f7a67;
+        }
+        .attr-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-badge {
+            background: #eef3f0;
+            border-radius: 40px;
+            padding: 6px 14px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            border: 1px solid #cbdcd3;
+        }
+        .good-bad {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .good, .bad {
+            flex: 1;
+            background: white;
+            border-radius: 18px;
+            padding: 16px 20px;
+            border: 1px solid #e2dfd7;
+        }
+        .good h4 { color: #2f7a67; margin-bottom: 12px; }
+        .bad h4 { color: #b1624b; margin-bottom: 12px; }
+        .attrs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px,1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-card {
+            background: #fcf9f2;
+            border-radius: 14px;
+            padding: 12px 16px;
+            border: 1px solid #e5dfd1;
+        }
+        .attr-card strong {
+            color: #1f5e4f;
+            font-family: monospace;
+            font-size: 1.05rem;
+        }
+        .coord-note {
+            background: #eef5f2;
+            border-left: 4px solid #2f7a67;
+            padding: 12px 18px;
+            margin: 15px 0;
+            font-size: 0.95rem;
+            border-radius: 12px;
+        }
+        .warning-tip {
+            background: #fff2df;
+            border-radius: 14px;
+            padding: 12px 18px;
+            margin: 20px 0;
+            border-left: 5px solid #e6a017;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        HTML<span>&CSS</span>
+</div>
+    <nav>
+        <a href="../index.html">Start</a>
+        <a href="../html.html" class="active">HTML</a>
+        <a href="../css.html">CSS</a>
+    </nav>
+</header>
+
+<main class="content-page">
+    <div class="page-header">
+        <h1>Rozdział 2: Podstawowa struktura dokumentu HTML</h1>
+        <p>
+            Każdy dokument HTML musi mieć odpowiedni szkielet: <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code> oraz kluczowe elementy meta.
+            Poznaj funkcje tych znaczników i zasady ich stosowania.
+</p>
+</div>
+
+    <section class="topic-section">
+        <h2>1. Element &lt;html&gt; - korzeń dokumentu</h2>
+        <p>Znacznik <strong>&lt;html&gt;</strong> jest głównym kontenerem całej strony internetowej. Obejmuje całą treść - zarówno metadane, jak i część widoczną. Jest wymagany w każdym dokumencie HTML.</p>
+        <ul class="custom-list">
+            <li>Zawsze powinien zawierać atrybut <strong>lang</strong> określający język strony (np. <code>lang="pl"</code>).</li>
+            <li>Wewnątrz znajdują się dokładnie dwa główne elementy: <code>&lt;head&gt;</code> i <code>&lt;body&gt;</code>.</li>
+            <li>Może zawierać atrybuty takie jak <code>xmlns</code> (dla XHTML) - w HTML5 nie jest to wymagane.</li>
+        </ul>
+        <div class="code-sample"><pre>
+&lt;html lang="pl"&gt;
+    &lt;head&gt;...&lt;/head&gt;
+    &lt;body&gt;...&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+        <div class="coord-note">
+            Atrybut <code>lang</code> pomaga czytnikom ekranu i wyszukiwarkom. Wartość "pl" oznacza język polski, "en" - angielski.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>2. &lt;head&gt; - metadane strony</h2>
+        <p>Sekcja <strong>&lt;head&gt;</strong> zawiera informacje <strong>niewidoczne</strong> bezpośrednio dla użytkownika. To tutaj umieszczamy tytuł, kodowanie znaków, opis strony, linki do arkuszy stylów i skryptów.</p>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>&lt;title&gt;</strong> - tytuł strony (na karcie przeglądarki, w wynikach wyszukiwania).</div>
+            <div class="attr-card"><strong>&lt;meta charset&gt;</strong> - deklaracja kodowania znaków (zwykle UTF-8).</div>
+            <div class="attr-card"><strong>&lt;meta name="viewport"&gt;</strong> - kontroluje skalowanie na urządzeniach mobilnych.</div>
+            <div class="attr-card"><strong>&lt;meta name="description"&gt;</strong> - krótki opis strony dla SEO.</div>
+            <div class="attr-card"><strong>&lt;link&gt;</strong> - dołączanie zewnętrznych plików CSS.</div>
+            <div class="attr-card"><strong>&lt;script&gt;</strong> - skrypty JavaScript (może być też w body).</div>
+</div>
+        <div class="warning-tip">
+            Pominięcie odpowiednich meta może spowodować problemy z wyświetlaniem polskich znaków lub nieprawidłowe skalowanie na smartfonach.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>3. &lt;body&gt; - widoczna treść</h2>
+        <p>Wszystko, co umieścimy wewnątrz <strong>&lt;body&gt;</strong>, zostanie wyświetlone użytkownikowi. To tutaj znajdują się nagłówki, akapity, obrazy, linki, formularze i inne elementy interfejsu.</p>
+        <div class="tag-demo">
+            &lt;body&gt;<br>
+            &nbsp;&nbsp;&lt;h1&gt;Witaj na mojej stronie&lt;/h1&gt;<br>
+            &nbsp;&nbsp;&lt;p&gt;To jest akapit tekstu.&lt;/p&gt;<br>
+            &lt;/body&gt;
+</div>
+        <ul class="custom-list">
+            <li><strong>Tylko jeden element &lt;body&gt;</strong> w dokumencie.</li>
+            <li>Może zawierać znaczniki blokowe (np. <code>&lt;div&gt;</code>, <code>&lt;section&gt;</code>) i liniowe (<code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>).</li>
+            <li>Atrybuty takie jak <code>class</code>, <code>id</code>, <code>style</code> są powszechnie używane do stylowania i skryptowania.</li>
+        </ul>
+        <div class="good-bad">
+            <div class="good">
+<h4>Poprawnie</h4>
+                <code>&lt;body&gt;<br>
+                &nbsp;&nbsp;&lt;h1&gt;Nagłówek&lt;/h1&gt;<br>
+                &nbsp;&nbsp;&lt;p&gt;Treść&lt;/p&gt;<br>
+                &lt;/body&gt;</code>
+</div>
+            <div class="bad">
+<h4>Błędnie</h4>
+                <code>&lt;body&gt;<br>
+                &nbsp;&nbsp;&lt;h1&gt;Nagłówek&lt;/h2&gt;<br>
+                &nbsp;&nbsp;&lt;p&gt;Treść&lt;/p&gt;<br>
+                &lt;/body&gt;</code> - nieprawidłowe zagnieżdżenie nagłówka.
+</div>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>4. &lt;title&gt; - tytuł dokumentu</h2>
+        <p>Znacznik <strong>&lt;title&gt;</strong> umieszczany w <code>&lt;head&gt;</code> definiuje tytuł strony. Jest to jeden z najważniejszych elementów SEO - wpływa na ranking w wyszukiwarkach i decyduje o tekście na karcie przeglądarki.</p>
+        <div class="code-sample"><pre>
+&lt;title&gt;Moja pierwsza strona - kurs HTML&lt;/title&gt;
+</pre>
+</div>
+        <ul class="custom-list">
+            <li>Powinien być unikalny dla każdej podstrony.</li>
+            <li>Zalecana długość: 50-60 znaków.</li>
+            <li>Nie może zawierać znaczników HTML ani stylów.</li>
+        </ul>
+        <div class="coord-note">
+            W przypadku braku <code>&lt;title&gt;</code> przeglądarka może wyświetlić nazwę pliku lub adres URL - to bardzo nieprofesjonalne.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>5. Meta charset - kodowanie znaków</h2>
+        <p>Deklaracja <strong>&lt;meta charset="UTF-8"&gt;</strong> zapewnia poprawne wyświetlanie polskich znaków (ą, ć, ę, ł, ń, ó, ś, ź, ż) oraz innych symboli. Bez niej mogą pojawiać się "krzaczki".</p>
+        <div class="tag-demo">
+            &lt;meta charset="UTF-8"&gt;
+</div>
+        <p>Najczęściej używane kodowania:</p>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <thead><tr><th>Kodowanie</th><th>Opis</th></tr></thead>
+                <tbody>
+                    <tr><td><code>UTF-8</code></td><td>Uniwersalne, obsługuje wszystkie języki i symbole. Standard w HTML5.</td></tr>
+                    <tr><td><code>ISO-8859-1</code></td><td>Starsze, zachodnioeuropejskie - nie zalecane.</td></tr>
+                    <tr><td><code>Windows-1250</code></td><td>Kodowanie dla języka polskiego, ale gorsze niż UTF-8.</td></tr>
+                </tbody>
+            </table>
+</div>
+        <div class="warning-tip">
+            Deklarację <code>charset</code> należy umieścić jak najwcześniej w <code>&lt;head&gt;</code> - najlepiej zaraz po otwarciu <code>&lt;head&gt;</code>.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>6. Viewport - responsywność na urządzeniach mobilnych</h2>
+        <p>Atrybut <strong>viewport</strong> (poprzez meta tag) kontroluje, jak strona ma być skalowana na ekranach smartfonów i tabletów. Bez niego przeglądarka może domyślnie pomniejszyć stronę, imitując ekran desktopowy.</p>
+        <div class="code-sample"><pre>
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+</pre>
+</div>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>width=device-width</strong> - szerokość układu równa szerokości ekranu urządzenia.</div>
+            <div class="attr-card"><strong>initial-scale=1.0</strong> - początkowy poziom powiększenia (1 = 100%).</div>
+            <div class="attr-card"><strong>user-scalable=yes/no</strong> - czy użytkownik może ręcznie skalować (domyślnie: tak).</div>
+            <div class="attr-card"><strong>maximum-scale</strong> - maksymalne powiększenie (wartość liczbowa).</div>
+</div>
+        <div class="good-bad">
+            <div class="good">
+<h4>Przykład poprawny</h4>
+                <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code><br>
+                Strona responsywna, dobrze wygląda na każdym ekranie.
+</div>
+            <div class="bad">
+<h4>Brak viewport</h4>
+                <code>&lt;!-- brak meta viewport --&gt;</code><br>
+                Na smartfonie strona będzie wyglądać jak pomniejszony pulpit.
+</div>
+</div>
+        <div class="coord-note">
+            W dzisiejszych czasach <strong>każda strona</strong> powinna zawierać meta viewport - to podstawa RWD (Responsive Web Design).
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>7. Pełna minimalna struktura dokumentu</h2>
+        <p>Łącząc wszystkie omówione elementy, otrzymujemy poprawny szkielet każdej strony HTML5:</p>
+        <div class="code-sample"><pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pl"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Tytuł mojej strony&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Nagłówek&lt;/h1&gt;
+    &lt;p&gt;To jest zawartość strony.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+        <ul class="custom-list">
+            <li><code>&lt;!DOCTYPE html&gt;</code> - wymagany na początku (tryb standardów).</li>
+            <li><code>&lt;html lang="pl"&gt;</code> - korzeń z językiem.</li>
+            <li><code>&lt;head&gt;</code> - metadane, kodowanie, viewport, tytuł.</li>
+            <li><code>&lt;body&gt;</code> - cała widoczna treść.</li>
+        </ul>
+        <div class="warning-tip">
+            Pamiętaj o kolejności: <code>charset</code> musi być przed tytułem i innymi elementami, które mogą zawierać polskie znaki.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>8. Zagnieżdżanie i poprawna hierarchia</h2>
+        <p>W strukturze dokumentu obowiązuje ścisła hierarchia: <code>&lt;html&gt;</code> → <code>&lt;head&gt;</code> i <code>&lt;body&gt;</code>. Nie można umieszczać <code>&lt;body&gt;</code> wewnątrz <code>&lt;head&gt;</code> ani odwrotnie.</p>
+        <div class="structure-visual">
+            <pre style="margin:0; background:transparent; color:#2c4a3e;">
+&lt;html&gt;
+├── &lt;head&gt;
+│   ├── &lt;meta charset="UTF-8"&gt;
+│   ├── &lt;title&gt;...&lt;/title&gt;
+│   └── ...
+└── &lt;body&gt;
+    ├── &lt;h1&gt;...&lt;/h1&gt;
+    └── &lt;p&gt;...&lt;/p&gt;
+            </pre>
+</div>
+        <div class="bad" style="margin-bottom:15px;">
+            <strong>Błąd:</strong> umieszczenie <code>&lt;div&gt;</code> lub <code>&lt;h1&gt;</code> bezpośrednio w <code>&lt;head&gt;</code> - przeglądarka zignoruje lub przeniesie, ale kod będzie niepoprawny.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>9. Co musisz zapamiętać</h2>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>&lt;html&gt;</strong> - korzeń, atrybut <code>lang</code> obowiązkowy.</div>
+            <div class="attr-card"><strong>&lt;head&gt;</strong> - metadane, tytuł, kodowanie, viewport.</div>
+            <div class="attr-card"><strong>&lt;body&gt;</strong> - widoczna treść strony.</div>
+            <div class="attr-card"><strong>&lt;title&gt;</strong> - tytuł w karcie, kluczowe dla SEO.</div>
+            <div class="attr-card"><strong>meta charset="UTF-8"</strong> - polskie znaki bez problemów.</div>
+            <div class="attr-card"><strong>viewport</strong> - responsywność na urządzeniach mobilnych.</div>
+</div>
+        <div class="coord-note">
+            Na egzaminie INF03 i w praktyce zawodowej znajomość poprawnej struktury dokumentu jest absolutną podstawą - bez niej dalsza nauka HTML i CSS nie ma sensu.
+</div>
+        <div class="code-sample" style="margin-top:20px;"><pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pl"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Przykładowa strona&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Treść --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 Samouczek INF03 - Rozdział 2: Podstawowa struktura dokumentu HTML.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linki w HTML | Podstawy INF03</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .doctype-box {
+            background: #1e2a2a;
+            color: #d0f0e5;
+            border-radius: 16px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        .structure-visual {
+            background: #fefcf5;
+            border: 1px solid #ddd2b5;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 25px 0;
+            font-family: monospace;
+            line-height: 1.6;
+        }
+        .tag-demo {
+            background: #f4f1ea;
+            border-radius: 14px;
+            padding: 12px 16px;
+            margin: 12px 0;
+            font-family: monospace;
+            border-left: 4px solid #2f7a67;
+        }
+        .attr-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-badge {
+            background: #eef3f0;
+            border-radius: 40px;
+            padding: 6px 14px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            border: 1px solid #cbdcd3;
+        }
+        .good-bad {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .good, .bad {
+            flex: 1;
+            background: white;
+            border-radius: 18px;
+            padding: 16px 20px;
+            border: 1px solid #e2dfd7;
+        }
+        .good h4 { color: #2f7a67; margin-bottom: 12px; }
+        .bad h4 { color: #b1624b; margin-bottom: 12px; }
+        .attrs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-card {
+            background: #fcf9f2;
+            border-radius: 14px;
+            padding: 12px 16px;
+            border: 1px solid #e5dfd1;
+        }
+        .attr-card strong {
+            color: #1f5e4f;
+            font-family: monospace;
+            font-size: 1.05rem;
+        }
+        .coord-note {
+            background: #eef5f2;
+            border-left: 4px solid #2f7a67;
+            padding: 12px 18px;
+            margin: 15px 0;
+            font-size: 0.95rem;
+            border-radius: 12px;
+        }
+        .warning-tip {
+            background: #fff2df;
+            border-radius: 14px;
+            padding: 12px 18px;
+            margin: 20px 0;
+            border-left: 5px solid #e6a017;
+        }
+        .link-demo {
+            background: white;
+            border: 1px solid #e2dfd7;
+            border-radius: 16px;
+            padding: 20px;
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+        .anchor-list {
+            list-style: none;
+            padding: 0;
+        }
+        .anchor-list li {
+            margin: 8px 0;
+        }
+        .anchor-list a {
+            text-decoration: none;
+            color: #2f7a67;
+            border-bottom: 1px dashed #2f7a67;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        HTML<span>&CSS</span>
+</div>
+    <nav>
+        <a href="../index.html">Start</a>
+        <a href="../html.html" class="active">HTML</a>
+        <a href="../css.html">CSS</a>
+    </nav>
+</header>
+
+<main class="content-page">
+    <div class="page-header">
+        <h1>Rozdział 5: Linki w HTML</h1>
+        <p>
+            Hiperłącza to esencja sieci WWW. Znacznik <code>&lt;a&gt;</code>, atrybut <code>href</code>,
+            otwieranie linków w nowej karcie (<code>target="_blank"</code>), linki lokalne (do innych plików)
+            oraz odnośniki wewnątrz strony (kotwice).
+</p>
+</div>
+
+    <section class="topic-section">
+        <h2>1. Podstawowy link &lt;a&gt; i atrybut href</h2>
+        <p><strong>&lt;a&gt;</strong> (anchor) tworzy hiperłącze. Atrybut <code>href</code> (hypertext reference) wskazuje cel - może to być adres URL, ścieżka do pliku lub identyfikator wewnątrz strony.</p>
+        <div class="code-sample"><pre>
+&lt;a href="https://www.example.com"&gt;Odwiedź przykład&lt;/a&gt;
+</pre>
+</div>
+        <div class="link-demo">
+            Przykład: <a href="#">Link przykładowy (nieaktywny)</a> - domyślnie niebieski i podkreślony.
+</div>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>href</strong> - adres docelowy (wymagany). Może być bezwzględny (https://...) lub względny (strona.html).</div>
+            <div class="attr-card"><strong>Tekst linku</strong> - to, co użytkownik widzi i klika. Powinien być opisowy (np. „Kliknij tutaj” jest złą praktyką).</div>
+</div>
+        <div class="warning-tip">
+            Linki powinny być <strong>opisowe</strong>. Zamiast „Kliknij tutaj” lepiej napisać „Przeczytaj regulamin” - to pomaga SEO i osobom korzystającym z czytników ekranu.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>2. target="_blank" - otwieranie w nowej karcie</h2>
+        <p>Atrybut <code>target</code> określa, gdzie otworzyć dokument. Wartość <code>_blank</code> otwiera link w nowej karcie lub oknie przeglądarki.</p>
+        <div class="code-sample"><pre>
+&lt;a href="https://www.google.com" target="_blank"&gt;Google (nowa karta)&lt;/a&gt;
+</pre>
+</div>
+        <div class="link-demo">
+            <a href="#" target="_blank">Przykład linku otwierającego się w nowej karcie</a> (kliknij - otworzy pustą zakładkę).
+</div>
+        <ul class="custom-list">
+            <li><strong>Bezpieczeństwo:</strong> przy <code>target="_blank"</code> zaleca się dodanie <code>rel="noopener noreferrer"</code>, aby nowa strona nie miała dostępu do oryginalnej (zapobiega atakom).</li>
+            <li><strong>Użycie:</strong> stosuj dla linków zewnętrznych, aby użytkownik nie opuszczał Twojej strony.</li>
+        </ul>
+        <div class="code-sample"><pre>
+&lt;a href="https://example.com" target="_blank" rel="noopener noreferrer"&gt;Bezpieczny link zewnętrzny&lt;/a&gt;
+</pre>
+</div>
+        <div class="coord-note">
+            Dla linków wewnątrz własnej strony nie używaj <code>target="_blank"</code> - niech pozostają w tej samej karcie.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>3. Linki lokalne (względne)</h2>
+        <p>Linki lokalne prowadzą do innych plików w ramach tej samej witryny. Używamy ścieżek <strong>względnych</strong> (nie zaczynających się od http://).</p>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <thead><tr><th>Przykład</th><th>Opis</th></tr></thead>
+                <tbody>
+                    <tr><td><code>&lt;a href="kontakt.html"&gt;Kontakt&lt;/a&gt;</code></td><td>Plik w tym samym katalogu.</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;a href="podstrony/o_nas.html"&gt;O nas&lt;/a&gt;</code></td>
+                        <td>Plik w podfolderze <code>podstrony</code>.</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;a href="../index.html"&gt;Strona główna&lt;/a&gt;</code></td>
+                        <td>Plik w katalogu nadrzędnym (<code>../</code> - wyjście poziom wyżej).</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;a href="/images/logo.png"&gt;Logo&lt;/a&gt;</code></td>
+                        <td>Ścieżka bezwzględna (od katalogu głównego serwera) - rzadziej stosowana lokalnie.</td>
+                    </tr>
+                </tbody>
+            </table>
+</div>
+        <div class="code-sample"><pre>
+&lt;!-- Przykład struktury katalogów: --&gt;
+projekt/
+├── index.html
+├── galeria.html
+└── strony/
+    └── oferta.html
+
+&lt;a href="galeria.html"&gt;Galeria&lt;/a&gt;
+&lt;a href="strony/oferta.html"&gt;Oferta&lt;/a&gt;
+&lt;a href="../index.html"&gt;Powrót&lt;/a&gt;  (ze strony/oferta.html)
+</pre>
+</div>
+        <div class="good-bad">
+            <div class="good">
+<h4>Dobre praktyki</h4>
+                <ul>
+                    <li>Używaj małych liter i bez spacji w nazwach plików.</li>
+                    <li>Zamiast spacji - myślnik (<code>moja-strona.html</code>).</li>
+                    <li>Utrzymuj porządek w katalogach.</li>
+                </ul>
+</div>
+            <div class="bad">
+<h4>Błędy</h4>
+                <ul>
+                    <li>Linki łamiące się po zmianie lokalizacji pliku.</li>
+                    <li>Wielkie litery - systemy Linux są case-sensitive.</li>
+                    <li>Używanie bezwzględnych ścieżek lokalnych (<code>C:\folder\strona.html</code>) - niedziałające na serwerze.</li>
+                </ul>
+</div>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>4. Odnośniki wewnątrz strony (kotwice)</h2>
+        <p>Kotwice pozwalają przeskoczyć do konkretnego fragmentu tej samej strony. Działają w dwóch krokach:</p>
+        <ol class="custom-list">
+            <li>Ustawienie <strong>identyfikatora (id)</strong> w docelowym elemencie.</li>
+            <li>Link z <code>href="#identyfikator"</code>.</li>
+        </ol>
+        <div class="code-sample"><pre>
+&lt;!-- Miejsce docelowe --&gt;
+&lt;h2 id="kontakt"&gt;Kontakt&lt;/h2&gt;
+
+&lt;!-- Link prowadzący do kontaktu --&gt;
+&lt;a href="#kontakt"&gt;Przejdź do sekcji kontakt&lt;/a&gt;
+</pre>
+</div>
+        <div class="link-demo">
+            <h3>Przykład działania (linki demonstracyjne):</h3>
+            <ul class="anchor-list">
+                <li><a href="#sekcja1"> Przejdź do Sekcji 1</a></li>
+                <li><a href="#sekcja2"> Przejdź do Sekcji 2</a></li>
+                <li><a href="#sekcja3"> Przejdź do Sekcji 3</a></li>
+            </ul>
+            <div style="border:1px solid #ddd; padding:15px; margin:20px 0; background:#fafaf5;">
+                <h4 id="sekcja1"> Sekcja 1</h4>
+                <p>To jest pierwsza sekcja - została osiągnięta po kliknięciu linku z kotwicą.</p>
+                <a href="#">↑ Wróć na górę</a>
+                <h4 id="sekcja2" style="margin-top:30px;"> Sekcja 2</h4>
+                <p>Druga sekcja. Link z <code>#sekcja2</code> przenosi tutaj.</p>
+                <a href="#">↑ Wróć na górę</a>
+                <h4 id="sekcja3" style="margin-top:30px;"> Sekcja 3</h4>
+                <p>Trzecia sekcja. Możesz też użyć kotwicy do powrotu na górę strony: <code>&lt;a href="#"&gt;WRÓĆ&lt;/a&gt;</code>.</p>
+</div>
+            <p><small>Uwaga: powyższe kotwice działają w ramach tej strony. Kliknij, a przeglądarka przewinie do wskazanej sekcji.</small></p>
+</div>
+        <div class="coord-note">
+            Kotwice są też używane z linkami do innych stron: <code>&lt;a href="strona.html#sekcja3"&gt;</code> - otwiera stronę i przewija do konkretnego fragmentu.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>5. Inne ciekawe atrybuty &lt;a&gt;</h2>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>download</strong> - sugeruje pobranie pliku zamiast otwarcia:<br><code>&lt;a href="plik.pdf" download&gt;Pobierz PDF&lt;/a&gt;</code></div>
+            <div class="attr-card"><strong>rel</strong> - określa relację między bieżącym dokumentem a linkowanym. <code>rel="nofollow"</code> dla linków sponsorowanych, <code>rel="noopener"</code> dla bezpieczeństwa.</div>
+            <div class="attr-card"><strong>title</strong> - dodatkowy tekst podpowiedzi (tooltip).</div>
+            <div class="attr-card"><strong>mailto:</strong> - link otwierający program pocztowy:<br><code>&lt;a href="mailto:kontakt@example.com"&gt;Napisz do nas&lt;/a&gt;</code></div>
+</div>
+        <div class="code-sample"><pre>
+&lt;a href="mailto:biuro@firma.pl"&gt;biuro@firma.pl&lt;/a&gt;
+&lt;a href="tel:+48123456789"&gt;Zadzwoń&lt;/a&gt;
+&lt;a href="https://example.com" title="Przykładowa strona"&gt;Example&lt;/a&gt;
+</pre>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>6. Linki obrazkowe</h2>
+        <p>Możesz opakować obrazek w link - wtedy cały obraz staje się klikalny.</p>
+        <div class="code-sample"><pre>
+&lt;a href="https://example.com"&gt;
+    &lt;img src="logo.png" alt="Logo" style="width:150px;"&gt;
+&lt;/a&gt;
+</pre>
+</div>
+        <div class="warning-tip">
+            Pamiętaj o dodaniu atrybutu <code>alt</code> dla obrazka i opisu w linku, jeśli sam obrazek nie jest wystarczająco opisowy.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>7. Przykład zbiorczy (różne rodzaje linków)</h2>
+        <div class="code-sample"><pre>
+&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="../index.html"&gt;Strona główna&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="oferta.html"&gt;Oferta&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#opinie"&gt;Opinie klientów&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="https://facebook.com" target="_blank" rel="noopener"&gt;Facebook&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="mailto:kontakt@firma.pl"&gt;Napisz do nas&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+</pre>
+</div>
+        <div class="link-demo">
+            <h3>Demo:</h3>
+            <ul>
+                <li><a href="#">Strona główna (placeholder)</a></li>
+                <li><a href="#">Oferta</a></li>
+                <li><a href="#sekcja1">Opinie klientów (przenosi do Sekcji 1 powyżej)</a></li>
+                <li><a href="#" target="_blank">Facebook (nowa karta - przykład)</a></li>
+                <li><a href="mailto:test@example.com">Napisz do nas (mailto)</a></li>
+            </ul>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>8. Co musisz zapamiętać</h2>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>&lt;a href="url"&gt;</strong> - podstawowy link.</div>
+            <div class="attr-card"><strong>target="_blank"</strong> - nowa karta. Dodaj <code>rel="noopener"</code> dla bezpieczeństwa.</div>
+            <div class="attr-card"><strong>Linki lokalne</strong> - używaj ścieżek względnych: <code>podstrona.html</code>, <code>folder/strona.html</code>, <code>../</code>.</div>
+            <div class="attr-card"><strong>Kotwice</strong> - <code>id</code> w elemencie docelowym, link <code>#id</code>.</div>
+            <div class="attr-card"><strong>Linki specjalne</strong> - <code>mailto:</code>, <code>tel:</code>, <code>download</code>.</div>
+</div>
+        <div class="coord-note">
+            Na egzaminie INF03 często pojawia się zadanie z tworzeniem menu nawigacyjnego (linki lokalne) oraz odnośników wewnątrz długiej strony (kotwice). Pamiętaj o poprawnym formacie <code>href</code> i unikaniu pustych linków.
+</div>
+        <div class="code-sample" style="margin-top:20px;"><pre>
+&lt;!-- Przykład poprawnego zestawu linków --&gt;
+&lt;nav&gt;
+    &lt;a href="../index.html"&gt;Home&lt;/a&gt; |
+    &lt;a href="o_nas.html"&gt;O nas&lt;/a&gt; |
+    &lt;a href="kontakt.html#formularz"&gt;Kontakt (formularz)&lt;/a&gt; |
+    &lt;a href="https://blog.pl" target="_blank" rel="noopener"&gt;Blog&lt;/a&gt;
+&lt;/nav&gt;
+</pre>
+</div>
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 Samouczek INF03 - Rozdział 5: Linki w HTML (href, target, lokalne, kotwice).</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atrybuty globalne i praktyczne | Podstawy INF03</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Dodatkowe style - zachowują pełną spójność z oryginalnym style.css */
+        .doctype-box {
+            background: #1e2a2a;
+            color: #d0f0e5;
+            border-radius: 16px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        .structure-visual {
+            background: #fefcf5;
+            border: 1px solid #ddd2b5;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 25px 0;
+            font-family: monospace;
+            line-height: 1.6;
+        }
+        .tag-demo {
+            background: #f4f1ea;
+            border-radius: 14px;
+            padding: 12px 16px;
+            margin: 12px 0;
+            font-family: monospace;
+            border-left: 4px solid #2f7a67;
+        }
+        .attr-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-badge {
+            background: #eef3f0;
+            border-radius: 40px;
+            padding: 6px 14px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            border: 1px solid #cbdcd3;
+        }
+        .good-bad {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .good, .bad {
+            flex: 1;
+            background: white;
+            border-radius: 18px;
+            padding: 16px 20px;
+            border: 1px solid #e2dfd7;
+        }
+        .good h4 { color: #2f7a67; margin-bottom: 12px; }
+        .bad h4 { color: #b1624b; margin-bottom: 12px; }
+        .attrs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-card {
+            background: #fcf9f2;
+            border-radius: 14px;
+            padding: 12px 16px;
+            border: 1px solid #e5dfd1;
+        }
+        .attr-card strong {
+            color: #1f5e4f;
+            font-family: monospace;
+            font-size: 1.05rem;
+        }
+        .coord-note {
+            background: #eef5f2;
+            border-left: 4px solid #2f7a67;
+            padding: 12px 18px;
+            margin: 15px 0;
+            font-size: 0.95rem;
+            border-radius: 12px;
+        }
+        .warning-tip {
+            background: #fff2df;
+            border-radius: 14px;
+            padding: 12px 18px;
+            margin: 20px 0;
+            border-left: 5px solid #e6a017;
+        }
+        .custom-list {
+            padding-left: 28px;
+            margin: 20px 0;
+        }
+        .custom-list li {
+            margin: 8px 0;
+        }
+        .code-sample {
+            background-color: #1e2a2a;
+            color: #d9f0ea;
+            padding: 20px;
+            border-radius: 16px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+        }
+        .code-sample pre {
+            background: transparent;
+            color: #d0f0e5;
+            margin: 0;
+        }
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 25px 0;
+        }
+        .value-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fefef9;
+        }
+        .value-table th, .value-table td {
+            border: 1px solid #d6d0c4;
+            padding: 12px 16px;
+            text-align: left;
+            vertical-align: top;
+        }
+        .value-table th {
+            background-color: #eef3f0;
+            color: #1b4d41;
+            font-weight: 700;
+        }
+        /* Przykładowe style dla demo class/id */
+        .demo-class-box {
+            background: #eef3f0;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .demo-class-box.highlight {
+            background: #fff2df;
+            border-left: 4px solid #e6a017;
+        }
+        #unique-demo {
+            border: 2px solid #2f7a67;
+        }
+        .tooltip-demo {
+            border-bottom: 1px dashed #2f7a67;
+            cursor: help;
+        }
+        [data-status] {
+            padding: 8px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+        [data-status="aktywny"] {
+            background-color: #d4e8d4;
+            color: #2f7a67;
+        }
+        [data-status="nieaktywny"] {
+            background-color: #f0e0d0;
+            color: #b1624b;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        HTML<span>&CSS</span>
+</div>
+    <nav>
+        <a href="../index.html">Start</a>
+        <a href="../html.html" class="active">HTML</a>
+        <a href="../css.html">CSS</a>
+    </nav>
+</header>
+
+<main class="content-page">
+    <div class="page-header">
+        <h1>Rozdział 19: Atrybuty globalne i praktyczne</h1>
+        <p>
+            Atrybuty globalne to takie, które można zastosować przy każdym znaczniku HTML.
+            Poznaj najważniejsze: <code>class</code>, <code>id</code>, <code>style</code>, <code>title</code>
+            oraz nowoczesne <code>data-*</code>. Są niezbędne do stylowania (CSS) i interakcji (JavaScript).
+</p>
+</div>
+
+    <section class="topic-section">
+        <h2>1. Czym są atrybuty globalne?</h2>
+        <p>Atrybuty globalne mogą wystąpić w <strong>każdym</strong> znaczniku HTML (od <code>&lt;html&gt;</code> po <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;span&gt;</code> itd.). Definiują dodatkowe właściwości, często wykorzystywane przez CSS i JavaScript.</p>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <thead><tr><th>Atrybut</th><th>Przeznaczenie</th><th>Przykład</th></tr></thead>
+                <tbody>
+                    <tr><td><code>class</code> - klasy CSS</td><td>Grupowanie elementów do stylowania. Można użyć wielu klas oddzielonych spacją.</td><td><code>&lt;p class="uwaga glowny"&gt;Tekst&lt;/p&gt;</code></td></tr>
+                    <tr><td><code>id</code> - unikalny identyfikator</td><td>Identyfikacja pojedynczego elementu (unikalny na stronie). Kotwice, JS.</td><td><code>&lt;div id="kontener"&gt;...&lt;/div&gt;</code></td></tr>
+                    <tr><td><code>style</code> - stylowanie inline</td><td>Bezpośrednie nadanie stylów CSS (unikać, gdy możliwe).</td><td><code>&lt;span style="color:red;"&gt;czerwony&lt;/span&gt;</code></td></tr>
+                    <tr><td><code>title</code> - dodatkowy tekst (tooltip)</td><td>Podpowiedź wyświetlana po najechaniu kursorem.</td><td><code>&lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt;</code></td></tr>
+                    <tr><td><code>data-*</code> - atrybuty danych</td><td>Przechowywanie dowolnych danych dla JavaScript.</td><td><code>&lt;div data-user-id="123"&gt;&lt;/div&gt;</code></td></tr>
+                </tbody>
+            </table>
+</div>
+        <div class="coord-note">
+            Inne atrybuty globalne to m.in. <code>hidden</code>, <code>lang</code>, <code>tabindex</code>, <code>dir</code>, <code>accesskey</code>, <code>contenteditable</code>.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>2. Atrybut class - klasy CSS</h2>
+        <p>Atrybut <strong>class</strong> przypisuje elementowi jedną lub więcej klas. Klasy są używane głównie do stylowania CSS (selektor <code>.nazwa</code>) oraz do manipulacji JavaScript (np. dodawanie/usuwanie klas).</p>
+        <div class="code-sample"><pre>
+&lt;style&gt;
+    .warning {
+        background-color: #fff2df;
+        border-left: 5px solid #e6a017;
+        padding: 10px;
+    }
+    .bold {
+        font-weight: bold;
+    }
+&lt;/style&gt;
+
+&lt;div class="warning"&gt;Uwaga! To jest ostrzeżenie.&lt;/div&gt;
+&lt;p class="bold"&gt;Pogrubiony tekst.&lt;/p&gt;
+&lt;p class="warning bold"&gt;Ostrzeżenie i pogrubienie jednocześnie.&lt;/p&gt;
+</pre>
+</div>
+        <div class="demo-class-box">
+            <div style="background:#fff2df; border-left:5px solid #e6a017; padding:10px;">Uwaga! To jest ostrzeżenie.</div>
+            <p style="font-weight:bold;">Pogrubiony tekst.</p>
+            <p style="background:#fff2df; border-left:5px solid #e6a017; padding:10px; font-weight:bold;">Ostrzeżenie i pogrubienie jednocześnie.</p>
+</div>
+        <ul class="custom-list">
+            <li>Nazwa klasy nie może zaczynać się od cyfry (ale może zawierać myślniki i podkreślenia).</li>
+            <li>Wiele klas oddzielamy spacją: <code>class="klasa1 klasa2 klasa3"</code>.</li>
+            <li>Ta sama klasa może wystąpić na wielu elementach - to jej główna zaleta.</li>
+        </ul>
+        <div class="coord-note">
+            W CSS do klasy odwołujemy się przez kropkę: <code>.moja-klasa { }</code>. Klasy są rekomendowane zamiast <code>id</code> do stylowania.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>3. Atrybut id - unikalny identyfikator</h2>
+        <p><strong>id</strong> nadaje elementowi unikalną nazwę w obrębie całej strony. Może być użyty do:</p>
+        <ul class="custom-list">
+            <li>Tworzenia kotwic (linków wewnętrznych) - <code>&lt;a href="#sekcja"&gt;</code> i <code>&lt;section id="sekcja"&gt;</code>.</li>
+            <li>Selektora CSS - <code>#unikalny { }</code> (wyższa specyficzność niż klasa).</li>
+            <li>Pobierania elementu przez JavaScript - <code>document.getElementById('unikalny')</code>.</li>
+            <li>Wiązania etykiety z polem formularza - <code>&lt;label for="pole"&gt;</code> i <code>&lt;input id="pole"&gt;</code>.</li>
+        </ul>
+        <div class="code-sample"><pre>
+&lt;h2 id="rozdzial1"&gt;Rozdział 1&lt;/h2&gt;
+&lt;p&gt;Treść rozdziału...&lt;/p&gt;
+&lt;a href="#rozdzial1"&gt;Powrót do rozdziału 1&lt;/a&gt;
+
+&lt;label for="email"&gt;E-mail:&lt;/label&gt;
+&lt;input type="email" id="email" name="email"&gt;
+
+&lt;div id="unique-demo"&gt;Ten div ma unikalne id.&lt;/div&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <div id="unique-demo" style="border:2px solid #2f7a67; padding:8px;">Ten div ma unikalne id (widoczna ramka z CSS).</div>
+</div>
+        <div class="warning-tip">
+            <strong>Ważne:</strong> id musi być unikalne w całym dokumencie. Nie można użyć tego samego id dla dwóch różnych elementów.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>4. Atrybut style - style inline (bezpośrednie)</h2>
+        <p>Atrybut <strong>style</strong> pozwala na dodanie CSS bezpośrednio do elementu. Ma najwyższą specyficzność (poza <code>!important</code>), ale jest <strong>odradzany</strong> w większych projektach, ponieważ miesza warstwy.</p>
+        <div class="code-sample"><pre>
+&lt;p style="color: #2f7a67; font-size: 18px; margin: 10px;"&gt;
+    Ten akapit ma style inline.
+&lt;/p&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <p style="color: #2f7a67; font-size: 18px; margin: 10px;">Ten akapit ma style inline.</p>
+</div>
+        <div class="good-bad">
+            <div class="bad">
+<h4>Wady stylów inline</h4>
+                <ul>
+                    <li>Trudne utrzymanie (mieszanie z treścią).</li>
+                    <li>Brak możliwości ponownego użycia.</li>
+                    <li>Większy rozmiar strony.</li>
+                    <li>Trudniejsze nadpisywanie (wysoka specyficzność).</li>
+                </ul>
+</div>
+            <div class="good">
+<h4>Kiedy (rzadko) używać?</h4>
+                <ul>
+                    <li>Dynamiczne stylowanie z JavaScript (np. <code>element.style.color = 'red'</code>).</li>
+                    <li>Bardzo proste, jednostronicowe prototypy.</li>
+                    <li>W e-mailach HTML (gdzie zewnętrzne CSS często nie działają).</li>
+                </ul>
+</div>
+</div>
+        <div class="coord-note">
+            W codziennej pracy priorytetem są klasy CSS i zewnętrzne arkusze stylów. Style inline traktuj jako ostateczność.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>5. Atrybut title - podpowiedź (tooltip)</h2>
+        <p><strong>title</strong> dodaje tekst podpowiedzi, który pojawia się po najechaniu kursorem na element (zwykle po krótkiej chwili). Poprawia użyteczność (UX).</p>
+        <div class="code-sample"><pre>
+&lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt;
+&lt;span title="To jest ważna informacja"&gt;️&lt;/span&gt;
+&lt;button title="Kliknij, aby zapisać"&gt;Zapisz&lt;/button&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <abbr title="HyperText Markup Language" style="cursor:help;">HTML</abbr>
+            <span title="To jest ważna informacja" style="cursor:help; margin-left:10px;">️</span>
+            <button title="Kliknij, aby zapisać" style="margin-left:10px;">Zapisz</button>
+            <p><span class="tooltip-demo" title="Przykład dłuższego tooltipa - możesz go zobaczyć po najechaniu.">Najedź na mnie kursorem</span></p>
+</div>
+        <div class="coord-note">
+            Atrybut <code>title</code> nie zastępuje <code>&lt;label&gt;</code> dla pól formularzy - dla dostępności używaj label.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>6. Atrybuty data-* - przechowywanie danych</h2>
+        <p><strong>data-*</strong> to grupa atrybutów (np. <code>data-user-id</code>, <code>data-role</code>, <code>data-status</code>) pozwalająca na przechowywanie dowolnych danych w elemencie. Są często używane w JavaScript do przekazywania informacji.</p>
+        <div class="code-sample"><pre>
+&lt;div data-user-id="12345" data-role="admin" data-status="aktywny"&gt;
+    Jan Kowalski
+&lt;/div&gt;
+
+&lt;button data-action="delete" data-id="7"&gt;Usuń&lt;/button&gt;
+
+&lt;script&gt;
+    const user = document.querySelector('[data-user-id]');
+    console.log(user.dataset.userId); // "12345"
+    console.log(user.dataset.role);   // "admin"
+&lt;/script&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <div data-user-id="12345" data-role="admin" data-status="aktywny" style="background:#eef3f0; padding:10px; border-radius:8px;">
+                Jan Kowalski (dane: data-user-id="12345", data-role="admin")
+</div>
+            <p>W konsoli JavaScript można odczytać <code>dataset.userId</code>.</p>
+</div>
+        <ul class="custom-list">
+            <li>Nazwa po <code>data-</code> może zawierać tylko małe litery, cyfry i myślniki.</li>
+            <li>W JavaScript dostęp do atrybutu: <code>element.dataset.nazwa</code> (myślniki zamieniane na camelCase: <code>data-user-id</code> → <code>userId</code>).</li>
+            <li>Popularne w frameworkach (np. React, Vue) oraz do testów automatycznych.</li>
+        </ul>
+        <div class="warning-tip">
+            Nie używaj <code>data-*</code> do przechowywania wrażliwych danych (haseł, tokenów) - są widoczne w kodzie źródłowym.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>7. Praktyczne porównanie class vs id</h2>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <thead><tr><th>Cecha</th><th>class</th><th>id</th></tr></thead>
+                <tbody>
+                    <tr><td>Unikalność</td><td>Może wystąpić wiele razy</td><td>Tylko jeden element na stronie</td></tr>
+                    <tr><td>Selektor CSS</td><td><code>.klasa</code></td><td><code>#id</code></td></tr>
+                    <tr><td>W JavaScript</td><td><code>document.getElementsByClassName</code> lub <code>querySelector('.klasa')</code></td><td><code>document.getElementById('id')</code> (najszybszy)</td></tr>
+                    <tr><td>Specyficzność CSS</td>等方面Niższa (10 punktów)</td><td>Wyższa (100 punktów)</td></tr>
+                    <tr><td>Kotwice (linki wewnętrzne)</td><td>Nie (tylko <code>id</code> działa w <code>href="#id"</code>)</td><td>Tak</td></tr>
+                    <tr><td>Wiele wartości</td><td>Tak (klasa1 klas2)</td><td>Nie (jedno id)</td></tr>
+                </tbody>
+            </table>
+</div>
+        <div class="coord-note">
+            Zasada: do stylowania używaj <strong>class</strong>. Do unikalnych identyfikatorów (kotwice, JS) używaj <strong>id</strong>.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>8. Przykład kompleksowy - wszystkie atrybuty w akcji</h2>
+        <div class="code-sample"><pre>
+&lt;div class="karta produkt" id="produkt-123" data-kategoria="elektronika"&gt;
+    &lt;h3 title="Kliknij, aby zobaczyć szczegóły"&gt;Smartfon XYZ&lt;/h3&gt;
+    &lt;p class="cena" style="font-weight: bold; color: #2f7a67;"&gt;1499 zł&lt;/p&gt;
+    &lt;button data-id="123" class="btn-zakup"&gt;Kup&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+    .karta {
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 10px 0;
+    }
+    .cena {
+        font-size: 1.2em;
+    }
+    [data-kategoria="elektronika"] {
+        background-color: #f9f5eb;
+    }
+&lt;/style&gt;
+
+&lt;script&gt;
+    document.querySelector('.btn-zakup').addEventListener('click', function() {
+        const produktId = this.dataset.id;
+        alert('Dodano produkt o ID ' + produktId);
+    });
+&lt;/script&gt;
+</pre>
+</div>
+        <div class="demo-class-box" id="produkt-123" data-kategoria="elektronika">
+            <h3 title="Kliknij, aby zobaczyć szczegóły">Smartfon XYZ</h3>
+            <p class="cena" style="font-weight: bold; color: #2f7a67;">1499 zł</p>
+            <button data-id="123" class="btn-zakup" onclick="alert('Dodano produkt o ID 123 (przykład JS)')">Kup</button>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>9. Dobre praktyki dotyczące atrybutów globalnych</h2>
+        <div class="good-bad">
+            <div class="good">
+<h4>Dobre praktyki</h4>
+                <ul>
+                    <li>Używaj nazw klas zgodnych z przeznaczeniem (np. <code>.warning</code>, <code>.btn-primary</code>).</li>
+                    <li>Identyfikatorów <code>id</code> używaj oszczędnie - tylko gdy potrzebujesz linku lub JS.</li>
+                    <li>Unikaj stylów inline - preferuj klasy i zewnętrzne CSS.</li>
+                    <li>Atrybut <code>title</code> dodawaj dla ikon, skrótów, akronimów - poprawia UX.</li>
+                    <li><code>data-*</code> stosuj do przechowywania danych dla JavaScript (nie do stylów).</li>
+                </ul>
+</div>
+            <div class="bad">
+<h4>Częste błędy</h4>
+                <ul>
+                    <li>Używanie tego samego <code>id</code> dla kilku elementów (niepoprawne).</li>
+                    <li>Używanie zbyt wielu klas (komplikuje kod).</li>
+                    <li>Pomijanie <code>title</code> w elementach interaktywnych (utrata podpowiedzi).</li>
+                    <li>Mieszanie stylów inline i klas - chaos.</li>
+                    <li>Przechowywanie wrażliwych danych w <code>data-*</code>.</li>
+                </ul>
+</div>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>10. Co musisz zapamiętać na egzamin INF03</h2>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>class</strong> - stylowanie, wiele elementów, wiele klas oddzielonych spacją.</div>
+            <div class="attr-card"><strong>id</strong> - unikalny identyfikator, kotwice, JS, label.</div>
+            <div class="attr-card"><strong>style</strong> - style inline (unikać, ale znać).</div>
+            <div class="attr-card"><strong>title</strong> - podpowiedź (tooltip).</div>
+            <div class="attr-card"><strong>data-*</strong> - przechowywanie danych, odczyt przez <code>dataset</code> w JS.</div>
+            <div class="attr-card"><strong>Zasada</strong> - class dla CSS, id dla unikalności, data-* dla danych.</div>
+</div>
+        <div class="coord-note">
+            Na egzaminie często pojawia się zadanie: "Ustaw atrybut class dla elementu i dodaj styl", "Utwórz kotwicę z id" lub "Odczytaj dane z atrybutu data-*". Pamiętaj o poprawnej składni.
+</div>
+        <div class="code-sample" style="margin-top:20px;"><pre>
+&lt;!-- Przykładowe poprawne użycie atrybutów globalnych --&gt;
+&lt;div class="kontener" id="glowny"&gt;
+    &lt;h2 title="Nagłówek sekcji"&gt;Informacje&lt;/h2&gt;
+    &lt;p class="tekst"&gt;Treść akapitu.&lt;/p&gt;
+    &lt;button data-id="1" onclick="alert(this.dataset.id)"&gt;Pokaż ID&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+    .kontener { background: #f4f1ea; padding: 15px; }
+    .tekst { color: #2f7a67; }
+    #glowny { border: 1px solid #ccc; }
+&lt;/style&gt;
+</pre>
+</div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 Samouczek INF03 - Rozdział 19: Atrybuty globalne i praktyczne (class, id, style, title, data-*).</p>
+</footer>
+
+</body>
+</html>

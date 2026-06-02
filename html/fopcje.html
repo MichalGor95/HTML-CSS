@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularze - wybór opcji | Podstawy INF03</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Dodatkowe style - zachowują pełną spójność z oryginalnym style.css */
+        .doctype-box {
+            background: #1e2a2a;
+            color: #d0f0e5;
+            border-radius: 16px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        .structure-visual {
+            background: #fefcf5;
+            border: 1px solid #ddd2b5;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 25px 0;
+            font-family: monospace;
+            line-height: 1.6;
+        }
+        .tag-demo {
+            background: #f4f1ea;
+            border-radius: 14px;
+            padding: 12px 16px;
+            margin: 12px 0;
+            font-family: monospace;
+            border-left: 4px solid #2f7a67;
+        }
+        .attr-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-badge {
+            background: #eef3f0;
+            border-radius: 40px;
+            padding: 6px 14px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            border: 1px solid #cbdcd3;
+        }
+        .good-bad {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .good, .bad {
+            flex: 1;
+            background: white;
+            border-radius: 18px;
+            padding: 16px 20px;
+            border: 1px solid #e2dfd7;
+        }
+        .good h4 { color: #2f7a67; margin-bottom: 12px; }
+        .bad h4 { color: #b1624b; margin-bottom: 12px; }
+        .attrs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-card {
+            background: #fcf9f2;
+            border-radius: 14px;
+            padding: 12px 16px;
+            border: 1px solid #e5dfd1;
+        }
+        .attr-card strong {
+            color: #1f5e4f;
+            font-family: monospace;
+            font-size: 1.05rem;
+        }
+        .coord-note {
+            background: #eef5f2;
+            border-left: 4px solid #2f7a67;
+            padding: 12px 18px;
+            margin: 15px 0;
+            font-size: 0.95rem;
+            border-radius: 12px;
+        }
+        .warning-tip {
+            background: #fff2df;
+            border-radius: 14px;
+            padding: 12px 18px;
+            margin: 20px 0;
+            border-left: 5px solid #e6a017;
+        }
+        .custom-list {
+            padding-left: 28px;
+            margin: 20px 0;
+        }
+        .custom-list li {
+            margin: 8px 0;
+        }
+        .code-sample {
+            background-color: #1e2a2a;
+            color: #d9f0ea;
+            padding: 20px;
+            border-radius: 16px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+        }
+        .code-sample pre {
+            background: transparent;
+            color: #d0f0e5;
+            margin: 0;
+        }
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 25px 0;
+        }
+        .value-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fefef9;
+        }
+        .value-table th, .value-table td {
+            border: 1px solid #d6d0c4;
+            padding: 12px 16px;
+            text-align: left;
+            vertical-align: top;
+        }
+        .value-table th {
+            background-color: #eef3f0;
+            color: #1b4d41;
+            font-weight: 700;
+        }
+        .demo-form {
+            background: #fcf9f2;
+            border: 1px solid #e2dfd7;
+            border-radius: 16px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .demo-form label {
+            display: inline-block;
+            margin: 5px 0;
+        }
+        .demo-group {
+            margin: 15px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 12px;
+        }
+        textarea {
+            width: 100%;
+            max-width: 400px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        HTML<span>&CSS</span>
+</div>
+    <nav>
+        <a href="../index.html">Start</a>
+        <a href="../html.html" class="active">HTML</a>
+        <a href="../css.html">CSS</a>
+    </nav>
+</header>
+
+<main class="content-page">
+    <div class="page-header">
+        <h1>Rozdział 13: Formularze - wybór opcji</h1>
+        <p>
+            Formularze to nie tylko pola tekstowe. Poznaj znaczniki do wyboru opcji:
+            <strong>checkbox</strong> (wybór wielokrotny), <strong>radio</strong> (wybór jednej opcji),
+            listę rozwijaną <strong>&lt;select&gt;</strong> z <strong>&lt;option&gt;</strong> oraz wielowierszowe pole tekstowe
+            <strong>&lt;textarea&gt;</strong>.
+</p>
+</div>
+
+    <section class="topic-section">
+        <h2>1. Checkbox - pole wyboru (wielokrotny wybór)</h2>
+        <p><strong>&lt;input type="checkbox"&gt;</strong> - pozwala użytkownikowi zaznaczyć lub odznaczyć opcję. Można wybrać wiele checkboxów jednocześnie.</p>
+        <div class="code-sample"><pre>
+&lt;label&gt;
+    &lt;input type="checkbox" name="zainteresowania" value="sport"&gt; Sport
+&lt;/label&gt;
+&lt;label&gt;
+    &lt;input type="checkbox" name="zainteresowania" value="muzyka"&gt; Muzyka
+&lt;/label&gt;
+&lt;label&gt;
+    &lt;input type="checkbox" name="zainteresowania" value="technologia" checked&gt; Technologia (domyślnie zaznaczony)
+&lt;/label&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <label><input type="checkbox" name="demo_cb1" value="sport"> Sport</label>
+            <label><input type="checkbox" name="demo_cb2" value="muzyka"> Muzyka</label>
+            <label><input type="checkbox" name="demo_cb3" value="tech" checked> Technologia (zaznaczony)</label>
+</div>
+        <ul class="custom-list">
+            <li>Atrybut <strong>checked</strong> - domyślnie zaznaczony.</li>
+            <li>Wiele checkboxów może mieć tę samą nazwę <code>name</code> - wtedy po stronie serwera otrzymujemy tablicę wartości.</li>
+            <li>Każdy checkbox powinien mieć swój <code>value</code> - to wartość wysyłana do serwera (domyślnie "on", jeśli brak value).</li>
+        </ul>
+        <div class="coord-note">
+            Jeśli używasz wielu checkboxów z tą samą nazwą, na serwerze (np. PHP) odczytasz je jako tablicę: <code>$_POST['zainteresowania']</code>.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>2. Radio - przycisk opcji (wybór jednej opcji)</h2>
+        <p><strong>&lt;input type="radio"&gt;</strong> - pozwala wybrać tylko jedną opcję z grupy. Wszystkie radio w grupie muszą mieć <strong>taką samą nazwę (name)</strong>.</p>
+        <div class="code-sample"><pre>
+&lt;label&gt;
+    &lt;input type="radio" name="plec" value="k"&gt; Kobieta
+&lt;/label&gt;
+&lt;label&gt;
+    &lt;input type="radio" name="plec" value="m"&gt; Mężczyzna
+&lt;/label&gt;
+&lt;label&gt;
+    &lt;input type="radio" name="plec" value="i" checked&gt; Inne
+&lt;/label&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <label><input type="radio" name="demo_plec" value="k"> Kobieta</label>
+            <label><input type="radio" name="demo_plec" value="m"> Mężczyzna</label>
+            <label><input type="radio" name="demo_plec" value="i" checked> Inne</label>
+</div>
+        <div class="warning-tip">
+            W grupie radio tylko jedna opcja może być zaznaczona. Jeśli nie ustawisz <code>checked</code>, żadna nie będzie domyślnie wybrana - użytkownik musi sam wybrać.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>3. &lt;select&gt; i &lt;option&gt; - lista rozwijana</h2>
+        <p><strong>&lt;select&gt;</strong> tworzy listę rozwijaną (lub listę wielokrotnego wyboru). <strong>&lt;option&gt;</strong> definiuje poszczególne elementy listy.</p>
+        <div class="code-sample"><pre>
+&lt;select name="miasto"&gt;
+    &lt;option value="waw"&gt;Warszawa&lt;/option&gt;
+    &lt;option value="krk" selected&gt;Kraków&lt;/option&gt;
+    &lt;option value="wro"&gt;Wrocław&lt;/option&gt;
+    &lt;option value="gdansk"&gt;Gdańsk&lt;/option&gt;
+&lt;/select&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <select name="demo_miasto">
+                <option value="waw">Warszawa</option>
+                <option value="krk" selected>Kraków</option>
+                <option value="wro">Wrocław</option>
+                <option value="gdansk">Gdańsk</option>
+            </select>
+</div>
+        <h3>Atrybuty &lt;select&gt;</h3>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>size</strong> - liczba widocznych opcji (domyślnie 1). <code>size="5"</code></div>
+            <div class="attr-card"><strong>multiple</strong> - umożliwia wybór wielu opcji (z Ctrl lub Shift).</div>
+            <div class="attr-card"><strong>disabled</strong> - cała lista nieaktywna.</div>
+</div>
+        <div class="code-sample"><pre>
+&lt;select name="kolory" multiple size="3"&gt;
+    &lt;option value="czerwony"&gt;Czerwony&lt;/option&gt;
+    &lt;option value="zielony"&gt;Zielony&lt;/option&gt;
+    &lt;option value="niebieski"&gt;Niebieski&lt;/option&gt;
+&lt;/select&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <select name="demo_kolory" multiple size="3">
+                <option value="czerwony">Czerwony</option>
+                <option value="zielony">Zielony</option>
+                <option value="niebieski">Niebieski</option>
+            </select>
+            <p><small>Przytrzymaj Ctrl (Cmd), aby wybrać wiele opcji.</small></p>
+</div>
+        <div class="coord-note">
+            Opcję domyślnie wybraną w <code>&lt;select&gt;</code> oznaczamy atrybutem <code>selected</code> w odpowiednim <code>&lt;option&gt;</code>.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>4. Grupowanie opcji - &lt;optgroup&gt;</h2>
+        <p>W rozwijanych listach można grupować opcje za pomocą <code>&lt;optgroup label="nazwa grupy"&gt;</code>.</p>
+        <div class="code-sample"><pre>
+&lt;select name="produkt"&gt;
+    &lt;optgroup label="Elektronika"&gt;
+        &lt;option&gt;Słuchawki&lt;/option&gt;
+        &lt;option&gt;Myszka&lt;/option&gt;
+    &lt;/optgroup&gt;
+    &lt;optgroup label="Odzież"&gt;
+        &lt;option&gt;Koszulka&lt;/option&gt;
+        &lt;option&gt;Spodnie&lt;/option&gt;
+    &lt;/optgroup&gt;
+&lt;/select&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <select name="demo_produkt">
+                <optgroup label="Elektronika">
+                    <option>Słuchawki</option>
+                    <option>Myszka</option>
+                </optgroup>
+                <optgroup label="Odzież">
+                    <option>Koszulka</option>
+                    <option>Spodnie</option>
+                </optgroup>
+            </select>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>5. &lt;textarea&gt; - wielowierszowe pole tekstowe</h2>
+        <p>Używane do dłuższych wypowiedzi, komentarzy, opisów. Różni się od <code>&lt;input&gt;</code> możliwością zmiany rozmiaru i wieloma liniami.</p>
+        <div class="code-sample"><pre>
+&lt;label for="komentarz"&gt;Komentarz:&lt;/label&gt;
+&lt;textarea id="komentarz" name="komentarz" rows="5" cols="40" placeholder="Wpisz swoją opinię..."&gt;&lt;/textarea&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <label for="demo_komentarz">Komentarz:</label><br>
+            <textarea id="demo_komentarz" name="demo_komentarz" rows="4" cols="40" placeholder="Wpisz swoją opinię..."></textarea>
+</div>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>rows</strong> - liczba widocznych wierszy tekstu.</div>
+            <div class="attr-card"><strong>cols</strong> - liczba widocznych kolumn (szerokość).</div>
+            <div class="attr-card"><strong>placeholder</strong> - podpowiedź (jak w input).</div>
+            <div class="attr-card"><strong>maxlength</strong> - maksymalna liczba znaków.</div>
+            <div class="attr-card"><strong>wrap</strong> - zawijanie tekstu (soft/hard).</div>
+</div>
+        <div class="warning-tip">
+            Tekst początkowy w <code>&lt;textarea&gt;</code> umieszcza się <strong>między tagami</strong>, a nie w atrybucie <code>value</code>. Np. <code>&lt;textarea&gt;Domyślny tekst&lt;/textarea&gt;</code>.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>6. Porównanie pól wyboru</h2>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <thead><tr><th>Typ</th><th>Znacznik / atrybut</th><th>Wybór</th><th>Typowe użycie</th></tr></thead>
+                <tbody>
+                    <tr><td>Checkbox</td><td><code>&lt;input type="checkbox"&gt;</code></td><td>Wielokrotny</td><td>Zainteresowania, akceptacja regulaminu, wybór dodatków</td></tr>
+                    <tr><td>Radio</td><td><code>&lt;input type="radio"&gt;</code></td><td>Jeden z grupy</td><td>Płeć, sposób dostawy, wybór wersji</td></tr>
+                    <tr><td>Lista rozwijana (select)</td><td><code>&lt;select&gt; + &lt;option&gt;</code></td><td>Jeden (lub wiele z <code>multiple</code>)</td><td>Kraj, miasto, kategoria produktu</td></tr>
+                    <tr><td>Textarea</td><td><code>&lt;textarea&gt;</code></td><td>Dowolny tekst wielowierszowy</td><td>Komentarze, opis, wiadomość</td></tr>
+                </tbody>
+            </table>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>7. Przykład kompleksowego formularza z różnymi opcjami wyboru</h2>
+        <div class="code-sample"><pre>
+&lt;form action="zapisz.php" method="post"&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Ankieta użytkownika&lt;/legend&gt;
+        
+        &lt;p&gt;Płeć:&lt;/p&gt;
+        &lt;label&gt;&lt;input type="radio" name="plec" value="k"&gt; Kobieta&lt;/label&gt;
+        &lt;label&gt;&lt;input type="radio" name="plec" value="m"&gt; Mężczyzna&lt;/label&gt;
+        
+        &lt;p&gt;Zainteresowania:&lt;/p&gt;
+        &lt;label&gt;&lt;input type="checkbox" name="zainteresowania[]" value="sport"&gt; Sport&lt;/label&gt;
+        &lt;label&gt;&lt;input type="checkbox" name="zainteresowania[]" value="muzyka"&gt; Muzyka&lt;/label&gt;
+        &lt;label&gt;&lt;input type="checkbox" name="zainteresowania[]" value="film"&gt; Film&lt;/label&gt;
+        
+        &lt;p&gt;Miasto:&lt;/p&gt;
+        &lt;select name="miasto"&gt;
+            &lt;option value="waw"&gt;Warszawa&lt;/option&gt;
+            &lt;option value="krk"&gt;Kraków&lt;/option&gt;
+            &lt;option value="wro"&gt;Wrocław&lt;/option&gt;
+        &lt;/select&gt;
+        
+        &lt;p&gt;Dodatkowe uwagi:&lt;/p&gt;
+        &lt;textarea name="uwagi" rows="4" cols="50" placeholder="Twoje uwagi...&lt;/textarea&gt;
+        
+        &lt;button type="submit"&gt;Wyślij&lt;/button&gt;
+    &lt;/fieldset&gt;
+&lt;/form&gt;
+</pre>
+</div>
+        <div class="demo-form">
+            <form action="#" onsubmit="alert('Przykład demonstracyjny - dane nie są wysyłane'); return false;">
+                <fieldset>
+                    <legend>Ankieta użytkownika</legend>
+                    <div><strong>Płeć:</strong><br>
+                        <label><input type="radio" name="plec_demo" value="k"> Kobieta</label>
+                        <label><input type="radio" name="plec_demo" value="m"> Mężczyzna</label>
+</div>
+                    <div><strong>Zainteresowania:</strong><br>
+                        <label><input type="checkbox" name="zain_demo" value="sport"> Sport</label>
+                        <label><input type="checkbox" name="zain_demo" value="muzyka"> Muzyka</label>
+                        <label><input type="checkbox" name="zain_demo" value="film"> Film</label>
+</div>
+                    <div><strong>Miasto:</strong><br>
+                        <select name="miasto_demo">
+                            <option value="waw">Warszawa</option>
+                            <option value="krk">Kraków</option>
+                            <option value="wro">Wrocław</option>
+                        </select>
+</div>
+                    <div><strong>Dodatkowe uwagi:</strong><br>
+                        <textarea name="uwagi_demo" rows="3" cols="40" placeholder="Twoje uwagi..."></textarea>
+</div>
+                    <button type="submit">Wyślij (test)</button>
+                </fieldset>
+            </form>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>8. Dobre praktyki dla pól wyboru</h2>
+        <div class="good-bad">
+            <div class="good">
+<h4>Dobre praktyki</h4>
+                <ul>
+                    <li>Zawsze grupuj radio tą samą nazwą <code>name</code>.</li>
+                    <li>Używaj <code>&lt;label&gt;</code> z odpowiednim <code>for</code> lub opakowując input - zwiększa klikalność.</li>
+                    <li>Dla checkboxów z wielokrotnym wyborem stosuj nazwy tablicowe (np. <code>name="zain[]"</code> w PHP).</li>
+                    <li>Ustawiaj domyślną wartość (<code>checked</code> lub <code>selected</code>) tam, gdzie to pomaga użytkownikowi.</li>
+                    <li>Dla <code>&lt;textarea&gt;</code> ustal odpowiednie <code>rows</code> i <code>cols</code> lub użyj CSS.</li>
+                </ul>
+</div>
+            <div class="bad">
+<h4>Częste błędy</h4>
+                <ul>
+                    <li>Radio z różnymi nazwami - można wybrać więcej niż jedną opcję.</li>
+                    <li>Brak <code>value</code> w checkbox/radio - serwer otrzyma domyślne "on".</li>
+                    <li>Używanie <code>&lt;textarea&gt;</code> z atrybutem <code>value</code> (to nie działa).</li>
+                    <li>Brak etykiet - utrudniona dostępność.</li>
+                </ul>
+</div>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>9. Różnice między checkbox a radio</h2>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <thead><tr><th>Cecha</th><th>Checkbox</th><th>Radio</th></tr></thead>
+                <tbody>
+                    <tr><td>Liczba możliwych wyborów</td><td>Wiele (0 do N)</td><td>Jeden (0 lub 1)</td></tr>
+                    <tr><td>Zachowanie</td><td>Każdy działa niezależnie</td><td>Wybór jednego odznacza inny w grupie</td></tr>
+                    <tr><td>Atrybut <code>name</code></td><td>Może być różny lub taki sam</td><td><strong>Musi być identyczny</strong> w grupie</td></tr>
+                    <tr><td>Zaznaczenie domyślne</td><td><code>checked</code></td><td><code>checked</code></td></tr>
+                </tbody>
+            </table>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>10. Co musisz zapamiętać na egzamin INF03</h2>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>checkbox</strong> - wybór wielokrotny, atrybut <code>checked</code>.</div>
+            <div class="attr-card"><strong>radio</strong> - wybór jednej opcji z grupy (ta sama nazwa).</div>
+            <div class="attr-card"><strong>&lt;select&gt;</strong> - lista rozwijana, atrybuty <code>size</code>, <code>multiple</code>.</div>
+            <div class="attr-card"><strong>&lt;option&gt;</strong> - element listy, atrybut <code>selected</code>.</div>
+            <div class="attr-card"><strong>&lt;optgroup&gt;</strong> - grupowanie opcji w select.</div>
+            <div class="attr-card"><strong>&lt;textarea&gt;</strong> - wielowierszowe pole, atrybuty <code>rows</code>, <code>cols</code>.</div>
+</div>
+        <div class="coord-note">
+            Egzaminatorzy często wymagają stworzenia formularza z różnymi polami wyboru - pamiętaj o poprawnych atrybutach <code>name</code> i <code>value</code> oraz grupowaniu radio.
+</div>
+        <div class="code-sample" style="margin-top:20px;"><pre>
+&lt;!-- Przykład wzorcowego fragmentu z wyborem opcji --&gt;
+&lt;fieldset&gt;
+    &lt;legend&gt;Preferencje&lt;/legend&gt;
+    &lt;label&gt;&lt;input type="radio" name="kontakt" value="email" checked&gt; E-mail&lt;/label&gt;
+    &lt;label&gt;&lt;input type="radio" name="kontakt" value="telefon"&gt; Telefon&lt;/label&gt;
+    
+    &lt;label&gt;&lt;input type="checkbox" name="newsletter" value="tak"&gt; Zapisz do newslettera&lt;/label&gt;
+    
+    &lt;select name="kraj"&gt;
+        &lt;option value="pl" selected&gt;Polska&lt;/option&gt;
+        &lt;option value="de"&gt;Niemcy&lt;/option&gt;
+    &lt;/select&gt;
+    
+    &lt;textarea name="uwagi" rows="3" cols="30" placeholder="Twoje uwagi..."&gt;&lt;/textarea&gt;
+&lt;/fieldset&gt;
+</pre>
+</div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 Samouczek INF03 - Rozdział 13: Formularze - wybór opcji (checkbox, radio, select, option, textarea).</p>
+</footer>
+
+</body>
+</html>

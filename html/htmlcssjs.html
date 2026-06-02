@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML + CSS + JavaScript | Podstawy INF03</title>
+    <!-- Przykład podpięcia zewnętrznego arkusza stylów (link) -->
+    <link rel="stylesheet" href="../style.css">
+    <!-- Przykład stylów wewnętrznych (style) -->
+    <style>
+        /* Dodatkowe style - zachowują pełną spójność z oryginalnym style.css */
+        .doctype-box {
+            background: #1e2a2a;
+            color: #d0f0e5;
+            border-radius: 16px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        .structure-visual {
+            background: #fefcf5;
+            border: 1px solid #ddd2b5;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 25px 0;
+            font-family: monospace;
+            line-height: 1.6;
+        }
+        .tag-demo {
+            background: #f4f1ea;
+            border-radius: 14px;
+            padding: 12px 16px;
+            margin: 12px 0;
+            font-family: monospace;
+            border-left: 4px solid #2f7a67;
+        }
+        .attr-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-badge {
+            background: #eef3f0;
+            border-radius: 40px;
+            padding: 6px 14px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            border: 1px solid #cbdcd3;
+        }
+        .good-bad {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .good, .bad {
+            flex: 1;
+            background: white;
+            border-radius: 18px;
+            padding: 16px 20px;
+            border: 1px solid #e2dfd7;
+        }
+        .good h4 { color: #2f7a67; margin-bottom: 12px; }
+        .bad h4 { color: #b1624b; margin-bottom: 12px; }
+        .attrs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-card {
+            background: #fcf9f2;
+            border-radius: 14px;
+            padding: 12px 16px;
+            border: 1px solid #e5dfd1;
+        }
+        .attr-card strong {
+            color: #1f5e4f;
+            font-family: monospace;
+            font-size: 1.05rem;
+        }
+        .coord-note {
+            background: #eef5f2;
+            border-left: 4px solid #2f7a67;
+            padding: 12px 18px;
+            margin: 15px 0;
+            font-size: 0.95rem;
+            border-radius: 12px;
+        }
+        .warning-tip {
+            background: #fff2df;
+            border-radius: 14px;
+            padding: 12px 18px;
+            margin: 20px 0;
+            border-left: 5px solid #e6a017;
+        }
+        .custom-list {
+            padding-left: 28px;
+            margin: 20px 0;
+        }
+        .custom-list li {
+            margin: 8px 0;
+        }
+        .code-sample {
+            background-color: #1e2a2a;
+            color: #d9f0ea;
+            padding: 20px;
+            border-radius: 16px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+        }
+        .code-sample pre {
+            background: transparent;
+            color: #d0f0e5;
+            margin: 0;
+        }
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 25px 0;
+        }
+        .value-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fefef9;
+        }
+        .value-table th, .value-table td {
+            border: 1px solid #d6d0c4;
+            padding: 12px 16px;
+            text-align: left;
+            vertical-align: top;
+        }
+        .value-table th {
+            background-color: #eef3f0;
+            color: #1b4d41;
+            font-weight: 700;
+        }
+        /* Przykładowe style CSS na żywo */
+        .css-demo-box {
+            background: #eef3f0;
+            border: 2px solid #2f7a67;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 15px 0;
+            transition: all 0.3s;
+        }
+        .css-demo-box:hover {
+            background: #d4e8e0;
+            transform: scale(1.01);
+        }
+        button.js-demo-btn {
+            background: #2f7a67;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button.js-demo-btn:hover {
+            background: #1e5e4f;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        HTML<span>&CSS</span>
+</div>
+    <nav>
+        <a href="../index.html">Start</a>
+        <a href="../html.html" class="active">HTML</a>
+        <a href="../css.html">CSS</a>
+    </nav>
+</header>
+
+<main class="content-page">
+    <div class="page-header">
+        <h1>Rozdział 18: HTML + CSS + JavaScript</h1>
+        <p>
+            Współczesna strona internetowa łączy trzy technologie: <strong>HTML</strong> (struktura),
+            <strong>CSS</strong> (wygląd) i <strong>JavaScript</strong> (zachowanie). Poznaj jak podłączać
+            arkusze stylów i skrypty, podstawy CSS oraz proste przykłady JS.
+</p>
+</div>
+
+    <section class="topic-section">
+        <h2>1. Trzy filary nowoczesnej strony</h2>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <thead><tr><th>Technologia</th><th>Rola</th><th>Przykład</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td><strong>HTML</strong> (HyperText Markup Language)</td>
+                        <td>Struktura i treść - nagłówki, akapity, obrazy, linki. Boot
+
+* (co robiliśmy przez 17 rozdziałów) - odpowiada za to, co jest na stronie./
+                        <td><code>&lt;h1&gt;Tytuł&lt;/h1&gt;</code>, <code>&lt;p&gt;Tekst&lt;/p&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>CSS</strong> (Cascading Style Sheets)</td>
+                        <td>Wygląd i układ - kolory, czcionki, rozmieszczenie, responsywność. Rozdziela treść od prezentacji.</td>
+                        <td><code>color: red; font-size: 20px; margin: 10px;</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>JavaScript</strong> (JS)</td>
+                        <td>Interaktywność - reagowanie na kliknięcia, walidacja formularzy, dynamiczne zmiany treści, animacje. Boot
+
+* (to już programowanie) - wykonuje akcje po stronie klienta./
+                        <td><code>alert('Witaj!');</code>, zmiana stylu po kliknięciu</td>
+                    </tr>
+                </tbody>
+            </table>
+</div>
+        <div class="coord-note">
+            Zasada separacji: HTML = treść, CSS = wygląd, JS = zachowanie. Dzięki temu kod jest czytelniejszy i łatwiejszy w utrzymaniu.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>2. Podpinanie CSS - &lt;link&gt; i &lt;style&gt;</h2>
+        <p>CSS można dodać na trzy sposoby. Najczęściej stosuje się zewnętrzny arkusz stylów (<code>&lt;link&gt;</code>) lub wewnętrzny (<code>&lt;style&gt;</code>).</p>
+        
+        <h3>Metoda 1: Zewnętrzny arkusz stylów (zalecana)</h3>
+        <div class="code-sample"><pre>
+&lt;!-- W sekcji &lt;head&gt; --&gt;
+&lt;link rel="stylesheet" href="../style.css"&gt;
+</pre>
+</div>
+        <ul class="custom-list">
+            <li>Plik <code>style.css</code> zawiera wszystkie reguły CSS.</li>
+            <li>Można go użyć na wielu stronach - spójność całej witryny.</li>
+            <li>Łatwiejsze utrzymanie i szybsze ładowanie (cache).</li>
+        </ul>
+
+        <h3>Metoda 2: Wewnętrzny arkusz stylów (&lt;style&gt;)</h3>
+        <div class="code-sample"><pre>
+&lt;style&gt;
+    body {
+        font-family: Arial;
+        background-color: #f3f1eb;
+    }
+    h1 {
+        color: #2f7a67;
+    }
+&lt;/style&gt;
+</pre>
+</div>
+        <ul class="custom-list">
+            <li>Umieszczony w <code>&lt;head&gt;</code> (rzadziej w <code>&lt;body&gt;</code>).</li>
+            <li>Dotyczy tylko jednej strony - brak ponownego użycia.</li>
+        </ul>
+
+        <h3>Metoda 3: Style inline (atrybut style) - unikaj!</h3>
+        <div class="code-sample"><pre>
+&lt;p style="color: red; font-size: 20px;"&gt;Tekst&lt;/p&gt;
+</pre>
+</div>
+        <div class="warning-tip">
+            Style inline mieszają wygląd ze strukturą - utrudniają utrzymanie. Stosuj tylko w wyjątkowych sytuacjach.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>3. Podstawy CSS - składnia, selektory, właściwości</h2>
+        <p>CSS składa się z <strong>selektorów</strong> (co stylizujemy) i <strong>deklaracji</strong> (jak stylizujemy).</p>
+        <div class="code-sample"><pre>
+selektor {
+    właściwość: wartość;
+    właściwość: wartość;
+}
+
+/* Przykład */
+h1 {
+    color: #2f7a67;
+    font-size: 32px;
+    text-align: center;
+}
+</pre>
+</div>
+        <h3>Najważniejsze selektory</h3>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <thead><tr><th>Selektor</th><th>Przykład</th><th>Opis</th></tr></thead>
+                <tbody>
+                    <tr><td>Element (tag)</td><td><code>p { }</code></td><td>Wszystkie akapity</td></tr>
+                    <tr>
+                        <td>Klasa (class)</td>
+                        <td><code>.nazwa { }</code></td>
+                        <td>Wszystkie elementy z <code>class="nazwa"</code></td>
+                    </tr>
+                    <tr>
+                        <td>Identyfikator (id)</td>
+                        <td><code>#unikalny { }</code></td>
+                        <td>Jeden element z <code>id="unikalny"</code> (unikalny na stronie)</td>
+                    </tr>
+                    <tr>
+                        <td>Zagnieżdżony</td>
+                        <td><code>nav ul li a { }</code></td>
+                        <td>Linki wewnątrz listy w nawigacji</td>
+                    </tr>
+                </tbody>
+            </table>
+</div>
+        <h3>Popularne właściwości CSS</h3>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>color</strong> - kolor tekstu.<br><code>color: #2f7a67;</code></div>
+            <div class="attr-card"><strong>background-color</strong> - kolor tła.<br><code>background: #f4f1ea;</code></div>
+            <div class="attr-card"><strong>font-size</strong> - rozmiar czcionki.<br><code>font-size: 18px;</code></div>
+            <div class="attr-card"><strong>margin / padding</strong> - odstępy zewn./wewn.<br><code>margin: 10px; padding: 20px;</code></div>
+            <div class="attr-card"><strong>border</strong> - ramka.<br><code>border: 1px solid #ccc;</code></div>
+            <div class="attr-card"><strong>display</strong> - sposób wyświetlania (block, inline, flex).<br><code>display: flex;</code></div>
+</div>
+        <div class="tag-demo">
+            <div class="css-demo-box">
+                Przykład stylowanego bloku: tło #eef3f0, zielona ramka, zaokrąglone rogi, efekt najechania (hover).
+</div>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>4. Podpinanie JavaScript - &lt;script&gt;</h2>
+        <p>JavaScript można dodać podobnie jak CSS: zewnętrzny plik lub wewnętrzny skrypt. Zwykle umieszcza się go przed końcem <code>&lt;body&gt;</code>, aby nie blokował ładowania strony.</p>
+        
+        <h3>Zewnętrzny plik JS (zalecany)</h3>
+        <div class="code-sample"><pre>
+&lt;script src="skrypt.js"&gt;&lt;/script&gt;
+</pre>
+</div>
+        
+        <h3>Wewnętrzny skrypt (w HTML)</h3>
+        <div class="code-sample"><pre>
+&lt;script&gt;
+    alert("Witaj na stronie!");
+    console.log("Komunikat w konsoli");
+&lt;/script&gt;
+</pre>
+</div>
+        <div class="coord-note">
+            Atrybut <code>defer</code> lub umieszczenie skryptu na końcu <code>&lt;body&gt;</code> powoduje, że JS wykonuje się po załadowaniu całej treści.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>5. Podstawy JavaScript - zdarzenia i proste akcje</h2>
+        <p>JavaScript pozwala reagować na działania użytkownika (kliknięcie, najechanie, wypełnienie formularza). Oto kilka podstawowych przykładów.</p>
+        
+        <h3>Przykład 1: alert() - okno dialogowe</h3>
+        <div class="code-sample"><pre>
+&lt;button onclick="alert('Kliknięto przycisk!')"&gt;Kliknij&lt;/button&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <button onclick="alert('Kliknięto przycisk! (alert)')" style="background:#2f7a67; color:white; border:none; padding:8px 16px; border-radius:8px;">Kliknij - alert</button>
+</div>
+
+        <h3>Przykład 2: Zmiana treści elementu</h3>
+        <div class="code-sample"><pre>
+&lt;p id="demo"&gt;Tekst przed zmianą&lt;/p&gt;
+&lt;button onclick="document.getElementById('demo').innerHTML = 'Nowy tekst!'"&gt;Zmień&lt;/button&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <p id="demo">Tekst przed zmianą</p>
+            <button onclick="document.getElementById('demo').innerHTML = 'Nowy tekst (zmieniony przez JS)!'" style="background:#2f7a67; color:white; border:none; padding:8px 16px; border-radius:8px;">Zmień tekst</button>
+</div>
+
+        <h3>Przykład 3: Zmiana stylu CSS</h3>
+        <div class="code-sample"><pre>
+&lt;p id="styl"&gt;Kolor tego tekstu się zmieni.&lt;/p&gt;
+&lt;button onclick="document.getElementById('styl').style.color = 'red';"&gt;Na czerwony&lt;/button&gt;
+&lt;button onclick="document.getElementById('styl').style.color = '#222';"&gt;Przywróć&lt;/button&gt;
+</pre>
+</div>
+        <div class="tag-demo">
+            <p id="styl">Kolor tego tekstu się zmieni.</p>
+            <button onclick="document.getElementById('styl').style.color = 'red';" class="js-demo-btn">Na czerwony</button>
+            <button onclick="document.getElementById('styl').style.color = '#222';" class="js-demo-btn">Przywróć</button>
+</div>
+
+        <div class="warning-tip">
+            JavaScript to pełnoprawny język programowania (zmienne, funkcje, pętle). Na egzaminie INF03 wystarczy znajomość prostych zdarzeń i modyfikacji DOM.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>6. Przykład strony łączącej HTML+CSS+JS</h2>
+        <div class="code-sample"><pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pl"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Moja strona&lt;/title&gt;
+    &lt;link rel="stylesheet" href="../style.css"&gt;
+    &lt;style&gt;
+        .highlight { background-color: yellow; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Witaj na stronie&lt;/h1&gt;
+    &lt;button onclick="zmienTekst()"&gt;Kliknij&lt;/button&gt;
+    &lt;p id="komunikat"&gt;Wiadomość&lt;/p&gt;
+
+    &lt;script&gt;
+        function zmienTekst() {
+            document.getElementById('komunikat').innerHTML = 'Kliknięto!';
+            document.getElementById('komunikat').classList.add('highlight');
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+        <div class="demo-section">
+<h4>Mini-demo (działający odpowiednik):</h4>
+            <button onclick="zmienTekstDemo()" class="js-demo-btn">Kliknij</button>
+            <p id="komunikatDemo">Wiadomość</p>
+            <script>
+                function zmienTekstDemo() {
+                    document.getElementById('komunikatDemo').innerHTML = 'Kliknięto! (zmiana przez JS)';
+                    document.getElementById('komunikatDemo').style.backgroundColor = '#fff2df';
+                    document.getElementById('komunikatDemo').style.padding = '8px';
+                    document.getElementById('komunikatDemo').style.borderRadius = '8px';
+                }
+            </script>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>7. Kolejność ładowania - gdzie umieszczać &lt;script&gt;?</h2>
+        <ul class="custom-list">
+            <li><strong>W &lt;head&gt;</strong> - może blokować renderowanie, jeśli skrypt jest duży. Używaj <code>defer</code>.</li>
+            <li><strong>Przed &lt;/body&gt;</strong> - zalecane, ponieważ HTML ładuje się najpierw, a skrypt wykonuje się na końcu.</li>
+            <li>Atrybut <code>defer</code> - skrypt wykonuje się po załadowaniu dokumentu (działa tylko dla zewnętrznych).</li>
+            <li>Atrybut <code>async</code> - skrypt ładuje się asynchronicznie, wykonuje zaraz po pobraniu.</li>
+        </ul>
+        <div class="code-sample"><pre>
+&lt;!-- Zewnętrzny skrypt z defer --&gt;
+&lt;script src="skrypt.js" defer&gt;&lt;/script&gt;
+
+&lt;!-- Skrypt przed końcem body --&gt;
+&lt;body&gt;
+    ...
+    &lt;script src="skrypt.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+</pre>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>8. Dobre praktyki łączenia technologii</h2>
+        <div class="good-bad">
+            <div class="good">
+<h4>Dobre praktyki</h4>
+                <ul>
+                    <li>CSS i JS w osobnych plikach (link, src).</li>
+                    <li>Unikaj stylów i zdarzeń inline (style, onclick w HTML).</li>
+                    <li>Używaj klas CSS zamiast zmiany stylów bezpośrednio w JS.</li>
+                    <li>Umieszczaj skrypty przed <code>&lt;/body&gt;</code>.</li>
+                    <li>Zapewnij działanie strony bez JS (progresywne ulepszanie).</li>
+                </ul>
+</div>
+            <div class="bad">
+<h4>Błędy</h4>
+                <ul>
+                    <li>Mieszanie stylów inline i zewnętrznych.</li>
+                    <li>Ładowanie skryptów w <code>&lt;head&gt;</code> bez defer - blokowanie wyświetlania.</li>
+                    <li>Brak średników lub zamykających nawiasów w JS.</li>
+                    <li>Nieprawidłowa ścieżka do pliku CSS/JS (błąd 404).</li>
+                </ul>
+</div>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>9. Co musisz zapamiętać na egzamin INF03</h2>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>&lt;link&gt;</strong> - podpięcie zewnętrznego CSS (rel="stylesheet", href).</div>
+            <div class="attr-card"><strong>&lt;style&gt;</strong> - wewnętrzny CSS (w head).</div>
+            <div class="attr-card"><strong>&lt;script&gt;</strong> - podpięcie JS (src) lub skrypt wewnętrzny.</div>
+            <div class="attr-card"><strong>Selektory CSS</strong> - element, .klasa, #id.</div>
+            <div class="attr-card"><strong>Podstawy JS</strong> - onclick, alert(), document.getElementById().innerHTML.</div>
+            <div class="attr-card"><strong>Separacja</strong> - HTML = treść, CSS = wygląd, JS = zachowanie.</div>
+</div>
+        <div class="coord-note">
+            Egzaminatorzy mogą poprosić o podpięcie arkusza stylów lub prosty skrypt zmieniający kolor/tekst. Pamiętaj o poprawnych atrybutach i ścieżkach.
+</div>
+        <div class="code-sample" style="margin-top:20px;"><pre>
+&lt;!-- Przykładowa strona z wszystkimi trzema technologiami --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pl"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Moja strona&lt;/title&gt;
+    &lt;link rel="stylesheet" href="../style.css"&gt;
+    &lt;style&gt;
+        .btn { background: #2f7a67; color: white; padding: 8px 16px; border: none; border-radius: 8px; }
+        .btn:hover { background: #1e5e4f; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Witaj&lt;/h1&gt;
+    &lt;button class="btn" onclick="alert('Witaj w świecie JS!')"&gt;Kliknij&lt;/button&gt;
+    &lt;script&gt;
+        console.log("Strona załadowana");
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 Samouczek INF03 - Rozdział 18: HTML + CSS + JavaScript (link, style, script, podstawy).</p>
+</footer>
+
+</body>
+</html>

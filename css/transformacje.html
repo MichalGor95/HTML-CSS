@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transformacje i przejścia CSS | Samouczek INF03</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .demo-box {
+            width: 100px;
+            height: 100px;
+            background-color: #2f7a67;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border-radius: 8px;
+            margin: 20px auto;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .demo-box:hover {
+            transform: scale(1.2) rotate(10deg);
+            background-color: #1f5e4f;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        HTML<span>&CSS</span>
+</div>
+
+    <nav>
+        <a href="../index.html">Start</a>
+        <a href="../html.html">HTML</a>
+        <a href="../css.html" class="active">CSS</a>
+    </nav>
+</header>
+
+<main class="content-page">
+
+    <div class="page-header">
+        <h1>Rozdział CSS: Transformacje i przejścia</h1>
+        <p>
+            Transformacje i przejścia w CSS pozwalają na wprowadzanie interaktywności i płynnych zmian 
+            do elementów strony bez użycia JavaScript. To kluczowe zagadnienia przy projektowaniu 
+            nowoczesnych interfejsów użytkownika, często pojawiające się na egzaminie INF03.
+</p>
+</div>
+
+    <section class="topic-section">
+        <h2>1. Czym są transformacje?</h2>
+        <p>
+            Właściwość <code>transform</code> pozwala na zmianę kształtu, rozmiaru oraz pozycji elementu 
+            w przestrzeni dwuwymiarowej (2D) lub trójwymiarowej (3D). Transformacje nie wpływają na układ 
+            innych elementów na stronie - element jest modyfikowany wizualnie, zachowując swoje pierwotne 
+            miejsce w strukturze dokumentu.
+</p>
+        <p>Do podstawowych funkcji transformacji 2D należą:</p>
+        <ul class="custom-list">
+            <li><code>translate()</code> - przesunięcie elementu.</li>
+            <li><code>scale()</code> - skalowanie (zmiana rozmiaru).</li>
+            <li><code>rotate()</code> - obracanie elementu o określony kąt.</li>
+            <li><code>skew()</code> - pochylenie elementu.</li>
+        </ul>
+    </section>
+
+    <section class="topic-section">
+        <h2>2. Przesunięcie - translate()</h2>
+        <p>
+            Funkcja <code>translate(x, y)</code> przesuwa element o podaną wartość wzdłuż osi X i Y. 
+            Możemy również użyć dedykowanych funkcji <code>translateX(x)</code> oraz <code>translateY(y)</code>.
+</p>
+        <div class="code-sample"><pre>
+.box {
+    transform: translate(20px, 50px); /* Przesunięcie o 20px w prawo i 50px w dół */
+}
+.box-x {
+    transform: translateX(-10%); /* Przesunięcie o 10% własnej szerokości w lewo */
+}
+</pre>
+</div>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <tr>
+                    <th>Wartość</th>
+                    <th>Opis działania</th>
+                </tr>
+                <tr>
+                    <td><code>translate(50px, 20px)</code></td>
+                    <td>Przesunięcie o 50px w prawo (oś X) i 20px w dół (oś Y)</td>
+                </tr>
+                <tr>
+                    <td><code>translateX(100px)</code></td>
+                    <td>Przesunięcie elementu o 100px wyłącznie w poziomie</td>
+                </tr>
+                <tr>
+                    <td><code>translateY(-30px)</code></td>
+                    <td>Przesunięcie elementu o 30px w górę</td>
+                </tr>
+            </table>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>3. Skalowanie - scale()</h2>
+        <p>
+            Funkcja <code>scale(x, y)</code> pozwala na zmianę rozmiaru elementu. Wartość 1 oznacza rozmiar domyślny, 
+            wartości większe od 1 powiększają element, a mniejsze - pomniejszają go.
+</p>
+        <div class="code-sample"><pre>
+.box-double {
+    transform: scale(2); /* Powiększenie elementu dwukrotnie w obu osiach */
+}
+.box-flat {
+    transform: scaleY(0.5); /* Zmniejszenie wysokości elementu o połowę */
+}
+</pre>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>4. Obrót - rotate()</h2>
+        <p>
+            Funkcja <code>rotate(kąt)</code> obraca element wokół punktu początkowego (domyślnie jest to jego środek). 
+            Kąt podajemy najczęściej w stopniach, używając jednostki <code>deg</code>. Wartości dodatnie obracają element 
+            zgodnie z ruchem wskazówek zegara, a ujemne - przeciwnie.
+</p>
+        <div class="code-sample"><pre>
+.box-rotated {
+    transform: rotate(45deg); /* Obrót o 45 stopni w prawo */
+}
+.box-rotated-left {
+    transform: rotate(-90deg); /* Obrót o 90 stopni w lewo */
+}
+</pre>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>5. Przejścia - transition</h2>
+        <p>
+            Przejścia pozwalają na płynną zmianę wartości właściwości CSS w określonym czasie. 
+            Zamiast natychmiastowej zmiany (np. po najechaniu kursorem), zmiana zachodzi stopniowo.
+</p>
+        <p>Do zdefiniowania przejścia służą następujące właściwości składowe:</p>
+        <ul class="custom-list">
+            <li><code>transition-property</code> - określa, które właściwości mają być animowane (np. <code>background-color</code>, <code>transform</code>, <code>all</code>).</li>
+            <li><code>transition-duration</code> - czas trwania przejścia (np. <code>0.3s</code>, <code>500ms</code>).</li>
+            <li><code>transition-timing-function</code> - funkcja określająca tempo przejścia (np. <code>linear</code>, <code>ease</code>, <code>ease-in-out</code>).</li>
+            <li><code>transition-delay</code> - opóźnienie, po którym przejście się rozpocznie.</li>
+        </ul>
+        <p>Wygodniejszym rozwiązaniem jest stosowanie skróconego zapisu <code>transition</code>:</p>
+        <div class="code-sample"><pre>
+.button {
+    background-color: #2f7a67;
+    transition: background-color 0.3s ease-in-out;
+}
+.button:hover {
+    background-color: #1f5e4f;
+}
+</pre>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>6. Praktyczny przykład</h2>
+        <p>
+            Poniższy element demonstruje połączenie transformacji i płynnego przejścia po najechaniu kursorem (hover).
+</p>
+        <div class="demo-box">Najedź na mnie</div>
+        <div class="code-sample"><pre>
+/* Styl podstawowy elementu */
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: #2f7a67;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Zmiany po najechaniu kursorem */
+.box:hover {
+    transform: scale(1.2) rotate(10deg);
+    background-color: #1f5e4f;
+}
+</pre>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>7. Co musisz zapamiętać na egzamin INF03</h2>
+        <ul class="custom-list">
+            <li>Właściwość <code>transform</code> służy do przekształceń geometrycznych (przesunięcie, obrót, skalowanie).</li>
+            <li>Właściwość <code>transition</code> umożliwia płynną zmianę innych właściwości w określonym czasie.</li>
+            <li>Dla obrotu (<code>rotate</code>) wartości wyrażamy w stopniach (<code>deg</code>), np. <code>rotate(180deg)</code>.</li>
+            <li>Przejścia działają tylko wtedy, gdy zmieniana właściwość posiada wartości pośrednie (np. kolory, wymiary, przezroczystość).</li>
+        </ul>
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 Samouczek INF03 - Transformacje i przejścia.</p>
+</footer>
+
+</body>
+</html>

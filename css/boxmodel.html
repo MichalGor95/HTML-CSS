@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box model | Samouczek INF03</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        HTML<span>&CSS</span>
+</div>
+
+    <nav>
+        <a href="../index.html">Start</a>
+        <a href="../html.html">HTML</a>
+        <a href="../css.html" class="active">CSS</a>
+    </nav>
+</header>
+
+<main class="content-page">
+
+    <div class="page-header">
+        <h1>Rozdział CSS: Box model</h1>
+        <p>
+            Każdy element HTML jest prostokątnym pudełkiem. Box model to zestaw właściwości,
+            które określają rozmiary, odstępy wewnętrzne i zewnętrzne oraz obramowanie.
+            To absolutna podstawa układania stron.
+</p>
+</div>
+
+    <!-- CZYM JEST BOX MODEL? -->
+    <section class="topic-section">
+        <h2>1. Czym jest Box model?</h2>
+        <p>Model pudełkowy składa się z czterech warstw (od środka na zewnątrz):</p>
+        <ul class="custom-list">
+            <li><strong>Content</strong> - właściwa treść (tekst, obrazek)</li>
+            <li><strong>Padding</strong> - wewnętrzny odstęp między treścią a obramowaniem</li>
+            <li><strong>Border</strong> - obramowanie</li>
+            <li><strong>Margin</strong> - zewnętrzny odstęp od innych elementów</li>
+        </ul>
+        <div class="code-sample"><pre>
++-----------------------------+
+|          MARGIN             |
+|  +-----------------------+  |
+|  |        BORDER         |  |
+|  |  +-----------------+  |  |
+|  |  |     PADDING     |  |  |
+|  |  |  +-----------+  |  |  |
+|  |  |  |  CONTENT  |  |  |  |
+|  |  |  +-----------+  |  |  |
+|  |  +-----------------+  |  |
+|  +-----------------------+  |
++-----------------------------+
+</pre>
+</div>
+    </section>
+
+    <!-- WIDTH i HEIGHT -->
+    <section class="topic-section">
+        <h2>2. Szerokość i wysokość - width / height</h2>
+        <p>
+            Domyślnie <code>width</code> i <code>height</code> dotyczą wyłącznie <strong>contentu</strong>
+            (bez paddingu, bordera i marginesu).
+</p>
+        <div class="code-sample"><pre>
+.box {
+    width: 200px;
+    height: 100px;
+}
+</pre>
+</div>
+        <p>Jednostki: <code>px</code>, <code>%</code>, <code>vw</code>, <code>vh</code>, <code>auto</code>, <code>min-content</code>, <code>max-content</code>.</p>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <tr><th>Wartość</th><th>Opis</th></tr>
+                <tr><td><code>auto</code></td><td>domyślnie - element rozciąga się na dostępną szerokość</th></tr>
+                <tr><td><code>100%</code></td><td>100% szerokości rodzica</th></tr>
+                <tr><td><code>50vw</code></td><td>50% szerokości okna przeglądarki</th></tr>
+            </table>
+</div>
+    </section>
+
+    <!-- PADDING -->
+    <section class="topic-section">
+        <h2>3. Padding - wewnętrzny odstęp</h2>
+        <p>
+            Padding powiększa tło elementu i oddala treść od krawędzi.
+</p>
+        <div class="code-sample"><pre>
+.karta {
+    padding: 20px;           /* wszystkie strony 20px */
+    padding: 10px 20px;      /* góra/dół 10px, lewo/prawo 20px */
+    padding: 5px 10px 15px 20px; /* góra, prawo, dół, lewo (zgodnie z zegarem) */
+}
+
+/* osobne właściwości */
+.karta {
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+}
+</pre>
+</div>
+        <p>
+             <strong>Ważne:</strong> Padding dodaje się do szerokości elementu - jeśli <code>width: 200px</code> i <code>padding: 20px</code>,
+            całkowita szerokość wyniesie <code>240px</code> (chyba że użyjemy <code>box-sizing: border-box</code>).
+</p>
+    </section>
+
+    <!-- MARGIN -->
+    <section class="topic-section">
+        <h2>4. Margin - zewnętrzny odstęp</h2>
+        <p>
+            Margin oddala element od innych elementów. Nie ma tła ani obramowania.
+</p>
+        <div class="code-sample"><pre>
+.odstep {
+    margin: 20px;            /* wszystkie strony */
+    margin: 10px 30px;       /* góra/dół 10px, lewo/prawo 30px */
+    margin: 5px 10px 15px 20px; /* góra, prawo, dół, lewo */
+}
+
+/* osobne */
+.odstep {
+    margin-top: 10px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    margin-left: 15px;
+}
+</pre>
+</div>
+        <p><strong>Zjawisko „margin collapse”</strong> - pionowe marginesy sąsiadujących elementów nakładają się (wybiera się większy).</p>
+        <div class="code-sample"><pre>
+/* przykład: dwa akapity z margin-bottom: 20px i margin-top: 30px */
+/* odstęp między nimi wyniesie 30px, nie 50px */
+</pre>
+</div>
+    </section>
+
+    <!-- BORDER -->
+    <section class="topic-section">
+        <h2>5. Border - obramowanie</h2>
+        <p>
+            Border to linia wokół paddingu (lub contentu, jeśli brak paddingu).
+</p>
+        <div class="code-sample"><pre>
+.ramka {
+    border: 2px solid black;          /* grubość, styl, kolor */
+    border: 3px dotted red;
+    border: 1px dashed #2f7a67;
+}
+
+/* osobne właściwości */
+.ramka {
+    border-width: 2px;
+    border-style: solid;
+    border-color: navy;
+}
+
+/* tylko jedna krawędź */
+.ramka {
+    border-bottom: 1px solid gray;
+}
+</pre>
+</div>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <tr><th>Styl bordera</th><th>Efekt</th></tr>
+                <tr><td><code>solid</code></th><td>linia ciągła</th></tr>
+                <tr><td><code>dotted</code></th><td>kropki</th></tr>
+                <tr><td><code>dashed</code></th><td>kreski</th></tr>
+                <tr><td><code>double</code></th><td>podwójna linia</th></tr>
+                <tr><td><code>groove</code></th><td>wklęsła</th></tr>
+                <tr><td><code>ridge</code></th><td>wypukła</th></tr>
+                <tr><td><code>none</code></th><td>brak</th></tr>
+            </table>
+</div>
+    </section>
+
+    <!-- BOX-SIZING -->
+    <section class="topic-section">
+        <h2>6. box-sizing - klucz do opanowania wymiarów</h2>
+        <p>
+            Właściwość <code>box-sizing</code> zmienia sposób, w jaki przeglądarka oblicza całkowitą szerokość i wysokość elementu.
+</p>
+        <div class="code-sample"><pre>
+/* Domyślne (content-box) - width = tylko treść */
+.box1 {
+    box-sizing: content-box;
+    width: 200px;
+    padding: 20px;
+    border: 2px solid black;
+    /* całkowita szerokość = 200 + 40 + 4 = 244px */
+}
+
+/* Border-box - width zawiera padding i border */
+.box2 {
+    box-sizing: border-box;
+    width: 200px;
+    padding: 20px;
+    border: 2px solid black;
+    /* całkowita szerokość = 200px (padding i border w środku) */
+}
+</pre>
+</div>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <tr><th>box-sizing</th><th>Jak działa width?</th><th>Kiedy używać?</th></tr>
+                <tr><td><code>content-box</code></th><td>width tylko treści; padding i border dodają się</th><td>rzadziej, tradycyjny model</th></tr>
+                <tr><td><code>border-box</code></th><td>width = treść + padding + border</th><td><b>zdecydowanie częściej</b> - łatwiejsze układanie</th></tr>
+            </table>
+</div>
+        <p>
+             <strong>Globalny reset box-sizing</strong> - często spotykany w arkuszach:
+</p>
+        <div class="code-sample"><pre>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+</pre>
+</div>
+        <p>Dzięki temu wszystkie elementy używają <code>border-box</code>, a podawanie <code>width</code> staje się intuicyjne.</p>
+    </section>
+
+    <!-- OBLICZANIE CAŁKOWITEGO ROZMIARU -->
+    <section class="topic-section">
+        <h2>7. Obliczanie całkowitego rozmiaru - porównanie</h2>
+        <div class="code-sample"><pre>
+/* content-box */
+width = 300px
+padding = 20px (lewo + prawo = 40px)
+border = 5px (lewo + prawo = 10px)
+margin = 15px (lewo + prawo = 30px)
+
+Całkowita szerokość zajmowana = 300 + 40 + 10 + 30 = 380px
+Szerokość elementu (widoczna) = 300 + 40 + 10 = 350px
+</pre>
+</div>
+        <div class="code-sample"><pre>
+/* border-box */
+width = 300px (zawiera padding i border)
+padding = 20px (lewo + prawo = 40px)
+border = 5px (lewo + prawo = 10px)
+margin = 15px (lewo + prawo = 30px)
+
+Całkowita szerokość zajmowana = 300 + 30 = 330px
+Szerokość treści = 300 - 40 - 10 = 250px
+</pre>
+</div>
+        <p>
+             Na egzaminie INF03 często pojawia się pytanie: „Jaką szerokość zajmie element?”
+            Sprawdź, czy użyto <code>box-sizing</code>.
+</p>
+    </section>
+
+    <!-- PRZYKŁAD PRAKTYCZNY -->
+    <section class="topic-section">
+        <h2>8. Przykład - karta z box model</h2>
+        <div class="code-sample"><pre>
+.card {
+    box-sizing: border-box;
+    width: 300px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.card p {
+    margin: 0;
+    line-height: 1.4;
+}
+</pre>
+</div>
+        <p>
+            Dzięki <code>border-box</code> karta ma zawsze 300px szerokości,
+            niezależnie od tego, ile wynosi padding i border.
+</p>
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 Samouczek INF03 - Box model.</p>
+</footer>
+
+</body>
+</html>

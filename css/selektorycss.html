@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selektory CSS | Samouczek INF03</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        HTML<span>&CSS</span>
+</div>
+
+    <nav>
+        <a href="../index.html">Start</a>
+        <a href="../html.html">HTML</a>
+        <a href="../css.html" class="active">CSS</a>
+    </nav>
+</header>
+
+<main class="content-page">
+
+    <div class="page-header">
+        <h1>Rozdział CSS: Selektory CSS</h1>
+        <p>
+            Selektory wskazują, które elementy HTML mają zostać wystylizowane.
+            Opanowanie selektorów to podstawa skutecznego i elastycznego CSS.
+</p>
+</div>
+
+    <!-- SELEKTOR TAGU -->
+    <section class="topic-section">
+        <h2>1. Selektor tagu (elementu)</h2>
+        <p>
+            Najprostszy selektor - wybiera wszystkie elementy danego znacznika HTML.
+</p>
+        <div class="code-sample"><pre>
+/* wszystkie akapity */
+p {
+    color: navy;
+    font-size: 16px;
+}
+
+/* wszystkie nagłówki h1 */
+h1 {
+    border-bottom: 2px solid gray;
+}
+</pre>
+</div>
+        <p>
+             Zaleta: szybki, globalny styl. <br>
+            ️ Uwaga: zmienia wygląd wszystkich elementów tego typu.
+</p>
+    </section>
+
+    <!-- SELEKTOR KLASY -->
+    <section class="topic-section">
+        <h2>2. Selektor klasy (.klasa)</h2>
+        <p>
+            Wybiera elementy posiadające atrybut <code>class</code> o określonej wartości.
+            W CSS poprzedzamy go kropką <strong>.</strong>
+</p>
+        <div class="code-sample"><pre>
+/* wszystkie elementy z klasą "highlight" */
+.highlight {
+    background-color: yellow;
+    font-weight: bold;
+}
+
+/* tylko akapity z klasą "note" */
+p.note {
+    border-left: 4px solid green;
+    padding-left: 12px;
+}
+</pre>
+</div>
+        <p>Przykład użycia w HTML:</p>
+        <div class="code-sample"><pre>
+&lt;p class="highlight note"&gt;Ten akapit ma dwie klasy&lt;/p&gt;
+</pre>
+</div>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <tr><th>Zapis</th><th>Znaczenie</th></tr>
+                <tr><td><code>.box</code></td><td>wszystkie elementy z klasą "box"</td></tr>
+                <tr><td><code>div.box</code></td><td>tylko &lt;div&gt; z klasą "box"</td></tr>
+                <tr><td><code>.btn.primary</code></td><td>element posiadający obie klasy naraz</td></tr>
+            </table>
+</div>
+        <p>Klasy są <strong>najczęściej używanym selektorem</strong> - pozwalają na wielokrotne użycie tego samego stylu.</p>
+    </section>
+
+    <!-- SELEKTOR ID -->
+    <section class="topic-section">
+        <h2>3. Selektor ID (#id)</h2>
+        <p>
+            Wybiera element o konkretnym atrybucie <code>id</code>.
+            W CSS poprzedzamy go krzyżykiem <strong>#</strong>.
+</p>
+        <div class="code-sample"><pre>
+/* element o id="menu" */
+#menu {
+    background-color: #333;
+    color: white;
+}
+
+/* element o id="logo" */
+#logo {
+    font-size: 32px;
+}
+</pre>
+</div>
+        <p>W HTML:</p>
+        <div class="code-sample"><pre>
+&lt;div id="menu"&gt;...&lt;/div&gt;
+</pre>
+</div>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <tr><th>Cecha</th><th>Id</th><th>Klasa</th></tr>
+                <tr><td>Unikalność</td><td>Tak - jeden element na stronie</td><td>Nie - wiele elementów</td></tr>
+                <tr><td>Specyficzność</td><td>100 pkt</td><td>10 pkt</td></tr>
+                <tr><td>Zastosowanie</td><td>głównie do JS lub kluczowych bloków</td><td>stylizacja grup elementów</td></tr>
+            </table>
+</div>
+        <p>️ Zasada: <strong>id nie może wystąpić więcej niż raz na stronie</strong>.</p>
+    </section>
+
+    <!-- SELEKTOR UNIWERSALNY * -->
+    <section class="topic-section">
+        <h2>4. Selektor uniwersalny (*)</h2>
+        <p>
+            Wybiera <strong>wszystkie</strong> elementy na stronie.
+            Używany rzadko, ale bywa przydatny do resetowania marginesów.
+</p>
+        <div class="code-sample"><pre>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* wszystkie elementy wewnątrz .kontener */
+.kontener * {
+    border: 1px solid gray;
+}
+</pre>
+</div>
+        <p>
+             Idealny do <strong>resetu CSS</strong> na początku arkusza.<br>
+            ️ Może wpływać na wydajność przy bardzo skomplikowanej stronie.
+</p>
+    </section>
+
+    <!-- GRUPOWANIE -->
+    <section class="topic-section">
+        <h2>5. Grupowanie selektorów (h1, p)</h2>
+        <p>
+            Gdy kilka selektorów ma mieć te same właściwości, oddzielamy je przecinkami.
+</p>
+        <div class="code-sample"><pre>
+h1, h2, h3 {
+    font-family: 'Arial', sans-serif;
+    color: #2c3e50;
+}
+
+button, .btn, input[type="submit"] {
+    border: none;
+    cursor: pointer;
+}
+</pre>
+</div>
+        <p>
+            Dzięki grupowaniu unikamy powtarzania tego samego kodu - to <strong>czystszy i łatwiejszy w utrzymaniu CSS</strong>.
+</p>
+    </section>
+
+    <!-- ZAGNIEŻDŻENIA (KOMBINATORY) -->
+    <section class="topic-section">
+        <h2>6. Zagnieżdżenia - relacje między elementami</h2>
+        <p>
+            Za pomocą spacji, znaków <code>></code>, <code>+</code>, <code>~</code> wybieramy elementy w określonym kontekście.
+</p>
+
+        <h3 style="margin: 20px 0 10px 0; color: #2f7a67;"> Potomek (spacja)</h3>
+        <p>Wybiera element <strong>gdziekolwiek wewnątrz</strong> rodzica.</p>
+        <div class="code-sample"><pre>
+div p {
+    color: blue;   /* wszystkie p wewnątrz div, na dowolnym poziomie */
+}
+</pre>
+</div>
+
+        <h3 style="margin: 20px 0 10px 0; color: #2f7a67;"> Dziecko bezpośrednie (> )</h3>
+        <p>Wybiera tylko bezpośrednie dzieci.</p>
+        <div class="code-sample"><pre>
+ul > li {
+    list-style: square;  /* tylko li, które są bezpośrednio w ul */
+}
+</pre>
+</div>
+
+        <h3 style="margin: 20px 0 10px 0; color: #2f7a67;"> Sąsiedztwo (+ i ~)</h3>
+        <div class="code-sample"><pre>
+/* element zaraz po poprzednim */
+h2 + p {
+    font-weight: bold;
+}
+
+/* wszystkie p po h2 (na tym samym poziomie) */
+h2 ~ p {
+    margin-left: 20px;
+}
+</pre>
+</div>
+
+        <div class="table-wrapper">
+            <table class="value-table">
+                <tr><th>Kombinator</th><th>Nazwa</th><th>Przykład</th></tr>
+                <tr><td>spacja</td><td>potomek</td><td><code>div span</code> - span wewnątrz div</td></tr>
+                <tr><td><code>></code></td><td>dziecko</td><td><code>nav > a</code> - tylko bezpośrednie a w nav</td></tr>
+                <tr><td><code>+</code></td><td>sąsiedni brat</td><td><code>h1 + p</code> - p bezpośrednio po h1</td></tr>
+                <tr><td><code>~</code></td><td>ogólny brat</td><td><code>h1 ~ p</code> - wszystkie p po h1</td></tr>
+            </table>
+</div>
+    </section>
+
+    <!-- PODSUMOWANIE Z TABELĄ SPECYFICZNOŚCI -->
+    <section class="topic-section">
+        <h2>7. Specyficzność selektorów (ważne na INF03!)</h2>
+        <p>
+            Gdy kilka reguł pasuje do tego samego elementu, wygrywa ta o <strong>wyższej specyficzności</strong>.
+</p>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <tr><th>Selektor</th><th>Przykład</th><th>Specyficzność (punkty)</th></tr>
+                <tr><td style="font-family: monospace;">*</td><td>uniwersalny</td><td>0,0,0,0</td></tr>
+                <tr><td>element / pseudoelement</td><td><code>p</code>, <code>div</code>, <code>::before</code></td><td>0,0,0,1</td></tr>
+                <tr><td>klasa / pseudoklasa / atrybut</td><td><code>.btn</code>, <code>:hover</code>, <code>[type]</code></td><td>0,0,1,0</td></tr>
+                <tr><td>id</td><td><code>#header</code></td><td>0,1,0,0</td></tr>
+                <tr><td>style inline</td><td><code>style="..."</code></td><td>1,0,0,0</td></tr>
+                <tr><td><code>!important</code></td><td><code>color: red !important;</code></td><td>zawsze wygrywa (unikać!)</td></tr>
+            </table>
+</div>
+        <div class="code-sample"><pre>
+/* przykład wygrywania */
+p { color: black; }       /* 1 punkt */
+.akapit { color: blue; }  /* 10 punktów - wygrywa z p */
+#text { color: red; }     /* 100 punktów - najsilniejszy */
+</pre>
+</div>
+        <p>
+             <strong>Egzamin INF03:</strong> często pojawia się pytanie o specyficzność lub o to, który kolor zostanie zastosowany.
+            Zapamiętaj: <strong>!important > inline > #id > .klasa > element</strong>.
+</p>
+    </section>
+
+    <!-- ĆWICZENIE -->
+    <section class="topic-section">
+        <h2>8. Przykład praktyczny - różne selektory w akcji</h2>
+        <div class="code-sample"><pre>
+&lt;!DOCTYPE html&gt;
+&lt;style&gt;
+    * { box-sizing: border-box; }          /* reset */
+    body { font-family: sans-serif; }      /* tag */
+    .container { width: 90%; margin: auto; } /* klasa */
+    #main-title { color: darkred; }        /* id */
+    article p { line-height: 1.5; }        /* zagnieżdżenie */
+    .btn, button { padding: 8px 16px; }    /* grupowanie */
+&lt;/style&gt;
+</pre>
+</div>
+        <p>
+            Dzięki łączeniu różnych selektorów tworzysz precyzyjne i czytelne arkusze.
+            W kolejnych rozdziałach poznasz bardziej zaawansowane selektory (atrybutowe, pseudoklasy, pseudoelementy).
+</p>
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 Samouczek INF03 - Selektory CSS.</p>
+</footer>
+
+</body>
+</html>

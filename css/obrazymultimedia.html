@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obrazy i multimedia | Samouczek INF03</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* dodatkowe style demonstracyjne dla przykładów */
+        .demo-box {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .demo-item {
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+        }
+        .demo-img {
+            width: 150px;
+            height: 150px;
+            background: #2f7a67;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            overflow: hidden;
+        }
+        .demo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .caption {
+            margin-top: 8px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        HTML<span>&CSS</span>
+</div>
+
+    <nav>
+        <a href="../index.html">Start</a>
+        <a href="../html.html">HTML</a>
+        <a href="../css.html" class="active">CSS</a>
+    </nav>
+</header>
+
+<main class="content-page">
+
+    <div class="page-header">
+        <h1>Rozdział CSS: Obrazy i multimedia</h1>
+        <p>
+            Obrazy i multimedia to nieodłączna część nowoczesnych stron. CSS pozwala kontrolować ich rozmiary,
+            proporcje, dopasowanie do kontenerów oraz efekty wizualne. Responsywność obrazków jest kluczowa
+            dla działania strony na różnych urządzeniach.
+</p>
+</div>
+
+    <!-- ROZMIARY OBRAZÓW -->
+    <section class="topic-section">
+        <h2>1. Rozmiary obrazów - width i height</h2>
+        <p>
+            Obrazy w HTML mają własne wymiary. Za pomocą CSS możemy je zmieniać, ale trzeba uważać na zniekształcenia.
+</p>
+        <div class="code-sample"><pre>
+/* Stałe wymiary - może zniekształcić */
+img {
+    width: 300px;
+    height: 200px;
+}
+
+/* Tylko szerokość - wysokość skaluje się automatycznie (zachowanie proporcji) */
+img.responsive {
+    width: 100%;
+    height: auto;
+}
+
+/* Maksymalna szerokość - obraz nie przekroczy oryginalnych rozmiarów */
+img.max-width {
+    max-width: 100%;
+    height: auto;
+}
+</pre>
+</div>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <tr><th>Właściwość</th><th>Działanie</th><th>Kiedy używać?</th></tr>
+                <tr><td><code>width: 100%; height: auto;</code></th><td>skalowanie proporcjonalne do szerokości rodzica</th><td>responsywne obrazy w elastycznych kontenerach</th></tr>
+                <tr><td><code>max-width: 100%; height: auto;</code></th><td>nie przekracza oryginalnego rozmiaru, ale skaluje się w dół</th><td>najbezpieczniejszy dla responsywności</th></tr>
+                <tr><td><code>width: 300px; height: 200px;</code></th>,\]
+
+sztywne wymiary (może zniekształcić)</th><td>gdy dokładnie potrzebujemy takich wymiarów (np. galeria)</th></tr>
+            </table>
+</div>
+        <p>
+             <strong>Złota zasada:</strong> dla responsywnych obrazków używaj <code>max-width: 100%; height: auto;</code>
+</p>
+    </section>
+
+    <!-- OBJECT-FIT -->
+    <section class="topic-section">
+        <h2>2. object-fit - dopasowanie obrazu w kontenerze</h2>
+        <p>
+            Gdy ustawimy stałe <code>width</code> i <code>height</code> dla obrazu, może on zostać zniekształcony.
+            Właściwość <code>object-fit</code> określa, jak obraz ma być dopasowany do zadanego prostokąta.
+</p>
+        <div class="code-sample"><pre>
+/* Wszystkie obrazy w kontenerze o stałych wymiarach */
+.gallery img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;    /* wypełnia całość, przycina (domyślnie) */
+}
+
+/* Inne wartości */
+.fit-fill {
+    object-fit: fill;      /* zniekształca, wypełnia całkowicie */
+}
+.fit-contain {
+    object-fit: contain;   /* cały obraz mieści się w kontenerze (mogą być paski) */
+}
+.fit-cover {
+    object-fit: cover;     /* wypełnia, przycina, zachowuje proporcje */
+}
+.fit-none {
+    object-fit: none;      /* oryginalny rozmiar, przycięcie */
+}
+.fit-scale-down {
+    object-fit: scale-down; /* wybiera mniejsze z none lub contain */
+}
+</pre>
+</div>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <tr><th>Wartość</th><th>Efekt</th><th>Przykład zastosowania</th></tr>
+                <tr><td><code>cover</code></th><td>wypełnia cały kontener, przycina krawędzie</th><td>galerie zdjęć, tła, awatary</th></tr>
+                <tr><td><code>contain</code></th><td>cały obraz widoczny, mogą być paski po bokach</th><td>prezentacja produktów, gdy ważny jest cały obraz</th></tr>
+                <tr><td><code>fill</code></th><td>rozciąga do wymiarów kontenera (zniekształca)</th><td>rzadko - tylko gdy efekt nie przeszkadza</th></tr>
+                <tr><td><code>none</code></th>.\]
+
+oryginalny rozmiar, przycięcie</th><td>gdy chcemy pokazać fragment dużego obrazu</th></tr>
+                <tr><td><code>scale-down</code></th><td>jak <code>none</code> lub <code>contain</code> - mniejszy z nich</th><td>bezpieczne wyświetlanie bez powiększenia</th></tr>
+            </table>
+</div>
+        <p>
+             <code>object-fit</code> działa na <code>&lt;img&gt;</code>, <code>&lt;video&gt;</code>.
+            Dla elementów tła (background-image) używa się <code>background-size: cover/contain</code>.
+</p>
+    </section>
+
+    <!-- BORDER-RADIUS NA OBRAZACH -->
+    <section class="topic-section">
+        <h2>3. border-radius - zaokrąglanie rogów obrazów</h2>
+        <p>
+            Zaokrąglenie rogów sprawia, że obrazy stają się bardziej nowoczesne i przyjazne.
+            Można uzyskać również kształt koła.
+</p>
+        <div class="code-sample"><pre>
+/* Lekko zaokrąglony obraz */
+img.rounded {
+    border-radius: 12px;
+}
+
+/* Obraz w kształcie koła (avatar) */
+img.avatar {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+/* Różne zaokrąglenia */
+img.custom {
+    border-radius: 30% 10% 30% 10%;  /* górny-lewy, górny-prawy, dolny-prawy, dolny-lewy */
+}
+
+/* Połączenie z innymi efektami */
+img.card-img {
+    border-radius: 12px 12px 0 0;    /* tylko górne rogi */
+}
+</pre>
+</div>
+        <p>
+            ️ Uwaga: <code>border-radius: 50%</code> działa poprawnie tylko gdy obraz jest kwadratowy.
+            W przeciwnym razie powstanie elipsa.
+</p>
+    </section>
+
+    <!-- RESPONSYWNE OBRAZKI -->
+    <section class="topic-section">
+        <h2>4. Responsywne obrazki - techniki</h2>
+        <p>
+            Obraz responsywny to taki, który dostosowuje się do rozmiaru ekranu,
+            nie wylewa poza kontener i ładuje odpowiednią wersję (np. mniejszą na telefonie).
+</p>
+
+        <h3 style="margin: 20px 0 10px; color:#2f7a67;"> Metoda CSS - max-width</h3>
+        <div class="code-sample"><pre>
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* usuwa odstęp pod obrazem */
+}
+</pre>
+</div>
+
+        <h3 style="margin: 20px 0 10px; color:#2f7a67;"> Obrazy w kontenerze - picture element (HTML)</h3>
+        <div class="code-sample"><pre>
+&lt;picture&gt;
+    &lt;source media="(max-width: 600px)" srcset="maly.jpg"&gt;
+    &lt;source media="(max-width: 1200px)" srcset="sredni.jpg"&gt;
+    &lt;img src="duzy.jpg" alt="opis"&gt;
+&lt;/picture&gt;
+</pre>
+</div>
+
+        <h3 style="margin: 20px 0 10px; color:#2f7a67;"> Atrybut srcset - różne rozdzielczości</h3>
+        <div class="code-sample"><pre>
+&lt;img src="obraz.jpg"
+     srcset="obraz-480w.jpg 480w,
+             obraz-800w.jpg 800w,
+             obraz-1200w.jpg 1200w"
+     sizes="(max-width: 600px) 480px, 800px"
+     alt="opis"&gt;
+</pre>
+</div>
+
+        <p>
+             Na egzaminie INF03 często pytają o różnicę między <code>max-width: 100%</code> a <code>width: 100%</code>.
+            <code>max-width</code> pozwala obrazowi być mniejszym niż oryginał, <code>width: 100%</code> zawsze rozciąga do pełnej szerokości rodzica.
+</p>
+    </section>
+
+    <!-- DODATKOWE TECHNIKI -->
+    <section class="topic-section">
+        <h2>5. Dodatkowe techniki dla obrazów</h2>
+
+        <h3 style="margin: 20px 0 10px; color:#2f7a67;"> Obraz jako tło z cover/contain</h3>
+        <div class="code-sample"><pre>
+.bg-hero {
+    background-image: url('tlo.jpg');
+    background-size: cover;   /* lub contain */
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+</pre>
+</div>
+
+        <h3 style="margin: 20px 0 10px; color:#2f7a67;"> Efekt przyciemnienia na obrazie (overlay)</h3>
+        <div class="code-sample"><pre>
+.img-container {
+    position: relative;
+    display: inline-block;
+}
+.img-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    border-radius: inherit;
+}
+</pre>
+</div>
+
+        <h3 style="margin: 20px 0 10px; color:#2f7a67;"> Filtry na obrazach</h3>
+        <div class="code-sample"><pre>
+img.grayscale {
+    filter: grayscale(100%);
+}
+img.blur {
+    filter: blur(5px);
+}
+img.brightness {
+    filter: brightness(1.2);
+}
+img:hover {
+    filter: brightness(0.8);
+    transition: 0.3s;
+}
+</pre>
+</div>
+    </section>
+
+    <!-- MULTIMEDIA - VIDEO -->
+    <section class="topic-section">
+        <h2>6. Multimedia - stylowanie video</h2>
+        <p>
+            Elementy <code>&lt;video&gt;</code> i <code>&lt;iframe&gt;</code> (np. YouTube) również można stylować.
+            Dla responsywności często stosuje się technikę "intrinsic ratio".
+</p>
+        <div class="code-sample"><pre>
+/* Responsywne wideo (zachowanie proporcji 16:9) */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 9/16 = 0.5625 */
+    height: 0;
+    overflow: hidden;
+}
+.video-container iframe,
+.video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Bezpośrednie stylowanie video */
+video {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+</pre>
+</div>
+    </section>
+
+    <!-- PRZYKŁAD PRAKTYCZNY -->
+    <section class="topic-section">
+        <h2>7. Przykład - galeria z różnymi efektami</h2>
+        <div class="code-sample"><pre>
+&lt;style&gt;
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+    }
+    .gallery-item {
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transition: transform 0.3s;
+    }
+    .gallery-item:hover {
+        transform: scale(1.02);
+    }
+    .gallery-item img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.3s;
+    }
+    .gallery-item:hover img {
+        transform: scale(1.05);
+    }
+    .gallery-caption {
+        padding: 10px;
+        text-align: center;
+        background: white;
+    }
+&lt;/style&gt;
+
+&lt;div class="gallery"&gt;
+    &lt;div class="gallery-item"&gt;
+        &lt;img src="zdj1.jpg" alt="Opis 1"&gt;
+        &lt;div class="gallery-caption"&gt;Zdjęcie 1&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="gallery-item"&gt;
+        &lt;img src="zdj2.jpg" alt="Opis 2"&gt;
+        &lt;div class="gallery-caption"&gt;Zdjęcie 2&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+</div>
+    </section>
+
+    <!-- TYPOWE PYTANIA EGZAMINACYJNE -->
+    <section class="topic-section">
+        <h2>8. Ćwiczenia INF03</h2>
+        <p><strong>Pytanie 1:</strong> Co zrobi <code>object-fit: cover</code> dla obrazu o wymiarach 200x200px?</p>
+        <p>Odpowiedź: Obraz wypełni cały kontener, zostanie przycięty (zachowując proporcje) tak, aby nie było pustych pasków.</p>
+
+        <p><strong>Pytanie 2:</strong> Jak sprawić, by obraz był okrągły (avatar)?</p>
+        <div class="code-sample"><pre>
+img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+</pre>
+</div>
+
+        <p><strong>Pytanie 3:</strong> Jaka jest różnica między <code>width: 100%</code> a <code>max-width: 100%</code> na obrazie?</p>
+        <p>Odpowiedź: <code>width: 100%</code> zawsze ustawia szerokość na 100% rodzica (może powiększyć obraz). <code>max-width: 100%</code> pozwala obrazowi być mniejszym niż oryginał, ale nie większym.</p>
+
+        <p><strong>Pytanie 4:</strong> Jakie wartości <code>object-fit</code> zachowują proporcje obrazu?</p>
+        <p>Odpowiedź: <code>cover</code>, <code>contain</code>, <code>scale-down</code> (oraz <code>none</code> jeśli obraz nie jest skalowany).</p>
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 Samouczek INF03 - Obrazy i multimedia.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semantyczne znaczniki HTML5 | Podstawy INF03</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Dodatkowe style - zachowują pełną spójność z oryginalnym style.css */
+        .doctype-box {
+            background: #1e2a2a;
+            color: #d0f0e5;
+            border-radius: 16px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        .structure-visual {
+            background: #fefcf5;
+            border: 1px solid #ddd2b5;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 25px 0;
+            font-family: monospace;
+            line-height: 1.6;
+        }
+        .tag-demo {
+            background: #f4f1ea;
+            border-radius: 14px;
+            padding: 12px 16px;
+            margin: 12px 0;
+            font-family: monospace;
+            border-left: 4px solid #2f7a67;
+        }
+        .attr-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-badge {
+            background: #eef3f0;
+            border-radius: 40px;
+            padding: 6px 14px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            border: 1px solid #cbdcd3;
+        }
+        .good-bad {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .good, .bad {
+            flex: 1;
+            background: white;
+            border-radius: 18px;
+            padding: 16px 20px;
+            border: 1px solid #e2dfd7;
+        }
+        .good h4 { color: #2f7a67; margin-bottom: 12px; }
+        .bad h4 { color: #b1624b; margin-bottom: 12px; }
+        .attrs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .attr-card {
+            background: #fcf9f2;
+            border-radius: 14px;
+            padding: 12px 16px;
+            border: 1px solid #e5dfd1;
+        }
+        .attr-card strong {
+            color: #1f5e4f;
+            font-family: monospace;
+            font-size: 1.05rem;
+        }
+        .coord-note {
+            background: #eef5f2;
+            border-left: 4px solid #2f7a67;
+            padding: 12px 18px;
+            margin: 15px 0;
+            font-size: 0.95rem;
+            border-radius: 12px;
+        }
+        .warning-tip {
+            background: #fff2df;
+            border-radius: 14px;
+            padding: 12px 18px;
+            margin: 20px 0;
+            border-left: 5px solid #e6a017;
+        }
+        .custom-list {
+            padding-left: 28px;
+            margin: 20px 0;
+        }
+        .custom-list li {
+            margin: 8px 0;
+        }
+        .code-sample {
+            background-color: #1e2a2a;
+            color: #d9f0ea;
+            padding: 20px;
+            border-radius: 16px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+        }
+        .code-sample pre {
+            background: transparent;
+            color: #d0f0e5;
+            margin: 0;
+        }
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 25px 0;
+        }
+        .value-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fefef9;
+        }
+        .value-table th, .value-table td {
+            border: 1px solid #d6d0c4;
+            padding: 12px 16px;
+            text-align: left;
+            vertical-align: top;
+        }
+        .value-table th {
+            background-color: #eef3f0;
+            color: #1b4d41;
+            font-weight: 700;
+        }
+        .semantic-demo {
+            background: #fefcf5;
+            border: 1px solid #ddd2b5;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .semantic-demo header, .semantic-demo nav, .semantic-demo main, 
+        .semantic-demo section, .semantic-demo article, .semantic-demo aside, 
+        .semantic-demo footer {
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 12px;
+            background: white;
+            border: 1px solid #e2dfd7;
+        }
+        .semantic-demo header { background: #eef3f0; border-left: 4px solid #2f7a67; }
+        .semantic-demo nav { background: #f4f1ea; border-left: 4px solid #e6a017; }
+        .semantic-demo main { background: #fff; }
+        .semantic-demo section { background: #fcf9f2; border-left: 3px solid #2f7a67; }
+        .semantic-demo article { background: #fefef9; border-left: 3px solid #2f7a67; }
+        .semantic-demo aside { background: #f9f5eb; border-left: 3px solid #b1624b; }
+        .semantic-demo footer { background: #e2dfd5; border-left: 4px solid #2f7a67; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        HTML<span>&CSS</span>
+</div>
+    <nav>
+        <a href="../index.html">Start</a>
+        <a href="../html.html" class="active">HTML</a>
+        <a href="../css.html">CSS</a>
+    </nav>
+</header>
+
+<main class="content-page">
+    <div class="page-header">
+        <h1>Rozdział 10: Semantyczne znaczniki HTML5</h1>
+        <p>
+            HTML5 wprowadza zestaw znaczników, które nadają strukturze strony <strong>znaczenie</strong> (semantykę).
+            Poznaj <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>,
+            <code>&lt;aside&gt;</code> i <code>&lt;footer&gt;</code>. Ich stosowanie poprawia SEO, dostępność i czytelność kodu.
+</p>
+</div>
+
+    <section class="topic-section">
+        <h2>1. Czym są semantyczne znaczniki?</h2>
+        <p>Semantyczne znaczniki jasno określają, jaką funkcję pełni dany fragment strony - czy to nagłówek, nawigacja, artykuł, czy stopka. W przeciwieństwie do uniwersalnych <code>&lt;div&gt;</code> i <code>&lt;span&gt;</code>, niosą informację dla przeglądarek, wyszukiwarek i czytników ekranu.</p>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <thead><tr><th>Znacznik</th><th>Znaczenie</th><th>Typowe zastosowanie</th></tr></thead>
+                <tbody>
+                    <tr><td><code>&lt;header&gt;</code></td><td>Nagłówek dokumentu lub sekcji</td><td>Logo, tytuł, nawigacja, wyszukiwarka</td></tr>
+                    <tr><td><code>&lt;nav&gt;</code></td><td>Główna nawigacja</td><td>Menu, spis linków</td></tr>
+                    <tr><td><code>&lt;main&gt;</code></td><td>Główna treść</td><td>Unikalna treść strony (tylko jeden)</td></tr>
+                    <tr><td><code>&lt;section&gt;</code></td><td>Logiczny rozdział / sekcja</td><td>Grupowanie tematyczne</td></tr>
+                    <tr><td><code>&lt;article&gt;</code></td><td>Samodzielny wpis</td><td>Artykuł, post na blogu, produkt</td></tr>
+                    <tr><td><code>&lt;aside&gt;</code></td><td>Treść poboczna</td><td>Reklamy, linki, cytaty, sidebar</td></tr>
+                    <tr><td><code>&lt;footer&gt;</code></td><td>Stopka</td><td>Copyright, dane kontaktowe, linki</td></tr>
+                </tbody>
+            </table>
+</div>
+        <div class="coord-note">
+            Stosowanie semantycznych znaczników jest wymagane na egzaminie INF03 i w nowoczesnym front-endzie. To podstawa dostępności (WCAG) i SEO.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>2. &lt;header&gt; - nagłówek</h2>
+        <p>Znacznik <code>&lt;header&gt;</code> reprezentuje nagłówek dokumentu lub jego sekcji. Zawiera zwykle logo, tytuł, obrazek powitalny, a także nawigację (może zawierać <code>&lt;nav&gt;</code>).</p>
+        <div class="code-sample"><pre>
+&lt;header&gt;
+    &lt;h1&gt;Moja firma&lt;/h1&gt;
+    &lt;p&gt;Tworzymy strony internetowe&lt;/p&gt;
+    &lt;nav&gt;...&lt;/nav&gt;
+&lt;/header&gt;
+</pre>
+</div>
+        <div class="warning-tip">
+            Nie myl <code>&lt;header&gt;</code> z <code>&lt;head&gt;</code> - ten drugi zawiera metadane, niewidoczne na stronie. <code>&lt;header&gt;</code> jest widoczny.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>3. &lt;nav&gt; - nawigacja</h2>
+        <p>Przeznaczony dla głównych linków nawigacyjnych strony. Może zawierać listę <code>&lt;ul&gt;</code> z linkami lub same <code>&lt;a&gt;</code>. Nie każdy zbiór linków musi być w <code>&lt;nav&gt;</code> - tylko kluczowe nawigacje.</p>
+        <div class="code-sample"><pre>
+&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="/"&gt;Start&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/oferta"&gt;Oferta&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/kontakt"&gt;Kontakt&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+</pre>
+</div>
+        <div class="coord-note">
+            Screen reader może zaoferować użytkownikowi pominięcie bloku <code>&lt;nav&gt;</code>, co ułatwia poruszanie się po stronie.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>4. &lt;main&gt; - główna treść</h2>
+        <p><code>&lt;main&gt;</code> zawiera unikalną treść strony - tę, która nie powtarza się między podstronami (w przeciwieństwie do nagłówka, nawigacji, stopki). Może być tylko <strong>jeden</strong> na stronie.</p>
+        <div class="code-sample"><pre>
+&lt;body&gt;
+    &lt;header&gt;...&lt;/header&gt;
+    &lt;main&gt;
+        &lt;h1&gt;Witaj na stronie&lt;/h1&gt;
+        &lt;p&gt;Główna treść...&lt;/p&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;...&lt;/footer&gt;
+&lt;/body&gt;
+</pre>
+</div>
+        <div class="warning-tip">
+            Nie umieszczaj wewnątrz <code>&lt;main&gt;</code> elementów powtarzalnych (menu, stopka) - to błąd semantyczny.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>5. &lt;section&gt; - sekcja</h2>
+        <p>Grupuje treść tematycznie, zwykle z własnym nagłówkiem (<code>&lt;h2&gt;</code> - <code>&lt;h6&gt;</code>). Stosuj, gdy fragment strony tworzy logiczną całość (np. rozdział, grupa produktów).</p>
+        <div class="code-sample"><pre>
+&lt;section&gt;
+    &lt;h2&gt;Nasze usługi&lt;/h2&gt;
+    &lt;p&gt;Oferujemy tworzenie stron, SEO i hosting.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section&gt;
+    &lt;h2&gt;Opinie klientów&lt;/h2&gt;
+    &lt;!-- ... --&gt;
+&lt;/section&gt;
+</pre>
+</div>
+        <div class="coord-note">
+            Nie używaj <code>&lt;section&gt;</code> tylko jako kontenera do stylowania - do tego służy <code>&lt;div&gt;</code>. Sekcja powinna mieć sens tematyczny.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>6. &lt;article&gt; - artykuł</h2>
+        <p><code>&lt;article&gt;</code> to samodzielna, niezależna jednostka treści, którą można by przenieść na inną stronę lub dystrybuować (post bloga, wpis na forum, news, produkt). Często zawiera nagłówek i datę.</p>
+        <div class="code-sample"><pre>
+&lt;article&gt;
+    &lt;h2&gt;Premiera nowego modelu&lt;/h2&gt;
+    &lt;p&gt;Data: 15.05.2026&lt;/p&gt;
+    &lt;p&gt;Treść artykułu...&lt;/p&gt;
+&lt;/article&gt;
+&lt;article&gt;
+    &lt;h2&gt;Zapowiedź aktualizacji&lt;/h2&gt;
+    &lt;p&gt;...&lt;/p&gt;
+&lt;/article&gt;
+</pre>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>7. &lt;aside&gt; - treść poboczna</h2>
+        <p>Treść luźno związana z główną treścią (sidebar): reklamy, cytaty, polecane artykuły, formularz newslettera. Może być umieszczony wewnątrz <code>&lt;article&gt;</code> (jako dygresja) lub poza nim (jako pasek boczny).</p>
+        <div class="code-sample"><pre>
+&lt;aside&gt;
+    &lt;h3&gt;Reklama&lt;/h3&gt;
+    &lt;p&gt;Kup teraz z rabatem 20%!&lt;/p&gt;
+&lt;/aside&gt;
+</pre>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>8. &lt;footer&gt; - stopka</h2>
+        <p>Stopka dokumentu lub sekcji. Zawiera informacje o autorze, prawa autorskie, linki do polityki prywatności, dane kontaktowe. Może występować wielokrotnie (np. w każdej sekcji).</p>
+        <div class="code-sample"><pre>
+&lt;footer&gt;
+    &lt;p&gt;&amp;copy; 2026 Moja Firma. Wszelkie prawa zastrzeżone.&lt;/p&gt;
+    &lt;nav&gt;...&lt;/nav&gt;
+&lt;/footer&gt;
+</pre>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>9. Przykład kompletnej strony z semantycznymi znacznikami</h2>
+        <div class="code-sample"><pre>
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Blog o technologii&lt;/h1&gt;
+        &lt;nav&gt;&lt;a href="#"&gt;Start&lt;/a&gt; &lt;a href="#"&gt;Artykuły&lt;/a&gt;&lt;/nav&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;article&gt;
+            &lt;h2&gt;Nowości w HTML6&lt;/h2&gt;
+            &lt;p&gt;Treść artykułu...&lt;/p&gt;
+            &lt;aside&gt;Autor: Jan Kowalski&lt;/aside&gt;
+        &lt;/article&gt;
+        &lt;section&gt;
+            &lt;h2&gt;Komentarze&lt;/h2&gt;
+            &lt;p&gt;Dodaj komentarz...&lt;/p&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+    &lt;aside&gt;
+        &lt;h3&gt;Polecane&lt;/h3&gt;
+        &lt;ul&gt;&lt;li&gt;&lt;a href="#"&gt;Artykuł 1&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+    &lt;/aside&gt;
+    &lt;footer&gt;
+        &lt;p&gt;&amp;copy; 2026 Blog&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+</pre>
+</div>
+        <div class="semantic-demo">
+            <header><strong>&lt;header&gt;</strong> Nagłówek strony (logo, tytuł)</header>
+            <nav><strong>&lt;nav&gt;</strong> Menu główne</nav>
+            <main>
+                <strong>&lt;main&gt;</strong> Główna treść
+                <article><strong>&lt;article&gt;</strong> Artykuł bloga</article>
+                <section><strong>&lt;section&gt;</strong> Sekcja komentarzy</section>
+            </main>
+            <aside><strong>&lt;aside&gt;</strong> Sidebar z reklamami/linkami</aside>
+            <footer><strong>&lt;footer&gt;</strong> Stopka</footer>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>10. Różnica między &lt;section&gt; a &lt;article&gt;</h2>
+        <div class="table-wrapper">
+            <table class="value-table">
+                <thead><tr><th>Cecha</th><th>&lt;section&gt;</th><th>&lt;article&gt;</th></tr></thead>
+                <tbody>
+                    <tr><td>Samodzielność</td><td>Część większej całości</td><td>Może istnieć samodzielnie</td></tr>
+                    <tr><td>Przykład</td><td>Rozdział w książce, grupa produktów</td><td>Post na blogu, wpis na forum, news</td></tr>
+                    <tr><td>Nagłówek</td><td>Zalecany, ale nie wymagany</td><td>Zalecany (zwykle &lt;h2&gt;)</td></tr>
+                    <tr><td>Dystrybucja</td><td>Raczej nie wyodrębniana</td><td>Może być dystrybuowana (RSS, syndykacja)</td></tr>
+                </tbody>
+            </table>
+</div>
+        <div class="coord-note">
+            W razie wątpliwości: jeśli treść ma sens poza kontekstem strony - użyj <code>&lt;article&gt;</code>. Jeśli to tylko fragment układu - <code>&lt;section&gt;</code>.
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>11. Znaczenie dla SEO i dostępności</h2>
+        <ul class="custom-list">
+            <li><strong>SEO:</strong> Wyszukiwarki lepiej rozumieją hierarchię i ważność treści (np. <code>&lt;main&gt;</code> jest kluczowy).</li>
+            <li><strong>Dostępność (WCAG):</strong> Czytniki ekranu umożliwiają szybkie poruszanie się między sekcjami (np. przeskakiwanie do <code>&lt;nav&gt;</code> lub <code>&lt;main&gt;</code>).</li>
+            <li><strong>Utrzymanie kodu:</strong> Łatwiejsze zrozumienie struktury dla innych programistów.</li>
+        </ul>
+        <div class="good-bad">
+            <div class="good">
+<h4>Dobra praktyka</h4>
+                <code>&lt;header&gt;...&lt;/header&gt;<br>
+                &lt;nav&gt;...&lt;/nav&gt;<br>
+                &lt;main&gt;...&lt;/main&gt;<br>
+                &lt;footer&gt;...&lt;/footer&gt;</code>
+</div>
+            <div class="bad">
+<h4>Zła praktyka ("divitis")</h4>
+                <code>&lt;div class="header"&gt;...&lt;/div&gt;<br>
+                &lt;div class="nav"&gt;...&lt;/div&gt;<br>
+                &lt;div class="content"&gt;...&lt;/div&gt;</code>
+</div>
+</div>
+    </section>
+
+    <section class="topic-section">
+        <h2>12. Co musisz zapamiętać na egzamin INF03</h2>
+        <div class="attrs-grid">
+            <div class="attr-card"><strong>&lt;header&gt;</strong> - nagłówek (logo, tytuł, nawigacja).</div>
+            <div class="attr-card"><strong>&lt;nav&gt;</strong> - główna nawigacja.</div>
+            <div class="attr-card"><strong>&lt;main&gt;</strong> - unikalna treść (tylko jeden).</div>
+            <div class="attr-card"><strong>&lt;section&gt;</strong> - logiczny rozdział.</div>
+            <div class="attr-card"><strong>&lt;article&gt;</strong> - samodzielna jednostka (post, news).</div>
+            <div class="attr-card"><strong>&lt;aside&gt;</strong> - treść poboczna (sidebar).</div>
+            <div class="attr-card"><strong>&lt;footer&gt;</strong> - stopka (copyright, dane).</div>
+</div>
+        <div class="coord-note">
+            Egzaminatorzy oczekują, że zastosujesz odpowiednie znaczniki semantyczne w zadaniu praktycznym (np. tworzenie strony internetowej). Unikaj samych <code>&lt;div&gt;</code> tam, gdzie istnieje semantyczny odpowiednik.
+</div>
+        <div class="code-sample" style="margin-top:20px;"><pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pl"&gt;
+&lt;head&gt;...&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;...&lt;/header&gt;
+    &lt;nav&gt;...&lt;/nav&gt;
+    &lt;main&gt;
+        &lt;article&gt;
+            &lt;header&gt;&lt;h1&gt;Tytuł artykułu&lt;/h1&gt;&lt;/header&gt;
+            &lt;section&gt;...&lt;/section&gt;
+        &lt;/article&gt;
+        &lt;aside&gt;...&lt;/aside&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;...&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 Samouczek INF03 - Rozdział 10: Semantyczne znaczniki HTML5.</p>
+</footer>
+
+</body>
+</html>

@@ -12,13 +12,13 @@ Wszystkie podstrony i przykłady kodu zostały napisane w czystym kodzie (Vanill
 
 ---
 
-## 🛠️ Stos Technologiczny i Live Demo
+## Stos Technologiczny i Live Demo
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![INF.03](https://img.shields.io/badge/Egzamin-INF.03-2f7a67?style=for-the-badge)
 
-### 🔗 Wersja Demonstracyjna (Live Demo)
+### Wersja Demonstracyjna (Live Demo)
 Aplikacja została wdrożona i jest dostępna publicznie pod adresem:  
 **[michalgor95.github.io/HTML-CSS](https://michalgor95.github.io/HTML-CSS/)**
 

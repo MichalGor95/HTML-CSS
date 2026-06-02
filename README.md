@@ -4,7 +4,7 @@ Praktyczny, interaktywny samouczek stworzony z myślą o uczniach techników inf
 
 ---
 
-## 🚀 O Projekcie
+## O Projekcie
 
 Projekt stanowi kompletne kompendium wiedzy z zakresu strukturyzacji dokumentów HTML5 oraz stylowania CSS3. Został przygotowany w oparciu o oficjalną podstawę programową oraz arkusze egzaminacyjne z poprzednich lat. 
 
@@ -20,11 +20,11 @@ Wszystkie podstrony i przykłady kodu zostały napisane w czystym kodzie (Vanill
 
 ### 🔗 Wersja Demonstracyjna (Live Demo)
 Aplikacja została wdrożona i jest dostępna publicznie pod adresem:  
-👉 **[michalgor95.github.io/HTML-CSS](https://michalgor95.github.io/HTML-CSS/)**
+**[michalgor95.github.io/HTML-CSS](https://michalgor95.github.io/HTML-CSS/)**
 
 ---
 
-## ✨ Główne Cechy Samouczka
+## Główne Cechy Samouczka
 
 - **Zgodność z CKE:** Zakres materiału dokładnie odpowiada wymaganiom egzaminu praktycznego INF.03.
 - **Podział na sekcje:** Czytelny podział na 20 rozdziałów HTML i 17 rozdziałów CSS.
@@ -34,7 +34,7 @@ Aplikacja została wdrożona i jest dostępna publicznie pod adresem:
 
 ---
 
-## 📂 Struktura Projektu
+## Struktura Projektu
 
 Projekt został zorganizowany w przejrzystą strukturę katalogów w celu oddzielenia głównej nawigacji od podstron szczegółowych:
 
@@ -59,7 +59,7 @@ Projekt został zorganizowany w przejrzystą strukturę katalogów w celu oddzie
 
 ---
 
-## 📝 Omówione Zagadnienia
+## Omówione Zagadnienia
 
 ### HTML (20 Rozdziałów)
 1. Wprowadzenie do języka HTML
@@ -104,7 +104,7 @@ Projekt został zorganizowany w przejrzystą strukturę katalogów w celu oddzie
 
 ---
 
-## 💻 Jak Uruchomić Projekt Lokalnie
+## Jak Uruchomić Projekt Lokalnie
 
 1. Sklonuj to repozytorium na swój dysk:
    ```bash
@@ -118,7 +118,7 @@ Projekt został zorganizowany w przejrzystą strukturę katalogów w celu oddzie
 
 ---
 
-## 🧑‍💻 Autor
+## Autor
 
 Projekt opracował: **Michał Goraj**  
 *Projekt został przygotowany w celach edukacyjnych, jako pomoc naukowa do egzaminu INF.03.*

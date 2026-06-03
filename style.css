@@ -78,6 +78,21 @@ nav a:hover{
     border-radius: 5px;
 }
 
+.btn-github{
+    display: inline-block;
+    padding: 12px 22px;
+    background-color: #24292e;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    transition: background-color 0.2s ease;
+}
+
+.btn-github:hover{
+    background-color: #444;
+}
+
 .right{
     background-color: white;
     border: 1px solid #ccc;
@@ -118,9 +133,14 @@ pre{
     padding: 25px;
 }
 
-.card h3{
+.card h3,
+.card h2{
     margin-bottom: 15px;
     color: #2f7a67;
+}
+
+.card h2{
+    font-size: 1.17em;   /* dokładnie taki sam rozmiar jak domyślny <h3> */
 }
 
 .card p{

@@ -61,8 +61,8 @@
             padding: 16px 20px;
             border: 1px solid #e2dfd7;
         }
-        .good h4 { color: #2f7a67; margin-bottom: 12px; }
-        .bad h4 { color: #b1624b; margin-bottom: 12px; }
+        .good h3 { color: #2f7a67; margin-bottom: 12px; }
+        .bad h3 { color: #b1624b; margin-bottom: 12px; }
         .attrs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
@@ -218,7 +218,7 @@
 </pre>
 </div>
         <div class="media-demo">
-            <video width="100%" height="auto" controls style="max-width:500px;">
+            <video controls style="max-width:500px; width:100%;">
                 <source src="#" type="video/mp4">
                 Twój przeglądarka nie obsługuje wideo.
             </video>
@@ -323,13 +323,13 @@
 </pre>
 </div>
         <div class="media-demo">
-<h4>Przykład audio (placeholder)</h4>
+<h3>Przykład audio (placeholder)</h3>
             <audio controls>
                 <source src="#" type="audio/mpeg">
                 (brak pliku - demonstracja kontrolek)
             </audio>
-<h4>Przykład wideo (placeholder)</h4>
-            <video controls width="100%" style="max-width:500px;">
+<h3>Przykład wideo (placeholder)</h3>
+            <video controls style="max-width:500px; width:100%;">
                 <source src="#" type="video/mp4">
                 (brak pliku - demonstracja kontrolek)
             </video>
@@ -347,7 +347,7 @@
 </div>
         <div class="good-bad">
             <div class="good">
-<h4>Dobre praktyki</h4>
+<h3>Dobre praktyki</h3>
                 <ul>
                     <li>Zawsze dodawaj <code>controls</code> dla użytkownika.</li>
                     <li>Podawaj co najmniej dwa formaty (MP4 + WebM dla wideo, MP3 + OGG dla audio).</li>
@@ -357,7 +357,7 @@
                 </ul>
 </div>
             <div class="bad">
-<h4>Częste błędy</h4>
+<h3>Częste błędy</h3>
                 <ul>
                     <li>Brak atrybutu <code>controls</code> - użytkownik nie ma jak odtworzyć multimediów.</li>
                     <li>Podanie tylko jednego formatu (np. tylko .ogg) - nie zadziała w Safari/Edge.</li>

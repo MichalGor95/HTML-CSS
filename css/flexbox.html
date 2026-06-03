@@ -42,8 +42,7 @@
 <header>
     <div class="logo">
         HTML<span>&CSS</span>
-</div>
-
+    </div>
     <nav>
         <a href="../index.html">Start</a>
         <a href="../html.html">HTML</a>
@@ -59,8 +58,8 @@
             Flexbox (Flexible Box Layout) to nowoczesny model układu, który ułatwia tworzenie elastycznych,
             responsywnych struktur. Jest często używany do budowy menu, kart, pasków narzędzi i wielu innych
             komponentów. Na egzaminie INF03 flexbox pojawia się regularnie.
-</p>
-</div>
+        </p>
+    </div>
 
     <!-- CZYM JEST FLEXBOX? -->
     <section class="topic-section">
@@ -68,7 +67,7 @@
         <p>
             Flexbox to system jednokierunkowego układu - elementy układają się w <strong>wiersz</strong> lub <strong>kolumnę</strong>.
             Działa na dwóch poziomach: <strong>kontener flex</strong> (rodzic) i <strong>elementy flex</strong> (dzieci).
-</p>
+        </p>
         <ul class="custom-list">
             <li><strong>display: flex</strong> - przekształca kontener w flex container</li>
             <li><strong>flex-direction</strong> - kierunek układania (wiersz / kolumna)</li>
@@ -87,7 +86,7 @@
         <p>
             Ustawienie <code>display: flex</code> na rodzicu sprawia, że jego bezpośrednie dzieci stają się
             elementami flex i układają się w jednym wierszu (domyślnie).
-</p>
+        </p>
         <div class="code-sample"><pre>
 .kontener {
     display: flex;
@@ -100,8 +99,8 @@
                 <div class="flex-item">1</div>
                 <div class="flex-item">2</div>
                 <div class="flex-item">3</div>
-</div>
-</div>
+            </div>
+        </div>
         <p>Zastosowanie: każde miejsce, gdzie potrzebujesz elastycznego układu poziomego lub pionowego.</p>
     </section>
 
@@ -110,16 +109,16 @@
         <h2>3. flex-direction - kierunek układania</h2>
         <p>
             Określa, czy elementy układają się w wierszu (poziomo) czy w kolumnie (pionowo).
-</p>
+        </p>
         <div class="table-wrapper">
             <table class="value-table">
                 <tr><th>Wartość</th><th>Kierunek głównej osi</th><th>Opis</th></tr>
-                <tr><td><code>row</code></th><td>poziomo (od lewej do prawej)</th><td>domyślnie</th></tr>
-                <tr><td><code>row-reverse</code></th><td>poziomo (od prawej do lewej)</th><td>odwrócona kolejność wiersza</th></tr>
-                <tr><td><code>column</code></th><td>pionowo (od góry do dołu)</th><td>układ w kolumnie</th></tr>
-                <tr><td><code>column-reverse</code></th><td>pionowo (od dołu do góry)</th><td>odwrócona kolumna</th></tr>
+                <tr><td><code>row</code></td><td>poziomo (od lewej do prawej)</td><td>domyślnie</td></tr>
+                <tr><td><code>row-reverse</code></td><td>poziomo (od prawej do lewej)</td><td>odwrócona kolejność wiersza</td></tr>
+                <tr><td><code>column</code></td><td>pionowo (od góry do dołu)</td><td>układ w kolumnie</td></tr>
+                <tr><td><code>column-reverse</code></td><td>pionowo (od dołu do góry)</td><td>odwrócona kolumna</td></tr>
             </table>
-</div>
+        </div>
         <div class="code-sample"><pre>
 .kontener {
     display: flex;
@@ -133,8 +132,8 @@
                 <div class="flex-item">1</div>
                 <div class="flex-item">2</div>
                 <div class="flex-item">3</div>
-</div>
-</div>
+            </div>
+        </div>
     </section>
 
     <!-- JUSTIFY-CONTENT -->
@@ -142,24 +141,18 @@
         <h2>4. justify-content - wyrównanie w głównej osi</h2>
         <p>
             Ustawia rozmieszczenie elementów wzdłuż <strong>głównej osi</strong> (wiersz dla row, kolumna dla column).
-</p>
+        </p>
         <div class="table-wrapper">
             <table class="value-table">
                 <tr><th>Wartość</th><th>Efekt</th></tr>
-                <tr><td><code>flex-start</code></th><td>przyklejone do początku (domyślnie)</th></tr>
-                <tr><td><code>flex-end</code></th><td>przyklejone do końca</th></tr>
-                <tr><td><code>center</code></th><td>wyśrodkowane</th></tr>
-                <tr><td><code>space-between</code></th>.\]
-
-równe odstępy między elementami, pierwszy na początku, ostatni na końcu</th></tr>
-                <tr><td><code>space-around</code></th>.\]
-
-równe odstępy wokół każdego elementu</th></tr>
-                <tr><td><code>space-evenly</code></th>.\]
-
-równe odstępy między i wokół elementów</th></tr>
+                <tr><td><code>flex-start</code></td><td>przyklejone do początku (domyślnie)</td></tr>
+                <tr><td><code>flex-end</code></td><td>przyklejone do końca</td></tr>
+                <tr><td><code>center</code></td><td>wyśrodkowane</td></tr>
+                <tr><td><code>space-between</code></td><td>równe odstępy między elementami, pierwszy na początku, ostatni na końcu</td></tr>
+                <tr><td><code>space-around</code></td><td>równe odstępy wokół każdego elementu</td></tr>
+                <tr><td><code>space-evenly</code></td><td>równe odstępy między i wokół elementów</td></tr>
             </table>
-</div>
+        </div>
         <div class="code-sample"><pre>
 .kontener {
     display: flex;
@@ -173,14 +166,14 @@ równe odstępy między i wokół elementów</th></tr>
                 <div class="flex-item">1</div>
                 <div class="flex-item">2</div>
                 <div class="flex-item">3</div>
-</div>
+            </div>
             <div class="demo-label">justify-content: center</div>
             <div class="flex-container" style="justify-content: center;">
                 <div class="flex-item">1</div>
                 <div class="flex-item">2</div>
                 <div class="flex-item">3</div>
-</div>
-</div>
+            </div>
+        </div>
     </section>
 
     <!-- ALIGN-ITEMS -->
@@ -189,21 +182,17 @@ równe odstępy między i wokół elementów</th></tr>
         <p>
             Ustawia rozmieszczenie elementów wzdłuż <strong>osi poprzecznej</strong> (prostopadłej do głównej).
             Działa, gdy elementy mają różną wysokość (w wierszu) lub szerokość (w kolumnie).
-</p>
+        </p>
         <div class="table-wrapper">
             <table class="value-table">
                 <tr><th>Wartość</th><th>Efekt</th></tr>
-                <tr><td><code>stretch</code></th><td>rozciąga elementy do wysokości kontenera (domyślnie)</th></tr>
-                <tr><td><code>flex-start</code></th><td>przyklejone do górnej krawędzi</th></tr>
-                <tr><td><code>flex-end</code></th><td>przyklejone do dolnej krawędzi</th></tr>
-                <tr><td><code>center</code></th>.\]
-
-wyśrodkowane w pionie</th></tr>
-                <tr><td><code>baseline</code></th>._
-
-wyrównanie do linii bazowej tekstu</th></tr>
+                <tr><td><code>stretch</code></td><td>rozciąga elementy do wysokości kontenera (domyślnie)</td></tr>
+                <tr><td><code>flex-start</code></td><td>przyklejone do górnej krawędzi</td></tr>
+                <tr><td><code>flex-end</code></td><td>przyklejone do dolnej krawędzi</td></tr>
+                <tr><td><code>center</code></td><td>wyśrodkowane w pionie</td></tr>
+                <tr><td><code>baseline</code></td><td>wyrównanie do linii bazowej tekstu</td></tr>
             </table>
-</div>
+        </div>
         <div class="code-sample"><pre>
 .kontener {
     display: flex;
@@ -218,8 +207,8 @@ wyrównanie do linii bazowej tekstu</th></tr>
                 <div class="flex-item" style="height: 40px;">1</div>
                 <div class="flex-item" style="height: 60px;">2</div>
                 <div class="flex-item" style="height: 30px;">3</div>
-</div>
-</div>
+            </div>
+        </div>
     </section>
 
     <!-- GAP -->
@@ -228,7 +217,7 @@ wyrównanie do linii bazowej tekstu</th></tr>
         <p>
             <code>gap</code> ustawia odstępy między elementami flex (oraz grid) - działa zarówno w pionie, jak i poziomie.
             Jest to wygodniejsza alternatywa dla <code>margin</code> na dzieciach.
-</p>
+        </p>
         <div class="code-sample"><pre>
 .kontener {
     display: flex;
@@ -243,8 +232,8 @@ wyrównanie do linii bazowej tekstu</th></tr>
                 <div class="flex-item">1</div>
                 <div class="flex-item">2</div>
                 <div class="flex-item">3</div>
-</div>
-</div>
+            </div>
+        </div>
         <p>Nowoczesna i prosta metoda - zalecana zamiast <code>margin</code> w flexboxie.</p>
     </section>
 
@@ -254,15 +243,15 @@ wyrównanie do linii bazowej tekstu</th></tr>
         <p>
             Domyślnie elementy flex próbują zmieścić się w jednym wierszu. <code>flex-wrap</code> pozwala im zawijać się
             na kolejne wiersze, gdy brakuje miejsca.
-</p>
+        </p>
         <div class="table-wrapper">
             <table class="value-table">
                 <tr><th>Wartość</th><th>Zachowanie</th></tr>
-                <tr><td><code>nowrap</code></th><td>bez zawijania (domyślnie)</th></tr>
-                <tr><td><code>wrap</code></th><td>zawijanie na nowe wiersze</th></tr>
-                <tr><td><code>wrap-reverse</code></th><td>zawijanie, ale od dołu</th></tr>
+                <tr><td><code>nowrap</code></td><td>bez zawijania (domyślnie)</td></tr>
+                <tr><td><code>wrap</code></td><td>zawijanie na nowe wiersze</td></tr>
+                <tr><td><code>wrap-reverse</code></td><td>zawijanie, ale od dołu</td></tr>
             </table>
-</div>
+        </div>
         <div class="code-sample"><pre>
 .kontener {
     display: flex;
@@ -278,8 +267,8 @@ wyrównanie do linii bazowej tekstu</th></tr>
                 <div class="flex-item">3</div>
                 <div class="flex-item">4</div>
                 <div class="flex-item">5</div>
-</div>
-</div>
+            </div>
+        </div>
         <p>Połączenie <code>flex-wrap</code> i <code>gap</code> tworzy responsywne układy siatek.</p>
     </section>
 
@@ -290,7 +279,7 @@ wyrównanie do linii bazowej tekstu</th></tr>
             Właściwość <code>order</code> (ustawiana na elementach flex) zmienia kolejność wyświetlania
             bez zmiany HTML. Domyślnie wszystkie elementy mają <code>order: 0</code>.
             Elementy o niższej wartości <code>order</code> pojawiają się wcześniej.
-</p>
+        </p>
         <div class="code-sample"><pre>
 .item1 { order: 2; }
 .item2 { order: 1; }
@@ -304,8 +293,8 @@ wyrównanie do linii bazowej tekstu</th></tr>
                 <div class="flex-item" style="order: 2;">1 (order:2)</div>
                 <div class="flex-item" style="order: 1;">2 (order:1)</div>
                 <div class="flex-item" style="order: 3;">3 (order:3)</div>
-</div>
-</div>
+            </div>
+        </div>
         <p>Zastosowanie: zmiana układu w media queries, układanie elementów na małych ekranach.</p>
     </section>
 
@@ -315,7 +304,7 @@ wyrównanie do linii bazowej tekstu</th></tr>
         <p>
             <code>align-self</code> działa jak <code>align-items</code>, ale tylko dla jednego elementu flex.
             Może przyjmować te same wartości: <code>auto, flex-start, flex-end, center, stretch, baseline</code>.
-</p>
+        </p>
         <div class="code-sample"><pre>
 .kontener {
     display: flex;
@@ -333,8 +322,8 @@ wyrównanie do linii bazowej tekstu</th></tr>
                 <div class="flex-item">domyślny</div>
                 <div class="flex-item" style="align-self: flex-end;">align-self: flex-end</div>
                 <div class="flex-item">domyślny</div>
-</div>
-</div>
+            </div>
+        </div>
         <p>Pozwala na indywidualne wyrównanie elementu bez zmiany dla rodzeństwa.</p>
     </section>
 
@@ -344,26 +333,22 @@ wyrównanie do linii bazowej tekstu</th></tr>
         <div class="table-wrapper">
             <table class="value-table">
                 <tr><th>Właściwość (kontener)</th><th>Działanie</th><th>Typowe wartości</th></tr>
-                <tr><td><code>display</code></th><td>tworzy flex container</th><td><code>flex</code></th></tr>
-                <tr><td><code>flex-direction</code></th><td>kierunek głównej osi</th><td><code>row</code>, <code>column</code></th></tr>
-                <tr><td><code>justify-content</code></th>.\]
-
-wyrównanie w głównej osi</th><td><code>center</code>, <code>space-between</code></th></tr>
-                <tr><td><code>align-items</code></th>}.\]
-
-wyrównanie w poprzecznej osi</th><td><code>center</code>, <code>stretch</code></th></tr>
-                <tr><td><code>gap</code></th><td>odstępy między elementami</th><td><code>10px</code>, <code>1rem</code></th></tr>
-                <tr><td><code>flex-wrap</code></th><td>zawijanie wierszy</th><td><code>wrap</code></th></tr>
+                <tr><td><code>display</code></td><td>tworzy flex container</td><td><code>flex</code></td></tr>
+                <tr><td><code>flex-direction</code></td><td>kierunek głównej osi</td><td><code>row</code>, <code>column</code></td></tr>
+                <tr><td><code>justify-content</code></td><td>wyrównanie w głównej osi</td><td><code>center</code>, <code>space-between</code></td></tr>
+                <tr><td><code>align-items</code></td><td>wyrównanie w poprzecznej osi</td><td><code>center</code>, <code>stretch</code></td></tr>
+                <tr><td><code>gap</code></td><td>odstępy między elementami</td><td><code>10px</code>, <code>1rem</code></td></tr>
+                <tr><td><code>flex-wrap</code></td><td>zawijanie wierszy</td><td><code>wrap</code></td></tr>
                 <tr><td colspan="3"><strong>Właściwości na elementach</strong></td></tr>
-                <tr><td><code>order</code></th><td>zmiana kolejności</th><td><code>1</code>, <code>2</code>, <code>-1</code></th></tr>
-                <tr><td><code>align-self</code></th><td>nadpisanie align-items</th><td><code>flex-end</code>, <code>center</code></th></tr>
+                <tr><td><code>order</code></td><td>zmiana kolejności</td><td><code>1</code>, <code>2</code>, <code>-1</code></td></tr>
+                <tr><td><code>align-self</code></td><td>nadpisanie align-items</td><td><code>flex-end</code>, <code>center</code></td></tr>
             </table>
-</div>
+        </div>
         <p>
-             <strong>Pamiętaj na egzaminie:</strong>
+            <strong>Pamiętaj na egzaminie:</strong>
             Flexbox jest jednokierunkowy. Do układów dwuwymiarowych używa się CSS Grid.
             Kombinacja <code>flex-wrap: wrap</code> + <code>gap</code> + <code>justify-content</code> daje responsywne siatki.
-</p>
+        </p>
     </section>
 
     <!-- PRZYKŁAD PRAKTYCZNY - MENU POZIOME -->

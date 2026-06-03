@@ -11,8 +11,7 @@
 <header>
     <div class="logo">
         HTML<span>&CSS</span>
-</div>
-
+    </div>
     <nav>
         <a href="../index.html">Start</a>
         <a href="../html.html">HTML</a>
@@ -28,16 +27,15 @@
             Formularze to kluczowy element interaktywnych stron. CSS pozwala całkowicie zmienić ich wygląd -
             od pól tekstowych, przez przyciski, aż po rozwijane listy. Dobre stylowanie formularzy poprawia
             użyteczność i estetykę.
-</p>
-</div>
+        </p>
+    </div>
 
-    <!-- WPROWADZENIE -->
     <section class="topic-section">
         <h2>1. Dlaczego stylować formularze?</h2>
         <p>
             Domyślne formularze różnią się między przeglądarkami i często wyglądają staroświecko.
             Stylowanie CSS pozwala:
-</p>
+        </p>
         <ul class="custom-list">
             <li>uzyskać spójny wygląd na każdej przeglądarce</li>
             <li>poprawić czytelność i dostępność</li>
@@ -46,13 +44,12 @@
         </ul>
     </section>
 
-    <!-- STYLOWANIE INPUT -->
     <section class="topic-section">
         <h2>2. Stylowanie pól input</h2>
         <p>
             Pola tekstowe, hasła, e-mail, liczby - wszystkie <code>&lt;input&gt;</code> można stylować wspólnie
             lub osobno za pomocą selektorów atrybutów.
-</p>
+        </p>
         <div class="code-sample"><pre>
 /* Wszystkie pola input, textarea i select */
 input, textarea, select {
@@ -91,23 +88,44 @@ input[type="range"] {
 </div>
         <div class="table-wrapper">
             <table class="value-table">
-                <tr><th>Selektor atrybutu</th><th>Opis</th></tr>
-                <tr><td><code>input[type="text"]</code></th><td>tylko pola tekstowe</th></tr>
-                <tr><td><code>input[type="email"]</code></th><td>pola email</th></tr>
-                <tr><td><code>input[type="number"]</code></th><td>pola numeryczne</th></tr>
-                <tr><td><code>input[type="date"]</code></th><td>daty</th></tr>
-                <tr><td><code>input[type="search"]</code></th><td>pole wyszukiwania</th></tr>
+                <thead>
+                    <tr>
+                        <th>Selektor atrybutu</th>
+                        <th>Opis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>input[type="text"]</code></td>
+                        <td>tylko pola tekstowe</td>
+                    </tr>
+                    <tr>
+                        <td><code>input[type="email"]</code></td>
+                        <td>pola email</td>
+                    </tr>
+                    <tr>
+                        <td><code>input[type="number"]</code></td>
+                        <td>pola numeryczne</td>
+                    </tr>
+                    <tr>
+                        <td><code>input[type="date"]</code></td>
+                        <td>daty</td>
+                    </tr>
+                    <tr>
+                        <td><code>input[type="search"]</code></td>
+                        <td>pole wyszukiwania</td>
+                    </tr>
+                </tbody>
             </table>
-</div>
+        </div>
     </section>
 
-    <!-- TEXTAREA -->
     <section class="topic-section">
         <h2>3. Stylowanie textarea</h2>
         <p>
             <code>&lt;textarea&gt;</code> pozwala na wielowierszowy tekst. Można zmienić jego rozmiar,
             wygląd i możliwość ręcznego przeciągania (resize).
-</p>
+        </p>
         <div class="code-sample"><pre>
 textarea {
     width: 100%;
@@ -135,16 +153,15 @@ textarea.elastic {
         <p>
             Wartości <code>resize</code>: <code>none</code>, <code>both</code>, <code>horizontal</code>, <code>vertical</code>.
             Domyślnie w wielu przeglądarkach jest <code>both</code>.
-</p>
+        </p>
     </section>
 
-    <!-- BUTTON -->
     <section class="topic-section">
         <h2>4. Stylowanie przycisków (button)</h2>
         <p>
             Przyciski - <code>&lt;button&gt;</code>, <code>&lt;input type="submit"&gt;</code> - można stylować
             podobnie, ale warto dodać efekty interaktywne.
-</p>
+        </p>
         <div class="code-sample"><pre>
 /* Przyciski podstawowe */
 button, 
@@ -195,13 +212,12 @@ button:disabled {
 </div>
     </section>
 
-    <!-- SELECT -->
     <section class="topic-section">
         <h2>5. Stylowanie select (lista rozwijana)</h2>
         <p>
             <code>&lt;select&gt;</code> jest trudniejszy do stylowania, ale można zmienić jego podstawowe cechy.
             Pełna personalizacja wymaga często JavaScript lub niestandardowych rozwiązań.
-</p>
+        </p>
         <div class="code-sample"><pre>
 select {
     width: 100%;
@@ -211,8 +227,7 @@ select {
     background-color: white;
     font-size: 16px;
     cursor: pointer;
-    appearance: none;          /* usuwa domyślną strzałkę (trzeba dodać własną) */
-    background-image: url('data:image/svg+xml;utf8,<svg ...>'); /* własna strzałka */
+    appearance: none;          /* usuwa domyślną strzałkę (wymaga własnej strzałki) */
 }
 
 /* Dla Firefox'a */
@@ -231,12 +246,11 @@ select option {
         <p>Aby całkowicie dostosować <code>select</code>, często używa się bibliotek lub tworzy własny dropdown z divów i JS.</p>
     </section>
 
-    <!-- PLACEHOLDER -->
     <section class="topic-section">
         <h2>6. Stylowanie placeholdera</h2>
         <p>
             Pseudoklasa <code>::placeholder</code> pozwala zmienić kolor, rozmiar i styl tekstu pomocniczego w polach.
-</p>
+        </p>
         <div class="code-sample"><pre>
 /* Dla nowoczesnych przeglądarek */
 input::placeholder,
@@ -259,18 +273,17 @@ input:focus::placeholder {
 </pre>
 </div>
         <p>
-            ️ Placeholder <strong>nie zastępuje etykiety</strong> (&lt;label&gt;) - to tylko podpowiedź.
+            Placeholder <strong>nie zastępuje etykiety</strong> (&lt;label&gt;) - to tylko podpowiedź.
             Zawsze używaj <code>&lt;label&gt;</code> dla dostępności.
-</p>
+        </p>
     </section>
 
-    <!-- FOCUS -->
     <section class="topic-section">
         <h2>7. :focus - podświetlenie aktywnego pola</h2>
         <p>
             Pseudoklasa <code>:focus</code> jest kluczowa dla użyteczności - pokazuje użytkownikowi,
             które pole jest aktywne (zwłaszcza przy nawigacji klawiaturą).
-</p>
+        </p>
         <div class="code-sample"><pre>
 input:focus,
 textarea:focus,
@@ -293,25 +306,56 @@ button:focus {
 </pre>
 </div>
         <p>
-             <strong>Dostępność:</strong> nigdy nie usuwaj całkowicie <code>outline</code> bez dodania alternatywnego wizualnego wskaźnika
+            <strong>Dostępność:</strong> nigdy nie usuwaj całkowicie <code>outline</code> bez dodania alternatywnego wizualnego wskaźnika
             (np. <code>box-shadow</code> lub <code>border</code>).
-</p>
+        </p>
     </section>
 
-    <!-- DODATKOWE PSEUDOKLASY DLA FORMULARZY -->
     <section class="topic-section">
         <h2>8. Inne przydatne pseudoklasy dla formularzy</h2>
         <div class="table-wrapper">
             <table class="value-table">
-                <tr><th>Pseudoklasa</th><th>Znaczenie</th><th>Przykład</th></tr>
-                <tr><td><code>:required</code></th><td>pole obowiązkowe</th><td><code>input:required { border-left: 3px solid red; }</code></th></tr>
-                <tr><td><code>:optional</code></th><td>pole opcjonalne</th><td><code>input:optional { background: #f9f9f9; }</code></th></tr>
-                <tr><td><code>:valid</code></th><td>pole z poprawną wartością (np. email)</th><td><code>input:valid { border-color: green; }</code></th></tr>
-                <tr><td><code>:invalid</code></th><td>pole z niepoprawną wartością</th><td><code>input:invalid { border-color: red; }</code></th></tr>
-                <tr><td><code>:disabled</code></th><td>pole wyłączone</th><td><code>input:disabled { background: #eee; }</code></th></tr>
-                <tr><td><code>:checked</code></th><td>zaznaczony checkbox/radio</th><td><code>input:checked + label { font-weight: bold; }</code></th></tr>
+                <thead>
+                    <tr>
+                        <th>Pseudoklasa</th>
+                        <th>Znaczenie</th>
+                        <th>Przykład</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>:required</code></td>
+                        <td>pole obowiązkowe</td>
+                        <td><code>input:required { border-left: 3px solid red; }</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>:optional</code></td>
+                        <td>pole opcjonalne</td>
+                        <td><code>input:optional { background: #f9f9f9; }</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>:valid</code></td>
+                        <td>pole z poprawną wartością (np. email)</td>
+                        <td><code>input:valid { border-color: green; }</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>:invalid</code></td>
+                        <td>pole z niepoprawną wartością</td>
+                        <td><code>input:invalid { border-color: red; }</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>:disabled</code></td>
+                        <td>pole wyłączone</td>
+                        <td><code>input:disabled { background: #eee; }</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>:checked</code></td>
+                        <td>zaznaczony checkbox/radio</td>
+                        <td><code>input:checked + label { font-weight: bold; }</code></td>
+                    </tr>
+                </tbody>
             </table>
-</div>
+        </div>
         <div class="code-sample"><pre>
 /* Wizualne wyróżnienie pól obowiązkowych */
 input:required {
@@ -335,7 +379,6 @@ input[type="checkbox"]:checked + label {
 </div>
     </section>
 
-    <!-- PRZYKŁAD KOMPLETNEGO FORMULARZA -->
     <section class="topic-section">
         <h2>9. Przykład - kompletny, stylowany formularz</h2>
         <div class="code-sample"><pre>
@@ -411,7 +454,7 @@ input[type="checkbox"]:checked + label {
     &lt;/div&gt;
     &lt;div class="form-group"&gt;
         &lt;label for="message"&gt;Wiadomość&lt;/label&gt;
-        &lt;textarea id="message" placeholder="Treść wiadomości...&lt;/textarea&gt;
+        &lt;textarea id="message" placeholder="Treść wiadomości..."&gt;&lt;/textarea&gt;
     &lt;/div&gt;
     &lt;div class="checkbox-group"&gt;
         &lt;input type="checkbox" id="agree"&gt;
@@ -423,7 +466,6 @@ input[type="checkbox"]:checked + label {
 </div>
     </section>
 
-    <!-- TYPOWE PYTANIA EGZAMINACYJNE -->
     <section class="topic-section">
         <h2>10. Ćwiczenia INF03</h2>
         <p><strong>Pytanie 1:</strong> Jak zmienić kolor tekstu podpowiedzi w polu input?</p>

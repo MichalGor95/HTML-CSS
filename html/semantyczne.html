@@ -61,8 +61,8 @@
             padding: 16px 20px;
             border: 1px solid #e2dfd7;
         }
-        .good h4 { color: #2f7a67; margin-bottom: 12px; }
-        .bad h4 { color: #b1624b; margin-bottom: 12px; }
+        .good h3 { color: #2f7a67; margin-bottom: 12px; }
+        .bad h3 { color: #b1624b; margin-bottom: 12px; }
         .attrs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
@@ -146,20 +146,23 @@
         }
         .semantic-demo header, .semantic-demo nav, .semantic-demo main, 
         .semantic-demo section, .semantic-demo article, .semantic-demo aside, 
-        .semantic-demo footer {
+        .semantic-demo footer,
+        .semantic-demo .demo-header, .semantic-demo .demo-nav, .semantic-demo .demo-main,
+        .semantic-demo .demo-section, .semantic-demo .demo-article, .semantic-demo .demo-aside,
+        .semantic-demo .demo-footer {
             padding: 10px;
             margin: 8px 0;
             border-radius: 12px;
             background: white;
             border: 1px solid #e2dfd7;
         }
-        .semantic-demo header { background: #eef3f0; border-left: 4px solid #2f7a67; }
-        .semantic-demo nav { background: #f4f1ea; border-left: 4px solid #e6a017; }
-        .semantic-demo main { background: #fff; }
-        .semantic-demo section { background: #fcf9f2; border-left: 3px solid #2f7a67; }
-        .semantic-demo article { background: #fefef9; border-left: 3px solid #2f7a67; }
-        .semantic-demo aside { background: #f9f5eb; border-left: 3px solid #b1624b; }
-        .semantic-demo footer { background: #e2dfd5; border-left: 4px solid #2f7a67; }
+        .semantic-demo header, .semantic-demo .demo-header { background: #eef3f0; border-left: 4px solid #2f7a67; }
+        .semantic-demo nav, .semantic-demo .demo-nav { background: #f4f1ea; border-left: 4px solid #e6a017; }
+        .semantic-demo main, .semantic-demo .demo-main { background: #fff; }
+        .semantic-demo section, .semantic-demo .demo-section { background: #fcf9f2; border-left: 3px solid #2f7a67; }
+        .semantic-demo article, .semantic-demo .demo-article { background: #fefef9; border-left: 3px solid #2f7a67; }
+        .semantic-demo aside, .semantic-demo .demo-aside { background: #f9f5eb; border-left: 3px solid #b1624b; }
+        .semantic-demo footer, .semantic-demo .demo-footer { background: #e2dfd5; border-left: 4px solid #2f7a67; }
     </style>
 </head>
 <body>
@@ -350,15 +353,15 @@
 </pre>
 </div>
         <div class="semantic-demo">
-            <header><strong>&lt;header&gt;</strong> Nagłówek strony (logo, tytuł)</header>
-            <nav><strong>&lt;nav&gt;</strong> Menu główne</nav>
-            <main>
+            <div class="demo-header"><strong>&lt;header&gt;</strong> Nagłówek strony (logo, tytuł)</div>
+            <div class="demo-nav"><strong>&lt;nav&gt;</strong> Menu główne</div>
+            <div class="demo-main">
                 <strong>&lt;main&gt;</strong> Główna treść
-                <article><strong>&lt;article&gt;</strong> Artykuł bloga</article>
-                <section><strong>&lt;section&gt;</strong> Sekcja komentarzy</section>
-            </main>
-            <aside><strong>&lt;aside&gt;</strong> Sidebar z reklamami/linkami</aside>
-            <footer><strong>&lt;footer&gt;</strong> Stopka</footer>
+                <div class="demo-article"><strong>&lt;article&gt;</strong> Artykuł bloga</div>
+                <div class="demo-section"><strong>&lt;section&gt;</strong> Sekcja komentarzy</div>
+            </div>
+            <div class="demo-aside"><strong>&lt;aside&gt;</strong> Sidebar z reklamami/linkami</div>
+            <div class="demo-footer"><strong>&lt;footer&gt;</strong> Stopka</div>
 </div>
     </section>
 
@@ -389,14 +392,14 @@
         </ul>
         <div class="good-bad">
             <div class="good">
-<h4>Dobra praktyka</h4>
+<h3>Dobra praktyka</h3>
                 <code>&lt;header&gt;...&lt;/header&gt;<br>
                 &lt;nav&gt;...&lt;/nav&gt;<br>
                 &lt;main&gt;...&lt;/main&gt;<br>
                 &lt;footer&gt;...&lt;/footer&gt;</code>
 </div>
             <div class="bad">
-<h4>Zła praktyka ("divitis")</h4>
+<h3>Zła praktyka ("divitis")</h3>
                 <code>&lt;div class="header"&gt;...&lt;/div&gt;<br>
                 &lt;div class="nav"&gt;...&lt;/div&gt;<br>
                 &lt;div class="content"&gt;...&lt;/div&gt;</code>

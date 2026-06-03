@@ -11,8 +11,7 @@
 <header>
     <div class="logo">
         HTML<span>&CSS</span>
-</div>
-
+    </div>
     <nav>
         <a href="../index.html">Start</a>
         <a href="../html.html">HTML</a>
@@ -28,16 +27,15 @@
             Listy i tabele to często używane elementy do prezentacji danych.
             CSS pozwala precyzyjnie kontrolować ich wygląd - od znaczników list
             po obramowania i kolorowanie komórek tabel.
-</p>
-</div>
+        </p>
+    </div>
 
-    <!-- LISTY - WPROWADZENIE -->
     <section class="topic-section">
         <h2>1. Stylowanie list - podstawy</h2>
         <p>
             Listy HTML (<code>&lt;ul&gt;</code> - nienumerowana, <code>&lt;ol&gt;</code> - numerowana)
             można stylować za pomocą specjalnych właściwości.
-</p>
+        </p>
         <ul class="custom-list">
             <li><code>list-style-type</code> - rodzaj znacznika (kółko, kwadrat, cyfra, litera itp.)</li>
             <li><code>list-style-position</code> - położenie znacznika (wewnątrz lub na zewnątrz)</li>
@@ -45,12 +43,11 @@
         </ul>
     </section>
 
-    <!-- LIST-STYLE-TYPE -->
     <section class="topic-section">
         <h2>2. list-style-type - rodzaj znacznika</h2>
         <p>
             Określa wygląd punktorów lub numerów.
-</p>
+        </p>
         <div class="code-sample"><pre>
 /* Lista nienumerowana (ul) */
 ul.kropki {
@@ -79,33 +76,71 @@ ol.duzeLITERY {
 ol.rzymskie {
     list-style-type: lower-roman;       /* i, ii, iii... */
 }
-</pre>
-</div>
+</pre></div>
         <div class="table-wrapper">
             <table class="value-table">
-                <tr><th>Wartość</th><th>Efekt dla &lt;ul&gt;</th><th>Efekt dla &lt;ol&gt;</th></tr>
-                <tr><td><code>disc</code></th><td>wypełnione kółko</th><td>-</th></tr>
-                <tr><td><code>circle</code></th><td>puste kółko</th><td>-</th></tr>
-                <tr><td><code>square</code></th><td>kwadrat</th><td>-</th></tr>
-                <tr><td><code>decimal</code></th><td>-</th><td>1, 2, 3</th></tr>
-                <tr><td><code>lower-alpha</code></th><td>-</th><td>a, b, c</th></tr>
-                <tr><td><code>upper-alpha</code></th><td>-</th><td>A, B, C</th></tr>
-                <tr><td><code>lower-roman</code></th><td>-</th><td>i, ii, iii</th></tr>
-                <tr><td><code>none</code></th><td>brak znacznika</th><td>brak numeru</th></tr>
+                <thead>
+                    <tr>
+                        <th>Wartość</th>
+                        <th>Efekt dla &lt;ul&gt;</th>
+                        <th>Efekt dla &lt;ol&gt;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>disc</code></td>
+                        <td>wypełnione kółko</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td><code>circle</code></td>
+                        <td>puste kółko</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td><code>square</code></td>
+                        <td>kwadrat</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td><code>decimal</code></td>
+                        <td>-</td>
+                        <td>1, 2, 3</td>
+                    </tr>
+                    <tr>
+                        <td><code>lower-alpha</code></td>
+                        <td>-</td>
+                        <td>a, b, c</td>
+                    </tr>
+                    <tr>
+                        <td><code>upper-alpha</code></td>
+                        <td>-</td>
+                        <td>A, B, C</td>
+                    </tr>
+                    <tr>
+                        <td><code>lower-roman</code></td>
+                        <td>-</td>
+                        <td>i, ii, iii</td>
+                    </tr>
+                    <tr>
+                        <td><code>none</code></td>
+                        <td>brak znacznika</td>
+                        <td>brak numeru</td>
+                    </tr>
+                </tbody>
             </table>
-</div>
+        </div>
         <p>
-             Częsta praktyka: usuwanie znaczników w menu (<code>list-style-type: none</code>)
+            Częsta praktyka: usuwanie znaczników w menu (<code>list-style-type: none</code>)
             i dodawanie własnych za pomocą <code>background-image</code> lub pseudoelementów.
-</p>
+        </p>
     </section>
 
-    <!-- LIST-STYLE-POSITION -->
     <section class="topic-section">
         <h2>3. list-style-position - położenie znacznika</h2>
         <p>
             Określa, czy znacznik znajduje się wewnątrz czy na zewnątrz bloku listy.
-</p>
+        </p>
         <div class="code-sample"><pre>
 /* Domyślne - outside (znacznik poza blokiem tekstu) */
 ul.outside {
@@ -116,24 +151,38 @@ ul.outside {
 ul.inside {
     list-style-position: inside;
 }
-</pre>
-</div>
+</pre></div>
         <div class="table-wrapper">
             <table class="value-table">
-                <tr><th>Wartość</th><th>Zachowanie</th><th>Kiedy używać?</th></tr>
-                <tr><td><code>outside</code></th><td>znacznik na lewo od tekstu, tekst wyrównany</th><td>domyślnie, standardowe listy</th></tr>
-                <tr><td><code>inside</code></th><td>znacznik traktowany jak część tekstu (wcięcie mniejsze)</th><td>kompaktowe listy, menu responsywne</th></tr>
+                <thead>
+                    <tr>
+                        <th>Wartość</th>
+                        <th>Zachowanie</th>
+                        <th>Kiedy używać?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>outside</code></td>
+                        <td>znacznik na lewo od tekstu, tekst wyrównany</td>
+                        <td>domyślnie, standardowe listy</td>
+                    </tr>
+                    <tr>
+                        <td><code>inside</code></td>
+                        <td>znacznik traktowany jak część tekstu (wcięcie mniejsze)</td>
+                        <td>kompaktowe listy, menu responsywne</td>
+                    </tr>
+                </tbody>
             </table>
-</div>
+        </div>
         <p>Różnica jest subtelna, ale przy długich liniach wpływa na czytelność.</p>
     </section>
 
-    <!-- SKRÓCONA LIST-STYLE -->
     <section class="topic-section">
         <h2>4. Skrócona właściwość list-style</h2>
         <p>
             Łączy <code>list-style-type</code>, <code>list-style-position</code> i <code>list-style-image</code>.
-</p>
+        </p>
         <div class="code-sample"><pre>
 li {
     list-style: square inside;       /* typ + pozycja */
@@ -142,26 +191,23 @@ li {
 ul {
     list-style: none;                /* żadnych znaczników */
 }
-</pre>
-</div>
+</pre></div>
     </section>
 
-    <!-- TABELE - WPROWADZENIE -->
     <section class="topic-section">
         <h2>5. Tabele - podstawy stylowania</h2>
         <p>
             Tabele HTML mają specyficzne właściwości CSS, które pomagają kontrolować
             odstępy, obramowania i układ komórek.
-</p>
+        </p>
     </section>
 
-    <!-- BORDER-COLLAPSE -->
     <section class="topic-section">
         <h2>6. border-collapse - łączenie ramek tabeli</h2>
         <p>
             Właściwość <code>border-collapse</code> decyduje, czy komórki tabeli mają mieć
             oddzielne ramki, czy połączone (sklejone).
-</p>
+        </p>
         <div class="code-sample"><pre>
 /* Oddzielne ramki (domyślnie) */
 table.separate {
@@ -173,15 +219,30 @@ table.separate {
 table.collapse {
     border-collapse: collapse;
 }
-</pre>
-</div>
+</pre></div>
         <div class="table-wrapper">
             <table class="value-table">
-                <tr><th>Wartość</th><th>Efekt</th><th>Typowe zastosowanie</th></tr>
-                <tr><td><code>separate</code></th><td>ramki komórek są oddzielone (z odstępem)</th><td>rzadziej, gdy chcemy efekt "przerw"</th></tr>
-                <tr><td><code>collapse</code></th><td>ramki są połączone - sąsiednie ramki się nakładają</th><td><b>standard</b> - czyste, proste tabele</th></tr>
+                <thead>
+                    <tr>
+                        <th>Wartość</th>
+                        <th>Efekt</th>
+                        <th>Typowe zastosowanie</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>separate</code></td>
+                        <td>ramki komórek są oddzielone (z odstępem)</td>
+                        <td>rzadziej, gdy chcemy efekt "przerw"</td>
+                    </tr>
+                    <tr>
+                        <td><code>collapse</code></td>
+                        <td>ramki są połączone - sąsiednie ramki się nakładają</td>
+                        <td><strong>standard</strong> - czyste, proste tabele</td>
+                    </tr>
+                </tbody>
             </table>
-</div>
+        </div>
         <div class="code-sample"><pre>
 /* Typowa tabela z border-collapse */
 table {
@@ -194,25 +255,22 @@ th, td {
     padding: 8px 12px;
     text-align: left;
 }
-</pre>
-</div>
+</pre></div>
     </section>
 
-    <!-- STYLOWANIE TABEL -->
     <section class="topic-section">
         <h2>7. Stylowanie tabel - praktyczne techniki</h2>
 
-        <h3 style="margin: 20px 0 10px; color:#2f7a67;"> Nagłówek tabeli (th)</h3>
+        <h3 style="margin: 20px 0 10px; color:#2f7a67;">Nagłówek tabeli (th)</h3>
         <div class="code-sample"><pre>
 th {
     background-color: #2f7a67;
     color: white;
     font-weight: bold;
 }
-</pre>
-</div>
+</pre></div>
 
-        <h3 style="margin: 20px 0 10px; color:#2f7a67;"> Przemieniane wiersze (zebra)</h3>
+        <h3 style="margin: 20px 0 10px; color:#2f7a67;">Przemieniane wiersze (zebra)</h3>
         <div class="code-sample"><pre>
 /* co drugi wiersz */
 tbody tr:nth-child(even) {
@@ -221,19 +279,17 @@ tbody tr:nth-child(even) {
 tbody tr:nth-child(odd) {
     background-color: #fff;
 }
-</pre>
-</div>
+</pre></div>
 
-        <h3 style="margin: 20px 0 10px; color:#2f7a67;"> Efekt hover na wierszu</h3>
+        <h3 style="margin: 20px 0 10px; color:#2f7a67;">Efekt hover na wierszu</h3>
         <div class="code-sample"><pre>
 tbody tr:hover {
     background-color: #e8f0fe;
     cursor: pointer;
 }
-</pre>
-</div>
+</pre></div>
 
-        <h3 style="margin: 20px 0 10px; color:#2f7a67;"> Wyrównanie tekstu</h3>
+        <h3 style="margin: 20px 0 10px; color:#2f7a67;">Wyrównanie tekstu</h3>
         <div class="code-sample"><pre>
 th {
     text-align: center;
@@ -244,90 +300,97 @@ td.numer {
 td {
     vertical-align: middle;  /* pionowe wyrównanie (top, middle, bottom) */
 }
-</pre>
-</div>
+</pre></div>
     </section>
 
-    <!-- PRZYKŁADY TABEL -->
     <section class="topic-section">
         <h2>8. Pełny przykład - stylowa tabela danych</h2>
+        <p>Kod CSS dla przykładowej tabeli:</p>
         <div class="code-sample"><pre>
-&lt;style&gt;
-    .data-table {
-        width: 100%;
-        border-collapse: collapse;
-        font-family: Arial, sans-serif;
-        box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    .data-table caption {
-        caption-side: top;
-        margin-bottom: 10px;
-        font-weight: bold;
-        font-size: 1.2em;
-    }
-
-    .data-table th,
-    .data-table td {
-        border: 1px solid #ddd;
-        padding: 12px 15px;
-        text-align: left;
-    }
-
-    .data-table th {
-        background-color: #2f7a67;
-        color: white;
-        font-weight: bold;
-    }
-
-    .data-table tr:nth-child(even) {
-        background-color: #f2f2f2;
-    }
-
-    .data-table tr:hover {
-        background-color: #e6f7f2;
-    }
-
-    .data-table td:first-child {
-        font-weight: bold;
-    }
-&lt;/style&gt;
-
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.data-table caption {
+    caption-side: top;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+.data-table th,
+.data-table td {
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+    text-align: left;
+}
+.data-table th {
+    background-color: #2f7a67;
+    color: white;
+    font-weight: bold;
+}
+.data-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+.data-table tr:hover {
+    background-color: #e6f7f2;
+}
+.data-table td:first-child {
+    font-weight: bold;
+}
+</pre></div>
+        <p>Struktura HTML takiej tabeli:</p>
+        <div class="code-sample"><pre>
 &lt;table class="data-table"&gt;
     &lt;caption&gt;Lista kursów&lt;/caption&gt;
     &lt;thead&gt;
-        <tr><th>ID</th><th>Nazwa kursu</th><th>Poziom</th><th>Cena</th></tr>
+        &lt;tr&gt;&lt;th&gt;ID&lt;/th&gt;&lt;th&gt;Nazwa kursu&lt;/th&gt;&lt;th&gt;Poziom&lt;/th&gt;&lt;th&gt;Cena&lt;/th&gt;&lt;/tr&gt;
     &lt;/thead&gt;
     &lt;tbody&gt;
-        <tr><td>1</th><td>HTML i CSS</th><td>Podstawowy</th><td>249 zł</th></tr>
-        <tr><td>2</th><td>JavaScript</th><td>Średniozaawansowany</th><td>349 zł</th></tr>
-        <tr><td>3</th><td>React</th><td>Zaawansowany</th><td>449 zł</th></tr>
+        &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;HTML i CSS&lt;/td&gt;&lt;td&gt;Podstawowy&lt;/td&gt;&lt;td&gt;249 zł&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;JavaScript&lt;/td&gt;&lt;td&gt;Średniozaawansowany&lt;/td&gt;&lt;td&gt;349 zł&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;React&lt;/td&gt;&lt;td&gt;Zaawansowany&lt;/td&gt;&lt;td&gt;449 zł&lt;/td&gt;&lt;/tr&gt;
     &lt;/tbody&gt;
 &lt;/table&gt;
-</pre>
-</div>
+</pre></div>
     </section>
 
-    <!-- DODATKOWE WŁAŚCIWOŚCI TABEL -->
     <section class="topic-section">
         <h2>9. Inne przydatne właściwości dla tabel</h2>
         <div class="table-wrapper">
             <table class="value-table">
-                <tr><th>Właściwość</th><th>Opis</th><th>Przykład</th></tr>
-                <tr><td><code>border-spacing</code></th>.\]
-
-odstęp między komórkami (gdy border-collapse: separate)</th><td><code>border-spacing: 5px;</code></th></tr>
-                <tr><td><code>empty-cells</code></th>.\]
-
-czy pokazywać ramki pustych komórek</th><td><code>empty-cells: hide;</code></th></tr>
-                <tr><td><code>caption-side</code></th>.\]
-
-pozycja tytułu tabeli (top/bottom)</th><td><code>caption-side: bottom;</code></th></tr>
-                <tr><td><code>table-layout</code></th>.\]
-
-fixed - szybsze renderowanie, fixed widths</th><td><code>table-layout: fixed;</code></th></tr>
+                <thead>
+                    <tr>
+                        <th>Właściwość</th>
+                        <th>Opis</th>
+                        <th>Przykład</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>border-spacing</code></td>
+                        <td>odstęp między komórkami (gdy border-collapse: separate)</td>
+                        <td><code>border-spacing: 5px;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>empty-cells</code></td>
+                        <td>czy pokazywać ramki pustych komórek</td>
+                        <td><code>empty-cells: hide;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>caption-side</code></td>
+                        <td>pozycja tytułu tabeli (top/bottom)</td>
+                        <td><code>caption-side: bottom;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>table-layout</code></td>
+                        <td>fixed - szybsze renderowanie, fixed widths</td>
+                        <td><code>table-layout: fixed;</code></td>
+                    </tr>
+                </tbody>
             </table>
-</div>
+        </div>
         <div class="code-sample"><pre>
 /* Szybka tabela z równymi kolumnami */
 table {
@@ -337,39 +400,35 @@ table {
 th, td {
     width: 25%;  /* każda kolumna równa */
 }
-</pre>
-</div>
+</pre></div>
     </section>
 
-    <!-- ĆWICZENIE EGZAMINACYJNE -->
     <section class="topic-section">
         <h2>10. Typowe pytania INF03</h2>
         <p>
             <strong>Pytanie 1:</strong> Jak usunąć punktor listy, ale zachować wcięcie?
-</p>
+        </p>
         <div class="code-sample"><pre>
 ul {
     list-style-type: none;
     padding-left: 20px;  /* zachowuje wcięcie */
 }
-</pre>
-</div>
+</pre></div>
         <p>
             <strong>Pytanie 2:</strong> Co da <code>border-collapse: collapse</code>?
-</p>
+        </p>
         <p>
             Odpowiedź: sprawi, że sąsiednie ramki komórek połączą się w jedną,
             eliminując podwójne krawędzie.
-</p>
+        </p>
         <p>
             <strong>Pytanie 3:</strong> Jak zrobić efekt "zebry" w tabeli?
-</p>
+        </p>
         <div class="code-sample"><pre>
 tr:nth-child(even) {
     background-color: #f0f0f0;
 }
-</pre>
-</div>
+</pre></div>
     </section>
 
 </main>

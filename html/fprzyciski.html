@@ -61,8 +61,8 @@
             padding: 16px 20px;
             border: 1px solid #e2dfd7;
         }
-        .good h4 { color: #2f7a67; margin-bottom: 12px; }
-        .bad h4 { color: #b1624b; margin-bottom: 12px; }
+        .good h3 { color: #2f7a67; margin-bottom: 12px; }
+        .bad h3 { color: #b1624b; margin-bottom: 12px; }
         .attrs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
@@ -278,7 +278,7 @@
             <table class="value-table">
                 <thead><tr><th>Cecha</th><th>&lt;button&gt;</th><th>&lt;input type="submit"&gt;</th></tr></thead>
                 <tbody>
-                    <tr><td>Zawartość HTML</th><td>Może zawierać HTML (ikony, obrazy, span)</td><td>Tylko tekst (atrybut value)</td></tr>
+                    <tr><td>Zawartość HTML</td><td>Może zawierać HTML (ikony, obrazy, span)</td><td>Tylko tekst (atrybut value)</td></tr>
                     <tr><th>Domyślny typ</th><td>submit (jeśli nie podano)</td><td>submit</td></tr>
                     <tr><th>Style CSS</th><td>Łatwiej stylować, bo zawiera wnętrze</td><td>Trudniej dodać ikonę wewnątrz</td></tr>
                     <tr><th>Dostępność</th><td>Wymaga jawnego type, ale ogólnie dobry</td><td>Dobry, ale mniej elastyczny</td></tr>
@@ -288,7 +288,7 @@
 </div>
         <div class="good-bad">
             <div class="good">
-<h4>Zalety &lt;button&gt;</h4>
+<h3>Zalety &lt;button&gt;</h3>
                 <ul>
                     <li>Możliwość wstawienia grafiki, ikony FontAwesome.</li>
                     <li>Większa kontrola nad wyglądem.</li>
@@ -296,7 +296,7 @@
                 </ul>
 </div>
             <div class="good">
-<h4>Zalety &lt;input&gt;</h4>
+<h3>Zalety &lt;input&gt;</h3>
                 <ul>
                     <li>Prostszy w najprostszych przypadkach.</li>
                     <li>Starsza składnia, ale nadal poprawna.</li>
@@ -422,7 +422,7 @@
         <h2>11. Dobre praktyki dotyczące przycisków</h2>
         <div class="good-bad">
             <div class="good">
-<h4>Dobre praktyki</h4>
+<h3>Dobre praktyki</h3>
                 <ul>
                     <li>Zawsze podawaj <code>type</code> w <code>&lt;button&gt;</code> (submit, reset, button).</li>
                     <li>Używaj <code>&lt;button type="submit"&gt;</code> zamiast <code>&lt;input type="submit"&gt;</code> dla większej elastyczności.</li>
@@ -432,7 +432,7 @@
                 </ul>
 </div>
             <div class="bad">
-<h4>Częste błędy</h4>
+<h3>Częste błędy</h3>
                 <ul>
                     <li>Brak <code>type</code> - przycisk domyślnie działa jako submit, co może przypadkowo wysłać formularz.</li>
                     <li>Używanie <code>&lt;button&gt;</code> bez <code>type="button"</code> w miejscach, gdzie nie powinien nic wysyłać.</li>

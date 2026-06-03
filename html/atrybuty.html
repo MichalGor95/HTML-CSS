@@ -61,8 +61,8 @@
             padding: 16px 20px;
             border: 1px solid #e2dfd7;
         }
-        .good h4 { color: #2f7a67; margin-bottom: 12px; }
-        .bad h4 { color: #b1624b; margin-bottom: 12px; }
+        .good h3 { color: #2f7a67; margin-bottom: 12px; }
+        .bad h3 { color: #b1624b; margin-bottom: 12px; }
         .attrs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
@@ -290,7 +290,7 @@
 </div>
         <div class="good-bad">
             <div class="bad">
-<h4>Wady stylów inline</h4>
+<h3>Wady stylów inline</h3>
                 <ul>
                     <li>Trudne utrzymanie (mieszanie z treścią).</li>
                     <li>Brak możliwości ponownego użycia.</li>
@@ -299,7 +299,7 @@
                 </ul>
 </div>
             <div class="good">
-<h4>Kiedy (rzadko) używać?</h4>
+<h3>Kiedy (rzadko) używać?</h3>
                 <ul>
                     <li>Dynamiczne stylowanie z JavaScript (np. <code>element.style.color = 'red'</code>).</li>
                     <li>Bardzo proste, jednostronicowe prototypy.</li>
@@ -374,7 +374,7 @@
                     <tr><td>Unikalność</td><td>Może wystąpić wiele razy</td><td>Tylko jeden element na stronie</td></tr>
                     <tr><td>Selektor CSS</td><td><code>.klasa</code></td><td><code>#id</code></td></tr>
                     <tr><td>W JavaScript</td><td><code>document.getElementsByClassName</code> lub <code>querySelector('.klasa')</code></td><td><code>document.getElementById('id')</code> (najszybszy)</td></tr>
-                    <tr><td>Specyficzność CSS</td>等方面Niższa (10 punktów)</td><td>Wyższa (100 punktów)</td></tr>
+                    <tr><td>Specyficzność CSS</td><td>Niższa (10 punktów)</td><td>Wyższa (100 punktów)</td></tr>
                     <tr><td>Kotwice (linki wewnętrzne)</td><td>Nie (tylko <code>id</code> działa w <code>href="#id"</code>)</td><td>Tak</td></tr>
                     <tr><td>Wiele wartości</td><td>Tak (klasa1 klas2)</td><td>Nie (jedno id)</td></tr>
                 </tbody>
@@ -428,7 +428,7 @@
         <h2>9. Dobre praktyki dotyczące atrybutów globalnych</h2>
         <div class="good-bad">
             <div class="good">
-<h4>Dobre praktyki</h4>
+<h3>Dobre praktyki</h3>
                 <ul>
                     <li>Używaj nazw klas zgodnych z przeznaczeniem (np. <code>.warning</code>, <code>.btn-primary</code>).</li>
                     <li>Identyfikatorów <code>id</code> używaj oszczędnie - tylko gdy potrzebujesz linku lub JS.</li>
@@ -438,7 +438,7 @@
                 </ul>
 </div>
             <div class="bad">
-<h4>Częste błędy</h4>
+<h3>Częste błędy</h3>
                 <ul>
                     <li>Używanie tego samego <code>id</code> dla kilku elementów (niepoprawne).</li>
                     <li>Używanie zbyt wielu klas (komplikuje kod).</li>

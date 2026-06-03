@@ -60,8 +60,8 @@
             padding: 16px 20px;
             border: 1px solid #e2dfd7;
         }
-        .good h4 { color: #2f7a67; margin-bottom: 12px; }
-        .bad h4 { color: #b1624b; margin-bottom: 12px; }
+        .good h3 { color: #2f7a67; margin-bottom: 12px; }
+        .bad h3 { color: #b1624b; margin-bottom: 12px; }
         .attrs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(240px,1fr));
@@ -135,7 +135,7 @@
         <p>Nagłówki określają hierarchię i ważność treści. <strong>&lt;h1&gt;</strong> to najważniejszy nagłówek (tytuł strony), a <strong>&lt;h6&gt;</strong> - najmniej ważny. Wyszukiwarki przywiązują dużą wagę do nagłówków (SEO).</p>
         
         <div class="heading-demo">
-            <h1 style="font-size: 2em; margin: 0.5em 0;">To jest &lt;h1&gt; - najważniejszy</h1>
+            <p style="font-size: 2em; margin: 0.5em 0; font-weight: bold;">To jest &lt;h1&gt; - najważniejszy</p>
             <h2 style="font-size: 1.5em; margin: 0.5em 0;">To jest &lt;h2&gt;</h2>
             <h3 style="font-size: 1.17em; margin: 0.5em 0;">To jest &lt;h3&gt;</h3>
             <h4 style="font-size: 1em; margin: 0.5em 0;">To jest &lt;h4&gt;</h4>
@@ -157,14 +157,14 @@
 
         <div class="good-bad">
             <div class="good">
-<h4>Poprawna hierarchia</h4>
+<h3>Poprawna hierarchia</h3>
                 <code>&lt;h1&gt;Tytuł&lt;/h1&gt;<br>
                 &lt;h2&gt;Rozdział 1&lt;/h2&gt;<br>
                 &lt;h3&gt;Podrozdział 1.1&lt;/h3&gt;<br>
                 &lt;h2&gt;Rozdział 2&lt;/h2&gt;</code>
 </div>
             <div class="bad">
-<h4>Błędna hierarchia (SEO)</h4>
+<h3>Błędna hierarchia (SEO)</h3>
                 <code>&lt;h3&gt;Wstęp&lt;/h3&gt;<br>
                 &lt;h1&gt;Tytuł&lt;/h1&gt;<br>
                 &lt;h4&gt;Treść&lt;/h4&gt;</code><br>
@@ -220,11 +220,11 @@ I trzecia linia.
 </div>
         <div class="good-bad">
             <div class="good">
-<h4>Dobre użycie</h4>
+<h3>Dobre użycie</h3>
                 <code>&lt;p&gt;ul. Kwiatowa 12&lt;br&gt;00-001 Warszawa&lt;/p&gt;</code>
 </div>
             <div class="bad">
-<h4>Złe użycie</h4>
+<h3>Złe użycie</h3>
                 <code>&lt;p&gt;Tekst&lt;br&gt;&lt;br&gt;Tekst&lt;/p&gt;</code><br>
                 (zamiast podwójnego &lt;br&gt; lepiej użyć osobnych akapitów).
 </div>
@@ -311,7 +311,7 @@ Himalaje to najwyższe pasmo górskie.
         <h2>7. Częste błędy i dobre praktyki</h2>
         <div class="good-bad">
             <div class="good">
-<h4>Dobre praktyki</h4>
+<h3>Dobre praktyki</h3>
                 <ul>
                     <li>Tylko jeden <code>&lt;h1&gt;</code> na stronie.</li>
                     <li>Używaj nagłówków hierarchicznie (h1 → h2 → h3).</li>
@@ -321,7 +321,7 @@ Himalaje to najwyższe pasmo górskie.
                 </ul>
 </div>
             <div class="bad">
-<h4>Błędy</h4>
+<h3>Błędy</h3>
                 <ul>
                     <li>Pomijanie poziomów nagłówków (h1 potem h4).</li>
                     <li>Używanie <code>&lt;br&gt;&lt;br&gt;</code> zamiast akapitów.</li>

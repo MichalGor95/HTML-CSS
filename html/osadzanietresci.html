@@ -61,8 +61,8 @@
             padding: 16px 20px;
             border: 1px solid #e2dfd7;
         }
-        .good h4 { color: #2f7a67; margin-bottom: 12px; }
-        .bad h4 { color: #b1624b; margin-bottom: 12px; }
+        .good h3 { color: #2f7a67; margin-bottom: 12px; }
+        .bad h3 { color: #b1624b; margin-bottom: 12px; }
         .attrs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
@@ -182,7 +182,7 @@
 </pre>
 </div>
         <div class="iframe-demo">
-            <iframe src="about:blank" width="100%" height="200" style="border:1px solid #ddd;" title="Pusta ramka"></iframe>
+            <iframe src="about:blank" height="200" style="border:1px solid #ddd; width:100%;" title="Pusta ramka"></iframe>
             <p><small>Przykład pustego iframe (about:blank). W praktyce podajesz konkretny URL.</small></p>
 </div>
         <div class="coord-note">
@@ -206,7 +206,7 @@
 </pre>
 </div>
         <div class="iframe-demo">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2561.2!2d19.937!3d50.061!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47165b0e4d6b6d3b%3A0x5e8e1c8c1b1b1b1b!2sRynek%20G%C5%82%C3%B3wny!5e0!3m2!1spl!2spl!4v1234567890" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" title="Mapa Google - Rynek Główny (przykład)"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2561.2!2d19.937!3d50.061!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47165b0e4d6b6d3b%3A0x5e8e1c8c1b1b1b1b!2sRynek%20G%C5%82%C3%B3wny!5e0!3m2!1spl!2spl!4v1234567890" height="300" style="border:0; width:100%;" allowfullscreen="" loading="lazy" title="Mapa Google - Rynek Główny (przykład)"></iframe>
             <p><small>Przykład osadzonej mapy (uproszczony adres - w rzeczywistości użyj kodu z Google Maps).</small></p>
 </div>
         <ul class="custom-list">
@@ -233,7 +233,7 @@
 </pre>
 </div>
         <div class="iframe-demo">
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player (przykład)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player (przykład)" style="width:100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             <p><small>Przykład osadzonego filmu z YouTube (w rzeczywistej stronie użyj własnego filmu).</small></p>
 </div>
         <div class="attrs-grid">
@@ -336,7 +336,7 @@
         <h2>7. Dostępność i dobre praktyki</h2>
         <div class="good-bad">
             <div class="good">
-<h4>Dobre praktyki</h4>
+<h3>Dobre praktyki</h3>
                 <ul>
                     <li>Zawsze dodawaj atrybut <code>title</code> z opisem ramki.</li>
                     <li>Ustaw odpowiednie rozmiary (<code>width</code> i <code>height</code>) lub użyj CSS dla responsywności.</li>
@@ -346,7 +346,7 @@
                 </ul>
 </div>
             <div class="bad">
-<h4>Błędy</h4>
+<h3>Błędy</h3>
                 <ul>
                     <li>Brak atrybutu <code>title</code> - problem z dostępnością.</li>
                     <li>Brak responsywności (iframe poza skalowaniem na telefonach).</li>

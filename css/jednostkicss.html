@@ -11,8 +11,7 @@
 <header>
     <div class="logo">
         HTML<span>&CSS</span>
-</div>
-
+    </div>
     <nav>
         <a href="../index.html">Start</a>
         <a href="../html.html">HTML</a>
@@ -27,10 +26,9 @@
         <p>
             W CSS istnieje wiele jednostek - bezwzględnych i względnych.
             Wybór odpowiedniej jednostki wpływa na responsywność, dostępność i elastyczność layoutu.
-</p>
-</div>
+        </p>
+    </div>
 
-    <!-- PODZIAŁ JEDNOSTEK -->
     <section class="topic-section">
         <h2>1. Podział jednostek w CSS</h2>
         <ul class="custom-list">
@@ -41,35 +39,36 @@
         <p>W praktyce najczęściej używa się <code>px</code>, <code>%</code>, <code>em</code>, <code>rem</code>, <code>vw</code>, <code>vh</code> i <code>auto</code>.</p>
     </section>
 
-    <!-- px -->
     <section class="topic-section">
         <h2>2. Piksele (px) - jednostka bezwzględna</h2>
         <p>
             Jeden piksel to najmniejszy punkt na ekranie. <code>px</code> jest jednostką <strong>bezwzględną</strong> - nie skaluje się względem innych elementów.
-</p>
+        </p>
         <div class="code-sample"><pre>
 .box {
     width: 300px;
     font-size: 16px;
     padding: 10px;
 }
-</pre>
-</div>
+</pre></div>
         <div class="table-wrapper">
             <table class="value-table">
-                <tr><th>Zalety</th><th>Wady</th></tr>
-                <tr><td>precyzyjna kontrola, stabilność</th><td>nie skaluje się przy powiększeniu czcionki (problem z dostępnością)</th></tr>
+                <thead>
+                    <tr><th>Zalety</th><th>Wady</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>precyzyjna kontrola, stabilność</td><td>nie skaluje się przy powiększeniu czcionki (problem z dostępnością)</td></tr>
+                </tbody>
             </table>
-</div>
+        </div>
         <p>Dobra do: obramowań, cieni, małych odstępów, gdy layout ma być sztywny.</p>
     </section>
 
-    <!-- % (procenty) -->
     <section class="topic-section">
         <h2>3. Procenty (%) - względem rodzica</h2>
         <p>
             Procenty są <strong>względne</strong> - <code>width: 50%</code> oznacza 50% szerokości elementu nadrzędnego.
-</p>
+        </p>
         <div class="code-sample"><pre>
 .parent {
     width: 800px;
@@ -78,26 +77,26 @@
     width: 50%;   /* = 400px */
     padding: 5%;  /* = 5% szerokości rodzica (40px) - nie mylić z font-size! */
 }
-</pre>
-</div>
+</pre></div>
         <div class="table-wrapper">
             <table class="value-table">
-                <tr><th>Właściwość</th><th>Względem czego?</th></tr>
-                <tr><td><code>width</code>, <code>height</code></th><td>szerokość/wysokość rodzica</th></tr>
-                <tr><td><code>margin</code>, <code>padding</code></th><td>szerokość rodzica (nawet dla pionowych marginesów!)</th></tr>
-                <tr><td><code>font-size</code></th><td>rozmiar czcionki rodzica</th></tr>
-                <tr><td><code>line-height</code></th><td>rozmiar czcionki elementu (bieżący)</th></tr>
+                <thead><tr><th>Właściwość</th><th>Względem czego?</th></tr></thead>
+                <tbody>
+                    <tr><td><code>width</code>, <code>height</code></td><td>szerokość/wysokość rodzica</td></tr>
+                    <tr><td><code>margin</code>, <code>padding</code></td><td>szerokość rodzica (nawet dla pionowych marginesów!)</td></tr>
+                    <tr><td><code>font-size</code></td><td>rozmiar czcionki rodzica</td></tr>
+                    <tr><td><code>line-height</code></td><td>rozmiar czcionki elementu (bieżący)</td></tr>
+                </tbody>
             </table>
-</div>
+        </div>
         <p>Procenty świetnie nadają się do responsywnych układów (kolumny, siatki).</p>
     </section>
 
-    <!-- em -->
     <section class="topic-section">
         <h2>4. em - względem rodzica (tekst i nie tylko)</h2>
         <p>
             <code>1em</code> to aktualny rozmiar czcionki elementu. Domyślnie w przeglądarkach <code>1em = 16px</code>.
-</p>
+        </p>
         <div class="code-sample"><pre>
 body {
     font-size: 16px;
@@ -106,26 +105,21 @@ p {
     font-size: 1.2em;   /* = 19.2px */
     margin: 1em;        /* = 19.2px (bo względem font-size elementu) */
 }
-</pre>
-</div>
-        <p>
-            ️ <strong>Problem z kaskadą em:</strong> jeśli masz zagnieżdżone elementy, <code>em</code> się kumuluje.
-</p>
+</pre></div>
+        <p><strong>Problem z kaskadą em:</strong> jeśli masz zagnieżdżone elementy, <code>em</code> się kumuluje.</p>
         <div class="code-sample"><pre>
 div { font-size: 1.2em; }  /* 1.2 × 16px = 19.2px */
 div div { font-size: 1.2em; } /* 1.2 × 19.2px = 23.04px */
-</pre>
-</div>
+</pre></div>
         <p>Używa się go często do <code>margin</code>, <code>padding</code> lub mediów, które mają skalować się z czcionką.</p>
     </section>
 
-    <!-- rem -->
     <section class="topic-section">
         <h2>5. rem - względem roota (html)</h2>
         <p>
             <code>rem</code> (root em) jest zawsze względem rozmiaru czcionki elementu <code>&lt;html&gt;</code>.
             Domyślnie <code>1rem = 16px</code>.
-</p>
+        </p>
         <div class="code-sample"><pre>
 html {
     font-size: 62.5%;  /* 62.5% z 16px = 10px - ułatwia przeliczanie */
@@ -137,52 +131,52 @@ p {
     font-size: 1.6rem;  /* = 16px */
     margin: 1rem;       /* = 10px */
 }
-</pre>
-</div>
+</pre></div>
         <div class="table-wrapper">
             <table class="value-table">
-                <tr><th>Cecha</th><th>em</th><th>rem</th></tr>
-                <tr><td>Baza</th><td>bieżący element</th><td>html (root)</th></tr>
-                <tr><td>Kaskadowość</th><td>kumuluje się</th><td>nie kumuluje się (stałe)</th></tr>
-                <tr><td>Zastosowanie</th>>:lokalne odstępy, media skalowalne</th>>:globalne rozmiary tekstu, łatwiejsze utrzymanie</th></tr>
+                <thead><tr><th>Cecha</th><th>em</th><th>rem</th></tr></thead>
+                <tbody>
+                    <tr><td>Baza</td><td>bieżący element</td><td>html (root)</td></tr>
+                    <tr><td>Kaskadowość</td><td>kumuluje się</td><td>nie kumuluje się (stałe)</td></tr>
+                    <tr><td>Zastosowanie</td><td>lokalne odstępy, media skalowalne</td><td>globalne rozmiary tekstu, łatwiejsze utrzymanie</td></tr>
+                </tbody>
             </table>
-</div>
+        </div>
         <p><strong>Dobra praktyka:</strong> ustawiaj <code>font-size</code> w <code>rem</code>, a <code>margin/padding</code> w <code>rem</code> lub <code>em</code> w zależności od potrzeby.</p>
     </section>
 
-    <!-- vw i vh -->
     <section class="topic-section">
         <h2>6. vw i vh - względem okna przeglądarki</h2>
         <p>
             <code>1vw</code> = 1% szerokości okna przeglądarki (viewport width).<br>
             <code>1vh</code> = 1% wysokości okna przeglądarki (viewport height).
-</p>
+        </p>
         <div class="code-sample"><pre>
 .hero {
     height: 100vh;      /* pełna wysokość ekranu */
     width: 100vw;       /* pełna szerokość ekranu */
     font-size: 5vw;     /* czcionka skalowana do szerokości okna */
 }
-</pre>
-</div>
+</pre></div>
         <div class="table-wrapper">
             <table class="value-table">
-                <tr><th>Jednostka</th><th>Opis</th><th>Przykład</th></tr>
-                <tr><td><code>vw</code></th><td>% szerokości viewportu</th><td><code>width: 50vw</code> - połowa szerokości okna</th></tr>
-                <tr><td><code>vh</code></th><td>% wysokości viewportu</th><td><code>height: 100vh</code> - cała wysokość ekranu</th></tr>
-                <tr><td><code>vmin</code></th><td>% z mniejszego wymiaru (min(szer, wys))</th><td><code>font-size: 5vmin</code></th></tr>
-                <tr><td><code>vmax</code></th><td>% z większego wymiaru</th><td><code>width: 80vmax</code></th></tr>
+                <thead><tr><th>Jednostka</th><th>Opis</th><th>Przykład</th></tr></thead>
+                <tbody>
+                    <tr><td><code>vw</code></td><td>% szerokości viewportu</td><td><code>width: 50vw</code> - połowa szerokości okna</td></tr>
+                    <tr><td><code>vh</code></td><td>% wysokości viewportu</td><td><code>height: 100vh</code> - cała wysokość ekranu</td></tr>
+                    <tr><td><code>vmin</code></td><td>% z mniejszego wymiaru (min(szer, wys))</td><td><code>font-size: 5vmin</code></td></tr>
+                    <tr><td><code>vmax</code></td><td>% z większego wymiaru</td><td><code>width: 80vmax</code></td></tr>
+                </tbody>
             </table>
-</div>
+        </div>
         <p>Idealne do: pełnoekranowych sekcji, responsywnych czcionek (ale uwaga na bardzo małe ekrany).</p>
     </section>
 
-    <!-- auto -->
     <section class="topic-section">
         <h2>7. auto - inteligentne uzupełnienie</h2>
         <p>
             <code>auto</code> to wartość domyślna wielu właściwości. Pozwala przeglądarce automatycznie obliczyć rozmiar lub położenie.
-</p>
+        </p>
         <div class="code-sample"><pre>
 /* wyśrodkowanie bloku */
 .container {
@@ -200,48 +194,41 @@ p {
 .elastyczny {
     height: auto;
 }
-</pre>
-</div>
+</pre></div>
         <div class="table-wrapper">
             <table class="value-table">
-                <tr><th>Zastosowanie <code>auto</code></th><th>Efekt</th></tr>
-                <tr><td><code>margin: 0 auto;</code></th><td>wyśrodkowanie w poziomie (przy określonej szerokości)</th></tr>
-                <tr><td><code>width: auto;</code></th><td>element zajmuje tyle miejsca, ile może (bez nadmiaru)</th></tr>
-                <tr><td><code>height: auto;</code></th><td>dopasowanie do treści</th></tr>
-                <tr><td><code>overflow: auto;</code></th><td>dodaje paski przewijania tylko w razie potrzeby</th></tr>
+                <thead><tr><th>Zastosowanie <code>auto</code></th><th>Efekt</th></tr></thead>
+                <tbody>
+                    <tr><td><code>margin: 0 auto;</code></td><td>wyśrodkowanie w poziomie (przy określonej szerokości)</td></tr>
+                    <tr><td><code>width: auto;</code></td><td>element zajmuje tyle miejsca, ile może (bez nadmiaru)</td></tr>
+                    <tr><td><code>height: auto;</code></td><td>dopasowanie do treści</td></tr>
+                    <tr><td><code>overflow: auto;</code></td><td>dodaje paski przewijania tylko w razie potrzeby</td></tr>
+                </tbody>
             </table>
-</div>
+        </div>
     </section>
 
-    <!-- PORÓWNANIE JEDNOSTEK -->
     <section class="topic-section">
         <h2>8. Kiedy używać której jednostki? - praktyczne wskazówki</h2>
         <div class="table-wrapper">
             <table class="value-table">
-                <tr><th>Jednostka</th><th>Najlepsze zastosowanie</th></tr>
-                <tr><td><code>px</code></th><td>obramowania, cienie, drobne odstępy, sztywne elementy</th></tr>
-                <tr><td><code>%</code></th>.\]
-
-układy responsywne, siatki, szerokości kolumn</th></tr>
-                <tr><td><code>em</code></th><td>marginesy i paddingi skalujące się z czcionką lokalnie</th></tr>
-                <tr><td><code>rem</code></th>._
-
-rozmiary czcionek, odstępy globalne, łatwa dostępność</th></tr>
-                <tr><td><code>vw/vh</code></th>._
-
-pełnoekranowe sekcje, responsywne nagłówki, efekty wizualne</th></tr>
-                <tr><td><code>auto</code></th>._
-
-wyśrodkowanie, elastyczne wypełnianie, domyślne zachowanie</th></tr>
+                <thead><tr><th>Jednostka</th><th>Najlepsze zastosowanie</th></tr></thead>
+                <tbody>
+                    <tr><td><code>px</code></td><td>obramowania, cienie, drobne odstępy, sztywne elementy</td></tr>
+                    <tr><td><code>%</code></td><td>układy responsywne, siatki, szerokości kolumn</td></tr>
+                    <tr><td><code>em</code></td><td>marginesy i paddingi skalujące się z czcionką lokalnie</td></tr>
+                    <tr><td><code>rem</code></td><td>rozmiary czcionek, odstępy globalne, łatwa dostępność</td></tr>
+                    <tr><td><code>vw/vh</code></td><td>pełnoekranowe sekcje, responsywne nagłówki, efekty wizualne</td></tr>
+                    <tr><td><code>auto</code></td><td>wyśrodkowanie, elastyczne wypełnianie, domyślne zachowanie</td></tr>
+                </tbody>
             </table>
-</div>
+        </div>
         <p>
-             Na egzaminie INF03 często padają pytania o różnicę między <code>em</code> a <code>rem</code> oraz o to,
+            Na egzaminie INF03 często padają pytania o różnicę między <code>em</code> a <code>rem</code> oraz o to,
             jak zmieni się rozmiar elementu po zmianie <code>font-size</code> rodzica.
-</p>
+        </p>
     </section>
 
-    <!-- PRZYKŁAD PRAKTYCZNY -->
     <section class="topic-section">
         <h2>9. Przykład - responsywna sekcja z różnymi jednostkami</h2>
         <div class="code-sample"><pre>
@@ -291,8 +278,7 @@ html {
     border-radius: 0.5rem;
     margin-top: auto;
 }
-</pre>
-</div>
+</pre></div>
         <p>Ten przykład łączy <code>vh</code>, <code>%</code>, <code>rem</code>, <code>px</code> i <code>auto</code> w praktycznym komponencie.</p>
     </section>
 

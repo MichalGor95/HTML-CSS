@@ -61,8 +61,8 @@
             padding: 16px 20px;
             border: 1px solid #e2dfd7;
         }
-        .good h4 { color: #2f7a67; margin-bottom: 12px; }
-        .bad h4 { color: #b1624b; margin-bottom: 12px; }
+        .good h3 { color: #2f7a67; margin-bottom: 12px; }
+        .bad h3 { color: #b1624b; margin-bottom: 12px; }
         .attrs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
@@ -176,14 +176,14 @@
         <p>Semantyczne znaczniki HTML5 (np. <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code>) nie tylko opisują strukturę, ale też pomagają wyszukiwarkom i czytnikom ekranu.</p>
         <div class="good-bad">
             <div class="good">
-<h4>Poprawnie (semantycznie)</h4>
+<h3>Poprawnie (semantycznie)</h3>
                 <code>&lt;header&gt;Nagłówek&lt;/header&gt;</code><br>
                 <code>&lt;nav&gt;&lt;ul&gt;&lt;li&gt;&lt;a&gt;...&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/nav&gt;</code><br>
                 <code>&lt;main&gt;&lt;article&gt;...&lt;/article&gt;&lt;/main&gt;</code><br>
                 <code>&lt;footer&gt;Stopka&lt;/footer&gt;</code>
 </div>
             <div class="bad">
-<h4>Źle (niesemantycznie - "divitis")</h4>
+<h3>Źle (niesemantycznie - "divitis")</h3>
                 <code>&lt;div class="header"&gt;Nagłówek&lt;/div&gt;</code><br>
                 <code>&lt;div class="nav"&gt;&lt;div&gt;&lt;div&gt;&lt;a&gt;...&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</code><br>
                 <code>&lt;div class="content"&gt;&lt;div&gt;...&lt;/div&gt;&lt;/div&gt;</code>
@@ -247,7 +247,7 @@
         <p>HTML wymaga prawidłowego zagnieżdżania - elementy muszą być zamykane w odwrotnej kolejności niż otwierane. Nieprawidłowe zagnieżdżenie może powodować nieprzewidywalne renderowanie.</p>
         <div class="good-bad">
             <div class="good">
-<h4>Poprawne zagnieżdżenie</h4>
+<h3>Poprawne zagnieżdżenie</h3>
                 <code>&lt;p&gt;To jest &lt;strong&gt;ważne&lt;/strong&gt; zdanie.&lt;/p&gt;</code><br><br>
                 <code>&lt;ul&gt;<br>
                 &nbsp;&nbsp;&lt;li&gt;Poziom 1<br>
@@ -256,7 +256,7 @@
                 &lt;/ul&gt;</code>
 </div>
             <div class="bad">
-<h4>Niepoprawne zagnieżdżenie</h4>
+<h3>Niepoprawne zagnieżdżenie</h3>
                 <code>&lt;p&gt;To jest &lt;strong&gt;ważne&lt;/p&gt;&lt;/strong&gt;</code><br>
                 (najpierw zamyka p, potem strong - błąd)<br><br>
                 <code>&lt;ul&gt;<br>

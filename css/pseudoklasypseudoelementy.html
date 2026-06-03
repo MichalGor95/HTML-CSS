@@ -169,11 +169,11 @@ section div:first-child {
         <div class="table-wrapper">
             <table class="value-table">
                 <tr><th>Pseudoklasa</th><th>Znaczenie</th></tr>
-                <tr><td><code>:first-child</code></th><td>pierwsze dziecko rodzica</th></tr>
-                <tr><td><code>:last-child</code></th><td>ostatnie dziecko rodzica</th></tr>
-                <tr><td><code>:nth-child(n)</code></th><td>n-te dziecko (np. <code>:nth-child(2)</code>, <code>:nth-child(even)</code>)</th></tr>
-                <tr><td><code>:first-of-type</code></th><td>pierwszy element danego typu wśród rodzeństwa</th></tr>
-                <tr><td><code>:nth-of-type(n)</code></th><td>n-ty element danego typu</th></tr>
+                <tr><td><code>:first-child</code></td><td>pierwsze dziecko rodzica</td></tr>
+                <tr><td><code>:last-child</code></td><td>ostatnie dziecko rodzica</td></tr>
+                <tr><td><code>:nth-child(n)</code></td><td>n-te dziecko (np. <code>:nth-child(2)</code>, <code>:nth-child(even)</code>)</td></tr>
+                <tr><td><code>:first-of-type</code></td><td>pierwszy element danego typu wśród rodzeństwa</td></tr>
+                <tr><td><code>:nth-of-type(n)</code></td><td>n-ty element danego typu</td></tr>
             </table>
 </div>
     </section>
@@ -262,13 +262,11 @@ blockquote::before {
         <div class="table-wrapper">
             <table class="value-table">
                 <tr><th>Pseudoelement</th><th>Działanie</th><th>Przykład zastosowania</th></tr>
-                <tr><td><code>::before</code></th><td>treść przed elementem</th><td>ikony, dekoracje, cytaty</th></tr>
-                <tr><td><code>::after</code></th><td>treść po elemencie</th><td>czyszczenie float, dodatkowe etykiety, strzałki</th></tr>
-                <tr><td><code>::first-letter</code></th><td>pierwsza litera</th><td>kapitaliki w artykułach</th></tr>
-                <tr><td><code>::first-line</code></th><td>pierwsza linia</th><td>specjalne formatowanie wstępu</th></tr>
-                <tr><td><code>::selection</code></th>},\]
-
-styl zaznaczonego tekstu</th><td>zmiana koloru tła zaznaczenia</th></tr>
+                <tr><td><code>::before</code></td><td>treść przed elementem</td><td>ikony, dekoracje, cytaty</td></tr>
+                <tr><td><code>::after</code></td><td>treść po elemencie</td><td>czyszczenie float, dodatkowe etykiety, strzałki</td></tr>
+                <tr><td><code>::first-letter</code></td><td>pierwsza litera</td><td>kapitaliki w artykułach</td></tr>
+                <tr><td><code>::first-line</code></td><td>pierwsza linia</td><td>specjalne formatowanie wstępu</td></tr>
+                <tr><td><code>::selection</code></td><td>styl zaznaczonego tekstu</td><td>zmiana koloru tła zaznaczenia</td></tr>
             </table>
 </div>
     </section>
@@ -338,10 +336,10 @@ article p:first-child::first-letter {
         <div class="table-wrapper">
             <table class="value-table">
                 <tr><th>Cecha</th><th>Pseudoklasa</th><th>Pseudoelement</th></tr>
-                <tr><td>Zapis</th><td><code>:nazwa</code> (jeden dwukropek)</th><td><code>::nazwa</code> (dwa dwukropki)</th></tr>
-                <tr><td>Funkcja</th><td>opisuje <strong>stan</strong> lub pozycję istniejącego elementu</th><td>tworzy <strong>wirtualny element</strong> nieobecny w DOM</th></tr>
-                <tr><td>Wymaga content?</th><td>nie</th><td>tak dla <code>::before</code> i <code>::after</code></th></td>
-                <tr><td>Przykłady</th><td><code>:hover</code>, <code>:focus</code>, <code>:first-child</code></th><td><code>::before</code>, <code>::after</code>, <code>::first-letter</code></th></tr>
+                <tr><td>Zapis</td><td><code>:nazwa</code> (jeden dwukropek)</td><td><code>::nazwa</code> (dwa dwukropki)</td></tr>
+                <tr><td>Funkcja</td><td>opisuje <strong>stan</strong> lub pozycję istniejącego elementu</td><td>tworzy <strong>wirtualny element</strong> nieobecny w DOM</td></tr>
+                <tr><td>Wymaga content?</td><td>nie</td><td>tak dla <code>::before</code> i <code>::after</code></td>
+                <tr><td>Przykłady</td><td><code>:hover</code>, <code>:focus</code>, <code>:first-child</code></td><td><code>::before</code>, <code>::after</code>, <code>::first-letter</code></td></tr>
             </table>
 </div>
         <p>
